@@ -41,4 +41,12 @@ public class idiomaticTest {
     assert idiomatic.quote(idiomatic.quote("a")).equals("''a''");
   }
   
+  @Test public void testWhenTrueReturnsSame(){
+    assert idiomatic.when(1==1).eval(()->new Integer(5)).equals(new Integer(5));
+  }
+  
+  @Test public void testWhenFalseReturnsNull() {
+    assert idiomatic.when(1==3).eval(()->new Integer(5)) == null;
+  }
+  
 }
