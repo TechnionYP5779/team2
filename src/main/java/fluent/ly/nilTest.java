@@ -35,7 +35,7 @@ public class nilTest {
   }
   
   @Test public void longIgnoringTest() {
-    for(long i=-100 ; i<100 ; i++) {
+    for(long i=-100 ; i<101 ; i++) {
       assert(nil.ignoring(i) == null);
     }
   }
