@@ -35,4 +35,15 @@ public class file {
   public static void renameToCSV(final @NotNull String old) {
     file.rename(old, old + ".csv");
   }
+
+  @NotNull public static String read(final @NotNull File f) throws IOException {
+    final @NotNull String ls = System.getProperty("line.separator");
+    System.err.println(ls.compareTo("\n"));
+    final @NotNull StringBuilder $ = new StringBuilder();
+    try (@NotNull BufferedReader reader = new BufferedReader(new FileReader(f))) {
+      for (String line = reader.readLine(); line != null; line = reader.readLine())
+        $.append(line).append(ls);
+    }
+    return $ + "";
+  }
 }
