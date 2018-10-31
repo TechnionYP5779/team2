@@ -19,7 +19,7 @@ public class PairTest {
   
   @Test
   public void testEquals() {
-    Pair<Integer, String> p1 = new Pair<>(1, "1");
+    Pair<Integer, String> p1 = new Pair<>(12, "1");
     Pair<Integer, String> p2 = new Pair<>(1, "2");
     Pair<Integer, String> p3 = new Pair<>(2, "2");
     Pair<Integer, String> p4 = new Pair<>(2, "2");
