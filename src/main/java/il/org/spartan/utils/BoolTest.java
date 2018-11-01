@@ -6,25 +6,25 @@ import org.junit.*;
 
 public class BoolTest {
 
-  @Test public void trueConstructorTest() {
+  @SuppressWarnings({ "static-method", "boxing" }) @Test public void trueConstructorTest() {
     Bool b = new Bool(true);
     if(!b.inner()) {
       fail("Did not save the constructor value");
     }
   }
-  @Test public void falseConstructorTest() {
+  @SuppressWarnings({ "static-method", "boxing" }) @Test public void falseConstructorTest() {
     Bool b = new Bool(false);
     if(b.inner()) {
       fail("Did not save the constructor value");
     }
   }
-  @Test public void emptyConstructorTest() {
+  @SuppressWarnings({ "static-method", "boxing" }) @Test public void emptyConstructorTest() {
     Bool b = new Bool();
     if(b.inner() != false) {
       fail("Did not save the constructor value");
     }
   }
-  @Test public void clearTest() {
+  @SuppressWarnings("static-method") @Test public void clearTest() {
     Bool b1 = new Bool();
     b1.clear();
     if(b1.get()) {
@@ -41,7 +41,7 @@ public class BoolTest {
       fail("Error in the clear function");
     }
   }
-  @Test public void setTest() {
+  @SuppressWarnings("static-method") @Test public void setTest() {
     Bool b1 = new Bool();
     b1.set();
     if(!b1.get()) {
@@ -58,7 +58,7 @@ public class BoolTest {
       fail("Error in the set function");
     }
   }
-  @Test public void getTest() {
+  @SuppressWarnings("static-method") @Test public void getTest() {
     Bool b = new Bool();
     b.set();
     if(!b.get()) {
