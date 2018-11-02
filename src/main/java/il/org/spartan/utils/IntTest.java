@@ -16,7 +16,7 @@ public class IntTest {
     Assert.assertEquals(v3.get(), Integer.MAX_VALUE);
   }
 
-  @Test public void innerValue() {
+  @SuppressWarnings("static-method") @Test public void innerValue() {
     Int v_default = new Int();
     Assert.assertEquals(v_default.get(), 0);
     Assert.assertEquals(v_default.inner(), Integer.valueOf(0));
@@ -31,7 +31,7 @@ public class IntTest {
     Assert.assertEquals(Integer.valueOf(min.get()), min.inner());
   }
   
-  @Test public void valueChanges() {
+  @SuppressWarnings("static-method") @Test public void valueChanges() {
     Int v = new Int();
     Int max = new Int(Integer.MAX_VALUE);
     Int min = new Int(Integer.MIN_VALUE);
@@ -91,7 +91,7 @@ public class IntTest {
     Assert.assertEquals(max.get(), 8);
     }
   
-   @Test public void toStringCheck() {
+  @SuppressWarnings("static-method") @Test public void toStringCheck() {
      Int v = new Int();
      Int max = new Int(Integer.MAX_VALUE);
      Int min = new Int(Integer.MIN_VALUE);
