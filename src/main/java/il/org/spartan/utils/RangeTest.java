@@ -22,7 +22,6 @@ public class RangeTest {
     Range r2 = new Range(0,1);
     Assert.assertTrue(r2.includedIn(r1));
     Assert.assertFalse(r1.includedIn(r2));
-
     Assert.assertTrue(r1.includedIn(r1));
     Assert.assertTrue(r2.includedIn(r2));
    }
