@@ -1,14 +1,12 @@
 package il.org.spartan.utils;
 
-import static org.junit.Assert.*;
-
 import java.util.*;
 import java.util.stream.*;
 
 import org.junit.*;
 
 public class RangeTest {
-  @Test public void testEquals() {
+  @SuppressWarnings("static-method") @Test public void testEquals() {
    Range r1 = new Range(0,3);
    Range r2 = new Range(r1);
    Range r3 = new Range(1,3);
@@ -19,17 +17,16 @@ public class RangeTest {
    Assert.assertFalse(r3.equals(r2));
   }
   
-  @Test public void testIncludedIn() {
+  @SuppressWarnings("static-method") @Test public void testIncludedIn() {
     Range r1 = new Range(0,3);
     Range r2 = new Range(0,1);
     Assert.assertTrue(r2.includedIn(r1));
     Assert.assertFalse(r1.includedIn(r2));
-
     Assert.assertTrue(r1.includedIn(r1));
     Assert.assertTrue(r2.includedIn(r2));
    }
   
-  @Test public void testMerge() {
+  @SuppressWarnings("static-method") @Test public void testMerge() {
     Range r1 = new Range(0,3);
     Range r2 = new Range(0,1);
     Range r3 = new Range(3,5);
@@ -37,7 +34,7 @@ public class RangeTest {
     Assert.assertTrue(r2.merge(r3).equals(new Range(0,5)));
    }
   
-  @Test public void testOverlapping() {
+  @SuppressWarnings("static-method") @Test public void testOverlapping() {
     Range r1 = new Range(0,3);
     Range r2 = new Range(0,1);
     Range r3 = new Range(3,5);
@@ -49,7 +46,7 @@ public class RangeTest {
     Assert.assertTrue(r3.overlapping(r2));
    }
   
-  @Test public void testPrune() {
+  @SuppressWarnings("static-method") @Test public void testPrune() {
     Range r1 = new Range(0,3);
     Range r2 = new Range(0,1);
     Range r3 = new Range(3,5);

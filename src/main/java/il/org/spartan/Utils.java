@@ -3,8 +3,6 @@ package il.org.spartan;
 import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
-import static fluent.ly.idiomatic.*;
-
 import java.io.*;
 import java.util.*;
 import java.util.function.*;
@@ -109,7 +107,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return its parameter, after verifying that it is not
    *         <code><b>null</b></code>
    * @see #mustBeNull(Object) */
-  @NotNull static <T> @NotNull T cantBeNull(final @Nullable T $) {
+  @NotNull static <T> T cantBeNull(final @Nullable T $) {
     assert $ != null;
     return $;
   }
@@ -244,14 +242,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     return cantBeNull(¢.getName());
   }
 
-  /** @param <T> JD
-   * @param ¢ a list
-   * @return last item in a list or <code><b>null</b></code> if the parameter is
-   *         <code><b>null</b></code> or empty */
-  static <T> @Nullable T penultimate(final List<T> ¢) {
-    return eval(() -> ¢.get(¢.size() - 2)).unless(¢ == null || ¢.size() < 2);
-  }
-
   /** Determine whether an {@link Object} is penultimate in its {@link List} .
    * @param    <T> JD
    * @param o  JD
@@ -260,7 +250,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    *         occurs as the penultimate element of the {@link List} parameter */
   static <@Nullable T> boolean penultimateIn(final T o, final @Nullable List<T> os) {
     assert os != null;
-    return penultimate(os) == o;
+    return list.penultimate(os) == o;
   }
 
   /** Prepend a given <code><b>char</b></code> to a {@link StringBuilder}
