@@ -1,11 +1,17 @@
 package il.org.spartan.utils;
 
+import java.io.*;
 import java.util.function.*;
+
+import javax.management.*;
 
 import org.junit.*;
 
 
 public class TruthTest {
+  /**
+   * 
+   */
   @SuppressWarnings("static-method") @Test public void truthOfTest() {
     BooleanSupplier bt = ()->true;
     Truth t = Truth.truthOf(bt); 
@@ -17,6 +23,25 @@ public class TruthTest {
     
     t = Truth.truthOf(null); 
     assert t == Truth.N;
+    
+    BooleanSupplier ba = ()->{
+      assert false;
+      return true;
+    };
+    t = Truth.truthOf(ba); 
+    assert t == Truth.X;
+    
+    BooleanSupplier br = ()->{
+      return 1/0 == 1;
+    };
+    t = Truth.truthOf(br); 
+    assert t == Truth.R;
+    
+    BooleanSupplier bo = ()->{
+      throw new ExceptionInInitializerError();
+    };
+    t = Truth.truthOf(bo); 
+    assert t == Truth.Ħ;
   }
   
   @SuppressWarnings("static-method") @Test public void notTest() {
