@@ -55,8 +55,8 @@ public class TruthTest {
   }
   
   @Test public void letterOfTest() {
-   // BooleanSupplier bt = ()->true;
-   // assert Truth.letterOf(bt) == Truth.truthOf(bt)+"";   
+    BooleanSupplier bt = ()->true;
+    assert Truth.letterOf(bt).equals("true");   
   }
   
   @Test public void toStringTest() {
