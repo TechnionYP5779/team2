@@ -53,8 +53,8 @@ public class TruthTest {
   }
   
   @Test public void letterOfTest() {
-    //BooleanSupplier bt = ()->true;
-    //assert Truth.letterOf(bt).equals("true");   
+    BooleanSupplier bt = ()->true;
+    assert Truth.letterOf(bt).equals("true");   
   }
   
   @SuppressWarnings("static-method") @Test public void toStringTest() {
