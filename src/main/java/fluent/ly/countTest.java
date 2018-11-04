@@ -6,7 +6,6 @@ import java.util.*;
 import org.junit.*;
 
 public class countTest {
-  
   private List<Integer> l;
   
   @Before
