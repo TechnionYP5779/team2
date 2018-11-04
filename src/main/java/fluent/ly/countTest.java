@@ -21,7 +21,8 @@ public class countTest {
   @Test public void testAdd() {
     l.add(3);
     l.add(2);
-    assert(count.of(l)==2);
+    l.add(111);
+    assert(count.of(l)==3);
   }
   
   
