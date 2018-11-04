@@ -25,18 +25,6 @@ import org.junit.*;
     assert (!p2.equals(p3));
     assert (!p1.equals(p3));
     assert (p3.equals(p4));
-    //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
-  //TRY
   }
   
  
