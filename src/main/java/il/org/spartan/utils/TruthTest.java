@@ -51,6 +51,11 @@ public class TruthTest {
       BooleanSupplier bf = ()->false;
       t = Truth.truthOf(bf);
       assert t.not() == Truth.T;
+      BooleanSupplier bo = ()->{
+        throw new ExceptionInInitializerError();
+      };
+      t = Truth.truthOf(bo); 
+      assert t.not() == Truth.Ħ;
     }
   
   @SuppressWarnings("static-method") @Test public void orTest() {
