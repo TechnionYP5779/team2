@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 @SuppressWarnings("unused") public class PairTest {
+  
   @SuppressWarnings({ "static-method", "boxing" }) @Test public void testCreate() {
     Pair<Integer, String> p = new Pair<>(1, "Hi");
     assert (p.first == 1 && p.second.equals("Hi"));

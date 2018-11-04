@@ -6,6 +6,7 @@ import java.util.*;
 import org.junit.*;
 
 public class countTest {
+  
   private List<Integer> l;
   
   @Before
@@ -16,7 +17,6 @@ public class countTest {
   
   @Test public void testCreateEmpty() {
     assert(count.of(l)==0);
-   
   }
   
   @Test public void testAdd() {
