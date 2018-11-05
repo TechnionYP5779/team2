@@ -4,15 +4,15 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class nilTest {
   @Test public void forgettingTest() {
-    assert (nil.forgetting(new Object()) == null);
-    assert (nil.forgetting(new Object(), new Object()) == null);
-    assert (nil.forgetting(new Object(), new Object(), new Object()) == null);
+    Assert.assertNull(nil.forgetting(new Object()));
+    Assert.assertNull(nil.forgetting(new Object(), new Object()));
+    Assert.assertNull(nil.forgetting(new Object(), new Object(), new Object()));
   }
 
   @SuppressWarnings({ "boxing" }) @Test public void guardinglyTest() {
-    assert (nil.guardingly(x -> x).on(null) == null);
-    assert ((Integer) nil.guardingly(x -> x).on(5) == 5);
-    assert (nil.guardingly(x -> (Integer) x * (Integer) x).on(5) == 25);
+    Assert.assertNull(nil.guardingly(x -> x).on(null));
+    Assert.assertEquals(Integer.valueOf(5), nil.guardingly(x -> x).on(5));
+    Assert.assertEquals(Integer.valueOf(25), nil.guardingly(x -> (Integer) x * (Integer) x).on(5));
   }
 
   @Test public void booleanIgnoringTest() {
