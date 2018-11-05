@@ -19,7 +19,7 @@ import org.junit.*;
     Object a = null;
     Object[] l = singleton.array(a);
     assertEquals(l.length,1);
-    assertTrue(l[0]==null);
+    Assert.assertEquals(l[0], null);
   }
   
   
