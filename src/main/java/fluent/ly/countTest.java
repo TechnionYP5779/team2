@@ -1,11 +1,10 @@
 package fluent.ly;
 
-import static org.junit.Assert.*;
 import java.util.*;
 
 import org.junit.*;
 
-public class countTest {
+@SuppressWarnings("boxing")public class countTest {
   private List<Integer> l;
   
   @Before
@@ -18,7 +17,7 @@ public class countTest {
     assert(count.of(l)==0);
   }
   
-  @Test public void testAdd() {
+ @Test public void testAdd() {
     l.add(3);
     l.add(2);
     l.add(111);
