@@ -38,14 +38,24 @@ import org.junit.*;
     Range r1 = new Range(0, 3);
     Range r2 = new Range(0, 1);
     Range r3 = new Range(3, 5);
-    Assert.assertTrue(r1.overlapping(r2));
-    Assert.assertTrue(r2.overlapping(r1));
-    Assert.assertTrue(r1.overlapping(r3));
-    Assert.assertTrue(r3.overlapping(r1));
-    Assert.assertTrue(r2.overlapping(r3));
-    Assert.assertTrue(r3.overlapping(r2));
+    Range r4 = new Range(3, 0);
+    // from >= ¢.from || to <= ¢.to
+    Assert.assertTrue(r1.overlapping(r2)); // true || false
+    Assert.assertTrue(r2.overlapping(r1)); // true || true
+    Assert.assertTrue(r1.overlapping(r3)); // false || true
+    Assert.assertTrue(r3.overlapping(r1)); // true || false
+    Assert.assertTrue(r2.overlapping(r3)); // false || true
+    Assert.assertTrue(r3.overlapping(r2)); // true || false
+    Assert.assertFalse(r2.overlapping(r4)); // false || false
   }
 
+  @Test public void testIsEmpty() {
+    Range r1 = new Range(0,2);
+    Range r2 = new Range(2,0);
+    Assert.assertFalse(r1.isEmpty());
+    Assert.assertTrue(r2.isEmpty());
+    
+  }
   @Test public void testPrune() {
     Range r1 = new Range(0, 3);
     Range r2 = new Range(0, 1);
@@ -60,5 +70,10 @@ import org.junit.*;
     Assert.assertTrue(l.containsAll(l.stream().filter(r -> !r.equals(r1)).collect(Collectors.toSet())));
     r2.pruneIncluders(l);
     Assert.assertTrue(l.containsAll(l.stream().filter(r -> !r.equals(r2)).collect(Collectors.toSet())));
+  }
+  
+  @Test public void testToString() {
+    Range r = new Range(0,3);
+    Assert.assertEquals(r.toString(), "[0, 3]");
   }
 }
