@@ -2,8 +2,8 @@ package il.org.spartan.utils;
 
 import org.junit.*;
 
-public class IntTest {
-  @SuppressWarnings("static-method") @Test public void creation() {
+@SuppressWarnings("static-method")public class IntTest {
+  @Test public void creation() {
     int max = Integer.MAX_VALUE;
     int min = Integer.MIN_VALUE;
     Int v = new Int();
@@ -16,7 +16,7 @@ public class IntTest {
     Assert.assertEquals(v3.get(), Integer.MAX_VALUE);
   }
 
-  @SuppressWarnings("static-method") @Test public void innerValue() {
+  @Test public void innerValue() {
     Int v_default = new Int();
     Assert.assertEquals(v_default.get(), 0);
     Assert.assertEquals(v_default.inner(), Integer.valueOf(0));
@@ -31,7 +31,7 @@ public class IntTest {
     Assert.assertEquals(Integer.valueOf(min.get()), min.inner());
   }
   
-  @SuppressWarnings("static-method") @Test public void valueChanges() {
+  @Test public void valueChanges() {
     Int v = new Int();
     Int max = new Int(Integer.MAX_VALUE);
     Int min = new Int(Integer.MIN_VALUE);
@@ -91,7 +91,7 @@ public class IntTest {
     Assert.assertEquals(max.get(), 8);
     }
   
-  @SuppressWarnings("static-method") @Test public void toStringCheck() {
+  @Test public void toStringCheck() {
      Int v = new Int();
      Int max = new Int(Integer.MAX_VALUE);
      Int min = new Int(Integer.MIN_VALUE);
