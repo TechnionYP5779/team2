@@ -140,25 +140,40 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsTrueForEmptyString() {
-    Assert.assertTrue(is.empty((String) null));
     Assert.assertTrue(is.empty(""));
   }
 
+  @Test public void emptyReturnsFalseForNotEmptyString() {
+    Assert.assertFalse(is.empty("some string"));
+  }
+
   @Test public void emptyReturnsTrueForEmptyArray() {
-    Assert.assertTrue(is.empty((Integer[]) null));
     Assert.assertTrue(is.empty(new Integer[0]));
     Assert.assertTrue(is.empty(new Object[0]));
   }
 
+  @Test public void emptyReturnsFalseForNotEmptyArray() {
+    @SuppressWarnings("boxing") Integer[] arr = { 1, 2, 3, 4 };
+    Assert.assertFalse(is.empty(arr));
+  }
+
   @Test public void emptyReturnsTrueForEmptyIterable() {
-    Assert.assertTrue(is.empty((Iterable<Object>) null));
     Assert.assertTrue(is.empty((Iterable<Object>) new ArrayList<>()));
     Assert.assertTrue(is.empty((Iterable<Object>) Collections.EMPTY_LIST));
   }
 
+  @Test public void emptyReturnsFalseForNotEmptyIterable() {
+    @SuppressWarnings("boxing") Integer[] arr = { 1, 2, 3, 4 };
+    Assert.assertFalse(is.empty((Iterable<Integer>) Arrays.asList(arr)));
+  }
+
   @Test public void emptyReturnsTrueForEmptyCollection() {
-    Assert.assertTrue(is.empty((Collection<Object>) null));
     Assert.assertTrue(is.empty((Collection<Object>) new ArrayList<>()));
     Assert.assertTrue(is.empty((Collection<Object>) Collections.EMPTY_LIST));
+  }
+
+  @Test public void emptyReturnsFalseForNotEmptyCollection() {
+    @SuppressWarnings("boxing") Integer[] arr = { 1, 2, 3, 4 };
+    Assert.assertFalse(is.empty((Collection<Integer>) Arrays.asList(arr)));
   }
 }
