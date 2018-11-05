@@ -4,14 +4,15 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings("static-method") public class StatisticsTest {
+@SuppressWarnings("static-method")
+public class StatisticsTest {
   @Test public void medianTest() {
     double[] a = { 1, 2, 3, 4, 5 };
-    assert Statistics.median(a) == 3;
+    Assert.assertEquals(Statistics.median(a), 3, 0.001);
     double[] b = { 1, 1, 1, 1, 1, 1 };
-    assert Statistics.median(b) == 1;
+    Assert.assertEquals(Statistics.median(b), 1, 0.001);
     double[] c = { 2, 3, 2, 5, 2, 2 };
-    assert Statistics.median(c) == 2;
+    Assert.assertEquals(Statistics.median(c), 2, 0.001);
   }
 
   @Test public void madTest() {
@@ -24,7 +25,7 @@ import fluent.ly.*;
   }
 
   @Test public void pruneTest() {
-    // TODO
+    // TODO 
     assert true;
   }
 
