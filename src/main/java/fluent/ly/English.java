@@ -53,7 +53,7 @@ import il.org.spartan.utils.*;
     final @NotNull String $ = cCamelCase.components(className)[0];
     final char openingLetter = the.characterOf($);
     return isAcronym($) ? indefinite(pronounce(openingLetter)) : //
-        (Utils.intIsIn(openingLetter, 'i', 'e', 'o', 'u', 'y') ? "an" : "a") + " " + className;
+        (is.intIsIn(openingLetter, 'i', 'e', 'o', 'u', 'y') ? "an" : "a") + " " + className;
   }
 
   static boolean isAcronym(final @NotNull String $) {
