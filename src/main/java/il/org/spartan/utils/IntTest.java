@@ -104,5 +104,10 @@ import org.junit.*;
      v.step();
      v.add(-5);
      Assert.assertEquals(v.toString(), "546116850");
+     v.clear();
+     Assert.assertEquals(v.toString(), "0");
+     v.step();
+     v.add(99);
+     Assert.assertEquals(v.toString(), "100");
      }
 }
