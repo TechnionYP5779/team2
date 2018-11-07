@@ -8,10 +8,9 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class emptyTest {
   @Test public void testEmpty() {
-    List<Integer> l = empty.list();
-    assertEquals(l.size(), 0);
+    assertEquals(empty.list().size(), 0);
     Iterator<Object> iter = empty.iterable().iterator();
-    assertEquals(new Boolean(iter.hasNext()), new Boolean(false));
+    assertEquals(Boolean.valueOf(iter.hasNext()), Boolean.FALSE);
     assertEquals(iter.next(), null);
   }
 }
