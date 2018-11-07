@@ -7,7 +7,6 @@ import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.*;
 import il.org.spartan.utils.*;
 
 /** Utility class for linguistic issues. Used by GUI dialogs.
