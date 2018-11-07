@@ -47,4 +47,23 @@ import java.io.IOException;
   @Test public void testWhenFalseReturnsNull() {
     assert idiomatic.when(1 == 3).eval(() -> new Integer(5)) == null;
   }
+  
+  @SuppressWarnings("null") @Test public void testUnlessFalseReturnsSame() {
+    assert idiomatic.unless(1 == 3).eval(() -> new Integer(5)).equals(new Integer(5));
+  }
+
+  @Test public void testUnlessTrueReturnsNull() {
+    assert idiomatic.unless(4 == 4).eval(() -> new Integer(5)) == null;
+  }
+  
+  @Test public void testUnlessFalseWithoutEval() {
+    Integer i = new Integer(5);
+    assert idiomatic.unless(false, i) == i;
+  }
+  
+  @Test public void testUnlessTrueWithoutEval() {
+    Integer i = new Integer(5);
+    assert idiomatic.unless(true, i) == null;
+  }
+  
 }
