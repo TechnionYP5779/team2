@@ -4,44 +4,32 @@ import java.util.function.*;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class anonymousTest {
+@SuppressWarnings({ "static-method", "static-access" }) public class anonymousTest {
   @Test public void booleanTest() {
-    BooleanSupplier bt = () -> true;
-    Assert.assertTrue(anonymous.ly(bt));
-    BooleanSupplier bf = () -> false;
-    Assert.assertFalse(anonymous.ly(bf));
+    assert anonymous.ly(() -> true);
+    assert !anonymous.ly(() -> false);
   }
 
   @Test public void doubleTest() {
-    DoubleSupplier b1 = () -> 1.5;
-    Assert.assertEquals(1.5, anonymous.ly(b1), 0.0);
-    DoubleSupplier b500 = () -> 500.0;
-    Assert.assertEquals(500.0, anonymous.ly(b500), 0.0);
+    azzert.assertEquals(1.5, anonymous.ly(() -> 1.5), 0.0);
+    azzert.assertEquals(500.0, anonymous.ly(() -> 500.0), 0.0);
   }
 
   @Test public void intTest() {
-    IntSupplier b1 = () -> 1;
-    Assert.assertEquals(1, anonymous.ly(b1));
-    IntSupplier b500 = () -> 500;
-    Assert.assertEquals(500, anonymous.ly(b500));
+    azzert.assertEquals(1, anonymous.ly(() -> 1));
+    azzert.assertEquals(500, anonymous.ly(() -> 500));
   }
 
   @Test public void longTest() {
-    LongSupplier b1 = () -> 1325489434L;
-    Assert.assertEquals(1325489434L, anonymous.ly(b1));
-    LongSupplier b500 = () -> 500548943L;
-    Assert.assertEquals(500548943L, anonymous.ly(b500));
+    azzert.assertEquals(1325489434L, anonymous.ly(() -> 1325489434L));
+    azzert.assertEquals(500548943L, anonymous.ly(() -> 500548943L));
   }
 
-  @SuppressWarnings("boxing") @Test public void tTest() {
-    Supplier<Boolean> bt = () -> Boolean.valueOf(true);
-    Assert.assertTrue(anonymous.ly(bt));
-    Supplier<Integer> b1 = () -> Integer.valueOf(1);
-    Assert.assertEquals(Integer.valueOf(1), anonymous.ly(b1));
-    Supplier<Double> b15 = () -> Double.valueOf(1.5);
-    Assert.assertEquals(1.5, anonymous.ly(b15), 0.0);
+  @Test @SuppressWarnings("boxing") public void tTest() {
+    assert anonymous.ly((BooleanSupplier) () -> Boolean.TRUE);
+    azzert.assertEquals(Integer.valueOf(1), anonymous.ly((IntSupplier) () -> Integer.valueOf(1)));
+    azzert.assertEquals(1.5, anonymous.ly((DoubleSupplier) () -> Double.valueOf(1.5)), 0.0);
     Long l = Long.valueOf(1325489434L);
-    Supplier<Long> b132 = () -> l;
-    Assert.assertEquals(l, anonymous.ly(b132));
+    azzert.assertEquals(l.longValue(), anonymous.ly((LongSupplier) () -> l));
   }
 }

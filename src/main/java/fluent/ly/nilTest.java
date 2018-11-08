@@ -9,10 +9,10 @@ import org.junit.*;
     Assert.assertNull(nil.forgetting(new Object(), new Object(), new Object()));
   }
 
-  @SuppressWarnings({ "boxing" }) @Test public void guardinglyTest() {
-    Assert.assertNull(nil.guardingly(x -> x).on(null));
-    Assert.assertEquals(Integer.valueOf(5), nil.guardingly(x -> x).on(5));
-    Assert.assertEquals(Integer.valueOf(25), nil.guardingly(x -> (Integer) x * (Integer) x).on(5));
+  @Test @SuppressWarnings("boxing") public void guardinglyTest() {
+    Assert.assertNull(nil.guardingly(λ -> λ).on(null));
+    Assert.assertEquals(Integer.valueOf(5), nil.guardingly(λ -> λ).on(5));
+    Assert.assertEquals(Integer.valueOf(25), nil.guardingly(λ -> (Integer) λ * (Integer) λ).on(5));
   }
 
   @Test public void booleanIgnoringTest() {
@@ -21,14 +21,12 @@ import org.junit.*;
   }
 
   @Test public void doubleIgnoringTest() {
-    for (double i = -10; i < 10; i += 0.1) {
+    for (double i = -10; i < 10; i += 0.1)
       assert (nil.ignoring(i) == null);
-    }
   }
 
   @Test public void longIgnoringTest() {
-    for (long i = -100; i < 101; i++) {
+    for (long i = -100; i < 101; ++i)
       assert (nil.ignoring(i) == null);
-    }
   }
 }

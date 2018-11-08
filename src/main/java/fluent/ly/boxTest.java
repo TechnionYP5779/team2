@@ -4,8 +4,8 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class boxTest {
   @Test public void booleanBoxingTest() {
-    Assert.assertEquals(Boolean.valueOf(true), box.box(true));
-    Assert.assertEquals(Boolean.valueOf(false), box.box(false));
+    Assert.assertEquals(Boolean.TRUE, box.box(true));
+    Assert.assertEquals(Boolean.FALSE, box.box(false));
   }
 
   @Test public void booleanEmptyArrayBoxingTest() {
@@ -15,16 +15,14 @@ import org.junit.*;
   @Test public void booleanArrayBoxingTest() {
     boolean[] boolArray = { true, true, false, false, true, false };
     Boolean[] expected = new Boolean[boolArray.length];
-    for (int i = 0; i < boolArray.length; ++i) {
-      expected[i] = Boolean.valueOf(boolArray[i]);
-    }
+    for (int ¢ = 0; ¢ < boolArray.length; ++¢)
+      expected[¢] = Boolean.valueOf(boolArray[¢]);
     Assert.assertArrayEquals(expected, box.box(boolArray));
   }
 
   @Test public void byteBoxingTest() {
-    for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; ++i) {
+    for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; ++i)
       Assert.assertEquals(Byte.valueOf(i), box.box(i));
-    }
     Assert.assertEquals(Byte.valueOf(Byte.MAX_VALUE), box.box(Byte.MAX_VALUE));
   }
 
@@ -35,16 +33,14 @@ import org.junit.*;
   @Test public void byteArrayBoxingTest() {
     byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
     Byte[] expected = new Byte[byteArray.length];
-    for (int i = 0; i < byteArray.length; ++i) {
-      expected[i] = Byte.valueOf(byteArray[i]);
-    }
+    for (int ¢ = 0; ¢ < byteArray.length; ++¢)
+      expected[¢] = Byte.valueOf(byteArray[¢]);
     Assert.assertArrayEquals(expected, box.box(byteArray));
   }
 
   @Test public void charBoxingTest() {
-    for (char i = Character.MIN_VALUE; i < Character.MAX_VALUE; ++i) {
+    for (char i = Character.MIN_VALUE; i < Character.MAX_VALUE; ++i)
       Assert.assertEquals(Character.valueOf(i), box.box(i));
-    }
     Assert.assertEquals(Character.valueOf(Character.MAX_VALUE), box.box(Character.MAX_VALUE));
   }
 
@@ -55,9 +51,8 @@ import org.junit.*;
   @Test public void charArrayBoxingTest() {
     char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
     Character[] expected = new Character[charArray.length];
-    for (int i = 0; i < charArray.length; ++i) {
-      expected[i] = Character.valueOf(charArray[i]);
-    }
+    for (int ¢ = 0; ¢ < charArray.length; ++¢)
+      expected[¢] = Character.valueOf(charArray[¢]);
     Assert.assertArrayEquals(expected, box.box(charArray));
   }
 
@@ -79,9 +74,8 @@ import org.junit.*;
   @Test public void doubleArrayBoxingTest() {
     double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
     Double[] expected = new Double[doubleArray.length];
-    for (int i = 0; i < doubleArray.length; ++i) {
-      expected[i] = Double.valueOf(doubleArray[i]);
-    }
+    for (int ¢ = 0; ¢ < doubleArray.length; ++¢)
+      expected[¢] = Double.valueOf(doubleArray[¢]);
     Assert.assertArrayEquals(expected, box.box(doubleArray));
   }
 
@@ -103,9 +97,8 @@ import org.junit.*;
   @Test public void floatArrayBoxingTest() {
     float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0, (float) Math.sqrt(2) };
     Float[] expected = new Float[floatArray.length];
-    for (int i = 0; i < floatArray.length; ++i) {
-      expected[i] = Float.valueOf(floatArray[i]);
-    }
+    for (int ¢ = 0; ¢ < floatArray.length; ++¢)
+      expected[¢] = Float.valueOf(floatArray[¢]);
     Assert.assertArrayEquals(expected, box.box(floatArray));
   }
 
@@ -124,9 +117,8 @@ import org.junit.*;
   @Test public void intArrayBoxingTest() {
     int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
     Integer[] expected = new Integer[intArray.length];
-    for (int i = 0; i < intArray.length; ++i) {
-      expected[i] = Integer.valueOf(intArray[i]);
-    }
+    for (int ¢ = 0; ¢ < intArray.length; ++¢)
+      expected[¢] = Integer.valueOf(intArray[¢]);
     Assert.assertArrayEquals(expected, box.box(intArray));
   }
 
@@ -145,9 +137,8 @@ import org.junit.*;
   @Test public void longArrayBoxingTest() {
     long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
     Long[] expected = new Long[longArray.length];
-    for (int i = 0; i < longArray.length; ++i) {
-      expected[i] = Long.valueOf(longArray[i]);
-    }
+    for (int ¢ = 0; ¢ < longArray.length; ++¢)
+      expected[¢] = Long.valueOf(longArray[¢]);
     Assert.assertArrayEquals(expected, box.box(longArray));
   }
 
@@ -166,15 +157,14 @@ import org.junit.*;
   @Test public void shortArrayBoxingTest() {
     short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
     Short[] expected = new Short[shortArray.length];
-    for (int i = 0; i < shortArray.length; ++i) {
-      expected[i] = Short.valueOf(shortArray[i]);
-    }
+    for (int ¢ = 0; ¢ < shortArray.length; ++¢)
+      expected[¢] = Short.valueOf(shortArray[¢]);
     Assert.assertArrayEquals(expected, box.box(shortArray));
   }
 
   @Test public void booleanItTest() {
-    Assert.assertEquals(Boolean.valueOf(true), box.it(true));
-    Assert.assertEquals(Boolean.valueOf(false), box.it(false));
+    Assert.assertEquals(Boolean.TRUE, box.it(true));
+    Assert.assertEquals(Boolean.FALSE, box.it(false));
   }
 
   @Test public void booleanEmptyArrayItTest() {
@@ -184,16 +174,14 @@ import org.junit.*;
   @Test public void booleanArrayItTest() {
     boolean[] boolArray = { true, true, false, false, true, false };
     Boolean[] expected = new Boolean[boolArray.length];
-    for (int i = 0; i < boolArray.length; ++i) {
-      expected[i] = Boolean.valueOf(boolArray[i]);
-    }
+    for (int ¢ = 0; ¢ < boolArray.length; ++¢)
+      expected[¢] = Boolean.valueOf(boolArray[¢]);
     Assert.assertArrayEquals(expected, box.it(boolArray));
   }
 
   @Test public void byteItTest() {
-    for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; ++i) {
+    for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; ++i)
       Assert.assertEquals(Byte.valueOf(i), box.it(i));
-    }
     Assert.assertEquals(Byte.valueOf(Byte.MAX_VALUE), box.it(Byte.MAX_VALUE));
   }
 
@@ -204,16 +192,14 @@ import org.junit.*;
   @Test public void byteArrayItTest() {
     byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
     Byte[] expected = new Byte[byteArray.length];
-    for (int i = 0; i < byteArray.length; ++i) {
-      expected[i] = Byte.valueOf(byteArray[i]);
-    }
+    for (int ¢ = 0; ¢ < byteArray.length; ++¢)
+      expected[¢] = Byte.valueOf(byteArray[¢]);
     Assert.assertArrayEquals(expected, box.it(byteArray));
   }
 
   @Test public void charItTest() {
-    for (char i = Character.MIN_VALUE; i < Character.MAX_VALUE; ++i) {
+    for (char i = Character.MIN_VALUE; i < Character.MAX_VALUE; ++i)
       Assert.assertEquals(Character.valueOf(i), box.it(i));
-    }
     Assert.assertEquals(Character.valueOf(Character.MAX_VALUE), box.it(Character.MAX_VALUE));
   }
 
@@ -224,9 +210,8 @@ import org.junit.*;
   @Test public void charArrayItTest() {
     char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
     Character[] expected = new Character[charArray.length];
-    for (int i = 0; i < charArray.length; ++i) {
-      expected[i] = Character.valueOf(charArray[i]);
-    }
+    for (int ¢ = 0; ¢ < charArray.length; ++¢)
+      expected[¢] = Character.valueOf(charArray[¢]);
     Assert.assertArrayEquals(expected, box.it(charArray));
   }
 
@@ -248,9 +233,8 @@ import org.junit.*;
   @Test public void doubleArrayItTest() {
     double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
     Double[] expected = new Double[doubleArray.length];
-    for (int i = 0; i < doubleArray.length; ++i) {
-      expected[i] = Double.valueOf(doubleArray[i]);
-    }
+    for (int ¢ = 0; ¢ < doubleArray.length; ++¢)
+      expected[¢] = Double.valueOf(doubleArray[¢]);
     Assert.assertArrayEquals(expected, box.it(doubleArray));
   }
 
@@ -272,9 +256,8 @@ import org.junit.*;
   @Test public void floatArrayItTest() {
     float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0, (float) Math.sqrt(2) };
     Float[] expected = new Float[floatArray.length];
-    for (int i = 0; i < floatArray.length; ++i) {
-      expected[i] = Float.valueOf(floatArray[i]);
-    }
+    for (int ¢ = 0; ¢ < floatArray.length; ++¢)
+      expected[¢] = Float.valueOf(floatArray[¢]);
     Assert.assertArrayEquals(expected, box.it(floatArray));
   }
 
@@ -293,9 +276,8 @@ import org.junit.*;
   @Test public void intArrayItTest() {
     int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
     Integer[] expected = new Integer[intArray.length];
-    for (int i = 0; i < intArray.length; ++i) {
-      expected[i] = Integer.valueOf(intArray[i]);
-    }
+    for (int ¢ = 0; ¢ < intArray.length; ++¢)
+      expected[¢] = Integer.valueOf(intArray[¢]);
     Assert.assertArrayEquals(expected, box.it(intArray));
   }
 
@@ -314,9 +296,8 @@ import org.junit.*;
   @Test public void longArrayItTest() {
     long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
     Long[] expected = new Long[longArray.length];
-    for (int i = 0; i < longArray.length; ++i) {
-      expected[i] = Long.valueOf(longArray[i]);
-    }
+    for (int ¢ = 0; ¢ < longArray.length; ++¢)
+      expected[¢] = Long.valueOf(longArray[¢]);
     Assert.assertArrayEquals(expected, box.it(longArray));
   }
 
@@ -335,9 +316,8 @@ import org.junit.*;
   @Test public void shortArrayItTest() {
     short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
     Short[] expected = new Short[shortArray.length];
-    for (int i = 0; i < shortArray.length; ++i) {
-      expected[i] = Short.valueOf(shortArray[i]);
-    }
+    for (int ¢ = 0; ¢ < shortArray.length; ++¢)
+      expected[¢] = Short.valueOf(shortArray[¢]);
     Assert.assertArrayEquals(expected, box.it(shortArray));
   }
 }
