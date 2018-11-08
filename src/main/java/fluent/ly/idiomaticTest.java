@@ -17,11 +17,11 @@ import java.io.IOException;
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
-    assert idiomatic.katching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5));
+    assert idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5));
   }
 
   @Ignore @Test @SuppressWarnings("null") public void testKatchingWithException() {
-    assert idiomatic.katching((Producer<Integer>) () -> {
+    assert idiomatic.catching((Producer<Integer>) () -> {
       throw new IOException();
     }) == null;
   }
