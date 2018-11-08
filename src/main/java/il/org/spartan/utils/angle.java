@@ -1,7 +1,6 @@
 package il.org.spartan.utils;
 
 public class angle {
-
   private static double radToDeg=180/Math.PI;
   public static angle pi = new angle(180);
   public static angle halfPi = new angle(90);
