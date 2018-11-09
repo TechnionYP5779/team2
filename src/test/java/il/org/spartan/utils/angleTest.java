@@ -22,7 +22,7 @@ import org.junit.*;
     assertEquals(Math.PI/2+20,angle.halfPi.add(angle.degrees(20)).radians,0.1);
   }
   @Test public void testHalfPiAdd2() {
-    assertEquals(90+20,angle.halfPi.add(20).degrees,0.1);
+    assertEquals(110,angle.halfPi.add(20).degrees,0.1);
   }
   @Test public void testPiDegrees() {
     assertEquals(180,angle.pi.degrees(),0.1);
