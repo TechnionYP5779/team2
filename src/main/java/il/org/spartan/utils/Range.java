@@ -1,6 +1,10 @@
 package il.org.spartan.utils;
 
+import java.util.*;
 
+/**
+ * [[SuppressWarningsSpartan]]
+ */
 public class Range{
   
   private int from;
@@ -22,14 +26,34 @@ public class Range{
   }
   
   @SuppressWarnings("boxing") public Integer from() {
-    if(from == Integer.MIN_VALUE) {
-      return null;
-    }
-    return this.from;
+    return from == Integer.MIN_VALUE ? null : this.from;
   }
   
   public boolean includes(int ¢) {
     return ¢>=this.from && ¢<= this.to;
+  }
+  
+  
+  /**
+   * [[SuppressWarningsSpartan]]
+   */
+  public Iterator<Integer> numbers(){
+    
+    int iteratorTo = this.to;
+    int iteratorFrom = this.from;
+    
+    return new Iterator<Integer>() {
+      
+      int current = iteratorFrom;
+      
+      @Override @SuppressWarnings("boxing") public Integer next() {
+        return ++current;
+      }
+      
+      @Override public boolean hasNext() {
+        return current < iteratorTo;
+      }
+    };
   }
 
   

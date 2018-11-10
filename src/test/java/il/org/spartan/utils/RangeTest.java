@@ -1,6 +1,8 @@
 package il.org.spartan.utils;
 
 
+import java.util.*;
+
 //import fluent.ly.azzert;
 import org.junit.*;
 
@@ -20,8 +22,7 @@ import org.junit.*;
     assert(!r.includes(-7));
   }
   
-  @Test
-  public void testStartingPoint() {
+  @Test @SuppressWarnings("boxing") public void testStartingPoint() {
     assert ((new Range()).from(2).from() == 2);
     assert ((new Range()).from(-4).from() != 8);
   }
@@ -71,7 +72,23 @@ import org.junit.*;
     assert(!r.includes(-6));
     assert(!r.includes(2));
     assert(!r.includes(1322));
+  }
+  
+  
+  @Test @SuppressWarnings("boxing") public void testNumbersFunction() {
     
+    //finite range
+    Iterator<Integer> numbers = new Range().from(3).to(10).numbers();
+    while (numbers.hasNext())
+      assert (numbers.next() < 10);
+    
+    assert(!numbers.hasNext() && numbers.next() == 10);
+    
+    
+    //infinite range
+    numbers = new Range().numbers();
+    assert (numbers.next() == Integer.MIN_VALUE + 1);
+    assert (numbers.next() == Integer.MIN_VALUE + 2);
   }
 }
 
