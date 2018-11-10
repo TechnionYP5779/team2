@@ -11,10 +11,15 @@ public class Range{
     this.to = Integer.MAX_VALUE;
   }
   
-  public void from(int ¢) {
+  public Range from(int ¢) {
     this.from = ¢;
+    return this;
   }
-
+  
+  public int from() {
+    return this.from;
+  }
+  
   public boolean includes(int ¢) {
     return ¢>=this.from && ¢<= this.to;
   }

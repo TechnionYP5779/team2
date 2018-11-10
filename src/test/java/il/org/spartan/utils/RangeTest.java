@@ -5,7 +5,7 @@ package il.org.spartan.utils;
 import org.junit.*;
 
 
-public class RangeTest{
+@SuppressWarnings("static-method") public class RangeTest{
 
   @Test 
   public void testInfiniteRange() {
@@ -20,6 +20,12 @@ public class RangeTest{
     assert(!r.includes(-7));
     
     
+  }
+  
+  @Test
+  public void testStartingPoint() {
+    assert ((new Range()).from(2).from() == 2);
+    assert ((new Range()).from(-4).from() != 8);
   }
 }
 
