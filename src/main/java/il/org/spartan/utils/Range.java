@@ -35,7 +35,6 @@ public class Range{
   }
   
   
-  
   /**
    * [[SuppressWarningsSpartan]]
    */
@@ -67,6 +66,7 @@ public class Range{
     
     return from < to ? new Range().from(from).to(to) : null;
   }
+
 
   
 }
