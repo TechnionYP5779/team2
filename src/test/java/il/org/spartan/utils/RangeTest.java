@@ -58,5 +58,20 @@ import org.junit.*;
   public void testFromMinInt() {
     assert ((new Range()).to(2).from() == null);
   }
+  
+  
+  @Test
+  public void testToFrom() {
+    Range r = new Range();
+    r.to(2).from(-5);
+    
+    for(int ¢=-5;¢<=1;++¢)
+      assert (r.includes(¢));
+    
+    assert(!r.includes(-6));
+    assert(!r.includes(2));
+    assert(!r.includes(1322));
+    
+  }
 }
 
