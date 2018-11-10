@@ -53,5 +53,10 @@ import org.junit.*;
     assert(!r.includes(2));
     assert(!r.includes(12313));
   }
+  
+  @Test
+  public void testFromMinInt() {
+    assert ((new Range()).to(2).from() == null);
+  }
 }
 

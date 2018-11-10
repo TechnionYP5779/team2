@@ -21,7 +21,10 @@ public class Range{
     return this;
   }
   
-  public int from() {
+  @SuppressWarnings("boxing") public Integer from() {
+    if(from == Integer.MIN_VALUE) {
+      return null;
+    }
     return this.from;
   }
   
