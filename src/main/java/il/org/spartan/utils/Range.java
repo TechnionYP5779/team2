@@ -29,9 +29,11 @@ public class Range{
     return from == Integer.MIN_VALUE ? null : this.from;
   }
   
+  
   public boolean includes(int ¢) {
     return ¢>=this.from && ¢<= this.to;
   }
+  
   
   
   /**
