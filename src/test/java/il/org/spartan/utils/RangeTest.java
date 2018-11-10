@@ -16,7 +16,7 @@ import org.junit.*;
     
     assert(r.includes(2));
     assert(r.includes(10));
-    assert(r.includes(Integer.MAX_VALUE));
+    assert(r.includes(Integer.MAX_VALUE - 1));
     
     assert(!r.includes(1));
     assert(!r.includes(-7));
@@ -90,5 +90,70 @@ import org.junit.*;
     assert (numbers.next() == Integer.MIN_VALUE + 1);
     assert (numbers.next() == Integer.MIN_VALUE + 2);
   }
+  
+  
+  
+  @Test
+  public void testIntersectionTwoInfinite() {
+    Range r = new Range().to(10).intersect(new Range().from(3));
+    
+    for(int ¢=3;¢<=9;++¢)
+      assert (r.includes(¢));
+    
+    assert(!r.includes(2));
+    assert(!r.includes(10));
+    assert(!r.includes(-3123));
+    
+  }
+  
+  
+  @Test
+  public void testIntersectionEmpty() {
+    assert (new Range().to(-3).intersect(new Range().from(3)) == null);
+    assert (new Range().to(3).intersect(new Range().from(3)) == null);
+  }
+  
+  @Test
+  public void testIntersectionOne() {
+    Range r = new Range().to(4).intersect(new Range().from(3));
+    
+    assert(r.includes(3));
+    assert(!r.includes(2));
+    assert(!r.includes(4));
+  }
+  
+  
+  @Test
+  public void testIntersectionFull() {
+    Range r = new Range().from(2).to(8).intersect(new Range().from(2).to(8));
+    
+    for(int ¢=2;¢<=7;++¢)
+      assert (r.includes(¢));
+    
+    assert(!r.includes(8));
+    assert(!r.includes(1)); 
+  }
+  
+  @Test
+  public void testIntersectionIncluded() {
+    Range r = new Range().from(1).to(111).intersect(new Range().from(2).to(8));
+    
+    for(int ¢=2;¢<=7;++¢)
+      assert (r.includes(¢));
+    
+    assert(!r.includes(8));
+    assert(!r.includes(1)); 
+  }
+  
+  @Test
+  public void testIntersectionInfinity() {
+    Range r = new Range().intersect(new Range());
+    
+    for(int ¢=Integer.MIN_VALUE;¢<Integer.MAX_VALUE;++¢)
+      assert (r.includes(¢));
+    
+    
+  }
+  
 }
 

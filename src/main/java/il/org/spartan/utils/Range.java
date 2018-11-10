@@ -7,12 +7,12 @@ import java.util.*;
  */
 public class Range{
   
-  private int from;
-  private int to;
+  public int from;
+  public int to;
 
   public Range() {
     this.from = Integer.MIN_VALUE;
-    this.to = Integer.MAX_VALUE;
+    this.to = Integer.MAX_VALUE - 1;
   }
   
   public Range from(int ¢) {
@@ -54,6 +54,16 @@ public class Range{
         return current < iteratorTo;
       }
     };
+  }
+
+  /**
+   * [[SuppressWarningsSpartan]]
+   */
+  @SuppressWarnings("hiding") public Range intersect(Range r) {
+    int from = Math.max(this.from, r.from);
+    int to = Math.min(this.to, r.to) + 1;
+    
+    return from < to ? new Range().from(from).to(to) : null;
   }
 
   
