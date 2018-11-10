@@ -27,5 +27,19 @@ import org.junit.*;
     assert ((new Range()).from(2).from() == 2);
     assert ((new Range()).from(-4).from() != 8);
   }
+  
+  @Test
+  public void testFromAndTo() {
+    Range r = new Range();
+    r.from(2).to(6);
+    
+    for(int ¢=2;¢<=5;++¢)
+      assert (r.includes(¢));
+    
+    assert(!r.includes(1));
+    assert(!r.includes(6));
+    assert(!r.includes(1322));
+    
+  }
 }
 

@@ -16,6 +16,11 @@ public class Range{
     return this;
   }
   
+  public Range to(int ¢) {
+    this.to= ¢ - 1;
+    return this;
+  }
+  
   public int from() {
     return this.from;
   }
@@ -23,6 +28,8 @@ public class Range{
   public boolean includes(int ¢) {
     return ¢>=this.from && ¢<= this.to;
   }
+
+  
 }
 
 
