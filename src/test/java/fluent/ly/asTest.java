@@ -9,20 +9,16 @@ import java.util.*;
 import org.junit.*;
 
 public class asTest {
-  @SuppressWarnings({ "null", "static-method" }) @Test public void asIterableTest() {
-    int[] res = new int[] {1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15};
+  @Test @SuppressWarnings({ "null", "static-method", "boxing" }) public void asIterableTest() {
+    int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
-    for (Integer f: as.asIterable(Integer.valueOf(1),Integer.valueOf(2),Integer.valueOf(3),Integer.valueOf(4),Integer.valueOf(5))){
-      for (Integer p: as.asIterable(Integer.valueOf(1),Integer.valueOf(2),Integer.valueOf(3))){
-        azzert.assertEquals(f*p, res[i++]);
-      }
-    }
+    for (Integer f : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5)))
+      for (Integer p : as.asIterable(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)))
+        azzert.assertEquals(f * p, res[i++]);
     i = 0;
-    for (Integer f: as.asIterableLambda(Integer.valueOf(1),Integer.valueOf(2),Integer.valueOf(3),Integer.valueOf(4),Integer.valueOf(5))){
-      for (Integer p: as.asIterableLambda(Integer.valueOf(1),Integer.valueOf(2),Integer.valueOf(3))){
-        azzert.assertEquals(f*p, res[i++]);
-      }
-    }
+    for (Integer f : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3), Integer.valueOf(4), Integer.valueOf(5)))
+      for (Integer p : as.asIterableLambda(Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3)))
+        azzert.assertEquals(f * p, res[i++]);
   }
   
   @Test @SuppressWarnings({ "static-method", "boxing" }) public void bitTest() {
@@ -80,10 +76,7 @@ public class asTest {
     azzert.assertEquals(lst7.get(3), true);
     azzert.assertEquals(lst7.get(4), false);
     azzert.assertEquals(lst7.get(5), true);
-    
-    //list-iterable:
-    Iterable<Integer> iter = null;
-    azzert.assertEquals(as.list(iter).isEmpty(), true);
+
     ArrayList<Integer> al = new ArrayList<>();
     for(int ¢ = 0; ¢ < 10; ++¢)
       al.add(¢ + 1);
@@ -94,29 +87,27 @@ public class asTest {
   
   @Test @SuppressWarnings("static-method") public void intArrayTest() {
     int[] array1 = as.intArray(1, 2, 3, 4, 5, 6);
-    for(int ¢ = 0; ¢ < 6; ++¢) {
-      azzert.assertEquals(array1[¢], ¢+1);
-    }
+    for(int ¢ = 0; ¢ < 6; ++¢)
+      azzert.assertEquals(array1[¢], ¢ + 1);
     
     int[] array2 = as.intArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-    for(int ¢ = 0; ¢ < 10; ++¢) {
-      azzert.assertEquals(array2[¢], ¢+1);
-    }
+    for(int ¢ = 0; ¢ < 10; ++¢)
+      azzert.assertEquals(array2[¢], ¢ + 1);
     
     @SuppressWarnings("null") int[] array3 = as.intArray(as.list(1, 2, 3, 4, 5, 6, 7));
-    for(int ¢ = 0; ¢ < 7; ++¢) {
-      azzert.assertEquals(array3[¢], ¢+1);
-    }
+    for(int ¢ = 0; ¢ < 7; ++¢)
+      azzert.assertEquals(array3[¢], ¢ + 1);
     
     @SuppressWarnings("null") int[] array4 = as.intArray(as.list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
-    for(int ¢ = 0; ¢ < 11; ++¢) {
-      azzert.assertEquals(array4[¢], ¢+1);
-    }
+    for(int ¢ = 0; ¢ < 11; ++¢)
+      azzert.assertEquals(array4[¢], ¢ + 1);
   }
   
+  /*
   @Test @SuppressWarnings("static-method") public void iteratorTest() {
     
   }
+  */
   
   @Test @SuppressWarnings({ "static-method", "boxing", "null" }) public void setTest() {
     @SuppressWarnings("unchecked") Set<Integer> s1 = (Set<Integer>) as.set(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -148,21 +139,18 @@ public class asTest {
     azzert.assertNotContains(s5, true);
   }
   
-  @Test @SuppressWarnings("static-method") public void stringsTest() {
+  @Test @SuppressWarnings({ "static-method", "boxing", "static-access" }) public void stringsTest() {
     //object string func:
     azzert.assertEquals(as.string(null), "null");
-    int x = 5;
-    azzert.assertEquals(as.string(x), "5");
+    azzert.assertEquals(as.string(5), "5");
     Integer x1 = 10;
-    azzert.assertEquals(as.string(x1), x1.toString());
-    float y = 654.654f;
-    azzert.assertEquals(as.string(y), "654.654");
+    azzert.assertEquals(as.string(x1), x1 + "");
+    azzert.assertEquals(as.string(654.654f), "654.654");
     Float y1 = 0.44645f;
-    azzert.assertEquals(as.string(y1), y1.toString());
-    boolean b = true;
-    azzert.assertEquals(as.string(b), "true");
+    azzert.assertEquals(as.string(y1), y1 + "");
+    azzert.assertEquals(as.string(true), "true");
     Boolean b1 = false;
-    azzert.assertEquals(as.string(b1), b1.toString());
+    azzert.assertEquals(as.string(b1), b1 + "");
     
     //char string func:
     azzert.assertEquals(as.string('a'), "a");
@@ -184,14 +172,12 @@ public class asTest {
     azzert.assertEquals(as.string('4'), "4");
     azzert.assertEquals(as.string('5'), "5");
     
-    //string string func:
-    String null_str = null;
-    azzert.assertEquals(as.string(null_str), "null");
+    azzert.assertEquals(as.string(null), "null");
     azzert.assertEquals(as.string("abc"), "abc");
     String str1 = "abc";
-    azzert.assertEquals(as.string(str1), str1.toString());
+    azzert.assertEquals(as.string(str1), str1);
     String str2 = "supercalifragilisticexpialidocious";
-    azzert.assertEquals(as.string(str2), str2.toString());
+    azzert.assertEquals(as.string(str2), str2);
     azzert.assertEquals(as.strings(null).length, 0);
     ArrayList<Integer> al = new ArrayList<>();
     azzert.assertEquals(as.strings(al).length, 0);
@@ -199,7 +185,7 @@ public class asTest {
       al.add(¢ + 1);
     String[] intarr = as.strings(al);
     for(int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(intarr[¢], (¢+1) + "");
+      azzert.assertEquals(intarr[¢], ¢ + 1 + "");
     
     ArrayList<String> al1 = new ArrayList<>();
     azzert.assertEquals(as.strings(al1).length, 0);
