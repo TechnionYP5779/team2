@@ -204,17 +204,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     return i >= 0 && i < ts.size();
   }
 
-  /** Determine if an integer can be found in a list of values
-   * @param candidate what to search for
-   * @param is        where to search
-   * @return true if the the item is found in the list */
-  @SafeVarargs static boolean intIsIn(final int candidate, final int... is) {
-    for (final int ¢ : is)
-      if (¢ == candidate)
-        return true;
-    return false;
-  }
-
   /** Determine whether an {@link Object} is the last in a {@link List} .
    * @param o  JD
    * @param os JD

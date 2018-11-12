@@ -7,7 +7,6 @@ import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.*;
 import il.org.spartan.utils.*;
 
 /** Utility class for linguistic issues. Used by GUI dialogs.
@@ -53,7 +52,7 @@ import il.org.spartan.utils.*;
     final @NotNull String $ = cCamelCase.components(className)[0];
     final char openingLetter = the.characterOf($);
     return isAcronym($) ? indefinite(pronounce(openingLetter)) : //
-        (Utils.intIsIn(openingLetter, 'i', 'e', 'o', 'u', 'y') ? "an" : "a") + " " + className;
+        (is.intIsIn(openingLetter, 'i', 'e', 'o', 'u', 'y') ? "an" : "a") + " " + className;
   }
 
   static boolean isAcronym(final @NotNull String $) {
@@ -77,7 +76,7 @@ import il.org.spartan.utils.*;
   }
 
   @NotNull static String name(final @Nullable Object ¢) {
-    return ¢ == null ? English.name("null") : English.name(¢.getClass());
+    return English.name(¢ == null ? "null" : ¢.getClass());
   }
 
   /** Get the plural form of the word if needed, by adding an 'es' to its end.

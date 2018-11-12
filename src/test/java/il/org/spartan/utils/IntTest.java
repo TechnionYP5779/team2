@@ -4,16 +4,11 @@ import org.junit.*;
 
 @SuppressWarnings("static-method")public class IntTest {
   @Test public void creation() {
-    int max = Integer.MAX_VALUE;
-    int min = Integer.MIN_VALUE;
-    Int v = new Int();
-    Assert.assertEquals(v.get(), 0);
-    Int v1 = new Int(max);
-    Assert.assertEquals(v1.get(), Integer.MAX_VALUE);
-    Int v2 = new Int(max + 1);
-    Assert.assertEquals(v2.get(), Integer.MIN_VALUE);
-    Int v3 = new Int(min - 1);
-    Assert.assertEquals(v3.get(), Integer.MAX_VALUE);
+    int max = Integer.MAX_VALUE, min = Integer.MIN_VALUE;
+    Assert.assertEquals(new Int().get(), 0);
+    Assert.assertEquals(new Int(max).get(), Integer.MAX_VALUE);
+    Assert.assertEquals(new Int(max + 1).get(), Integer.MIN_VALUE);
+    Assert.assertEquals((new Int(min - 1)).get(), Integer.MAX_VALUE);
   }
 
   @Test public void innerValue() {
@@ -32,9 +27,7 @@ import org.junit.*;
   }
   
   @Test public void valueChanges() {
-    Int v = new Int();
-    Int max = new Int(Integer.MAX_VALUE);
-    Int min = new Int(Integer.MIN_VALUE);
+    Int v = new Int(), max = new Int(Integer.MAX_VALUE), min = new Int(Integer.MIN_VALUE);
     Assert.assertEquals(v.get(), 0);
     Assert.assertEquals(max.get(), Integer.MAX_VALUE);
     Assert.assertEquals(min.get(), Integer.MIN_VALUE);
@@ -92,17 +85,20 @@ import org.junit.*;
     }
   
   @Test public void toStringCheck() {
-     Int v = new Int();
-     Int max = new Int(Integer.MAX_VALUE);
-     Int min = new Int(Integer.MIN_VALUE);
+     Int v = new Int(), max = new Int(Integer.MAX_VALUE), min = new Int(Integer.MIN_VALUE);
      int val = 546116854;
-     Assert.assertEquals(v.toString(), "0");
-     Assert.assertEquals(max.toString(), Integer.MAX_VALUE + "");
-     Assert.assertEquals(min.toString(), Integer.MIN_VALUE + "");
+     Assert.assertEquals(v + "", "0");
+     Assert.assertEquals(max + "", Integer.MAX_VALUE + "");
+     Assert.assertEquals(min + "", Integer.MIN_VALUE + "");
      v.set(val);
-     Assert.assertEquals(v.toString(), val + "");
+     Assert.assertEquals(v + "", val + "");
      v.step();
      v.add(-5);
-     Assert.assertEquals(v.toString(), "546116850");
+     Assert.assertEquals(v + "", "546116850");
+     v.clear();
+     Assert.assertEquals(v + "", "0");
+     v.step();
+     v.add(99);
+     Assert.assertEquals(v + "", "100");
      }
 }

@@ -46,7 +46,7 @@ public interface idiomatic {
    * @param $ JD
    * @return result of invoking the parameter, or <code><b>null</b></code> if an
    *         exception occurred. */
-  static <@Nullable T> @Nullable T katching(final @NotNull Producer<T> $) {
+  static <@Nullable T> @Nullable T catching(final @NotNull Producer<T> $) {
     try {
       return $.λ();
     } catch (final Exception ¢) {
