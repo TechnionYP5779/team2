@@ -20,6 +20,7 @@ import org.junit.*;
     BooleanSupplier ba = () -> {
       Assert.assertTrue(false);
       return true;
+      
     };
     t = Truth.truthOf(ba);
     Assert.assertEquals(t,Truth.X);

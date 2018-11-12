@@ -8,7 +8,6 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-import fluent.ly.*;
 import il.org.spatan.iteration.*;
 
 /** @author Yossi Gil
@@ -38,10 +37,7 @@ public abstract class Statistics {
       if (median - 2 * mad <= ¢ && ¢ <= median + 2 * mad)
         $.add(box(¢));
     
-    Double[] arr = new Double[$.size()];
-    $.toArray(arr);
-
-    return unbox.unbox(arr);//Iterables.toArray($);
+  return Iterables.toArray($);
   }
 
   public static double sampleMean(final double @NotNull [] ds) {
