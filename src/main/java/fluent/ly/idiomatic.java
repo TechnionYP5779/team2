@@ -176,11 +176,11 @@ public interface idiomatic {
       assert new Storer<>(this) != null;
     }
 
-    @Test public void use08() {
+    @Test public void use8() {
       azzert.isNull(unless(true).eval(() -> new Object()));
     }
 
-    @Test public void use09() {
+    @Test public void use9() {
       assert unless(false).eval(() -> new Object()) != null;
     }
 
