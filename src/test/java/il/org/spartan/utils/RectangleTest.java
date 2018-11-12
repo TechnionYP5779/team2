@@ -54,53 +54,53 @@ public class RectangleTest {
     }
   }
   
-  @Test @SuppressWarnings( "static-method" ) public void testGetPerimeter() throws Exception {
-    Assert.assertEquals(new Rectangle(0, 0, -1,-1).getPerimeter(), 4.0,0.00001);
-    Assert.assertEquals(new Rectangle(0, 0, -2,-2).getPerimeter(), 8.0,0.00001);
-    Assert.assertEquals(new Rectangle(-1, -1, -2,-2).getPerimeter(), 4.0,0.00001);
+  @Test @SuppressWarnings( { "static-method", "static-access" } ) public void testGetPerimeter() throws Exception {
+    azzert.assertEquals(new Rectangle(0, 0, -1,-1).getPerimeter(), 4.0,0.00001);
+    azzert.assertEquals(new Rectangle(0, 0, -2,-2).getPerimeter(), 8.0,0.00001);
+    azzert.assertEquals(new Rectangle(-1, -1, -2,-2).getPerimeter(), 4.0,0.00001);
   }
   
-  @Test @SuppressWarnings( "static-method" ) public void testGetArea() throws Exception {
-    Assert.assertEquals(new Rectangle(0, 0, -1,-1).getArea(), 1.0,0.00001);
-    Assert.assertEquals(new Rectangle(0, 0, -2,-2).getArea(), 4.0,0.00001);
-    Assert.assertEquals(new Rectangle(-1, -1, -2,-2).getArea(), 1.0,0.00001);
+  @Test @SuppressWarnings( { "static-method", "static-access" } ) public void testGetArea() throws Exception {
+    azzert.assertEquals(new Rectangle(0, 0, -1,-1).getArea(), 1.0,0.00001);
+    azzert.assertEquals(new Rectangle(0, 0, -2,-2).getArea(), 4.0,0.00001);
+    azzert.assertEquals(new Rectangle(-1, -1, -2,-2).getArea(), 1.0,0.00001);
   }
   
-  @Test @SuppressWarnings( "static-method" ) public void testGetHight() throws Exception {
-    Assert.assertEquals(new Rectangle(0, 0, -1,-1).getHeight(), 1,0.00001);
-    Assert.assertEquals(new Rectangle(0, 0, -2,-2).getHeight(), 2,0.00001);
-    Assert.assertEquals(new Rectangle(-1, -1, -2,-2).getHeight(), 1,0.00001);
+  @Test @SuppressWarnings( { "static-method", "static-access" } ) public void testGetHight() throws Exception {
+    azzert.assertEquals(new Rectangle(0, 0, -1,-1).getHeight(), 1,0.00001);
+    azzert.assertEquals(new Rectangle(0, 0, -2,-2).getHeight(), 2,0.00001);
+    azzert.assertEquals(new Rectangle(-1, -1, -2,-2).getHeight(), 1,0.00001);
   }
   
-  @Test @SuppressWarnings( "static-method" ) public void testGetWidth() throws Exception {
-    Assert.assertEquals(new Rectangle(0, 0, -1,-1).getWidth(), 1,0.00001);
-    Assert.assertEquals(new Rectangle(0, 0, -2,-2).getWidth(), 2,0.00001);
-    Assert.assertEquals(new Rectangle(-1, -1, -2,-2).getWidth(), 1,0.00001);
+  @Test @SuppressWarnings( { "static-method", "static-access" } ) public void testGetWidth() throws Exception {
+    azzert.assertEquals(new Rectangle(0, 0, -1,-1).getWidth(), 1,0.00001);
+    azzert.assertEquals(new Rectangle(0, 0, -2,-2).getWidth(), 2,0.00001);
+    azzert.assertEquals(new Rectangle(-1, -1, -2,-2).getWidth(), 1,0.00001);
   }
   
-  @Test @SuppressWarnings( "static-method" ) public void testExpand() throws Exception {
+  @Test @SuppressWarnings( { "static-method", "static-access" } ) public void testExpand() throws Exception {
     Rectangle r = new Rectangle(0, 0, -1,-1);
     r.expand(2);
-    Assert.assertEquals(r.getArea(), 2,0.00001);
+    azzert.assertEquals(r.getArea(), 2,0.00001);
     
     r = new Rectangle(-1, -1, -2,-2);
     r.expand(2);
-    Assert.assertEquals(r.getArea(), 2,0.00001);
+    azzert.assertEquals(r.getArea(), 2,0.00001);
     
     r = new Rectangle(0, 0, -2,-2);
     r.expand(4);
-    Assert.assertEquals(r.getArea(), 16,0.00001);
+    azzert.assertEquals(r.getArea(), 16,0.00001);
   }
   
-  @Test @SuppressWarnings( "static-method" ) public void testRotate() throws Exception {
+  @Test @SuppressWarnings( { "static-method", "static-access" } ) public void testRotate() throws Exception {
     Rectangle r = new Rectangle(0, 0, 1,2);
     r.rotate();
-    Assert.assertEquals(r.getHeight(), 1,0.00001);
-    Assert.assertEquals(r.getWidth(), 2,0.00001);
+    azzert.assertEquals(r.getHeight(), 1,0.00001);
+    azzert.assertEquals(r.getWidth(), 2,0.00001);
     
     r = new Rectangle(0, 0, 4,3);
     r.rotate();
-    Assert.assertEquals(r.getHeight(), 4,0.00001);
-    Assert.assertEquals(r.getWidth(), 3,0.00001);
+    azzert.assertEquals(r.getHeight(), 4,0.00001);
+    azzert.assertEquals(r.getWidth(), 3,0.00001);
   }
 }
