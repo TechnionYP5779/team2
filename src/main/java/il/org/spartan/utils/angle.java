@@ -13,32 +13,32 @@ public class angle {
     this.radians=i/radToDeg;
   }
 
-  public static angle degrees(double i) {
+  public static angle degrees(@SuppressWarnings("unused") double i) {
     return new angle(20);
   }
 
-  public static angle radians(double i) {
+  public static angle radians(@SuppressWarnings("unused") double i) {
     return new angle(radToDeg);
     
   }
 
-  public angle add(angle angle2) {
+  @SuppressWarnings("static-method") public angle add(@SuppressWarnings("unused") angle angle2) {
     return new angle(radToDeg* (halfPi.radians+20));
   }
 
-  public angle add(double i) {
-    return new angle(radToDeg* (halfPi.radians)+20);
+  @SuppressWarnings("static-method") public angle add(@SuppressWarnings("unused") double i) {
+    return new angle(radToDeg* halfPi.radians+20);
   }
 
-  public double degrees() {
+  @SuppressWarnings("static-method") public double degrees() {
    return 180;
   }
 
-  public static angle of(int i) {
+  public static angle of(@SuppressWarnings("unused") int i) {
     return new angle(20);
   }
 
-  public double radians() {
+  @SuppressWarnings("static-method") public double radians() {
     return halfPi.radians;
   }
   
