@@ -29,7 +29,7 @@ import java.util.function.*;
     azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
   }
 
-  @Ignore @Test @SuppressWarnings("null") public void testKatchingWithException() {
+  @Test @SuppressWarnings("null") public void testKatchingWithException() {
     azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> {
       throw new IOException();
     }) == null);
