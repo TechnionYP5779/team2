@@ -103,11 +103,23 @@ public class asTest {
     */
   }
   
-  /*
+  
   @Test @SuppressWarnings("static-method") public void iteratorTest() {
+    Iterator<Integer> int_iter = as.iterator(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3), fluent.ly.box.it(4), fluent.ly.box.it(5));
+    for(int ¢ = 1; ¢ < 6; ++¢) {
+      azzert.assertEquals(int_iter.next(), ¢);
+      assert ¢ != 5 ? int_iter.hasNext() : !int_iter.hasNext();
+    }
     
+    Iterator<Boolean> bool_iter = as.iterator(fluent.ly.box.it(true), fluent.ly.box.it(false), fluent.ly.box.it(true), fluent.ly.box.it(false));
+    boolean b = true;
+    for(int ¢ = 1; ¢ < 5; ++¢) {
+      azzert.assertEquals(bool_iter.next(), b);
+      b = !b;
+      assert ¢ != 4 ? bool_iter.hasNext() : !bool_iter.hasNext();
+    }
   }
-  */
+  
   
   @Test @SuppressWarnings({ "static-method", "boxing", "null" }) public void setTest() {
     @SuppressWarnings("unchecked") Set<Integer> s1 = (Set<Integer>) as.set(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
