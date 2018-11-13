@@ -1,7 +1,5 @@
 package fluent.ly;
 
-import static fluent.ly.azzert.*;
-
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
@@ -14,34 +12,30 @@ import java.util.function.*;
 @SuppressWarnings("static-method") public class idiomaticTest {
   @Test @SuppressWarnings("null") public void testIncaseTrueReturnSameObj() {
     Integer integer = Integer.valueOf(5);
-    azzert.assertTrue(idiomatic.incase(true, integer).equals(integer));
+    azzert.assertEquals(true, idiomatic.incase(true, integer).equals(integer));
   }
   
   @Test public void testEval() {
-    Holder<Integer> t = idiomatic.eval(()->Integer.valueOf(5));
-    azzert.assertTrue(t.get().equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.eval(() -> Integer.valueOf(5)).get().equals(Integer.valueOf(5)));
   }
 
   @Test public void testIncaseFalseReturnsNull() {
-    azzert.assertTrue(idiomatic.incase(false, Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.incase(false, Integer.valueOf(5)) == null);
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
-    azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithException() {
     
-    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-    final PrintStream originalOut = System.out;
-    final PrintStream originalErr = System.err;
-    
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream(), errContent = new ByteArrayOutputStream();
+    final PrintStream originalOut = System.out, originalErr = System.err;
     System.setOut(new PrintStream(outContent));
     System.setErr(new PrintStream(errContent));
     
     
-    azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> {
+    azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> {
       throw new IOException();
     }) == null);
     
@@ -51,48 +45,48 @@ import java.util.function.*;
   }
 
   @Test public void testQuoteNotNullString() {
-    azzert.assertTrue("'hello'".equals(idiomatic.quote("hello")));
+    azzert.assertEquals(true, "'hello'".equals(idiomatic.quote("hello")));
   }
 
   @Test public void testQuoteNullString() {
-    azzert.assertTrue("<null reference>".equals(idiomatic.quote(null)));
+    azzert.assertEquals(true, "<null reference>".equals(idiomatic.quote(null)));
   }
 
   @Test public void testDoubleQuote() {
-    azzert.assertTrue("''a''".equals(idiomatic.quote(idiomatic.quote("a"))));
+    azzert.assertEquals(true, "''a''".equals(idiomatic.quote(idiomatic.quote("a"))));
   }
 
   @Test @SuppressWarnings("null") public void testWhenTrueReturnsSame() {
-    azzert.assertTrue(idiomatic.when(true).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.when(true).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
   }
 
   @Test public void testWhenFalseReturnsNull() {
-    azzert.assertTrue(idiomatic.when(1 == 3).eval(() -> Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.when(1 == 3).eval(() -> Integer.valueOf(5)) == null);
   }
 
   @Test @SuppressWarnings("null") public void testUnlessFalseReturnsSame() {
-    azzert.assertTrue(idiomatic.unless(1 == 3).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.unless(1 == 3).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
   }
 
   @Test public void testUnlessTrueReturnsNull() {
-    azzert.assertTrue(idiomatic.unless(true).eval(() -> Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.unless(true).eval(() -> Integer.valueOf(5)) == null);
   }
 
   @Test public void testUnlessFalseWithoutEval() {
     Integer i = Integer.valueOf(5);
-    azzert.assertTrue(idiomatic.unless(false, i) == i);
+    azzert.assertEquals(true, idiomatic.unless(false, i) == i);
   }
 
   @Test public void testUnlessTrueWithoutEval() {
-    azzert.assertTrue(idiomatic.unless(true, Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.unless(true, Integer.valueOf(5)) == null);
   }
   
   class MyRunnable implements Runnable{
     
-    Boolean ran = false;
+    Boolean ran = Boolean.FALSE;
     @Override public void run() {
       // TODO Auto-generated method stub
-      ran = true;
+      ran = Boolean.TRUE;
     }
     
     public Boolean didRun() {
@@ -106,9 +100,9 @@ import java.util.function.*;
     
     MyRunnable r = new MyRunnable();
     Runner runner = idiomatic.run(r);
-    azzert.assertFalse(r.didRun());
+    azzert.assertEquals(false, r.didRun());
     runner.run();
-    azzert.assertTrue(r.didRun());
+    azzert.assertEquals(true, r.didRun());
   }
   
   @Test public void testRunnerWhen() {
@@ -116,9 +110,9 @@ import java.util.function.*;
     MyRunnable r = new MyRunnable();
     Runner runner = idiomatic.run(r);
     runner.when(false);
-    azzert.assertFalse(r.didRun());
+    azzert.assertEquals(false, r.didRun());
     runner.when(true);
-    azzert.assertTrue(r.didRun());
+    azzert.assertEquals(true, r.didRun());
   }
 
   @Test public void testRunnerUnless() {
@@ -126,23 +120,21 @@ import java.util.function.*;
     MyRunnable r = new MyRunnable();
     Runner runner = idiomatic.run(r);
     runner.unless(true);
-    azzert.assertFalse(r.didRun());
+    azzert.assertEquals(false, r.didRun());
     runner.unless(false);
-    azzert.assertTrue(r.didRun());
+    azzert.assertEquals(true, r.didRun());
   }
   
   class MyTrigger implements Trigger{
 
-    @Override public <T> @Nullable T eval(Supplier<@Nullable T> t) {
-      // TODO Auto-generated method stub
-      return t.get();
+    @Override @SuppressWarnings("null") public <T> @Nullable T eval(Supplier<@Nullable T> ¢) {
+      return ¢.get();
     }
     
   }
   
-  @Test public void testTriggerDefaultEval() {
-    MyTrigger t = new MyTrigger();
-    azzert.assertTrue(t.eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
+  @Test @SuppressWarnings("null") public void testTriggerDefaultEval() {
+    azzert.assertEquals(true, (new MyTrigger()).eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
   }
   
   @Test public void testTestUses() {

@@ -2,8 +2,6 @@ package il.org.spartan.etc;
 
 import java.util.function.*;
 
-import fluent.ly.*;
-
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-14 */

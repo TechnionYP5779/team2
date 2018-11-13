@@ -5,7 +5,7 @@ import java.util.*;
 public class BigInteger {
   
   private List<String> number;
-  final static private int chunkSize = 5;
+  private static final int chunkSize = 5;
 
   public BigInteger(String string) {
     number = breakStringToList(string);
@@ -19,63 +19,45 @@ public class BigInteger {
     return Objects.hash(number);
   }
 
-  @Override public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (!(obj instanceof BigInteger))
-      return false;
-    BigInteger other = (BigInteger) obj;
-    return Objects.equals(number, other.number);
+  @Override public boolean equals(Object ¢) {
+    return ¢ == this || (¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number));
   }
 
   public BigInteger add(BigInteger bigInteger) {
-    List<String> finalList = new ArrayList<>();
+    List<String> $ = new ArrayList<>();
     
-    int carry = 0;
+    int carry = 0, len = Math.min(number.size(), bigInteger.getValueAsStringList().size());
     
-    int len = Math.min(number.size(), bigInteger.getValueAsStringList().size());
-    
-    List<String> tmp1 = new ArrayList(number);
-    List<String> tmp2 = new ArrayList(bigInteger.getValueAsStringList());
+    List<String> tmp1 = new ArrayList<>(number), tmp2 = new ArrayList<>(bigInteger.getValueAsStringList());
     Collections.reverse(tmp1);
     Collections.reverse(tmp2);
     
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; ++i) {
       
-      String first = tmp1.get(i);
-      String second = tmp2.get(i);
-      StringWithCarry sc = addStringWithCarry(first, second, carry);
+      StringWithCarry sc = addStringWithCarry(tmp1.get(i), tmp2.get(i), carry);
       
       carry = sc.carry;
-      finalList.add(sc.string);
+      $.add(sc.string);
     }
     
-    if(tmp1.size()>len) {
-      for (int i = len; i < tmp1.size(); i++) {
-        
-        StringWithCarry sc = addStringWithCarry(tmp1.get(i), "0", carry); 
+    if(tmp1.size()>len)
+      for (int i = len; i < tmp1.size(); ++i) {
+        StringWithCarry sc = addStringWithCarry(tmp1.get(i), "0", carry);
         carry = sc.carry;
-        
-        finalList.add(sc.string);
+        $.add(sc.string);
       }
-    }else {
-      for (int i = len; i < tmp2.size(); i++) {
-        StringWithCarry sc = addStringWithCarry(tmp2.get(i), "0", carry); 
+    else
+      for (int i = len; i < tmp2.size(); ++i) {
+        StringWithCarry sc = addStringWithCarry(tmp2.get(i), "0", carry);
         carry = sc.carry;
-        
-        finalList.add(sc.string);
+        $.add(sc.string);
       }
-    }
     
-    if(carry != 0) {
-      finalList.add(String.valueOf(carry));
-    }
+    if(carry != 0)
+      $.add(String.valueOf(carry));
     
-    Collections.reverse(finalList);
-    BigInteger bi = new BigInteger(finalList);
-    return bi;
+    Collections.reverse($);
+    return new BigInteger($);
   }
   
   private static String addStringsSimple(String s1, String s2, int carry) {
@@ -83,14 +65,8 @@ public class BigInteger {
   }
   
   private static StringWithCarry addStringWithCarry(String s1, String s2, int carry) {
-    String added = addStringsSimple(s1, s2, carry);
-    
-    if(added.length() > chunkSize) {
-      return new StringWithCarry(added.substring(1), Character.getNumericValue(added.charAt(0)));
-    }
-    
-    return new StringWithCarry(added, 0);
-    
+    String $ = addStringsSimple(s1, s2, carry);
+    return $.length() <= chunkSize ? new StringWithCarry($, 0) : new StringWithCarry($.substring(1), Character.getNumericValue($.charAt(0)));
   }
   
   private List<String> getValueAsStringList() {
@@ -98,28 +74,23 @@ public class BigInteger {
   }
   
   private static List<String> breakStringToList(String s){
-    List<String> ret = new ArrayList<>();
+    List<String> $ = new ArrayList<>();
     
-    for (int i = s.length() ; i > 0; i-=chunkSize) {
-      int startIndex = i - chunkSize <= 0 ? 0 : i - chunkSize;
-      
-      String chunk = s.substring(startIndex, i);
-      ret.add(chunk);
-    }
-    Collections.reverse(ret);
-    return ret;
+    for (int ¢ = s.length() ; ¢ > 0; ¢-=chunkSize)
+      $.add(s.substring(¢ - chunkSize <= 0 ? 0 : ¢ - chunkSize, ¢));
+    Collections.reverse($);
+    return $;
   }
   
   @SuppressWarnings("unused") private void printStringArray() {
-    for(String s : number) {
-      System.out.println(s);
-    }
+    for(String ¢ : number)
+      System.out.println(¢);
     System.out.println("------------------------");
   }
   
   static class StringWithCarry{
     public String string;
-    public int carry = 0;
+    public int carry;
     
     public StringWithCarry(String string, int carry) {
       this.string = string;
