@@ -5,8 +5,8 @@ import static fluent.ly.azzert.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-import fluent.ly.idiomatic;
-import fluent.ly.idiomatic.*;
+import il.org.spartan.etc.*;
+import il.org.spartan.etc.idiomatic.*;
 
 import java.io.*;
 import java.util.function.*;

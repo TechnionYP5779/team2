@@ -1,7 +1,8 @@
 package fluent.ly;
 
+import static il.org.spartan.etc.idiomatic.*;
+
 import static fluent.ly.___.*;
-import static fluent.ly.idiomatic.*;
 
 import java.util.*;
 

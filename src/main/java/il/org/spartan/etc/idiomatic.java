@@ -1,5 +1,5 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
-package fluent.ly;
+package il.org.spartan.etc;
 
 import static fluent.ly.azzert.*;
 
@@ -7,6 +7,8 @@ import java.util.function.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
+
+import fluent.ly.*;
 
 /** An empty <code><b>enum</b></code> with a variety of <code>public
  * static</code> utility functions of reasonably wide use.
@@ -146,7 +148,7 @@ public interface idiomatic {
       when(!unless);
     }
 
-    void when(final boolean when) {
+    public void when(final boolean when) {
       if (when)
         run();
     }
