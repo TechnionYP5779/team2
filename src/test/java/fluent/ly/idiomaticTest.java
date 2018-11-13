@@ -7,7 +7,8 @@ import org.junit.*;
 
 import fluent.ly.idiomatic;
 import fluent.ly.idiomatic.*;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.function.*;
 
 @SuppressWarnings("static-method") public class idiomaticTest {
@@ -30,9 +31,23 @@ import java.util.function.*;
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithException() {
+    
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    final PrintStream originalOut = System.out;
+    final PrintStream originalErr = System.err;
+    
+    System.setOut(new PrintStream(outContent));
+    System.setErr(new PrintStream(errContent));
+    
+    
     azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> {
       throw new IOException();
     }) == null);
+    
+    System.setOut(originalOut);
+    System.setErr(originalErr);
+    
   }
 
   @Test public void testQuoteNotNullString() {
