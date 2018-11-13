@@ -23,9 +23,32 @@ public class BigIntegerTest {
   }
   
   @Test
-  public void testBigIntegerAdd() {
+  public void testNotEquals() {
+    azzert.assertNotEquals(new BigInteger("123"),new BigInteger("100"));
+  }
+  
+  @Test
+  public void testAdd() {
     BigInteger bi = new BigInteger("123");
+    
     azzert.assertEquals(bi.add(new BigInteger("5")),new BigInteger("128"));
   }
+  
+  @Test
+  public void testNegativeAdd() {
+    BigInteger bi1 = new BigInteger("100");
+    BigInteger bi2 = new BigInteger("-10");
+    
+    azzert.assertEquals(bi1.add(bi2),new BigInteger("90"));
+  }
+  
+  @Test
+  public void testAddBigNumber() {
+    BigInteger bi1 = new BigInteger("1234567890123456789012345678901234567890");
+    BigInteger bi2 = new BigInteger("5");
+    
+    azzert.assertEquals(bi1.add(bi2),new BigInteger("1234567890123456789012345678901234567895"));
+  }
+  
   
 }
