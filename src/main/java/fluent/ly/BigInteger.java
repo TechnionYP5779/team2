@@ -5,16 +5,14 @@ import java.util.*;
 public class BigInteger {
   
   private List<String> number;
-  final static private int chunkSize = 10;
+  final static private int chunkSize = 5;
 
   public BigInteger(String string) {
     number = breakStringToList(string);
-    // TODO Auto-generated constructor stub
   }
   
   public BigInteger(List<String> stringList) {
     number = stringList;
-    // TODO Auto-generated constructor stub
   }
   
   @Override public int hashCode() {
@@ -33,34 +31,51 @@ public class BigInteger {
   }
 
   public BigInteger add(BigInteger bigInteger) {
-    // TODO Auto-generated method stub
     List<String> finalList = new ArrayList<>();
     
     int carry = 0;
     
     int len = Math.min(number.size(), bigInteger.getValueAsStringList().size());
+    
+    List<String> tmp1 = new ArrayList(number);
+    List<String> tmp2 = new ArrayList(bigInteger.getValueAsStringList());
+    Collections.reverse(tmp1);
+    Collections.reverse(tmp2);
+    
     for (int i = 0; i < len; i++) {
       
-      String first = number.get(i);
-      String second = bigInteger.getValueAsStringList().get(i);
+      String first = tmp1.get(i);
+      String second = tmp2.get(i);
       StringWithCarry sc = addStringWithCarry(first, second, carry);
       
       carry = sc.carry;
       finalList.add(sc.string);
     }
     
-    if(number.size()>len) {
-      for (int i = len; i < number.size(); i++) {
-        finalList.add(number.get(i));
+    if(tmp1.size()>len) {
+      for (int i = len; i < tmp1.size(); i++) {
+        
+        StringWithCarry sc = addStringWithCarry(tmp1.get(i), "0", carry); 
+        carry = sc.carry;
+        
+        finalList.add(sc.string);
       }
     }else {
-      for (int i = len; i < bigInteger.getValueAsStringList().size(); i++) {
-        finalList.add(bigInteger.getValueAsStringList().get(i));
+      for (int i = len; i < tmp2.size(); i++) {
+        StringWithCarry sc = addStringWithCarry(tmp2.get(i), "0", carry); 
+        carry = sc.carry;
+        
+        finalList.add(sc.string);
       }
     }
     
+    if(carry != 0) {
+      finalList.add(String.valueOf(carry));
+    }
+    
     Collections.reverse(finalList);
-    return new BigInteger(finalList);
+    BigInteger bi = new BigInteger(finalList);
+    return bi;
   }
   
   private static String addStringsSimple(String s1, String s2, int carry) {
@@ -85,13 +100,13 @@ public class BigInteger {
   private static List<String> breakStringToList(String s){
     List<String> ret = new ArrayList<>();
     
-    for (int i = 0; i < s.length(); i+=chunkSize) {
-      int endIndex = i + chunkSize >= s.length() ? s.length() : i + chunkSize;
+    for (int i = s.length() ; i > 0; i-=chunkSize) {
+      int startIndex = i - chunkSize <= 0 ? 0 : i - chunkSize;
       
-      String chunk = s.substring(i, endIndex);
+      String chunk = s.substring(startIndex, i);
       ret.add(chunk);
     }
-    
+    Collections.reverse(ret);
     return ret;
   }
   

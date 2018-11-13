@@ -35,11 +35,34 @@ public class BigIntegerTest {
   }
   
   @Test
+  public void testAdd2() {
+    BigInteger bi = new BigInteger("312345");
+    
+    azzert.assertEquals(bi.add(new BigInteger("90000")),new BigInteger("402345"));
+  }
+  
+  @Test
   public void testNegativeAdd() {
     BigInteger bi1 = new BigInteger("100");
     BigInteger bi2 = new BigInteger("-10");
     
     azzert.assertEquals(bi1.add(bi2),new BigInteger("90"));
+  }
+  
+  @Test
+  public void testNegativeAdd2() {
+    BigInteger bi1 = new BigInteger("-1234");
+    BigInteger bi2 = new BigInteger("1234");
+    
+    azzert.assertEquals(bi1.add(bi2),new BigInteger("0"));
+  }
+  
+  @Test
+  public void testNegativeAdd3() {
+    BigInteger bi1 = new BigInteger("-1234");
+    BigInteger bi2 = new BigInteger("1");
+    
+    azzert.assertEquals(bi1.add(bi2),new BigInteger("-1233"));
   }
   
   @Test
@@ -49,6 +72,26 @@ public class BigIntegerTest {
     
     azzert.assertEquals(bi1.add(bi2),new BigInteger("1234567890123456789012345678901234567895"));
   }
+  
+  @Test
+  public void testAddBigNumber2() {
+    BigInteger bi1 = new BigInteger("15");
+    BigInteger bi2 = new BigInteger("1234567890123456789012345678901234567890");
+    
+    azzert.assertEquals(bi1.add(bi2),new BigInteger("1234567890123456789012345678901234567905"));
+  }
+  
+  @Test
+  public void testAddBigNumber3() {
+    BigInteger bi1 = new BigInteger("9000000000000000000000000000000000000000");
+    BigInteger bi2 = new BigInteger("1234567890123456789012345678901234567890");
+    
+    BigInteger res = new BigInteger("10234567890123456789012345678901234567890");
+    
+    azzert.assertEquals(bi1.add(bi2),res);
+  }
+  
+  
   
   
 }
