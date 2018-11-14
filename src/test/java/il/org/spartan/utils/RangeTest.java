@@ -7,7 +7,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings("static-method") public class RangeTest {
+@SuppressWarnings({"static-method","static-access","null"}) public class RangeTest {
 
   @Test public void rangeFrom() {
     range.from(2);
@@ -23,9 +23,9 @@ import fluent.ly.*;
     azzert.assertEquals(false, r.includes(-7));
   }
 
-  @Test @SuppressWarnings({ "boxing", "static-access" }) public void testStartingPoint() {
+  @Test public void testStartingPoint() {
     azzert.assertEquals(2, new Range().from(2).from());
-    Assert.assertNotEquals(8, (int) new Range().from(-4).from());
+    azzert.assertNotEquals(8, fluent.ly.unbox.it(new Range().from(-4).from()));
   }
 
   @Test public void testFromAndTo() {
