@@ -13,8 +13,8 @@ import org.junit.*;
   }
 
   @Test public void booleanArrayBoxingTest() {
-    boolean[] boolArray = { true, true, false, false, true, false };
-    Boolean[] expected = new Boolean[boolArray.length];
+    final boolean[] boolArray = { true, true, false, false, true, false };
+    final Boolean[] expected = new Boolean[boolArray.length];
     for (int ¢ = 0; ¢ < boolArray.length; ++¢)
       expected[¢] = Boolean.valueOf(boolArray[¢]);
     azzert.assertArrayEquals(expected, box.box(boolArray));
@@ -31,8 +31,8 @@ import org.junit.*;
   }
 
   @Test public void byteArrayBoxingTest() {
-    byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
-    Byte[] expected = new Byte[byteArray.length];
+    final byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
+    final Byte[] expected = new Byte[byteArray.length];
     for (int ¢ = 0; ¢ < byteArray.length; ++¢)
       expected[¢] = Byte.valueOf(byteArray[¢]);
     azzert.assertArrayEquals(expected, box.box(byteArray));
@@ -49,8 +49,8 @@ import org.junit.*;
   }
 
   @Test public void charArrayBoxingTest() {
-    char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
-    Character[] expected = new Character[charArray.length];
+    final char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
+    final Character[] expected = new Character[charArray.length];
     for (int ¢ = 0; ¢ < charArray.length; ++¢)
       expected[¢] = Character.valueOf(charArray[¢]);
     azzert.assertArrayEquals(expected, box.box(charArray));
@@ -72,8 +72,8 @@ import org.junit.*;
   }
 
   @Test public void doubleArrayBoxingTest() {
-    double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    Double[] expected = new Double[doubleArray.length];
+    final double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
+    final Double[] expected = new Double[doubleArray.length];
     for (int ¢ = 0; ¢ < doubleArray.length; ++¢)
       expected[¢] = Double.valueOf(doubleArray[¢]);
     azzert.assertArrayEquals(expected, box.box(doubleArray));
@@ -95,8 +95,9 @@ import org.junit.*;
   }
 
   @Test public void floatArrayBoxingTest() {
-    float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0, (float) Math.sqrt(2) };
-    Float[] expected = new Float[floatArray.length];
+    final float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0,
+        (float) Math.sqrt(2) };
+    final Float[] expected = new Float[floatArray.length];
     for (int ¢ = 0; ¢ < floatArray.length; ++¢)
       expected[¢] = Float.valueOf(floatArray[¢]);
     azzert.assertArrayEquals(expected, box.box(floatArray));
@@ -115,8 +116,8 @@ import org.junit.*;
   }
 
   @Test public void intArrayBoxingTest() {
-    int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
-    Integer[] expected = new Integer[intArray.length];
+    final int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
+    final Integer[] expected = new Integer[intArray.length];
     for (int ¢ = 0; ¢ < intArray.length; ++¢)
       expected[¢] = Integer.valueOf(intArray[¢]);
     azzert.assertArrayEquals(expected, box.box(intArray));
@@ -135,8 +136,8 @@ import org.junit.*;
   }
 
   @Test public void longArrayBoxingTest() {
-    long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
-    Long[] expected = new Long[longArray.length];
+    final long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
+    final Long[] expected = new Long[longArray.length];
     for (int ¢ = 0; ¢ < longArray.length; ++¢)
       expected[¢] = Long.valueOf(longArray[¢]);
     azzert.assertArrayEquals(expected, box.box(longArray));
@@ -155,8 +156,8 @@ import org.junit.*;
   }
 
   @Test public void shortArrayBoxingTest() {
-    short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
-    Short[] expected = new Short[shortArray.length];
+    final short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
+    final Short[] expected = new Short[shortArray.length];
     for (int ¢ = 0; ¢ < shortArray.length; ++¢)
       expected[¢] = Short.valueOf(shortArray[¢]);
     azzert.assertArrayEquals(expected, box.box(shortArray));
@@ -172,8 +173,8 @@ import org.junit.*;
   }
 
   @Test public void booleanArrayItTest() {
-    boolean[] boolArray = { true, true, false, false, true, false };
-    Boolean[] expected = new Boolean[boolArray.length];
+    final boolean[] boolArray = { true, true, false, false, true, false };
+    final Boolean[] expected = new Boolean[boolArray.length];
     for (int ¢ = 0; ¢ < boolArray.length; ++¢)
       expected[¢] = Boolean.valueOf(boolArray[¢]);
     azzert.assertArrayEquals(expected, box.it(boolArray));
@@ -190,8 +191,8 @@ import org.junit.*;
   }
 
   @Test public void byteArrayItTest() {
-    byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
-    Byte[] expected = new Byte[byteArray.length];
+    final byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
+    final Byte[] expected = new Byte[byteArray.length];
     for (int ¢ = 0; ¢ < byteArray.length; ++¢)
       expected[¢] = Byte.valueOf(byteArray[¢]);
     azzert.assertArrayEquals(expected, box.it(byteArray));
@@ -208,8 +209,8 @@ import org.junit.*;
   }
 
   @Test public void charArrayItTest() {
-    char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
-    Character[] expected = new Character[charArray.length];
+    final char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
+    final Character[] expected = new Character[charArray.length];
     for (int ¢ = 0; ¢ < charArray.length; ++¢)
       expected[¢] = Character.valueOf(charArray[¢]);
     azzert.assertArrayEquals(expected, box.it(charArray));
@@ -231,8 +232,8 @@ import org.junit.*;
   }
 
   @Test public void doubleArrayItTest() {
-    double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    Double[] expected = new Double[doubleArray.length];
+    final double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
+    final Double[] expected = new Double[doubleArray.length];
     for (int ¢ = 0; ¢ < doubleArray.length; ++¢)
       expected[¢] = Double.valueOf(doubleArray[¢]);
     azzert.assertArrayEquals(expected, box.it(doubleArray));
@@ -254,8 +255,9 @@ import org.junit.*;
   }
 
   @Test public void floatArrayItTest() {
-    float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0, (float) Math.sqrt(2) };
-    Float[] expected = new Float[floatArray.length];
+    final float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0,
+        (float) Math.sqrt(2) };
+    final Float[] expected = new Float[floatArray.length];
     for (int ¢ = 0; ¢ < floatArray.length; ++¢)
       expected[¢] = Float.valueOf(floatArray[¢]);
     azzert.assertArrayEquals(expected, box.it(floatArray));
@@ -274,8 +276,8 @@ import org.junit.*;
   }
 
   @Test public void intArrayItTest() {
-    int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
-    Integer[] expected = new Integer[intArray.length];
+    final int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
+    final Integer[] expected = new Integer[intArray.length];
     for (int ¢ = 0; ¢ < intArray.length; ++¢)
       expected[¢] = Integer.valueOf(intArray[¢]);
     azzert.assertArrayEquals(expected, box.it(intArray));
@@ -294,8 +296,8 @@ import org.junit.*;
   }
 
   @Test public void longArrayItTest() {
-    long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
-    Long[] expected = new Long[longArray.length];
+    final long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
+    final Long[] expected = new Long[longArray.length];
     for (int ¢ = 0; ¢ < longArray.length; ++¢)
       expected[¢] = Long.valueOf(longArray[¢]);
     azzert.assertArrayEquals(expected, box.it(longArray));
@@ -314,8 +316,8 @@ import org.junit.*;
   }
 
   @Test public void shortArrayItTest() {
-    short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
-    Short[] expected = new Short[shortArray.length];
+    final short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
+    final Short[] expected = new Short[shortArray.length];
     for (int ¢ = 0; ¢ < shortArray.length; ++¢)
       expected[¢] = Short.valueOf(shortArray[¢]);
     azzert.assertArrayEquals(expected, box.it(shortArray));

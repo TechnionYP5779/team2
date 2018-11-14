@@ -11,20 +11,20 @@ import il.org.spartan.etc.idiomatic.*;
 
 @SuppressWarnings("static-method") public class idiomaticTest {
   @Test @SuppressWarnings("null") public void testIncaseTrueReturnSameObj() {
-    Integer integer = Integer.valueOf(5);
-    azzert.assertEquals(true, idiomatic.incase(true, integer).equals(integer));
+    final Integer integer = Integer.valueOf(5);
+    azzert.assertTrue(idiomatic.incase(true, integer).equals(integer));
   }
 
   @Test public void testEval() {
-    azzert.assertEquals(true, idiomatic.eval(() -> Integer.valueOf(5)).get().equals(Integer.valueOf(5)));
+    azzert.assertTrue(idiomatic.eval(() -> fluent.ly.box.it(5)).get().equals(fluent.ly.box.it(5)));
   }
 
   @Test public void testIncaseFalseReturnsNull() {
-    azzert.assertEquals(true, idiomatic.incase(false, Integer.valueOf(5)) == null);
+    azzert.assertTrue(idiomatic.incase(false, fluent.ly.box.it(5)) == null);
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
-    azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(fluent.ly.box.it(5)));
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithException() {
@@ -32,7 +32,7 @@ import il.org.spartan.etc.idiomatic.*;
     final PrintStream originalOut = System.out, originalErr = System.err;
     System.setOut(new PrintStream(outContent));
     System.setErr(new PrintStream(errContent));
-    azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> {
+    azzert.assertTrue(idiomatic.catching((Producer<Integer>) () -> {
       throw new IOException();
     }) == null);
     System.setOut(originalOut);
@@ -40,40 +40,40 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testQuoteNotNullString() {
-    azzert.assertEquals(true, "'hello'".equals(idiomatic.quote("hello")));
+    azzert.assertTrue("'hello'".equals(idiomatic.quote("hello")));
   }
 
   @Test public void testQuoteNullString() {
-    azzert.assertEquals(true, "<null reference>".equals(idiomatic.quote(null)));
+    azzert.assertTrue("<null reference>".equals(idiomatic.quote(null)));
   }
 
   @Test public void testDoubleQuote() {
-    azzert.assertEquals(true, "''a''".equals(idiomatic.quote(idiomatic.quote("a"))));
+    azzert.assertTrue("''a''".equals(idiomatic.quote(idiomatic.quote("a"))));
   }
 
   @Test @SuppressWarnings("null") public void testWhenTrueReturnsSame() {
-    azzert.assertEquals(true, idiomatic.when(true).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertTrue(idiomatic.when(true).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
   }
 
   @Test public void testWhenFalseReturnsNull() {
-    azzert.assertEquals(true, idiomatic.when(1 == 3).eval(() -> Integer.valueOf(5)) == null);
+    azzert.assertTrue(idiomatic.when(1 == 3).eval(() -> fluent.ly.box.it(5)) == null);
   }
 
   @Test @SuppressWarnings("null") public void testUnlessFalseReturnsSame() {
-    azzert.assertEquals(true, idiomatic.unless(1 == 3).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertTrue(idiomatic.unless(1 == 3).eval(() -> fluent.ly.box.it(5)).equals(fluent.ly.box.it(5)));
   }
 
   @Test public void testUnlessTrueReturnsNull() {
-    azzert.assertEquals(true, idiomatic.unless(true).eval(() -> Integer.valueOf(5)) == null);
+    azzert.assertTrue(idiomatic.unless(true).eval(() -> fluent.ly.box.it(5)) == null);
   }
 
   @Test public void testUnlessFalseWithoutEval() {
-    Integer i = Integer.valueOf(5);
-    azzert.assertEquals(true, idiomatic.unless(false, i) == i);
+    final Integer i = Integer.valueOf(5);
+    azzert.assertTrue(idiomatic.unless(false, i) == i);
   }
 
   @Test public void testUnlessTrueWithoutEval() {
-    azzert.assertEquals(true, idiomatic.unless(true, Integer.valueOf(5)) == null);
+    azzert.assertTrue(idiomatic.unless(true, fluent.ly.box.it(5)) == null);
   }
 
   class MyRunnable implements Runnable {
@@ -90,43 +90,43 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testRunnerRun() {
-    MyRunnable r = new MyRunnable();
-    Runner runner = idiomatic.run(r);
-    azzert.assertEquals(false, r.didRun());
+    final MyRunnable r = new MyRunnable();
+    final Runner runner = idiomatic.run(r);
+    azzert.assertFalse(r.didRun());
     runner.run();
-    azzert.assertEquals(true, r.didRun());
+    azzert.assertTrue(r.didRun());
   }
 
   @Test public void testRunnerWhen() {
-    MyRunnable r = new MyRunnable();
-    Runner runner = idiomatic.run(r);
+    @NotNull final MyRunnable r = new MyRunnable();
+    final Runner runner = idiomatic.run(r);
     runner.when(false);
-    azzert.assertEquals(false, r.didRun());
+    azzert.assertFalse(r.didRun());
     runner.when(true);
-    azzert.assertEquals(true, r.didRun());
+    azzert.assertTrue(r.didRun());
   }
 
   @Test public void testRunnerUnless() {
-    MyRunnable r = new MyRunnable();
-    Runner runner = idiomatic.run(r);
+    final MyRunnable r = new MyRunnable();
+    final Runner runner = idiomatic.run(r);
     runner.unless(true);
-    azzert.assertEquals(false, r.didRun());
+    azzert.assertFalse(r.didRun());
     runner.unless(false);
-    azzert.assertEquals(true, r.didRun());
+    azzert.assertTrue(r.didRun());
   }
 
   class MyTrigger implements Trigger {
-    @Override @SuppressWarnings("null") public <T> @Nullable T eval(Supplier<@Nullable T> ¢) {
+    @Override @SuppressWarnings("null") public <T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
       return ¢.get();
     }
   }
 
   @Test @SuppressWarnings("null") public void testTriggerDefaultEval() {
-    azzert.assertEquals(true, (new MyTrigger()).eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
+    azzert.assertTrue(new MyTrigger().eval(fluent.ly.box.it(4)).equals(fluent.ly.box.it(4)));
   }
 
   @Test public void testTestUses() {
-    idiomatic.TEST testClass = new idiomatic.TEST();
+    final idiomatic.TEST testClass = new idiomatic.TEST();
     testClass.use0();
     testClass.use1();
     testClass.use2();

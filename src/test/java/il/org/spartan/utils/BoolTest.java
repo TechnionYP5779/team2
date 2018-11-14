@@ -1,62 +1,50 @@
 package il.org.spartan.utils;
 
-import static org.junit.Assert.*;
-
 import org.junit.*;
 
+import fluent.ly.*;
+
 @SuppressWarnings("static-method") public class BoolTest {
-  @Test @SuppressWarnings("boxing") public void trueConstructorTest() {
-    if (!(new Bool(true)).inner())
-      fail("Did not save the constructor value");
+  @Test @SuppressWarnings("null") public void trueConstructorTest() {
+    azzert.assertTrue(unbox.unbox((new Bool(true)).inner()));
   }
 
-  @Test @SuppressWarnings("boxing") public void falseConstructorTest() {
-    if ((new Bool(false)).inner())
-      fail("Did not save the constructor value");
+  @Test @SuppressWarnings("null") public void falseConstructorTest() {
+    azzert.assertFalse(unbox.unbox(new Bool(false).inner()));
   }
 
-  @Test @SuppressWarnings("boxing") public void emptyConstructorTest() {
-    if ((new Bool()).inner())
-      fail("Did not save the constructor value");
+  @Test @SuppressWarnings("null") public void emptyConstructorTest() {
+    azzert.assertFalse(unbox.unbox(new Bool(false).inner()));
   }
 
-  @Test public void clearTest() {
-    Bool b1 = new Bool();
-    b1.clear();
-    if (b1.get())
-      fail("Error in the clear function");
-    Bool b2 = new Bool(false);
-    b2.clear();
-    if (b2.get())
-      fail("Error in the clear function");
-    Bool b3 = new Bool(true);
-    b3.clear();
-    if (b3.get())
-      fail("Error in the clear function");
+  @Test public void clearTest1() {
+    azzert.assertFalse(new Bool().clear().get());
   }
 
-  @Test public void setTest() {
-    Bool b1 = new Bool();
-    b1.set();
-    if (!b1.get())
-      fail("Error in the set function");
-    Bool b2 = new Bool(false);
-    b2.set();
-    if (!b2.get())
-      fail("Error in the set function");
-    Bool b3 = new Bool(true);
-    b3.set();
-    if (!b3.get())
-      fail("Error in the set function");
+  @Test public void clearTest2() {
+    azzert.assertFalse(new Bool(false).clear().get());
+  }
+
+  @Test public void clearTest3() {
+    azzert.assertFalse(new Bool(true).clear().get());
+  }
+
+  @Test public void setTest1() {
+    azzert.assertTrue(new Bool().set().get());
+  }
+
+  @Test public void setTest2() {
+    azzert.assertTrue(new Bool(false).set().get());
+  }
+
+  @Test public void setTest3() {
+    azzert.assertTrue(new Bool(true).set().get());
   }
 
   @Test public void getTest() {
-    Bool b = new Bool();
-    b.set();
-    if (!b.get())
-      fail("Error in the get function");
+    final Bool b = new Bool().set();
+    azzert.assertTrue(b.get());
     b.clear();
-    if (b.get())
-      fail("Error in the get function");
+    azzert.assertFalse(b.get());
   }
 }

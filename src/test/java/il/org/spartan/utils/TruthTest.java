@@ -6,7 +6,7 @@ import fluent.ly.*;
 
 @SuppressWarnings({ "static-method", "static-access" }) public class TruthTest {
   /**
-   * 
+   *
    */
   @Test public void truthOfTest() {
     Truth t = Truth.truthOf(() -> true);
@@ -17,7 +17,7 @@ import fluent.ly.*;
     azzert.assertEquals(t, Truth.N);
     t = Truth.truthOf(() -> {
       assert false;
-      return true;
+      return false;
     });
     azzert.assertEquals(t, Truth.X);
     t = Truth.truthOf(() -> 1 / 0 == 1);

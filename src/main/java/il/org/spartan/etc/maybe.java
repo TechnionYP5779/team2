@@ -4,7 +4,6 @@ import static fluent.ly.azzert.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-
 /** @author Yossi Gil <Yossi.Gil@GMail.COM>
  * @param <T> JD
  * @since @{year}-@{month}-@{day} */
@@ -50,8 +49,8 @@ public class maybe<@Nullable T> {
     this.inner = inner;
     return this;
   }
-
-  @SuppressWarnings("static-method") public static class TEST {
+  @SuppressWarnings("static-method")
+  public static class TEST {
     @Test public void usecase0() {
       isNull(maybe.no().get());
     }

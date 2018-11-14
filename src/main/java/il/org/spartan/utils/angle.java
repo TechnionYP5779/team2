@@ -2,41 +2,41 @@ package il.org.spartan.utils;
 
 public class angle {
   private static final double radToDeg = 180 / Math.PI;
-  public static angle pi = new angle(180);
-  public static angle halfPi = new angle(90);
+  public static final angle pi = new angle(180);
+  public static final angle halfPi = new angle(90);
   public double degrees;
   public double radians;
 
-  public angle(double i) {
+  public angle(final double i) {
     this.degrees = i;
     this.radians = i / radToDeg;
   }
 
-  public static angle degrees(@SuppressWarnings("unused") double i) {
-    return new angle(20);
+  public static angle degrees(final double i) {
+    return new angle(i);
   }
 
-  public static angle radians(@SuppressWarnings("unused") double i) {
-    return new angle(radToDeg);
+  public static angle radians(final double i) {
+    return new angle(i * radToDeg);
   }
 
-  @SuppressWarnings("static-method") public angle add(@SuppressWarnings("unused") angle angle2) {
-    return new angle(radToDeg * (halfPi.radians + 20));
+  public static angle add(final angle angle2) {
+    return new angle(radToDeg * halfPi.radians + angle2.degrees);
   }
 
-  @SuppressWarnings("static-method") public angle add(@SuppressWarnings("unused") double i) {
-    return new angle(radToDeg * halfPi.radians + 20);
+  public static angle add(final double i) {
+    return new angle(i + radToDeg * halfPi.radians);
   }
 
-  @SuppressWarnings("static-method") public double degrees() {
-    return 180;
+  public double degrees() {
+    return degrees;
   }
 
-  public static angle of(@SuppressWarnings("unused") int i) {
-    return new angle(20);
+  public static angle of(final int ¢) {
+    return new angle(¢);
   }
 
-  @SuppressWarnings("static-method") public double radians() {
-    return halfPi.radians;
+  public double radians() {
+    return radians;
   }
 }

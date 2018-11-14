@@ -179,7 +179,7 @@ public interface idiomatic {
     }
 
     @Test public void use8() {
-      isNull(unless(true).eval(() -> new Object()));
+      azzert.isNull(unless(true).eval(() -> new Object()));
     }
 
     @Test public void use9() {
@@ -196,12 +196,12 @@ public interface idiomatic {
     }
 
     @Test public void use11() {
-      isNull(when(false).eval(() -> new Object()));
+      azzert.isNull(when(false).eval(() -> new Object()));
     }
 
     @Test public void use2() {
       assert take(this) != null;
-      isNull(take(this).when(false));
+      azzert.isNull(take(this).when(false));
     }
 
     @Test public void use3() {
@@ -209,7 +209,7 @@ public interface idiomatic {
     }
 
     @Test public void use4() {
-      isNull(take(this).when(false));
+      azzert.isNull(take(this).when(false));
     }
 
     @Test public void use5() {
@@ -217,13 +217,13 @@ public interface idiomatic {
     }
 
     @Test public void use6() {
-      isNull(take(this).unless(true));
+      azzert.isNull(take(this).unless(true));
     }
 
     @Test public void use7() {
-      isNull(take(this).unless(true));
-      isNull(take(null).unless(true));
-      isNull(take(null).unless(false));
+      azzert.isNull(take(this).unless(true));
+      azzert.isNull(take(null).unless(true));
+      azzert.isNull(take(null).unless(false));
     }
   }
 

@@ -93,7 +93,7 @@ public interface the {
 
   @NotNull static <T> Iterable<T> lastOf(final @NotNull Iterable<T> ¢) {
     return () -> new Iterator<T>() {
-      final Iterator<T> $ = ¢.iterator();
+      Iterator<T> $ = ¢.iterator();
       {
         $.next();
       }
@@ -166,7 +166,7 @@ public interface the {
     return ¢.substring(1);
   }
 
-  static <T> T[] tailOf(T[] ¢) {
+  static <T> T[] tailOf(final T[] ¢) {
     return Arrays.copyOfRange(¢, 1, ¢.length);
   }
 }

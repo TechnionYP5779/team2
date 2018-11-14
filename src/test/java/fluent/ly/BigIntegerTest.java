@@ -2,7 +2,7 @@ package fluent.ly;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "static-access" }) public class BigIntegerTest {
+@SuppressWarnings({"static-method", "static-access"}) public class BigIntegerTest {
   @Test public void testCreateFromString() {
     azzert.assertNotEquals(new BigInteger("123"), null);
   }
