@@ -4,8 +4,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({"static-method","static-access"})
-public class unboxTest {
+@SuppressWarnings({ "static-method", "static-access" }) public class unboxTest {
   @Test @SuppressWarnings("null") public void itIntTest() {
     for (int ¢ = -100; ¢ < 100; ++¢)
       azzert.assertEquals(unbox.it(Integer.valueOf(¢)), ¢);

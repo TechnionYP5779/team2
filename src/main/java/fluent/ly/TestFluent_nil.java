@@ -3,7 +3,6 @@ package fluent.ly;
 import java.util.function.*;
 
 import org.junit.*;
-
 import fluent.ly.TestFluent_nil.*;
 import static fluent.ly.azzert.*;
 public class TestFluent_nil {

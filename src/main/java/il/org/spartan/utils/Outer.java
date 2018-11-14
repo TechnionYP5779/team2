@@ -48,7 +48,6 @@ public class Outer<Inner> {
     this.inner = ¢;
   }
 
-
   @Override @SuppressWarnings("null") public int hashCode() {
     return inner == null ? 0 : inner.hashCode();
   }

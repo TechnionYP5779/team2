@@ -4,7 +4,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({"static-method", "boxing"}) public class isTest {
+@SuppressWarnings({ "static-method", "boxing" }) public class isTest {
   @Test public void inEmptyListReturnsFasle() {
     azzert.assertEquals(false, is.in("some string"));
     azzert.assertEquals(false, is.in(""));

@@ -35,8 +35,7 @@ public abstract class Statistics {
     for (final double ¢ : ds)
       if (median - 2 * mad <= ¢ && ¢ <= median + 2 * mad)
         $.add(box(¢));
-    
-  return Iterables.toArray($);
+    return Iterables.toArray($);
   }
 
   public static double sampleMean(final double @NotNull [] ds) {
