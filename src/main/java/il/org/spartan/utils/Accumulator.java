@@ -1,10 +1,6 @@
 package il.org.spartan.utils;
 
-import static fluent.ly.azzert.*;
-
 import org.jetbrains.annotations.*;
-import org.junit.*;
-
 import fluent.ly.*;
 
 public abstract class Accumulator {

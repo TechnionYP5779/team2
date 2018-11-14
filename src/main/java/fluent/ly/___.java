@@ -1,19 +1,14 @@
 package fluent.ly;
 
-import static org.junit.Assert.*;
-
 import static fluent.ly.box.*;
 import static fluent.ly.string.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
-
 import fluent.ly.___.Bug.*;
 import fluent.ly.___.Bug.Assertion.*;
 import fluent.ly.___.Bug.Assertion.Value.*;
 import fluent.ly.___.Bug.Assertion.Value.Numerical.*;
 import fluent.ly.___.Bug.Assertion.Variant.*;
-import fluent.ly.___.Bug.Contract;
 import fluent.ly.___.Bug.Contract.*;
 import il.org.spartan.etc.*;
 

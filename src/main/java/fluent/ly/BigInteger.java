@@ -1,35 +1,33 @@
 package fluent.ly;
 
 import java.util.*;
-import java.util.function.*;
+
+import org.jetbrains.annotations.*;
 
 public class BigInteger {
   private List<String> number;
   private static final int chunkSize = 5;
-  private Boolean negative = false;
+  private Boolean negative = Boolean.FALSE;
 
   public BigInteger(final String string) {
     String absString = absoluteVal(string);
     number = breakStringToList(absString);
-    negative = Integer.parseInt(absString) < 0 ? true : false;
+    negative = box.box(Integer.parseInt(absString) < 0);
   }
-  
+
   public Boolean isNegative() {
     return negative;
   }
-  
-  private static Boolean isStringNegative(String string){
-    return string.charAt(0) == '-';
+
+  private static Boolean isStringNegative(String ¢) {
+    return box.box(¢.charAt(0) == '-');
   }
 
-  private static String absoluteVal(String string) {
-    if(isStringNegative(string)) {
-      return string.substring(1);
-    }
-    return string;
+  private static String absoluteVal (String ¢) {
+    return !(isStringNegative(¢)) ? ¢ : ¢.substring(1);
   }
 
-  public BigInteger(final List<String> stringList,Boolean isNegative) {
+  public BigInteger(final List<String> stringList, Boolean isNegative) {
     negative = isNegative;
     number = stringList;
   }
@@ -39,14 +37,15 @@ public class BigInteger {
   }
 
   @Override public boolean equals(final Object ¢) {
-    return ¢ == this || ¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number) && (negative == ((BigInteger) ¢).negative);
+    return ¢ == this
+        || ¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number) && (negative == ((BigInteger) ¢).negative);
   }
 
   public BigInteger add(final BigInteger bigInteger) {
     final List<String> $ = new ArrayList<>();
     int carry = 0;
     final int len = Math.min(number.size(), bigInteger.getValueAsStringList().size());
-    boolean isAdd = (negative == bigInteger.isNegative());
+    @NotNull Boolean isAdd = box.box(negative == bigInteger.isNegative());
     final List<String> tmp1 = new ArrayList<>(number), tmp2 = new ArrayList<>(bigInteger.getValueAsStringList());
     Collections.reverse(tmp1);
     Collections.reverse(tmp2);
@@ -70,16 +69,11 @@ public class BigInteger {
     if (carry != 0)
       $.add(String.valueOf(carry));
     Collections.reverse($);
-    return new BigInteger($, carry == 1);
+    return new BigInteger($, box.box(carry == 1));
   }
-  
-  private static StringWithCarry addOrRemoveStringWithCarry(final String s1, final String s2, final int carry, Boolean isAdd) {
-    if(isAdd) {
-      return addStringWithCarry(s1, s2, carry);
-    }
-    
-    return removeStringWithCarry(s1, s2, carry);
-    
+
+  private static StringWithCarry addOrRemoveStringWithCarry(final String s1, final String s2, final int carry, @NotNull Boolean isAdd) {
+    return unbox.unbox(isAdd) ? addStringWithCarry(s1, s2, carry) : removeStringWithCarry(s1, s2, carry);
   }
 
   private static String addStringsSimple(final String s1, final String s2, final int carry) {
@@ -90,18 +84,17 @@ public class BigInteger {
     final String $ = addStringsSimple(s1, s2, carry);
     return $.length() <= chunkSize ? new StringWithCarry($, 0) : new StringWithCarry($.substring(1), Character.getNumericValue($.charAt(0)));
   }
-  
+
   private static String removeStringsSimple(final String s1, final String s2, final int carry) {
-    return String.valueOf(Integer.parseInt(s1) - Integer.parseInt(s2) - carry);
+    return String.valueOf(Integer.parseInt(s1) - carry - Integer.parseInt(s2));
   }
 
   private static StringWithCarry removeStringWithCarry(final String s1, final String s2, final int carry) {
     String $ = removeStringsSimple(s1, s2, carry);
-    if(isStringNegative($)) {
-      $ = $.substring(1);
-      return new StringWithCarry($,1);
-    }
-    return new StringWithCarry($, 0);
+    if (!isStringNegative($))
+      return new StringWithCarry($, 0);
+    $ = $.substring(1);
+    return new StringWithCarry($, 1);
   }
 
   private List<String> getValueAsStringList() {
@@ -127,7 +120,6 @@ public class BigInteger {
   }
 
   public BigInteger negate() {
-    
     return null;
   }
 }
