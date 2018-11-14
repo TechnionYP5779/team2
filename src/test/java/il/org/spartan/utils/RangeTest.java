@@ -15,11 +15,11 @@ import fluent.ly.*;
   @Test public void testInfiniteRangeInc() {
     final Range r = new Range();
     r.from(2);
-    azzert.assertTrue(r.includes(2));
-    azzert.assertTrue(r.includes(10));
-    azzert.assertTrue(r.includes(Integer.MAX_VALUE - 1));
-    azzert.assertFalse(r.includes(1));
-    azzert.assertFalse(r.includes(-7));
+    assert (r.includes(2));
+    assert (r.includes(10));
+    assert (r.includes(Integer.MAX_VALUE - 1));
+    assert !(r.includes(1));
+    assert !(r.includes(-7));
   }
 
   @Test public void testStartingPoint() {
@@ -31,20 +31,20 @@ import fluent.ly.*;
     final Range r = new Range();
     r.from(2).to(6);
     for (int ¢ = 2; ¢ <= 5; ++¢)
-      azzert.assertTrue(r.includes(¢));
-    azzert.assertFalse(r.includes(1));
-    azzert.assertFalse(r.includes(6));
-    azzert.assertFalse(r.includes(1322));
+      assert (r.includes(¢));
+    assert !(r.includes(1));
+    assert !(r.includes(6));
+    assert !(r.includes(1322));
   }
 
   @Test public void testInfiniteRangeDec() {
     final Range r = new Range();
     r.to(2);
-    azzert.assertTrue(r.includes(1));
-    azzert.assertTrue(r.includes(0));
-    azzert.assertTrue(r.includes(Integer.MIN_VALUE));
-    azzert.assertFalse(r.includes(2));
-    azzert.assertFalse(r.includes(12313));
+    assert (r.includes(1));
+    assert (r.includes(0));
+    assert (r.includes(Integer.MIN_VALUE));
+    assert !(r.includes(2));
+    assert !(r.includes(12313));
   }
 
   @Test public void testFromMinInt() {
@@ -55,10 +55,10 @@ import fluent.ly.*;
     final Range r = new Range();
     r.to(2).from(-5);
     for (int ¢ = -5; ¢ <= 1; ++¢)
-      azzert.assertTrue(r.includes(¢));
-    azzert.assertFalse(r.includes(-6));
-    azzert.assertFalse(r.includes(2));
-    azzert.assertFalse(r.includes(1322));
+      assert (r.includes(¢));
+    assert !(r.includes(-6));
+    assert !(r.includes(2));
+    assert !(r.includes(1322));
   }
 
   @Test public void testNumbersFunction() {
@@ -77,10 +77,10 @@ import fluent.ly.*;
   @Test public void testIntersectionTwoInfinite() {
     final Range r = new Range().to(10).intersect(new Range().from(3));
     for (int ¢ = 3; ¢ <= 9; ++¢)
-      azzert.assertTrue(r.includes(¢));
-    azzert.assertFalse(r.includes(2));
-    azzert.assertFalse(r.includes(10));
-    azzert.assertFalse(r.includes(-3123));
+      assert (r.includes(¢));
+    assert !(r.includes(2));
+    assert !(r.includes(10));
+    assert !(r.includes(-3123));
   }
 
   @Test public void testIntersectionEmpty() {
@@ -90,30 +90,30 @@ import fluent.ly.*;
 
   @Test public void testIntersectionOne() {
     final Range r = new Range().to(4).intersect(new Range().from(3));
-    azzert.assertTrue(r.includes(3));
-    azzert.assertFalse(r.includes(2));
-    azzert.assertFalse(r.includes(4));
+    assert (r.includes(3));
+    assert !(r.includes(2));
+    assert !(r.includes(4));
   }
 
   @Test public void testIntersectionFull() {
     final Range r = new Range().from(2).to(8).intersect(new Range().from(2).to(8));
     for (int ¢ = 2; ¢ <= 7; ++¢)
-      azzert.assertTrue(r.includes(¢));
-    azzert.assertFalse(r.includes(8));
-    azzert.assertFalse(r.includes(1));
+      assert (r.includes(¢));
+    assert !(r.includes(8));
+    assert !(r.includes(1));
   }
 
   @Test public void testIntersectionIncluded() {
     final Range r = new Range().from(1).to(111).intersect(new Range().from(2).to(8));
     for (int ¢ = 2; ¢ <= 7; ++¢)
-      azzert.assertTrue(r.includes(¢));
-    azzert.assertFalse(r.includes(8));
-    azzert.assertFalse(r.includes(1));
+      assert (r.includes(¢));
+    assert !(r.includes(8));
+    assert !(r.includes(1));
   }
 
   @Test public void testIntersectionInfinity() {
     final Range r = new Range().intersect(new Range());
     for (int ¢ = Integer.MIN_VALUE; ¢ < Integer.MAX_VALUE; ++¢)
-      azzert.assertTrue(r.includes(¢));
+      assert (r.includes(¢));
   }
 }
