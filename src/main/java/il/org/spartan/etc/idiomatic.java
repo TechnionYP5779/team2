@@ -175,7 +175,7 @@ public interface idiomatic {
 
   @SuppressWarnings("static-method") class TEST {
     @Test public void use0() {
-      azzert.assertNotEquals(new Storer<>(this) , null);
+      azzert.assertNotEquals(new Storer<>(this), null);
     }
 
     @Test public void use8() {

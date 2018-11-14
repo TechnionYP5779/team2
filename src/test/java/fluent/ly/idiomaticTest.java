@@ -14,7 +14,7 @@ import java.util.function.*;
     Integer integer = Integer.valueOf(5);
     azzert.assertEquals(true, idiomatic.incase(true, integer).equals(integer));
   }
-  
+
   @Test public void testEval() {
     azzert.assertEquals(true, idiomatic.eval(() -> Integer.valueOf(5)).get().equals(Integer.valueOf(5)));
   }
@@ -28,20 +28,15 @@ import java.util.function.*;
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithException() {
-    
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream(), errContent = new ByteArrayOutputStream();
     final PrintStream originalOut = System.out, originalErr = System.err;
     System.setOut(new PrintStream(outContent));
     System.setErr(new PrintStream(errContent));
-    
-    
     azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> {
       throw new IOException();
     }) == null);
-    
     System.setOut(originalOut);
     System.setErr(originalErr);
-    
   }
 
   @Test public void testQuoteNotNullString() {
@@ -80,33 +75,29 @@ import java.util.function.*;
   @Test public void testUnlessTrueWithoutEval() {
     azzert.assertEquals(true, idiomatic.unless(true, Integer.valueOf(5)) == null);
   }
-  
-  class MyRunnable implements Runnable{
-    
+
+  class MyRunnable implements Runnable {
     Boolean ran = Boolean.FALSE;
+
     @Override public void run() {
       // TODO Auto-generated method stub
       ran = Boolean.TRUE;
     }
-    
+
     public Boolean didRun() {
       return ran;
     }
-    
   }
-  
-  
+
   @Test public void testRunnerRun() {
-    
     MyRunnable r = new MyRunnable();
     Runner runner = idiomatic.run(r);
     azzert.assertEquals(false, r.didRun());
     runner.run();
     azzert.assertEquals(true, r.didRun());
   }
-  
+
   @Test public void testRunnerWhen() {
-    
     MyRunnable r = new MyRunnable();
     Runner runner = idiomatic.run(r);
     runner.when(false);
@@ -116,7 +107,6 @@ import java.util.function.*;
   }
 
   @Test public void testRunnerUnless() {
-  
     MyRunnable r = new MyRunnable();
     Runner runner = idiomatic.run(r);
     runner.unless(true);
@@ -124,19 +114,17 @@ import java.util.function.*;
     runner.unless(false);
     azzert.assertEquals(true, r.didRun());
   }
-  
-  class MyTrigger implements Trigger{
 
+  class MyTrigger implements Trigger {
     @Override @SuppressWarnings("null") public <T> @Nullable T eval(Supplier<@Nullable T> ¢) {
       return ¢.get();
     }
-    
   }
-  
+
   @Test @SuppressWarnings("null") public void testTriggerDefaultEval() {
     azzert.assertEquals(true, (new MyTrigger()).eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
   }
-  
+
   @Test public void testTestUses() {
     idiomatic.TEST testClass = new idiomatic.TEST();
     testClass.use0();
