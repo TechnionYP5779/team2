@@ -4,7 +4,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "boxing" }) public class isTest {
+@SuppressWarnings("static-method") public class isTest {
   @Test public void inEmptyListReturnsFasle() {
     azzert.assertFalse(is.in("some string"));
     azzert.assertFalse(is.in(""));
@@ -150,7 +150,7 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsFalseForNotEmptyArray() {
-    azzert.assertFalse(is.empty(new Integer[] { 1, 2, 3, 4 }));
+    azzert.assertFalse(is.empty(box.box(new int[] { 1, 2, 3, 4 })));
   }
 
   @Test public void emptyReturnsTrueForEmptyIterable() {
@@ -159,7 +159,7 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsFalseForNotEmptyIterable() {
-    azzert.assertFalse(is.empty((Iterable<Integer>) Arrays.asList(new Integer[] { 1, 2, 3, 4 })));
+    azzert.assertFalse(is.empty((Iterable<Integer>) Arrays.asList(box.box(new int[] { 1, 2, 3, 4 }))));
   }
 
   @Test public void emptyReturnsTrueForEmptyCollection() {
@@ -168,6 +168,6 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsFalseForNotEmptyCollection() {
-    azzert.assertFalse(is.empty((Collection<Integer>) Arrays.asList(new Integer[] { 1, 2, 3, 4 })));
+    azzert.assertFalse(is.empty((Collection<Integer>) Arrays.asList(box.box(new int[] { 1, 2, 3, 4 }))));
   }
 }

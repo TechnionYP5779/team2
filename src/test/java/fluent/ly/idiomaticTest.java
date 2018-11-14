@@ -98,7 +98,7 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testRunnerWhen() {
-    final MyRunnable r = new MyRunnable();
+    @NotNull final MyRunnable r = new MyRunnable();
     final Runner runner = idiomatic.run(r);
     runner.when(false);
     azzert.assertFalse(r.didRun());
