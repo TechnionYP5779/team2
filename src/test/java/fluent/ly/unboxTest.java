@@ -20,7 +20,7 @@ public class unboxTest {
     @SuppressWarnings("null") final boolean newArr[] = unbox
         .unbox(new Boolean[] { Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE });
     for (int ¢ = 0; ¢ < 5; ++¢)
-      azzert.assertEquals(true, newArr[¢]);
+      azzert.assertTrue(newArr[¢]);
   }
 
   @Test @SuppressWarnings("null") public void unboxByteTest() {
