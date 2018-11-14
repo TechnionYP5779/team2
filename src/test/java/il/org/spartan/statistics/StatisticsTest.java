@@ -119,6 +119,12 @@ public class StatisticsTest {
     azzert.assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).v(), 2.5, 0.00001);
     azzert.assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).v(), 0.0, 0.00001);
     azzert.assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).v(), 1.4666666666666668, 0.00001);
+   }
+  
+  @Test public void intvTest() {
+    azzert.assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).ν(), 4);
+    azzert.assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).ν(), 5);
+    azzert.assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).ν(), 5);
   }
   
   @Test (expected = ArithmeticException.class) public void varianceTestExp() {
