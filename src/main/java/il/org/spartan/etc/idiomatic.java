@@ -1,5 +1,5 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
-package fluent.ly;
+package il.org.spartan.etc;
 
 import static fluent.ly.azzert.*;
 
@@ -7,6 +7,8 @@ import java.util.function.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
+
+import fluent.ly.*;
 
 /** An empty <code><b>enum</b></code> with a variety of <code>public
  * static</code> utility functions of reasonably wide use.
@@ -146,7 +148,7 @@ public interface idiomatic {
       when(!unless);
     }
 
-    void when(final boolean when) {
+    public void when(final boolean when) {
       if (when)
         run();
     }
@@ -173,14 +175,14 @@ public interface idiomatic {
 
   @SuppressWarnings("static-method") class TEST {
     @Test public void use0() {
-      assert new Storer<>(this) != null;
+      azzert.assertNotEquals(new Storer<>(this) , null);
     }
 
-    @Test public void use08() {
+    @Test public void use8() {
       azzert.isNull(unless(true).eval(() -> new Object()));
     }
 
-    @Test public void use09() {
+    @Test public void use9() {
       assert unless(false).eval(() -> new Object()) != null;
     }
 
