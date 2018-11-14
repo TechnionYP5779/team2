@@ -8,36 +8,36 @@ import org.junit.*;
   @Test public void inEmptyListReturnsFasle() {
     azzert.assertEquals(false, is.in("some string"));
     azzert.assertEquals(false, is.in(""));
-    azzert.assertEquals(false, is.in(Integer.valueOf(1)));
+    azzert.assertEquals(false, is.in(fluent.ly.box.it(1)));
     azzert.assertEquals(false, is.in(null));
     azzert.assertEquals(false, is.in(Boolean.TRUE));
     azzert.assertEquals(false, is.in(new Object()));
   }
 
   @Test public void inReturnsFasleForNullItem() {
-    azzert.assertEquals(false, is.in(null, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.in(null, "", fluent.ly.box.it(5), Boolean.FALSE, null));
   }
 
   @Test public void inReturnsTrueForExistingItem() {
-    azzert.assertEquals(true, is.in("", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.in("some string", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.in(Integer.valueOf(5), "", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.in(Boolean.FALSE, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.in("", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.in("some string", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.in(fluent.ly.box.it(5), "", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.in(Boolean.FALSE, "", fluent.ly.box.it(5), Boolean.FALSE, null));
     final int[] intArr1 = {};
-    azzert.assertEquals(true, is.in(intArr1, "", Integer.valueOf(5), intArr1, Boolean.FALSE, null));
+    azzert.assertEquals(true, is.in(intArr1, "", fluent.ly.box.it(5), intArr1, Boolean.FALSE, null));
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
-    azzert.assertEquals(true, is.in(intArr3, "", Integer.valueOf(5), intArr3, Boolean.FALSE, null));
+    azzert.assertEquals(true, is.in(intArr3, "", fluent.ly.box.it(5), intArr3, Boolean.FALSE, null));
   }
 
   @Test public void inReturnsFalseForMissingItem() {
-    azzert.assertEquals(false, is.in("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.in(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.in(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.in("not the same", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.in(fluent.ly.box.it(10), "", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.in(Boolean.TRUE, "", fluent.ly.box.it(5), Boolean.FALSE, null));
     final int[] intArr1 = {}, intArr2 = {};
-    azzert.assertEquals(false, is.in(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null));
+    azzert.assertEquals(false, is.in(intArr1, "", fluent.ly.box.it(5), intArr2, Boolean.FALSE, null));
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
-    azzert.assertEquals(false, is.in(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null));
+    azzert.assertEquals(false, is.in(intArr3, "", fluent.ly.box.it(5), intArr4, Boolean.FALSE, null));
   }
 
   @Test public void intIsInEmptyListReturnsFasle() {
@@ -62,71 +62,71 @@ import org.junit.*;
   @Test public void notInEmptyListReturnsTrue() {
     azzert.assertEquals(true, is.not.in("some string"));
     azzert.assertEquals(true, is.not.in(""));
-    azzert.assertEquals(true, is.not.in(Integer.valueOf(1)));
+    azzert.assertEquals(true, is.not.in(fluent.ly.box.it(1)));
     azzert.assertEquals(true, is.not.in(null));
     azzert.assertEquals(true, is.not.in(Boolean.TRUE));
     azzert.assertEquals(true, is.not.in(new Object()));
   }
 
   @Test public void notInReturnsFasleForNullItem() {
-    azzert.assertEquals(true, is.not.in(null, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.not.in(null, "", fluent.ly.box.it(5), Boolean.FALSE, null));
   }
 
   @Test public void notInReturnsTrueForExistingItem() {
-    azzert.assertEquals(false, is.not.in("", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.not.in("some string", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.not.in(Integer.valueOf(5), "", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.not.in(Boolean.FALSE, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.not.in("", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.not.in("some string", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.not.in(fluent.ly.box.it(5), "", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.not.in(Boolean.FALSE, "", fluent.ly.box.it(5), Boolean.FALSE, null));
     final int[] intArr1 = {};
-    azzert.assertEquals(false, is.not.in(intArr1, "", Integer.valueOf(5), intArr1, Boolean.FALSE, null));
+    azzert.assertEquals(false, is.not.in(intArr1, "", fluent.ly.box.it(5), intArr1, Boolean.FALSE, null));
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
-    azzert.assertEquals(false, is.not.in(intArr3, "", Integer.valueOf(5), intArr3, Boolean.FALSE, null));
+    azzert.assertEquals(false, is.not.in(intArr3, "", fluent.ly.box.it(5), intArr3, Boolean.FALSE, null));
   }
 
   @Test public void notInReturnsFalseForMissingItem() {
-    azzert.assertEquals(true, is.not.in("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.not.in(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.not.in(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.not.in("not the same", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.not.in(fluent.ly.box.it(10), "", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.not.in(Boolean.TRUE, "", fluent.ly.box.it(5), Boolean.FALSE, null));
     final int[] intArr1 = {}, intArr2 = {};
-    azzert.assertEquals(true, is.not.in(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null));
+    azzert.assertEquals(true, is.not.in(intArr1, "", fluent.ly.box.it(5), intArr2, Boolean.FALSE, null));
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
-    azzert.assertEquals(true, is.not.in(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null));
+    azzert.assertEquals(true, is.not.in(intArr3, "", fluent.ly.box.it(5), intArr4, Boolean.FALSE, null));
   }
 
   @Test public void outEmptyListReturnsTrue() {
     azzert.assertEquals(true, is.out("some string"));
     azzert.assertEquals(true, is.out(""));
-    azzert.assertEquals(true, is.out(Integer.valueOf(1)));
+    azzert.assertEquals(true, is.out(fluent.ly.box.it(1)));
     azzert.assertEquals(true, is.out(null));
     azzert.assertEquals(true, is.out(Boolean.TRUE));
     azzert.assertEquals(true, is.out(new Object()));
   }
 
   @Test public void outReturnsFasleForNullItem() {
-    azzert.assertEquals(true, is.out(null, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.out(null, "", fluent.ly.box.it(5), Boolean.FALSE, null));
   }
 
   @Test public void outReturnsTrueForExistingItem() {
-    azzert.assertEquals(false, is.out("", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.out("some string", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.out(Integer.valueOf(5), "", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(false, is.out(Boolean.FALSE, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.out("", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.out("some string", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.out(fluent.ly.box.it(5), "", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(false, is.out(Boolean.FALSE, "", fluent.ly.box.it(5), Boolean.FALSE, null));
     final int[] intArr1 = {};
-    azzert.assertEquals(false, is.out(intArr1, "", Integer.valueOf(5), intArr1, Boolean.FALSE, null));
+    azzert.assertEquals(false, is.out(intArr1, "", fluent.ly.box.it(5), intArr1, Boolean.FALSE, null));
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
-    azzert.assertEquals(false, is.out(intArr3, "", Integer.valueOf(5), intArr3, Boolean.FALSE, null));
+    azzert.assertEquals(false, is.out(intArr3, "", fluent.ly.box.it(5), intArr3, Boolean.FALSE, null));
   }
 
   @Test public void outReturnsFalseForMissingItem() {
-    azzert.assertEquals(true, is.out("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.out(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null));
-    azzert.assertEquals(true, is.out(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.out("not the same", "", "some string", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.out(fluent.ly.box.it(10), "", fluent.ly.box.it(5), Boolean.FALSE, null));
+    azzert.assertEquals(true, is.out(Boolean.TRUE, "", fluent.ly.box.it(5), Boolean.FALSE, null));
     final int[] intArr1 = {}, intArr2 = {};
-    azzert.assertEquals(true, is.out(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null));
+    azzert.assertEquals(true, is.out(intArr1, "", fluent.ly.box.it(5), intArr2, Boolean.FALSE, null));
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
-    azzert.assertEquals(true, is.out(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null));
+    azzert.assertEquals(true, is.out(intArr3, "", fluent.ly.box.it(5), intArr4, Boolean.FALSE, null));
   }
 
   @Test public void emptyReturnsTrueForNull() {

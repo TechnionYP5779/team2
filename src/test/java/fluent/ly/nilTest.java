@@ -2,17 +2,17 @@ package fluent.ly;
 
 import org.junit.*;
 
-@SuppressWarnings("static-method") public class nilTest {
+@SuppressWarnings({"static-method","static-access" }) public class nilTest {
   @Test public void forgettingTest() {
-    Assert.assertNull(nil.forgetting(new Object()));
-    Assert.assertNull(nil.forgetting(new Object(), new Object()));
-    Assert.assertNull(nil.forgetting(new Object(), new Object(), new Object()));
+    azzert.assertNull(nil.forgetting(new Object()));
+    azzert.assertNull(nil.forgetting(new Object(), new Object()));
+    azzert.assertNull(nil.forgetting(new Object(), new Object(), new Object()));
   }
 
   @Test @SuppressWarnings("boxing") public void guardinglyTest() {
-    Assert.assertNull(nil.guardingly(λ -> λ).on(null));
-    Assert.assertEquals(Integer.valueOf(5), nil.guardingly(λ -> λ).on(5));
-    Assert.assertEquals(Integer.valueOf(25), nil.guardingly(λ -> (Integer) λ * (Integer) λ).on(5));
+    azzert.assertNull(nil.guardingly(λ -> λ).on(null));
+    azzert.assertEquals(fluent.ly.box.it(5), nil.guardingly(λ -> λ).on(5));
+    azzert.assertEquals(fluent.ly.box.it(25), nil.guardingly(λ -> fluent.ly.box.it((Integer) λ * (Integer) λ)).on(5));
   }
 
   @Test public void booleanIgnoringTest() {

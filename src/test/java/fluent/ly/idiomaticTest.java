@@ -16,15 +16,15 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testEval() {
-    azzert.assertEquals(true, idiomatic.eval(() -> Integer.valueOf(5)).get().equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.eval(() -> fluent.ly.box.it(5)).get().equals(fluent.ly.box.it(5)));
   }
 
   @Test public void testIncaseFalseReturnsNull() {
-    azzert.assertEquals(true, idiomatic.incase(false, Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.incase(false, fluent.ly.box.it(5)) == null);
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
-    azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(fluent.ly.box.it(5)));
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithException() {
@@ -56,15 +56,15 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testWhenFalseReturnsNull() {
-    azzert.assertEquals(true, idiomatic.when(1 == 3).eval(() -> Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.when(1 == 3).eval(() -> fluent.ly.box.it(5)) == null);
   }
 
   @Test @SuppressWarnings("null") public void testUnlessFalseReturnsSame() {
-    azzert.assertEquals(true, idiomatic.unless(1 == 3).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5)));
+    azzert.assertEquals(true, idiomatic.unless(1 == 3).eval(() -> fluent.ly.box.it(5)).equals(fluent.ly.box.it(5)));
   }
 
   @Test public void testUnlessTrueReturnsNull() {
-    azzert.assertEquals(true, idiomatic.unless(true).eval(() -> Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.unless(true).eval(() -> fluent.ly.box.it(5)) == null);
   }
 
   @Test public void testUnlessFalseWithoutEval() {
@@ -73,7 +73,7 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testUnlessTrueWithoutEval() {
-    azzert.assertEquals(true, idiomatic.unless(true, Integer.valueOf(5)) == null);
+    azzert.assertEquals(true, idiomatic.unless(true, fluent.ly.box.it(5)) == null);
   }
 
   class MyRunnable implements Runnable {
@@ -122,7 +122,7 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test @SuppressWarnings("null") public void testTriggerDefaultEval() {
-    azzert.assertEquals(true, new MyTrigger().eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
+    azzert.assertEquals(true, new MyTrigger().eval(fluent.ly.box.it(4)).equals(fluent.ly.box.it(4)));
   }
 
   @Test public void testTestUses() {
