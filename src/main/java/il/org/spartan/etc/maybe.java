@@ -1,9 +1,9 @@
 package il.org.spartan.etc;
 
+import static fluent.ly.azzert.*;
+
 import org.jetbrains.annotations.*;
 import org.junit.*;
-
-import fluent.ly.*;
 
 /** @author Yossi Gil <Yossi.Gil@GMail.COM>
  * @param <T> JD
@@ -53,11 +53,11 @@ public class maybe<@Nullable T> {
 
   @SuppressWarnings("static-method") public static class TEST {
     @Test public void usecase0() {
-      azzert.isNull(maybe.no().get());
+      isNull(maybe.no().get());
     }
 
     @Test public void usecase1() {
-      azzert.isNull(maybe.yes(null).get());
+      isNull(maybe.yes(null).get());
     }
 
     @Test public void usecase2() {

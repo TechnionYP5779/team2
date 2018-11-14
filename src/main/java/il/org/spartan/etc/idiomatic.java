@@ -175,11 +175,11 @@ public interface idiomatic {
 
   @SuppressWarnings("static-method") class TEST {
     @Test public void use0() {
-      azzert.assertNotEquals(new Storer<>(this) , null);
+      azzert.assertNotEquals(new Storer<>(this), null);
     }
 
     @Test public void use8() {
-      azzert.isNull(unless(true).eval(() -> new Object()));
+      isNull(unless(true).eval(() -> new Object()));
     }
 
     @Test public void use9() {
@@ -196,12 +196,12 @@ public interface idiomatic {
     }
 
     @Test public void use11() {
-      azzert.isNull(when(false).eval(() -> new Object()));
+      isNull(when(false).eval(() -> new Object()));
     }
 
     @Test public void use2() {
       assert take(this) != null;
-      azzert.isNull(take(this).when(false));
+      isNull(take(this).when(false));
     }
 
     @Test public void use3() {
@@ -209,7 +209,7 @@ public interface idiomatic {
     }
 
     @Test public void use4() {
-      azzert.isNull(take(this).when(false));
+      isNull(take(this).when(false));
     }
 
     @Test public void use5() {
@@ -217,13 +217,13 @@ public interface idiomatic {
     }
 
     @Test public void use6() {
-      azzert.isNull(take(this).unless(true));
+      isNull(take(this).unless(true));
     }
 
     @Test public void use7() {
-      azzert.isNull(take(this).unless(true));
-      azzert.isNull(take(null).unless(true));
-      azzert.isNull(take(null).unless(false));
+      isNull(take(this).unless(true));
+      isNull(take(null).unless(true));
+      isNull(take(null).unless(false));
     }
   }
 
