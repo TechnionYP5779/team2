@@ -2,7 +2,6 @@ package il.org.spartan.utils;
 
 import java.util.*;
 
-/** [[SuppressWarningsSpartan]] */
 public class Range {
   public int from;
   public int to;
@@ -12,12 +11,12 @@ public class Range {
     this.to = Integer.MAX_VALUE - 1;
   }
 
-  public Range from(int ¢) {
+  public Range from(final int ¢) {
     this.from = ¢;
     return this;
   }
 
-  public Range to(int ¢) {
+  public Range to(final int ¢) {
     this.to = ¢ - 1;
     return this;
   }
@@ -26,14 +25,14 @@ public class Range {
     return from == Integer.MIN_VALUE ? null : this.from;
   }
 
-  public boolean includes(int ¢) {
+  public boolean includes(final int ¢) {
     return ¢ >= this.from && ¢ <= this.to;
   }
 
   /** [[SuppressWarningsSpartan]] */
   public Iterator<Integer> numbers() {
-    int iteratorTo = this.to;
-    int iteratorFrom = this.from;
+    final int iteratorTo = this.to;
+    final int iteratorFrom = this.from;
     return new Iterator<Integer>() {
       int current = iteratorFrom;
 
@@ -47,9 +46,9 @@ public class Range {
     };
   }
 
-  @SuppressWarnings("hiding") public Range intersect(Range r) {
-    int from = Math.max(this.from, r.from);
-    int to = Math.min(this.to, r.to) + 1;
+  @SuppressWarnings("hiding") public Range intersect(final Range r) {
+    final int from = Math.max(this.from, r.from);
+    final int to = Math.min(this.to, r.to) + 1;
     return from >= to ? null : new Range().from(from).to(to);
   }
 }

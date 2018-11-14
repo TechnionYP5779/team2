@@ -1,6 +1,7 @@
 package il.org.spartan.utils;
 
 import fluent.ly.*;
+import il.org.spartan.etc.*;
 
 /** A poor man's approximation of a mutable int, which is so much more
  * convenient than {@link Integer}
@@ -10,7 +11,8 @@ public final class Int {
   public int inner;
 
   public Int() {
-    ___.______unused();
+    Object[] ____ = {};
+    forget.it(____);
   }
 
   public Int(final int inner) {

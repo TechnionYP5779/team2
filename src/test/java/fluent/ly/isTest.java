@@ -23,9 +23,9 @@ import org.junit.*;
     azzert.assertEquals(true, is.in("some string", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(true, is.in(Integer.valueOf(5), "", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(true, is.in(Boolean.FALSE, "", Integer.valueOf(5), Boolean.FALSE, null));
-    int[] intArr1 = {};
+    final int[] intArr1 = {};
     azzert.assertEquals(true, is.in(intArr1, "", Integer.valueOf(5), intArr1, Boolean.FALSE, null));
-    int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
+    final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     azzert.assertEquals(true, is.in(intArr3, "", Integer.valueOf(5), intArr3, Boolean.FALSE, null));
   }
 
@@ -33,9 +33,9 @@ import org.junit.*;
     azzert.assertEquals(false, is.in("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(false, is.in(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(false, is.in(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null));
-    int[] intArr1 = {}, intArr2 = {};
+    final int[] intArr1 = {}, intArr2 = {};
     azzert.assertEquals(false, is.in(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null));
-    int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
+    final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     azzert.assertEquals(false, is.in(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null));
   }
@@ -77,9 +77,9 @@ import org.junit.*;
     azzert.assertEquals(false, is.not.in("some string", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(false, is.not.in(Integer.valueOf(5), "", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(false, is.not.in(Boolean.FALSE, "", Integer.valueOf(5), Boolean.FALSE, null));
-    int[] intArr1 = {};
+    final int[] intArr1 = {};
     azzert.assertEquals(false, is.not.in(intArr1, "", Integer.valueOf(5), intArr1, Boolean.FALSE, null));
-    int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
+    final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     azzert.assertEquals(false, is.not.in(intArr3, "", Integer.valueOf(5), intArr3, Boolean.FALSE, null));
   }
 
@@ -87,9 +87,9 @@ import org.junit.*;
     azzert.assertEquals(true, is.not.in("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(true, is.not.in(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(true, is.not.in(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null));
-    int[] intArr1 = {}, intArr2 = {};
+    final int[] intArr1 = {}, intArr2 = {};
     azzert.assertEquals(true, is.not.in(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null));
-    int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
+    final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     azzert.assertEquals(true, is.not.in(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null));
   }
@@ -112,9 +112,9 @@ import org.junit.*;
     azzert.assertEquals(false, is.out("some string", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(false, is.out(Integer.valueOf(5), "", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(false, is.out(Boolean.FALSE, "", Integer.valueOf(5), Boolean.FALSE, null));
-    int[] intArr1 = {};
+    final int[] intArr1 = {};
     azzert.assertEquals(false, is.out(intArr1, "", Integer.valueOf(5), intArr1, Boolean.FALSE, null));
-    int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
+    final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     azzert.assertEquals(false, is.out(intArr3, "", Integer.valueOf(5), intArr3, Boolean.FALSE, null));
   }
 
@@ -122,9 +122,9 @@ import org.junit.*;
     azzert.assertEquals(true, is.out("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(true, is.out(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null));
     azzert.assertEquals(true, is.out(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null));
-    int[] intArr1 = {}, intArr2 = {};
+    final int[] intArr1 = {}, intArr2 = {};
     azzert.assertEquals(true, is.out(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null));
-    int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
+    final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     azzert.assertEquals(true, is.out(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null));
   }

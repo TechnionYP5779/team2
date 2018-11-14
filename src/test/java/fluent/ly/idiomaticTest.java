@@ -1,17 +1,17 @@
 package fluent.ly;
 
+import java.io.*;
+import java.util.function.*;
+
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import il.org.spartan.etc.*;
 import il.org.spartan.etc.idiomatic.*;
 
-import java.io.*;
-import java.util.function.*;
-
 @SuppressWarnings("static-method") public class idiomaticTest {
   @Test @SuppressWarnings("null") public void testIncaseTrueReturnSameObj() {
-    Integer integer = Integer.valueOf(5);
+    final Integer integer = Integer.valueOf(5);
     azzert.assertEquals(true, idiomatic.incase(true, integer).equals(integer));
   }
 
@@ -68,7 +68,7 @@ import java.util.function.*;
   }
 
   @Test public void testUnlessFalseWithoutEval() {
-    Integer i = Integer.valueOf(5);
+    final Integer i = Integer.valueOf(5);
     azzert.assertEquals(true, idiomatic.unless(false, i) == i);
   }
 
@@ -90,16 +90,16 @@ import java.util.function.*;
   }
 
   @Test public void testRunnerRun() {
-    MyRunnable r = new MyRunnable();
-    Runner runner = idiomatic.run(r);
+    final MyRunnable r = new MyRunnable();
+    final Runner runner = idiomatic.run(r);
     azzert.assertEquals(false, r.didRun());
     runner.run();
     azzert.assertEquals(true, r.didRun());
   }
 
   @Test public void testRunnerWhen() {
-    MyRunnable r = new MyRunnable();
-    Runner runner = idiomatic.run(r);
+    final MyRunnable r = new MyRunnable();
+    final Runner runner = idiomatic.run(r);
     runner.when(false);
     azzert.assertEquals(false, r.didRun());
     runner.when(true);
@@ -107,8 +107,8 @@ import java.util.function.*;
   }
 
   @Test public void testRunnerUnless() {
-    MyRunnable r = new MyRunnable();
-    Runner runner = idiomatic.run(r);
+    final MyRunnable r = new MyRunnable();
+    final Runner runner = idiomatic.run(r);
     runner.unless(true);
     azzert.assertEquals(false, r.didRun());
     runner.unless(false);
@@ -116,17 +116,17 @@ import java.util.function.*;
   }
 
   class MyTrigger implements Trigger {
-    @Override @SuppressWarnings("null") public <T> @Nullable T eval(Supplier<@Nullable T> ¢) {
+    @Override @SuppressWarnings("null") public <T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
       return ¢.get();
     }
   }
 
   @Test @SuppressWarnings("null") public void testTriggerDefaultEval() {
-    azzert.assertEquals(true, (new MyTrigger()).eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
+    azzert.assertEquals(true, new MyTrigger().eval(Integer.valueOf(4)).equals(Integer.valueOf(4)));
   }
 
   @Test public void testTestUses() {
-    idiomatic.TEST testClass = new idiomatic.TEST();
+    final idiomatic.TEST testClass = new idiomatic.TEST();
     testClass.use0();
     testClass.use1();
     testClass.use2();

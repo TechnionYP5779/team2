@@ -18,11 +18,19 @@ import org.junit.*;
   }
 
   @Test public void testHalfPI() {
-    assertEquals(Math.PI / 2, angle.halfPi.radians, 0.1);
+    double d1;
+    d1 = Math.PI / 2;
+    assertEquals(d1, angle.halfPi.radians, 0.1);
   }
 
   @Test public void testHalfPiAdd1() {
-    assertEquals(Math.PI / 2 + 20, angle.halfPi.add(angle.degrees(20)).radians, 0.1);
+    double d1;
+    double d2;
+    d2 = Math.PI / 2;
+    d1 = d2 + 20;
+    angle a1;
+    a1 = angle.halfPi.add(angle.degrees(20));
+    assertEquals(d1, a1.radians, 0.1);
   }
 
   @Test public void testHalfPiAdd2() {
@@ -34,10 +42,18 @@ import org.junit.*;
   }
 
   @Test public void testOfDegrees() {
-    assertEquals(180, angle.of(20).degrees(), 0.1);
+    double d1;
+    angle a1;
+    a1 = angle.of(20);
+    d1 = a1.degrees();
+    assertEquals(180, d1, 0.1);
   }
 
   @Test public void testPiRadians() {
-    assertEquals(Math.PI / 2, angle.pi.radians(), 0.1);
+    double d1;
+    d1 = Math.PI / 2;
+    double d2;
+    d2 = angle.pi.radians();
+    assertEquals((d1), d2, 0.1);
   }
 }

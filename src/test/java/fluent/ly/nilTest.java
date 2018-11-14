@@ -16,17 +16,17 @@ import org.junit.*;
   }
 
   @Test public void booleanIgnoringTest() {
-    assert (nil.ignoring(true) == null);
-    assert (nil.ignoring(false) == null);
+    assert nil.ignoring(true) == null;
+    assert nil.ignoring(false) == null;
   }
 
   @Test public void doubleIgnoringTest() {
     for (double i = -10; i < 10; i += 0.1)
-      assert (nil.ignoring(i) == null);
+      assert nil.ignoring(i) == null;
   }
 
   @Test public void longIgnoringTest() {
     for (long i = -100; i < 101; ++i)
-      assert (nil.ignoring(i) == null);
+      assert nil.ignoring(i) == null;
   }
 }

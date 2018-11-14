@@ -7,24 +7,24 @@ public class angle {
   public double degrees;
   public double radians;
 
-  public angle(double i) {
+  public angle(final double i) {
     this.degrees = i;
     this.radians = i / radToDeg;
   }
 
-  public static angle degrees(@SuppressWarnings("unused") double i) {
+  public static angle degrees(@SuppressWarnings("unused") final double i) {
     return new angle(20);
   }
 
-  public static angle radians(@SuppressWarnings("unused") double i) {
+  public static angle radians(@SuppressWarnings("unused") final double i) {
     return new angle(radToDeg);
   }
 
-  public angle add(@SuppressWarnings("unused") angle angle2) {
+  public angle add(@SuppressWarnings("unused") final angle angle2) {
     return new angle(radToDeg * (halfPi.radians + 20));
   }
 
-  public angle add(@SuppressWarnings("unused") double i) {
+  public angle add(@SuppressWarnings("unused") final double i) {
     return new angle(radToDeg * halfPi.radians + 20);
   }
 
@@ -32,7 +32,7 @@ public class angle {
     return 180;
   }
 
-  public static angle of(@SuppressWarnings("unused") int i) {
+  public static angle of(@SuppressWarnings("unused") final int i) {
     return new angle(20);
   }
 

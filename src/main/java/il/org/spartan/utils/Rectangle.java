@@ -3,9 +3,9 @@ package il.org.spartan.utils;
 public class Rectangle {
   double width, height;
 
-  public Rectangle(double x1, double y1, double x2, double y2) throws Exception {
+  public Rectangle(final double x1, final double y1, final double x2, final double y2) throws IllegalArgumentException {
     if (x1 == x2 || y1 == y2)
-      throw new Exception();
+      throw new IllegalArgumentException();
     width = Math.abs(x1 - x2);
     height = Math.abs(y1 - y2);
   }
@@ -26,13 +26,13 @@ public class Rectangle {
     return width;
   }
 
-  public void expand(int ¢) {
+  public void expand(final int ¢) {
     height *= Math.sqrt(¢);
     width *= Math.sqrt(¢);
   }
 
   public void rotate() {
-    double tmp = height;
+    final double tmp = height;
     height = width;
     width = tmp;
   }

@@ -3,6 +3,7 @@ package il.org.spartan;
 import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
+
 import java.io.*;
 import java.util.*;
 import java.util.function.*;
@@ -549,7 +550,7 @@ import il.org.spartan.etc.*;
     }
   }
 
-  static int hash(Object ¢) {
+  static int hash(final Object ¢) {
     return ¢ == null ? 0 : ¢.hashCode();
   }
 }

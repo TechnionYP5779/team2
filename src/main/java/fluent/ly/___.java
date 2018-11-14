@@ -33,15 +33,6 @@ import il.org.spartan.etc.*;
     forget.all(os);
   }
 
-  /** A do nothing method to document the fact that some <code>Object</code>(s)
-   * parameter(s) (or local variable(s)) are not used by a function. Calling this
-   * method saves the caller the trouble of suppressing a "variable unused"
-   * warnings on the argument(s).
-   * @param ____ the unused parameters */
-  public static void ______unused(final Object... ____) {
-    unused(____);
-  }
-
   /** Exercise the {@link Invariantable#check()}
    * @param v a Invariantable object whose invariant should be checked */
   public static void check(final ___.Invariantable ¢) {
