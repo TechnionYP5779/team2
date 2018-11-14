@@ -42,21 +42,6 @@ public class asTest {
     azzert.assertEquals(lst2.get(5), 6);
     azzert.assertEquals(as.ingeterList().isEmpty(), true);
     
-    /*
-    //list:
-    List<Integer> lst4 = as.list(-1, -2, -3);
-    azzert.assertEquals(lst4.get(0), -1);
-    azzert.assertEquals(lst4.get(1), -2);
-    azzert.assertEquals(lst4.get(2), -3);
-    List<Integer> lst5 = as.list(1, 2, 3, 4, 5, 6);
-    azzert.assertEquals(lst5.get(0), 1);
-    azzert.assertEquals(lst5.get(1), 2);
-    azzert.assertEquals(lst5.get(2), 3);
-    azzert.assertEquals(lst5.get(3), 4);
-    azzert.assertEquals(lst5.get(4), 5);
-    azzert.assertEquals(lst5.get(5), 6);
-    */
-    
     //list-generic:
     List<String> lst6 = as.list("a", "abc", "test");
     azzert.assertEquals("a".equals(lst6.get(0)), true);
@@ -91,16 +76,6 @@ public class asTest {
     int[] array2 = as.intArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     for(int ¢ = 0; ¢ < 10; ++¢)
       azzert.assertEquals(array2[¢], ¢ + 1);
-    
-    /*
-    @SuppressWarnings("null") int[] array3 = as.intArray(as.list(1, 2, 3, 4, 5, 6, 7));
-    for(int ¢ = 0; ¢ < 7; ++¢)
-      azzert.assertEquals(array3[¢], ¢ + 1);
-    
-    @SuppressWarnings("null") int[] array4 = as.intArray(as.list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
-    for(int ¢ = 0; ¢ < 11; ++¢)
-      azzert.assertEquals(array4[¢], ¢ + 1);
-    */
   }
   
   
