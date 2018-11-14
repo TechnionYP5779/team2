@@ -4,7 +4,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings("static-method") public class IntTest {
+@SuppressWarnings({"static-method", "static-access"}) public class IntTest {
   @Test public void creation() {
     final int max = Integer.MAX_VALUE, min = Integer.MIN_VALUE;
     azzert.assertEquals(new Int().get(), 0);
@@ -13,19 +13,19 @@ import fluent.ly.*;
     azzert.assertEquals(new Int(min - 1).get(), Integer.MAX_VALUE);
   }
 
-  @Test @SuppressWarnings("static-access") public void innerValue() {
+  @Test  public void innerValue() {
     final Int v_default = new Int();
     azzert.assertEquals(v_default.get(), 0);
-    Assert.assertEquals(v_default.inner(), Integer.valueOf(0));
-    Assert.assertEquals(Integer.valueOf(v_default.get()), v_default.inner());
+    azzert.assertEquals(v_default.inner(), Integer.valueOf(0));
+    azzert.assertEquals(Integer.valueOf(v_default.get()), v_default.inner());
     final Int max = new Int(Integer.MAX_VALUE);
     azzert.assertEquals(max.get(), Integer.MAX_VALUE);
-    Assert.assertEquals(max.inner(), Integer.valueOf(Integer.MAX_VALUE));
-    Assert.assertEquals(Integer.valueOf(max.get()), max.inner());
+    azzert.assertEquals(max.inner(), Integer.valueOf(Integer.MAX_VALUE));
+    azzert.assertEquals(Integer.valueOf(max.get()), max.inner());
     final Int min = new Int(Integer.MIN_VALUE);
     azzert.assertEquals(min.get(), Integer.MIN_VALUE);
-    Assert.assertEquals(min.inner(), Integer.valueOf(Integer.MIN_VALUE));
-    Assert.assertEquals(Integer.valueOf(min.get()), min.inner());
+    azzert.assertEquals(min.inner(), Integer.valueOf(Integer.MIN_VALUE));
+    azzert.assertEquals(Integer.valueOf(min.get()), min.inner());
   }
 
   @Test public void valueChanges() {
@@ -79,21 +79,21 @@ import fluent.ly.*;
     azzert.assertEquals(max.get(), 8);
   }
 
-  @Test @SuppressWarnings("static-access") public void toStringCheck() {
+  @Test  public void toStringCheck() {
     final Int v = new Int(), max = new Int(Integer.MAX_VALUE), min = new Int(Integer.MIN_VALUE);
     final int val = 546116854;
-    Assert.assertEquals(v + "", "0");
-    Assert.assertEquals(max + "", Integer.MAX_VALUE + "");
-    Assert.assertEquals(min + "", Integer.MIN_VALUE + "");
+    azzert.assertEquals(v + "", "0");
+    azzert.assertEquals(max + "", Integer.MAX_VALUE + "");
+    azzert.assertEquals(min + "", Integer.MIN_VALUE + "");
     v.set(val);
-    Assert.assertEquals(v + "", val + "");
+    azzert.assertEquals(v + "", val + "");
     v.step();
     v.add(-5);
-    Assert.assertEquals(v + "", "546116850");
+    azzert.assertEquals(v + "", "546116850");
     v.clear();
-    Assert.assertEquals(v + "", "0");
+    azzert.assertEquals(v + "", "0");
     v.step();
     v.add(99);
-    Assert.assertEquals(v + "", "100");
+    azzert.assertEquals(v + "", "100");
   }
 }
