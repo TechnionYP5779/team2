@@ -1,60 +1,60 @@
 package il.org.spartan.utils;
 
+import static org.junit.Assert.*;
+
 import org.junit.*;
 
-import fluent.ly.*;
-
-@SuppressWarnings({ "static-method", "static-access" }) public class TruthTest {
+@SuppressWarnings({ "static-method" }) public class TruthTest {
   /**
    *
    */
   @Test public void truthOfTest() {
     Truth t = Truth.truthOf(() -> true);
-    azzert.assertEquals(t, Truth.T);
+    assertEquals(t, Truth.T);
     t = Truth.truthOf(() -> false);
-    azzert.assertEquals(t, Truth.F);
+    assertEquals(t, Truth.F);
     t = Truth.truthOf(null);
-    azzert.assertEquals(t, Truth.N);
+    assertEquals(t, Truth.N);
     t = Truth.truthOf(() -> {
       assert false;
       return false;
     });
-    azzert.assertEquals(t, Truth.X);
+    assertEquals(t, Truth.X);
     t = Truth.truthOf(() -> 1 / 0 == 1);
-    azzert.assertEquals(t, Truth.R);
+    assertEquals(t, Truth.R);
     t = Truth.truthOf(() -> {
       throw new ExceptionInInitializerError();
     });
-    azzert.assertEquals(t, Truth.Ħ);
+    assertEquals(t, Truth.Ħ);
   }
 
   @Test public void notTest() {
     Truth t = Truth.truthOf(() -> true);
-    azzert.assertEquals(t.not(), Truth.F);
+    assertEquals(t.not(), Truth.F);
     t = Truth.truthOf(() -> false);
-    azzert.assertEquals(t.not(), Truth.T);
+    assertEquals(t.not(), Truth.T);
     t = Truth.truthOf(() -> {
       throw new ExceptionInInitializerError();
     });
-    azzert.assertEquals(t.not(), Truth.Ħ);
+    assertEquals(t.not(), Truth.Ħ);
   }
 
   @Test public void orTest() {
     Truth t = Truth.truthOf(() -> true);
-    azzert.assertEquals(t.or(Truth.F), Truth.T);
-    azzert.assertEquals(t.or(Truth.T), Truth.T);
+    assertEquals(t.or(Truth.F), Truth.T);
+    assertEquals(t.or(Truth.T), Truth.T);
     t = Truth.truthOf(() -> false);
-    azzert.assertEquals(t.or(Truth.T), Truth.T);
-    azzert.assertEquals(t.or(Truth.F), Truth.F);
+    assertEquals(t.or(Truth.T), Truth.T);
+    assertEquals(t.or(Truth.F), Truth.F);
   }
 
   @Test public void andTest() {
     Truth t = Truth.truthOf(() -> true);
-    azzert.assertEquals(t.and(Truth.F), Truth.F);
-    azzert.assertEquals(t.and(Truth.T), Truth.T);
+    assertEquals(t.and(Truth.F), Truth.F);
+    assertEquals(t.and(Truth.T), Truth.T);
     t = Truth.truthOf(() -> false);
-    azzert.assertEquals(t.and(Truth.T), Truth.F);
-    azzert.assertEquals(t.and(Truth.F), Truth.F);
+    assertEquals(t.and(Truth.T), Truth.F);
+    assertEquals(t.and(Truth.F), Truth.F);
   }
 
   @Test public void letterOfTest() {
@@ -63,10 +63,10 @@ import fluent.ly.*;
 
   @Test public void toStringTest() {
     Truth t = Truth.truthOf(() -> true);
-    azzert.assertEquals("true", t + "");
+    assertEquals("true", t + "");
     t = Truth.truthOf(() -> false);
-    azzert.assertEquals("false", t + "");
+    assertEquals("false", t + "");
     t = Truth.truthOf(null);
-    azzert.assertEquals("Null pointer exception", t + "");
+    assertEquals("Null pointer exception", t + "");
   }
 }

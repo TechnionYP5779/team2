@@ -7,32 +7,32 @@ public class Range {
   public int to;
 
   public Range() {
-    this.from = Integer.MIN_VALUE;
-    this.to = Integer.MAX_VALUE - 1;
+    from = Integer.MIN_VALUE;
+    to = Integer.MAX_VALUE - 1;
   }
 
   public Range from(final int ¢) {
-    this.from = ¢;
+    from = ¢;
     return this;
   }
 
   public Range to(final int ¢) {
-    this.to = ¢ - 1;
+    to = ¢ - 1;
     return this;
   }
 
   @SuppressWarnings("boxing") public Integer from() {
-    return from == Integer.MIN_VALUE ? null : this.from;
+    return from == Integer.MIN_VALUE ? null : from;
   }
 
   public boolean includes(final int ¢) {
-    return ¢ >= this.from && ¢ <= this.to;
+    return ¢ >= from && ¢ <= to;
   }
 
   /** [[SuppressWarningsSpartan]] */
   public Iterator<Integer> numbers() {
-    final int iteratorTo = this.to;
-    final int iteratorFrom = this.from;
+    final int iteratorTo = to;
+    final int iteratorFrom = from;
     return new Iterator<Integer>() {
       int current = iteratorFrom;
 

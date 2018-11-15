@@ -1,18 +1,22 @@
 package fluent.ly;
 
+import static org.junit.Assert.assertEquals;
+
+import static fluent.ly.azzert.assertNull;
+
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "static-access" }) public class nilTest {
+@SuppressWarnings({ "static-method" }) public class nilTest {
   @Test public void forgettingTest() {
-    azzert.assertNull(nil.forgetting(new Object()));
-    azzert.assertNull(nil.forgetting(new Object(), new Object()));
-    azzert.assertNull(nil.forgetting(new Object(), new Object(), new Object()));
+    assertNull(nil.forgetting(new Object()));
+    assertNull(nil.forgetting(new Object(), new Object()));
+    assertNull(nil.forgetting(new Object(), new Object(), new Object()));
   }
 
   @Test @SuppressWarnings("boxing") public void guardinglyTest() {
-    azzert.assertNull(nil.guardingly(λ -> λ).on(null));
-    azzert.assertEquals(fluent.ly.box.it(5), nil.guardingly(λ -> λ).on(5));
-    azzert.assertEquals(fluent.ly.box.it(25), nil.guardingly(λ -> fluent.ly.box.it((Integer) λ * (Integer) λ)).on(5));
+    assertNull(nil.guardingly(λ -> λ).on(null));
+    assertEquals(fluent.ly.box.it(5), nil.guardingly(λ -> λ).on(5));
+    assertEquals(fluent.ly.box.it(25), nil.guardingly(λ -> fluent.ly.box.it((Integer) λ * (Integer) λ)).on(5));
   }
 
   @Test public void booleanIgnoringTest() {

@@ -244,7 +244,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return {@link StringBuilder} parameter with the <code><b>char</b></code>
    *         parameter prepended to it */
   static StringBuilder prepend(final @NotNull StringBuilder $, final char c) {
-    @NotNull StringBuilder b1 = cantBeNull($.insert(0, c));
+    @NotNull final StringBuilder b1 = cantBeNull($.insert(0, c));
     return b1;
   }
 
@@ -254,7 +254,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
    * @return {@link StringBuilder} parameter with the {@link String} parameter
    *         prepended to it */
   static StringBuilder prepend(final @NotNull StringBuilder $, final @NotNull String s) {
-    @NotNull StringBuilder b1 = cantBeNull($.insert(0, s));
+    @NotNull final StringBuilder b1 = cantBeNull($.insert(0, s));
     return b1;
   }
 
@@ -445,7 +445,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
       }
     }
   }
-
 
   static int hash(final Object param) {
     return param == null ? 0 : param.hashCode();

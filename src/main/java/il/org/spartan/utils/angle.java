@@ -8,8 +8,8 @@ public class angle {
   public double radians;
 
   public angle(final double i) {
-    this.degrees = i;
-    this.radians = i / radToDeg;
+    degrees = i;
+    radians = i / radToDeg;
   }
 
   public static angle degrees(final double i) {

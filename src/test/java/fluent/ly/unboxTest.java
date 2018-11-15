@@ -1,59 +1,63 @@
 package fluent.ly;
 
+import static org.junit.Assert.assertEquals;
+
+import static fluent.ly.azzert.assertEquals;
+
 import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "static-access" }) public class unboxTest {
+@SuppressWarnings({ "static-method" }) public class unboxTest {
   @Test @SuppressWarnings("null") public void itIntTest() {
     for (int ¢ = -100; ¢ < 100; ++¢)
-      azzert.assertEquals(unbox.it(Integer.valueOf(¢)), ¢);
+      assertEquals(unbox.it(Integer.valueOf(¢)), ¢);
   }
 
   @Test @SuppressWarnings("null") public void unboxBoolTest() {
-    azzert.assertEquals(unbox.unbox(Boolean.TRUE), true);
-    azzert.assertEquals(unbox.unbox(Boolean.FALSE), false);
+    assertEquals(unbox.unbox(Boolean.TRUE), true);
+    assertEquals(unbox.unbox(Boolean.FALSE), false);
   }
 
   @Test public void unboxBoolArrayTest() {
     @SuppressWarnings("null") final boolean newArr[] = unbox
         .unbox(new Boolean[] { Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE });
     for (int ¢ = 0; ¢ < 5; ++¢)
-      assert (newArr[¢]);
+      assert newArr[¢];
   }
 
   @Test @SuppressWarnings("null") public void unboxByteTest() {
     for (byte i = -100; i < 100; ++i)
-      azzert.assertEquals(unbox.unbox(Byte.valueOf(i)), i);
+      assertEquals(unbox.unbox(Byte.valueOf(i)), i);
   }
 
   @Test public void unboxByteArrayTest() {
     @SuppressWarnings({ "null", "boxing" }) final byte newArr[] = unbox.unbox(new Byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(¢ + 1, newArr[¢]);
+      assertEquals(¢ + 1, newArr[¢]);
   }
 
   @Test @SuppressWarnings("null") public void unboxCharTest() {
     for (char i = 0; i < 128; ++i)
-      azzert.assertEquals(unbox.unbox(Character.valueOf(i)), i);
+      assertEquals(unbox.unbox(Character.valueOf(i)), i);
   }
 
   @Test public void unboxCharArrayTest() {
     @SuppressWarnings({ "null", "boxing" }) final char newArr[] = unbox.unbox(new Character[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(¢ + 1, newArr[¢]);
+      assertEquals(¢ + 1, newArr[¢]);
   }
 
   @Test public void unboxShortCollectionTest() {
     @SuppressWarnings({ "null", "boxing" }) final short newArr[] = unbox.unbox(Arrays.asList((short) 1, (short) 2, (short) 3, (short) 4, (short) 5));
     for (int ¢ = 0; ¢ < 5; ++¢)
-      azzert.assertEquals(¢ + 1, newArr[¢]);
+      assertEquals(¢ + 1, newArr[¢]);
   }
 
   @Test public void itIntCollectionTest() {
     @SuppressWarnings({ "null", "boxing" }) final int newArr[] = unbox.it(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(¢, newArr[¢]);
+      assertEquals(¢, newArr[¢]);
   }
 
   @Test @SuppressWarnings("null") public void unboxDoubleTest() {
@@ -92,41 +96,41 @@ import org.junit.*;
 
   @Test @SuppressWarnings("null") public void unboxIntTest() {
     for (int ¢ = -10; ¢ < 10; ++¢)
-      azzert.assertEquals(unbox.unbox(Integer.valueOf(¢)), ¢);
+      assertEquals(unbox.unbox(Integer.valueOf(¢)), ¢);
   }
 
   @Test public void unboxIntArrayTest() {
     @SuppressWarnings({ "boxing", "null" }) final int newArr[] = unbox.unbox(new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(¢, newArr[¢]);
+      assertEquals(¢, newArr[¢]);
   }
 
   @Test public void itIntArrayTest() {
     @SuppressWarnings({ "boxing", "null" }) final int newArr[] = unbox.it(new Integer[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(¢, newArr[¢]);
+      assertEquals(¢, newArr[¢]);
   }
 
   @Test @SuppressWarnings("null") public void unboxLongTest() {
     for (long ¢ = -10; ¢ < 10; ++¢)
-      azzert.assertEquals(unbox.unbox(Long.valueOf(¢)), ¢);
+      assertEquals(unbox.unbox(Long.valueOf(¢)), ¢);
   }
 
   @Test public void unboxLongArrayTest() {
     @SuppressWarnings({ "boxing", "null" }) final long newArr[] = unbox.unbox(new Long[] { 0l, 1l, 2l, 3l, 4l, 5l, 6l, 7l, 8l, 9l });
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(¢, newArr[¢]);
+      assertEquals(¢, newArr[¢]);
   }
 
   @Test @SuppressWarnings("null") public void unboxShortTest() {
     for (short ¢ = -10; ¢ < 10; ++¢)
-      azzert.assertEquals(unbox.unbox(Short.valueOf(¢)), ¢);
+      assertEquals(unbox.unbox(Short.valueOf(¢)), ¢);
   }
 
   @Test public void unboxShortArrayTest() {
     @SuppressWarnings({ "boxing", "null" }) final short newArr[] = unbox
         .unbox(new Short[] { (short) 0, (short) 1, (short) 2, (short) 3, (short) 4, (short) 5 });
     for (int ¢ = 0; ¢ < 6; ++¢)
-      azzert.assertEquals(¢, newArr[¢]);
+      assertEquals(¢, newArr[¢]);
   }
 }

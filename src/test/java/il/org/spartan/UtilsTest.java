@@ -1,9 +1,11 @@
 package il.org.spartan;
 
-import static fluent.ly.azzert.*;
-import static fluent.ly.box.*;
 import static il.org.spartan.Utils.*;
 import static org.junit.Assert.*;
+
+import static fluent.ly.azzert.*;
+import static fluent.ly.azzert.assertNotEquals;
+import static fluent.ly.box.*;
 
 import java.io.*;
 import java.util.*;
@@ -17,15 +19,15 @@ import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class UtilsTest {
   @Test public void addIterableWithoutNulls() {
-    Collection<Integer> c = new ArrayList<>();
-    @NotNull Collection<Integer> i = cantBeNull(Arrays.asList(box(new int[] { 1, 2, 3, 4, 5, 6, 7 })));
+    final Collection<Integer> c = new ArrayList<>();
+    @NotNull final Collection<Integer> i = cantBeNull(Arrays.asList(box(new int[] { 1, 2, 3, 4, 5, 6, 7 })));
     assertNotEquals(c, i);
     assert add(c, i) == c;
     assertCollectionsEqual(c, i);
   }
 
   @Test public void addIterableWithNulls() {
-    Collection<Integer> c = new LinkedList<>(), i = new LinkedList<>();
+    final Collection<Integer> c = new LinkedList<>(), i = new LinkedList<>();
     i.add(null);
     i.add(box(1));
     assertNotEquals(c, i);
@@ -35,16 +37,16 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void addArrayWithoutNulls() {
-    Collection<Integer> c = new ArrayList<>();
-    Integer[] a = box(new int[] { 1, 2, 3, 4, 5, 6, 7 });
+    final Collection<Integer> c = new ArrayList<>();
+    final Integer[] a = box(new int[] { 1, 2, 3, 4, 5, 6, 7 });
     assertNotEquals(c, Arrays.asList(a));
     assert add(c, cantBeNull(a)) == c;
     assertCollectionsEqual(c, cantBeNull(Arrays.asList(a)));
   }
 
   @Test @SuppressWarnings("null") public void addArrayWithNulls() {
-    Collection<Integer> c = cantBeNull(new ArrayList<>());
-    Integer[] a = box(new int[] { 1, 2 });
+    final Collection<Integer> c = cantBeNull(new ArrayList<>());
+    final Integer[] a = box(new int[] { 1, 2 });
     a[1] = null;
     azzert.assertNotEquals(c, Arrays.asList(a));
     assert add(c, a) == c;
@@ -52,7 +54,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void addAllCollectionWithoutNulls() {
-    Collection<Integer> c = new ArrayList<>(), c1 = Arrays.asList(box(new int[] { 1 })), c2 = Arrays.asList(box(new int[] { 2 })),
+    final Collection<Integer> c = new ArrayList<>(), c1 = Arrays.asList(box(new int[] { 1 })), c2 = Arrays.asList(box(new int[] { 2 })),
         c12 = cantBeNull(Arrays.asList(box(new int[] { 1, 2 })));
     assertNotEquals(c, c12);
     assert addAll(c, c1, c2) == c;
@@ -60,7 +62,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void addAllCollectionWithNulls() {
-    Collection<Integer> c = new ArrayList<>(), c1 = Arrays.asList(box(new int[] { 1 })), c2 = Arrays.asList(box(new int[] { 2 })),
+    final Collection<Integer> c = new ArrayList<>(), c1 = Arrays.asList(box(new int[] { 1 })), c2 = Arrays.asList(box(new int[] { 2 })),
         c12 = cantBeNull(Arrays.asList(box(new int[] { 1, 2 })));
     assertNotEquals(c, c12);
     assert addAll(c, c1, null, c2) == c;
@@ -68,35 +70,35 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void addAllIterableWithoutNulls() {
-    Collection<Integer> c = new ArrayList<>();
-    Iterable<Integer> i1 = Arrays.asList(box(new int[] { 1 })), i2 = Arrays.asList(box(new int[] { 2 }));
-    Collection<Integer> c12 = cantBeNull(Arrays.asList(box(new int[] { 1, 2 })));
+    final Collection<Integer> c = new ArrayList<>();
+    final Iterable<Integer> i1 = Arrays.asList(box(new int[] { 1 })), i2 = Arrays.asList(box(new int[] { 2 }));
+    final Collection<Integer> c12 = cantBeNull(Arrays.asList(box(new int[] { 1, 2 })));
     assertNotEquals(c, c12);
     assert addAll(c, i1, i2) == c;
     assertCollectionsEqual(c, c12);
   }
 
   @Test public void addAllIterableWithNulls() {
-    Collection<Integer> c = new ArrayList<>();
-    Iterable<Integer> i1 = Arrays.asList(box(new int[] { 1 })), i2 = Arrays.asList(box(new int[] { 2 }));
-    Collection<Integer> c12 = cantBeNull(Arrays.asList(box(new int[] { 1, 2 })));
+    final Collection<Integer> c = new ArrayList<>();
+    final Iterable<Integer> i1 = Arrays.asList(box(new int[] { 1 })), i2 = Arrays.asList(box(new int[] { 2 }));
+    final Collection<Integer> c12 = cantBeNull(Arrays.asList(box(new int[] { 1, 2 })));
     assertNotEquals(c, c12);
     assert addAll(c, i1, null, i2) == c;
     assertCollectionsEqual(c, c12);
   }
 
   @Test public void addAllArrayWithoutNulls() {
-    Collection<Integer> c = new ArrayList<>();
-    Integer[] a = box(new int[] { 1 });
+    final Collection<Integer> c = new ArrayList<>();
+    final Integer[] a = box(new int[] { 1 });
     assertNotEquals(c, Arrays.asList(a));
     assert addAll(c, a) == c;
     assertCollectionsEqual(c, cantBeNull(Arrays.asList(a)));
   }
 
   @Test public void addAllArrayWithNulls() {
-    Collection<Integer> c = new ArrayList<>();
-    Integer[] a = new Integer[] { box(1), null };
-    Collection<Integer> c1 = cantBeNull(Arrays.asList(box(new int[] { 1 })));
+    final Collection<Integer> c = new ArrayList<>();
+    final Integer[] a = new Integer[] { box(1), null };
+    final Collection<Integer> c1 = cantBeNull(Arrays.asList(box(new int[] { 1 })));
     assertNotEquals(c, c1);
     assert addAll(c, a) == c;
     assertCollectionsEqual(c, c1);
@@ -107,7 +109,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test @SuppressWarnings("null") public void applyTest() {
-    azzert.that(apply((Integer i) -> i).to(new Integer[] { box(1), null, box(2) }), is(Arrays.asList(box(1), box(2))));
+    azzert.that(apply((final Integer i) -> i).to(new Integer[] { box(1), null, box(2) }), is(Arrays.asList(box(1), box(2))));
   }
 
   @Test public void canBeNullTest() {
@@ -150,14 +152,14 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void foundInt() {
-    FoundHandleForInt h = found(5);
+    final FoundHandleForInt h = found(5);
     assert !h.in();
     assert !h.in(1, 2, 3, 4, 6);
     assert h.in(1, 2, 3, 4, 5, 6);
   }
 
   @Test @SuppressWarnings("null") public void foundT() {
-    FoundHandleForT<Integer> h = found(box(5));
+    final FoundHandleForT<Integer> h = found(box(5));
     assert !h.in();
     assert !h.in(new Integer[] { box(1), null, box(2) });
     assert !h.in(box(new int[] { 1, 2, 3, 4, 6 }));
@@ -173,7 +175,7 @@ import il.org.spartan.etc.*;
 
   @Test @SuppressWarnings("null") public void inTest() {
     assert !in((Object) null);
-    Object[] a = new Object[] { box(1), box(true), null };
+    final Object[] a = new Object[] { box(1), box(true), null };
     assert !in((Object) null, a);
     assert !in(box(false), a);
     assert in(box(true), a);
@@ -203,7 +205,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void nameWithNull() {
-    File f = new File("someFile");
+    final File f = new File("someFile");
     assert "someFile".equals(name(f));
     f.delete();
   }
@@ -235,7 +237,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void removeDuplicatesTest() {
-    List<Integer> l = new LinkedList<>(Arrays.asList(box(new int[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 })));
+    final List<Integer> l = new LinkedList<>(Arrays.asList(box(new int[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 })));
     removeDuplicates(l);
     assert l.equals(new LinkedList<>(Arrays.asList(box(new int[] { 1, 2, 3 }))));
   }
@@ -253,7 +255,7 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void sortTest() throws Exception {
-    int[] a = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+    final int[] a = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
     assert a == sort(a);
     azzert.that(a, is(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }));
   }
@@ -266,33 +268,33 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void suffixedByFileIterable() throws Exception {
-    File f = new File("someFile.som");
+    final File f = new File("someFile.som");
     assert !suffixedBy(f, Arrays.asList(new String[] { ".txt", ".mov", ".docx" }));
     assert suffixedBy(f, Arrays.asList(new String[] { ".txt", ".mov", ".som", ".docx" }));
     f.delete();
   }
 
   @SuppressWarnings("null") @Test public void suffixedByFileArray() throws Exception {
-    File f = new File("someFile.som");
+    final File f = new File("someFile.som");
     assert !suffixedBy(f, new String[] { ".txt", ".mov", ".docx" });
     assert suffixedBy(f, new String[] { ".txt", ".mov", ".som", ".docx" });
     f.delete();
   }
 
   @SuppressWarnings("null") @Test public void suffixedByArray() throws Exception {
-    String s = "someFile.som";
+    final String s = "someFile.som";
     assert !suffixedBy(s, new String[] { ".txt", ".mov", ".docx" });
     assert suffixedBy(s, new String[] { ".txt", ".mov", ".som", ".docx" });
   }
 
   @Test public void suffixedByIterable() throws Exception {
-    String s = "someFile.som";
+    final String s = "someFile.som";
     assert !suffixedBy(s, Arrays.asList(new String[] { ".txt", ".mov", ".docx" }));
     assert suffixedBy(s, Arrays.asList(new String[] { ".txt", ".mov", ".som", ".docx" }));
   }
 
   @Test public void swapTest() throws Exception {
-    Integer[] a = box(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+    final Integer[] a = box(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
     swap(a, 0, 8);
     azzert.that(a, is(box(new int[] { 9, 2, 3, 4, 5, 6, 7, 8, 1 })));
   }
@@ -389,11 +391,8 @@ import il.org.spartan.etc.*;
     assertArrayEquals(intToIntegers(1, 29, 60), $);
   }
 
-  
   @Test public void hashTest() throws Exception {
     assert hash(null) == 0;
     assert hash(box(987545L)) == box(987545L).hashCode();
   }
-
-
 }
