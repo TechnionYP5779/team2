@@ -1,7 +1,6 @@
 package il.org.spartan;
 
 import java.util.*;
-
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
@@ -99,4 +98,10 @@ import static fluent.ly.box.*;
   @Test public void append() {
     azzert.that(Utils.append(box(new int[] { 0, 1 }), box(2)), is(box(new int[] { 0, 1, 2 })));
   }
+
+  @SuppressWarnings("null") @Test public void apply() {
+    azzert.that(Utils.apply((Integer i) -> i).to(new Integer[] { box(1), null, box(2) }), is(Arrays.asList(box(1), box(2))));
+  }
+  
+  
 }
