@@ -1,31 +1,32 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
-import static fluent.ly.box.*;
-import static fluent.ly.unbox.*;
+
 import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.azzert.assertEquals;
+
 import java.util.*;
 
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class asTest {
-  @Test public void asIterableTest1() {
+  @SuppressWarnings("null") @Test public void asIterableTest1() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
-    for (final Integer f : as.asIterable(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))))
-      for (final Integer p : as.asIterable(cantBeNull(box(new int[] { 1, 2, 3 }))))
-        assertEquals(unbox(cantBeNull(f)) * unbox(cantBeNull(p)), res[i++]);
+    for (final Integer f : as.asIterable(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3), fluent.ly.box.it(4), fluent.ly.box.it(5)))
+      for (final Integer p : as.asIterable(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3)))
+        assertEquals(unbox.it(cantBeNull(f)) * unbox.it(cantBeNull(p)), res[i++]);
   }
 
-  @Test public void asIterableTest2() {
+  @Test @SuppressWarnings("null") public void asIterableTest2() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
-    for (final Integer f : as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))))
-      for (final Integer p : as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3 }))))
-        assertEquals(unbox(cantBeNull(f)) * unbox(cantBeNull(p)), res[i++]);
+    for (final Integer f : as.asIterableLambda(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3), fluent.ly.box.it(4),
+        fluent.ly.box.it(5)))
+      for (final Integer p : as.asIterableLambda(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3)))
+        assertEquals(unbox.it(f) * unbox.it(p), res[i++]);
   }
 
   @Test public void bitTrueTest() {
@@ -41,11 +42,11 @@ import org.junit.*;
   }
 
   @Test public void bitIntTest() {
-    assertEquals(as.bit(box(5)), 1);
+    assertEquals(as.bit(fluent.ly.box.it(5)), 1);
   }
 
   @Test public void bitFloatTest() {
-    assertEquals(as.bit(box(0.05f)), 1);
+    assertEquals(as.bit(fluent.ly.box.it(0.05f)), 1);
   }
 
   @Test public void listTest1() {
@@ -91,7 +92,7 @@ import org.junit.*;
   @Test public void listTest5() {
     final ArrayList<Integer> al = new ArrayList<>();
     for (int ¢ = 0; ¢ < 10; ++¢)
-      al.add(box(¢ + 1));
+      al.add(fluent.ly.box.it(¢ + 1));
     final List<Integer> al_lst = as.list(al);
     for (int ¢ = 0; ¢ < 10; ++¢)
       assertEquals(al_lst.get(¢), ¢ + 1);
@@ -107,7 +108,8 @@ import org.junit.*;
   }
 
   @Test public void iteratorTest1() {
-    final Iterator<Integer> int_iter = as.iterator(box(new int[] { 1, 2, 3, 4, 5 }));
+    final Iterator<Integer> int_iter = as.iterator(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3), fluent.ly.box.it(4),
+        fluent.ly.box.it(5));
     for (int ¢ = 1; ¢ < 6; ++¢) {
       assertEquals(int_iter.next(), ¢);
       assert ¢ != 5 ? int_iter.hasNext() : !int_iter.hasNext();
@@ -115,7 +117,7 @@ import org.junit.*;
   }
 
   @Test public void iteratorTest2() {
-    final Iterator<Boolean> bool_iter = as.iterator(box(new boolean[] { true, false, true, false }));
+    final Iterator<Boolean> bool_iter = as.iterator(fluent.ly.box.it(true), fluent.ly.box.it(false), fluent.ly.box.it(true), fluent.ly.box.it(false));
     boolean b = true;
     for (int ¢ = 1; ¢ < 5; ++¢) {
       assertEquals(bool_iter.next(), b);
@@ -124,13 +126,15 @@ import org.junit.*;
     }
   }
 
-  @Test public void setTest() {
-    @SuppressWarnings("null") final Set<Integer> s1 = cantBeNull(as.set(box(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 })));
+  @Test @SuppressWarnings("null") public void setTest() {
+    @SuppressWarnings("unchecked") final Set<Integer> s1 = (Set<Integer>) as.set(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3),
+        fluent.ly.box.it(4), fluent.ly.box.it(5), fluent.ly.box.it(6), fluent.ly.box.it(7), fluent.ly.box.it(8), fluent.ly.box.it(9),
+        fluent.ly.box.it(10));
     for (int ¢ = 0; ¢ < 10; ++¢) {
-      assertContains(cantBeNull(s1), box(¢ + 1));
-      assertNotContains(cantBeNull(s1), box(500 * ¢));
+      assertContains(s1, fluent.ly.box.it(¢ + 1));
+      assertNotContains(s1, fluent.ly.box.it(500 * ¢));
     }
-    final Set<String> s2 = cantBeNull(as.set("abcdefg", "hijklmnop", "qrstuv", "wxyz"));
+    @SuppressWarnings("unchecked") final Set<String> s2 = (Set<String>) as.set("abcdefg", "hijklmnop", "qrstuv", "wxyz");
     assertContains(s2, "abcdefg");
     assertNotContains(s2, "lkgfnf");
     assertContains(s2, "hijklmnop");
@@ -139,15 +143,17 @@ import org.junit.*;
     assertNotContains(s2, "543asdfnlj");
     assertContains(s2, "wxyz");
     assertNotContains(s2, "asdasd");
-    @SuppressWarnings("null") final Set<Boolean> s3 = cantBeNull(as.set(box(new boolean[] { true, false, true, true, false, false })));
-    assertContains(s3, box(true));
-    assertContains(s3, box(false));
-    @SuppressWarnings("null") final Set<Boolean> s4 = cantBeNull(as.set(box(new boolean[] { true, true, true, true })));
-    assertContains(s4, box(true));
-    assertNotContains(s4, box(false));
-    @SuppressWarnings("null") final Set<Boolean> s5 = cantBeNull(as.set(box(new boolean[] { false, false })));
-    assertContains(s5, box(false));
-    assertNotContains(s5, box(true));
+    @SuppressWarnings("unchecked") final Set<Boolean> s3 = (Set<Boolean>) as.set(fluent.ly.box.it(true), fluent.ly.box.it(false),
+        fluent.ly.box.it(true), fluent.ly.box.it(true), fluent.ly.box.it(false), fluent.ly.box.it(false));
+    assertContains(s3, fluent.ly.box.it(true));
+    assertContains(s3, fluent.ly.box.it(false));
+    @SuppressWarnings("unchecked") final Set<Boolean> s4 = (Set<Boolean>) as.set(fluent.ly.box.it(true), fluent.ly.box.it(true),
+        fluent.ly.box.it(true), fluent.ly.box.it(true));
+    assertContains(s4, fluent.ly.box.it(true));
+    assertNotContains(s4, fluent.ly.box.it(false));
+    @SuppressWarnings("unchecked") final Set<Boolean> s5 = (Set<Boolean>) as.set(fluent.ly.box.it(false), fluent.ly.box.it(false));
+    assertContains(s5, fluent.ly.box.it(false));
+    assertNotContains(s5, fluent.ly.box.it(true));
   }
 
   @Test public void stringsNullTest() {
@@ -155,29 +161,29 @@ import org.junit.*;
   }
 
   @Test public void stringTest1() {
-    assertEquals(as.string(box(5)), "5");
+    assertEquals(as.string(fluent.ly.box.it(5)), "5");
   }
 
   @Test public void stringTest2() {
-    final Integer x1 = box(10);
+    final Integer x1 = fluent.ly.box.it(10);
     assertEquals(as.string(x1), x1 + "");
   }
 
   @Test public void stringTest3() {
-    assertEquals(as.string(box(654.654f)), "654.654");
+    assertEquals(as.string(fluent.ly.box.it(654.654f)), "654.654");
   }
 
   @Test public void stringTest4() {
-    final Float y1 = box(0.44645f);
+    final Float y1 = fluent.ly.box.it(0.44645f);
     assertEquals(as.string(y1), y1 + "");
   }
 
   @Test public void stringTest5() {
-    assertEquals(as.string(box(true)), "true");
+    assertEquals(as.string(fluent.ly.box.it(true)), "true");
   }
 
   @Test public void stringTest6() {
-    final Boolean b1 = box(false);
+    final Boolean b1 = fluent.ly.box.it(false);
     assertEquals(as.string(b1), b1 + "");
   }
 
@@ -281,7 +287,7 @@ import org.junit.*;
     final ArrayList<Integer> al = new ArrayList<>();
     assertEquals(as.strings(al).length, 0);
     for (int ¢ = 0; ¢ < 10; ++¢)
-      al.add(box(¢ + 1));
+      al.add(fluent.ly.box.it(¢ + 1));
     final String[] intarr = as.strings(al);
     for (int ¢ = 0; ¢ < 10; ++¢)
       assertEquals(intarr[¢], ¢ + 1 + "");
@@ -303,9 +309,10 @@ import org.junit.*;
     assertEquals(as.strings(al1)[5], "+_-*/\n\t");
   }
 
-  @Test public void asIterableEssenceTest() {
+  @Test @SuppressWarnings("null") public void asIterableEssenceTest() {
     // assertEquals(iter.iterator().hasNext(), true);
-    final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
+    final Iterable<Integer> iter = as.asIterableEssence(fluent.ly.box.it(1), fluent.ly.box.it(2), fluent.ly.box.it(3), fluent.ly.box.it(4),
+        fluent.ly.box.it(5));
     /* for(int ¢ = 0; ¢ < 5; ++¢) { System.out.println(iter.iterator().next()); } */
     // next should return the current member and only than proceed to the next one
     assertEquals(iter.iterator().hasNext(), true);
