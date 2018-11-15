@@ -153,10 +153,10 @@ public interface system {
     }
   }
 
-  static String read(final Scanner ¢) {
+  static String read(final Scanner param) {
     String $ = "";
-    while (¢.hasNext()) // Can be Nano?
-      $ += "\n" + ¢.nextLine();
+    while (param.hasNext()) // Can be Nano?
+      $ += "\n" + param.nextLine();
     return $;
   }
 

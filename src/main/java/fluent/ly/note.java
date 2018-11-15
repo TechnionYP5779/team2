@@ -20,8 +20,8 @@ import il.org.spartan.utils.*;
  * @since Nov 13, 2016 */
 @SuppressWarnings("null") public interface note {
   class __ {
-    static String trace(final Throwable ¢) {
-      return separate.these(Stream.of(¢.getStackTrace()).map(StackTraceElement::toString).collect(toList())).by(";\n");
+    static String trace(final Throwable param) {
+      return separate.these(Stream.of(param.getStackTrace()).map(StackTraceElement::toString).collect(toList())).by(";\n");
     }
 
     static String trace() {
@@ -75,22 +75,22 @@ import il.org.spartan.utils.*;
         format(format, os)));
   }
 
-  static <T> T bug(final Throwable ¢) {
+  static <T> T bug(final Throwable param) {
     return nulling.ly(() -> logger.info(//
-        "A static method was hit by " + indefinite(¢) + " exception.\n" + //
+        "A static method was hit by " + indefinite(param) + " exception.\n" + //
             "This is an indication of a bug.\n" + //
-            format("%s = '%s'\n", English.name(¢), ¢) + //
-            format("trace(%s) = '%s'\n", English.name(¢), __.trace(¢)) //
+            format("%s = '%s'\n", English.name(param), param) + //
+            format("trace(%s) = '%s'\n", English.name(param), __.trace(param)) //
     ));
   }
   /** To be invoked whenever you do not know what to do with an exception
    * @param o JD
    * @param ¢ JD */
-  static <T> T cancel(final Exception ¢) {
+  static <T> T cancel(final Exception param) {
     return nulling.ly(() -> logger.info(//
-        " " + English.name(¢) + //
+        " " + English.name(param) + //
             " (probably cancellation) exception." + //
-            "\n x = '" + ¢ + "'" //
+            "\n x = '" + param + "'" //
     ));
   }
 
@@ -128,11 +128,11 @@ import il.org.spartan.utils.*;
     return nulling.ly(() -> logger.info(message));
   }
 
-  static <T> T io(final Exception ¢) {
+  static <T> T io(final Exception param) {
     return nulling.ly(() -> logger.config(//
-        "   Got an exception of __ : " + English.name(¢) + //
+        "   Got an exception of __ : " + English.name(param) + //
             "\n      (probably I/O exception)" //
-            + "\n   The exception says: '" + ¢ + "'" //
+            + "\n   The exception says: '" + param + "'" //
     ));
   }
 
@@ -146,10 +146,10 @@ import il.org.spartan.utils.*;
     ));
   }
 
-  static <T> T io(final IOException ¢) {
+  static <T> T io(final IOException param) {
     return nulling.ly(() -> logger.info(//
-        "   Got an exception of __ : " + English.name(¢) + //
-            "\n      (probably I/O exception)\n   The exception says: '" + ¢ + "'" //
+        "   Got an exception of __ : " + English.name(param) + //
+            "\n      (probably I/O exception)\n   The exception says: '" + param + "'" //
     ));
   }
 
@@ -166,8 +166,8 @@ import il.org.spartan.utils.*;
     info(FILE_SEPARATOR);
     return the.nil();
   }
-  static void set(final Level ¢) {
-    levels.push(¢);
+  static void set(final Level param) {
+    levels.push(param);
   }
 
   static void unset() {

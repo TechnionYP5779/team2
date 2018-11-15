@@ -11,12 +11,12 @@ import fluent.ly.*;
  * @since 2017-04-16 */
 public interface singleton {
   /** Singleton list. */
-  static <T> @NotNull List<T> list(final T ¢) {
-    return as.list(¢);
+  static <T> @NotNull List<T> list(final T param) {
+    return as.list(param);
   }
 
   /** Singleton array. */
-  static <T> T[] array(final T ¢) {
-    return as.array(¢);
+  static <T> T[] array(final T param) {
+    return as.array(param);
   }
 }

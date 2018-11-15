@@ -15,12 +15,12 @@ public class PropositionPrettyPrinter {
       this.listener = listener;
     }
 
-    public void topDown(final BooleanSupplier ¢) {
-      listener.in(¢);
-      if (¢ instanceof Singleton)
-        singleton((Singleton) ¢);
-      else if (¢ instanceof Some)
-        some((Some) ¢);
+    public void topDown(final BooleanSupplier param) {
+      listener.in(param);
+      if (param instanceof Singleton)
+        singleton((Singleton) param);
+      else if (param instanceof Some)
+        some((Some) param);
     }
 
     private void some(final Some ¢) {
@@ -32,10 +32,10 @@ public class PropositionPrettyPrinter {
       listener.up();
     }
 
-    private void singleton(final Singleton ¢) {
+    private void singleton(final Singleton param) {
       listener.down();
-      if (¢.inner instanceof Proposition)
-        topDown(¢.inner);
+      if (param.inner instanceof Proposition)
+        topDown(param.inner);
       listener.up();
     }
   }
@@ -143,8 +143,8 @@ public class PropositionPrettyPrinter {
     traversal = new PropositionTreeTraversal(new NodePrettyPrinter());
   }
 
-  void present(final Proposition ¢) {
-    traversal.topDown(¢);
+  void present(final Proposition param) {
+    traversal.topDown(param);
   }
 
   public static void main(final String[] args) {

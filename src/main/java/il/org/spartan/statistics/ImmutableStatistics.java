@@ -41,8 +41,8 @@ public abstract class ImmutableStatistics extends Statistics implements java.io.
     return format(unit != null ? unit : Unit.DOUBLE);
   }
 
-  public String format(final @NotNull Unit ¢) {
-    return n() == 1 ? ¢.format(mean()) : format(¢, "A D R N");
+  public String format(final @NotNull Unit param) {
+    return n() == 1 ? param.format(mean()) : format(param, "A D R N");
   }
 
   public String format(final @NotNull Unit u, final @Nullable String format) {

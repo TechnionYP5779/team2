@@ -243,15 +243,15 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void removePrefixTest() {
-    assert removePrefix("abcabcabcefg", "abc").equals("efg");
+    assert "efg".equals(removePrefix("abcabcabcefg", "abc"));
   }
 
   @Test public void removeSuffixTest() {
-    assert removeSuffix("abcefgefgefg", "efg").equals("abc");
+    assert "abc".equals(removeSuffix("abcefgefgefg", "efg"));
   }
 
   @Test public void removeWhitesTest() {
-    assert removeWhites("a    b    c \n \n    \t").equals("abc");
+    assert "abc".equals(removeWhites("a    b    c \n \n    \t"));
   }
 
   @Test public void sortTest() throws Exception {
@@ -274,14 +274,14 @@ import il.org.spartan.etc.*;
     f.delete();
   }
 
-  @SuppressWarnings("null") @Test public void suffixedByFileArray() throws Exception {
+  @Test @SuppressWarnings("null") public void suffixedByFileArray() throws Exception {
     final File f = new File("someFile.som");
     assert !suffixedBy(f, new String[] { ".txt", ".mov", ".docx" });
     assert suffixedBy(f, new String[] { ".txt", ".mov", ".som", ".docx" });
     f.delete();
   }
 
-  @SuppressWarnings("null") @Test public void suffixedByArray() throws Exception {
+  @Test @SuppressWarnings("null") public void suffixedByArray() throws Exception {
     final String s = "someFile.som";
     assert !suffixedBy(s, new String[] { ".txt", ".mov", ".docx" });
     assert suffixedBy(s, new String[] { ".txt", ".mov", ".som", ".docx" });
@@ -299,7 +299,7 @@ import il.org.spartan.etc.*;
     azzert.that(a, is(box(new int[] { 9, 2, 3, 4, 5, 6, 7, 8, 1 })));
   }
 
-  @SuppressWarnings("null") @NotNull public static Integer[] intToIntegers(final int... is) {
+  @NotNull @SuppressWarnings("null") public static Integer[] intToIntegers(final int... is) {
     final Integer @NotNull [] $ = new Integer @NotNull [is.length];
     for (int ¢ = 0; ¢ < is.length; ++¢)
       $[¢] = fluent.ly.box.it(is[¢]);
@@ -316,7 +316,7 @@ import il.org.spartan.etc.*;
       azzert.aye("", ss.contains(¢));
   }
 
-  @SuppressWarnings("null") @Test public void addTypical() {
+  @Test @SuppressWarnings("null") public void addTypical() {
     final Set<String> ss = new HashSet<>();
     accumulate.to(ss).add(null, "A", null, "B", "B", null, "C", "D", null);
     azzert.nay(ss.contains("E"));

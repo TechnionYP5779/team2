@@ -18,13 +18,13 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return inner.reduce();
   }
 
-  public final R reduce(final BooleanSupplier ¢) {
+  public final R reduce(final BooleanSupplier param) {
     return //
-    ¢ instanceof Not ? reduce((Not) ¢) //
-        : ¢ instanceof Singleton ? reduce((Singleton) ¢) //
-            : ¢ instanceof And ? reduce((And) ¢) //
-                : ¢ instanceof Or ? reduce((Or) ¢) //
-                    : map(¢);
+    param instanceof Not ? reduce((Not) param) //
+        : param instanceof Singleton ? reduce((Singleton) param) //
+            : param instanceof And ? reduce((And) param) //
+                : param instanceof Or ? reduce((Or) param) //
+                    : map(param);
   }
 
   @Override public R reduce(final R r1, final R r2) {
@@ -41,12 +41,12 @@ public abstract class PropositionReducer<R> extends Reduce<R> {
     return reduce($, post(a));
   }
 
-  private R reduce(final Not ¢) {
-    return reduce(ante(¢), reduce(¢.inner), post(¢));
+  private R reduce(final Not param) {
+    return reduce(ante(param), reduce(param.inner), post(param));
   }
 
-  private R reduce(final Singleton ¢) {
-    return reduce(ante(¢), map(¢), post(¢));
+  private R reduce(final Singleton param) {
+    return reduce(ante(param), map(param), post(param));
   }
 
   private R reduce(final Or o) {

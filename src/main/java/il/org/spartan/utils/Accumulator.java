@@ -17,16 +17,16 @@ public abstract class Accumulator {
     this.name = name;
   }
 
-  public final void add(final boolean ¢) {
-    add(as.bit(¢));
+  public final void add(final boolean param) {
+    add(as.bit(param));
   }
 
   public void add(final int v) {
     value += weight * transform(v);
   }
 
-  public final void add(final @NotNull String ¢) {
-    add(as.bit(¢));
+  public final void add(final @NotNull String param) {
+    add(as.bit(param));
   }
 
   public String name() {

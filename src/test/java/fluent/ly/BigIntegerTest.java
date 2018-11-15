@@ -6,7 +6,7 @@ import static fluent.ly.azzert.assertNotEquals;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class BigIntegerTest {
+@SuppressWarnings("static-method") public class BigIntegerTest {
   @Test public void testCreateFromString() {
     assertNotEquals(new BigInteger("123"), null);
   }

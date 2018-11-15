@@ -49,7 +49,7 @@ import org.jetbrains.annotations.*;
       }
   }
 
-  @NotNull private static String read(final @NotNull Path ¢) throws IOException {
-    return new String(Files.readAllBytes(¢), StandardCharsets.UTF_8);
+  @NotNull private static String read(final @NotNull Path param) throws IOException {
+    return new String(Files.readAllBytes(param), StandardCharsets.UTF_8);
   }
 }

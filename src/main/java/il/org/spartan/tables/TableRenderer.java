@@ -42,17 +42,17 @@ import il.org.spartan.*;
         return "\t&\t";
       }
 
-      @Override public String render(final Statistic ¢) {
-        switch (¢) {
+      @Override public String render(final Statistic param) {
+        switch (param) {
           case Σ:
             return "\\hfill$\\Sum$";
           case σ:
             return "\\hfill$\\sigma$";
           case max:
           case min:
-            return "\\hfill$\\" + super.render(¢) + "$";
+            return "\\hfill$\\" + super.render(param) + "$";
           default:
-            return "\\hfill" + super.render(¢);
+            return "\\hfill" + super.render(param);
         }
       }
     },
@@ -131,8 +131,8 @@ import il.org.spartan.*;
 
   String NL = System.getProperty("line.separator");
 
-  default String cellReal(final Double ¢) {
-    return ¢.longValue() != ¢.doubleValue() ? ¢ + "" : cellInt(Long.valueOf(¢.longValue()));
+  default String cellReal(final Double param) {
+    return param.longValue() != param.doubleValue() ? param + "" : cellInt(Long.valueOf(param.longValue()));
   }
 
   static String empty() {
@@ -171,12 +171,12 @@ import il.org.spartan.*;
     return empty();
   }
 
-  default String cellArray(final Object[] ¢) {
-    return separate.these(¢).by(arraySeparator());
+  default String cellArray(final Object[] param) {
+    return separate.these(param).by(arraySeparator());
   }
 
-  default String cellInt(final Long ¢) {
-    return ¢ + "";
+  default String cellInt(final Long param) {
+    return param + "";
   }
 
   default String extension() {
@@ -223,8 +223,8 @@ import il.org.spartan.*;
     return tab();
   }
 
-  default String render(final Statistic ¢) {
-    return ¢ + "";
+  default String render(final Statistic param) {
+    return param + "";
   }
 
   default String renderRow(final Collection<Object> values) {

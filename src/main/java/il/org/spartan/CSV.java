@@ -80,8 +80,8 @@ import fluent.ly.*;
    * @param ¢ Input file
    * @return A two dimensional array of strings
    * @throws IOException some problem with file 'filename' */
-  public static String[][] load(final File ¢) throws IOException {
-    try (FileReader $ = new FileReader(¢)) {
+  public static String[][] load(final File param) throws IOException {
+    try (FileReader $ = new FileReader(param)) {
       return load($);
     }
   }

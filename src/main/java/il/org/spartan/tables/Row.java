@@ -20,12 +20,12 @@ import il.org.spartan.utils.*;
     reset();
   }
 
-  public Self col(final Accumulator ¢) {
-    return col(¢.name(), ¢.value());
+  public Self col(final Accumulator param) {
+    return col(param.name(), param.value());
   }
 
-  public Self col(final Accumulator... ¢) {
-    as.list(¢).forEach(this::col);
+  public Self col(final Accumulator... param) {
+    as.list(param).forEach(this::col);
     return self();
   }
 

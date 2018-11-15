@@ -6,7 +6,7 @@ import static fluent.ly.box.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class boxTest {
+@SuppressWarnings("static-method") public class boxTest {
   @Test public void booleanBoxingTest() {
     assertEquals(Boolean.TRUE, box(true));
     assertEquals(Boolean.FALSE, box(false));

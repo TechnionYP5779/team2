@@ -73,19 +73,19 @@ public interface list {
     }
   }
 
-  static <T> ToCallExpected<T> append(final T ¢) {
-    return new PrependOrAppend<T>().append(¢);
+  static <T> ToCallExpected<T> append(final T param) {
+    return new PrependOrAppend<T>().append(param);
   }
 
-  static <T> ToCallExpected<T> prepend(final T ¢) {
-    return new PrependOrAppend<T>().prepend(¢);
+  static <T> ToCallExpected<T> prepend(final T param) {
+    return new PrependOrAppend<T>().prepend(param);
   }
 
   /** @param <T> JD
    * @param ¢ a list
    * @return last item in a list or <code><b>null</b></code> if the parameter is
    *         <code><b>null</b></code> or empty */
-  static <T> @Nullable T penultimate(final List<T> ¢) {
-    return eval(() -> ¢.get(¢.size() - 2)).unless(¢ == null || ¢.size() < 2);
+  static <T> @Nullable T penultimate(final List<T> param) {
+    return eval(() -> param.get(param.size() - 2)).unless(param == null || param.size() < 2);
   }
 }

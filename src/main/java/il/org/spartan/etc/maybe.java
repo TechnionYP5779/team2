@@ -10,8 +10,8 @@ public class maybe<@Nullable T> {
     return new maybe<>();
   }
 
-  @NotNull public static <@Nullable T> maybe<T> yes(final T ¢) {
-    return new maybe<>(¢);
+  @NotNull public static <@Nullable T> maybe<T> yes(final T param) {
+    return new maybe<>(param);
   }
 
   @Nullable private T inner;

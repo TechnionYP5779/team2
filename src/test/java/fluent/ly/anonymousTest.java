@@ -8,7 +8,7 @@ import java.util.function.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class anonymousTest {
+@SuppressWarnings("static-method") public class anonymousTest {
   @Test public void booleanTest() {
     assert anonymous.ly(() -> true);
     assert !anonymous.ly(() -> false);

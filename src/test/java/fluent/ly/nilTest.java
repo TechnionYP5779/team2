@@ -6,7 +6,7 @@ import static fluent.ly.azzert.assertNull;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class nilTest {
+@SuppressWarnings("static-method") public class nilTest {
   @Test public void forgettingTest() {
     assertNull(nil.forgetting(new Object()));
     assertNull(nil.forgetting(new Object(), new Object()));

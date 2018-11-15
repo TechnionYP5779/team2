@@ -54,8 +54,8 @@ import org.jetbrains.annotations.*;
    * @param   <T> type of elements in the input array.
    * @param ¢ an array of values.
    * @return an array of size 0 of elements of type <code>T</code>. */
-  static <T> T[] shrink(final T @NotNull [] ¢) {
-    return Arrays.copyOf(¢, 0);
+  static <T> T[] shrink(final T @NotNull [] param) {
+    return Arrays.copyOf(param, 0);
   }
 
   @SafeVarargs public static <T> @NotNull String @NotNull [] whites(final @Nullable T @Nullable... ts) {

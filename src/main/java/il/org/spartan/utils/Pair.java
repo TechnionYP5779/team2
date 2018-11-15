@@ -6,8 +6,8 @@ import il.org.spartan.*;
 
 public class Pair<First, Second> {
   @SuppressWarnings("unchecked") //
-  public static <First, Second> Pair<First, Second> @NotNull [] makePairs(final int ¢) {
-    return new Pair[¢];
+  public static <First, Second> Pair<First, Second> @NotNull [] makePairs(final int param) {
+    return new Pair[param];
   }
 
   public static <First, Second> Pair<First, Second> @NotNull [] makePairs(final int i, final int m) {
@@ -30,8 +30,8 @@ public class Pair<First, Second> {
     this.second = second;
   }
 
-  @Override public boolean equals(final @Nullable Object ¢) {
-    return ¢ == this || ¢ != null && getClass().equals(¢.getClass()) && eq(first, ((Pair<?, ?>) ¢).first) && eq(second, ((Pair<?, ?>) ¢).second);
+  @Override public boolean equals(final @Nullable Object param) {
+    return param == this || param != null && getClass().equals(param.getClass()) && eq(first, ((Pair<?, ?>) param).first) && eq(second, ((Pair<?, ?>) param).second);
   }
 
   @Override public int hashCode() {

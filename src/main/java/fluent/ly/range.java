@@ -8,8 +8,8 @@ import java.util.stream.*;
  * @since 26-11-2016 */
 public class range {
   public class AfterTo extends RangeIterator<AfterTo> {
-    public AfterTo from(final int ¢) {
-      to = ¢;
+    public AfterTo from(final int param) {
+      to = param;
       return this;
     }
 
@@ -17,8 +17,8 @@ public class range {
       return range.infiniteFrom(from, step);
     }
 
-    public AfterTo step(final int ¢) {
-      step = ¢;
+    public AfterTo step(final int param) {
+      step = param;
       return this;
     }
 
@@ -36,13 +36,13 @@ public class range {
       return range.infiniteFrom(from, step);
     }
 
-    public AfterTo step(final int ¢) {
-      step = ¢;
+    public AfterTo step(final int param) {
+      step = param;
       return new AfterTo();
     }
 
-    public AfterTo to(final int ¢) {
-      to = ¢;
+    public AfterTo to(final int param) {
+      to = param;
       return new AfterTo();
     }
 
@@ -52,14 +52,14 @@ public class range {
   }
 
   public class Infinite extends RangeIterator<Infinite> {
-    public Infinite from(final int ¢) {
-      from = ¢;
+    public Infinite from(final int param) {
+      from = param;
       step = 1;
       return this;
     }
 
-    public Iterable<Integer> step(final int ¢) {
-      step = ¢;
+    public Iterable<Integer> step(final int param) {
+      step = param;
       return this;
     }
 
@@ -105,16 +105,16 @@ public class range {
     abstract Self self();
   }
 
-  public static BeforeTo from(final int ¢) {
-    return makeFrom(¢).new BeforeTo();
+  public static BeforeTo from(final int param) {
+    return makeFrom(param).new BeforeTo();
   }
 
   public static Infinite infinite() {
     return infiniteFrom(0, 1);
   }
 
-  public static Iterable<Integer> infinite(final int ¢) {
-    return from(¢).to(¢).step(0).inclusive();
+  public static Iterable<Integer> infinite(final int param) {
+    return from(param).to(param).step(0).inclusive();
   }
 
   public static RangeIterator<?> naturals() {
@@ -129,26 +129,26 @@ public class range {
     return from(1).to(-1).step(2);
   }
 
-  public static <T> RangeIterator<?> of(final T[] ¢) {
-    return from(0).to(¢.length);
+  public static <T> RangeIterator<?> of(final T[] param) {
+    return from(0).to(param.length);
   }
 
   public static AfterTo to(final int to) {
     return makeTo(to).new AfterTo();
   }
 
-  private static range makeFrom(final int ¢) {
+  private static range makeFrom(final int param) {
     return new range() {
       {
-        from = ¢;
+        from = param;
       }
     };
   }
 
-  private static range makeTo(final int ¢) {
+  private static range makeTo(final int param) {
     return new range() {
       {
-        to = ¢;
+        to = param;
       }
     };
   }

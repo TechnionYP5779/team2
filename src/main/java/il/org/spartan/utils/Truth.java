@@ -45,8 +45,8 @@ public enum Truth {
     return this == F ? this : other;
   }
 
-  public static String letterOf(final BooleanSupplier ¢) {
-    return truthOf(¢) + "";
+  public static String letterOf(final BooleanSupplier param) {
+    return truthOf(param) + "";
   }
 
   @NotNull public final String description;

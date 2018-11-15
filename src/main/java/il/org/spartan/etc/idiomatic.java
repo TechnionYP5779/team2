@@ -19,8 +19,8 @@ public interface idiomatic {
   String QUOTE = "'";
   /** an evaluating trigger */
   @NotNull Trigger eval = new Trigger() {
-    @Override public <@Nullable T> T eval(final Supplier<@Nullable T> ¢) {
-      return ¢.get();
+    @Override public <@Nullable T> T eval(final Supplier<@Nullable T> param) {
+      return param.get();
     }
   };
   /** an ignoring trigger */
@@ -66,16 +66,16 @@ public interface idiomatic {
 
   /** @param ¢ JD
    * @return an identical runnable which is also a {@link Runner} */
-  @NotNull static Runner run(final Runnable ¢) {
-    return new Runner(¢);
+  @NotNull static Runner run(final Runnable param) {
+    return new Runner(param);
   }
 
   /** <code>yield</code>
    * @param   <T> JD
    * @param ¢ JD
    * @return Yielder<T> value of method <code>yield</code> */
-  @NotNull static <T> Storer<T> take(final T ¢) {
-    return new Storer<>(¢);
+  @NotNull static <T> Storer<T> take(final T param) {
+    return new Storer<>(param);
   }
 
   /** @param condition JD */

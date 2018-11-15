@@ -9,11 +9,11 @@ import org.jetbrains.annotations.*;
 
 /** @noinspection unused */
 public interface lisp {
-  @Nullable static <T> List<T> chop(final @NotNull List<T> ¢) {
-    if (¢.isEmpty())
+  @Nullable static <T> List<T> chop(final @NotNull List<T> param) {
+    if (param.isEmpty())
       return null;
-    ¢.remove(0);
-    return ¢;
+    param.remove(0);
+    return param;
   }
 
   @NotNull static <T> List<T> cons(final T first, final @NotNull List<T> rest) {
@@ -54,8 +54,8 @@ public interface lisp {
     return replace(ts, element, ts.size() - 1);
   }
 
-  @NotNull static <T> Iterable<T> rest2(final @NotNull Iterable<T> ¢) {
-    return the.lastOf(the.lastOf(¢));
+  @NotNull static <T> Iterable<T> rest2(final @NotNull Iterable<T> param) {
+    return the.lastOf(the.lastOf(param));
   }
 
   /** @param o the assignment operator to compare all to
@@ -65,22 +65,22 @@ public interface lisp {
     return !hasNull(o, os) && Stream.of(os).allMatch(λ -> λ == o);
   }
 
-  static <T> List<T> chopLast(final List<T> ¢) {
-    final List<T> $ = as.list(¢);
+  static <T> List<T> chopLast(final List<T> param) {
+    final List<T> $ = as.list(param);
     $.remove($.size() - 1);
     return $;
   }
 
-  static String chopLast(final @NotNull String ¢) {
-    return ¢.substring(0, ¢.length() - 1);
+  static String chopLast(final @NotNull String param) {
+    return param.substring(0, param.length() - 1);
   }
 
   static <T> void removeFromList(final Iterable<T> items, final List<T> from) {
     items.forEach(from::remove);
   }
 
-  static <T> void removeLast(final List<T> ¢) {
-    ¢.remove(¢.size() - 1);
+  static <T> void removeLast(final List<T> param) {
+    param.remove(param.size() - 1);
   }
 
   /** swaps two elements in an indexed list in given indexes, if they are legal

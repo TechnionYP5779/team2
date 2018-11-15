@@ -11,13 +11,13 @@ public class Range {
     to = Integer.MAX_VALUE - 1;
   }
 
-  public Range from(final int ¢) {
-    from = ¢;
+  public Range from(final int param) {
+    from = param;
     return this;
   }
 
-  public Range to(final int ¢) {
-    to = ¢ - 1;
+  public Range to(final int param) {
+    to = param - 1;
     return this;
   }
 
@@ -25,30 +25,27 @@ public class Range {
     return from == Integer.MIN_VALUE ? null : from;
   }
 
-  public boolean includes(final int ¢) {
-    return ¢ >= from && ¢ <= to;
+  public boolean includes(final int param) {
+    return param >= from && param <= to;
   }
 
   /** [[SuppressWarningsSpartan]] */
   public Iterator<Integer> numbers() {
-    final int iteratorTo = to;
-    final int iteratorFrom = from;
     return new Iterator<Integer>() {
-      int current = iteratorFrom;
+      int current = from;
 
       @Override @SuppressWarnings("boxing") public Integer next() {
         return ++current;
       }
 
       @Override public boolean hasNext() {
-        return current < iteratorTo;
+        return current < to;
       }
     };
   }
 
   @SuppressWarnings("hiding") public Range intersect(final Range r) {
-    final int from = Math.max(this.from, r.from);
-    final int to = Math.min(this.to, r.to) + 1;
-    return from >= to ? null : new Range().from(from).to(to);
+    final int $ = Math.max(this.from, r.from), to = Math.min(this.to, r.to) + 1;
+    return $ >= to ? null : new Range().from($).to(to);
   }
 }

@@ -10,8 +10,8 @@ import java.util.stream.*;
 public abstract class Reduce<R> {
   public abstract R reduce();
 
-  public final R reduce(final R ¢) {
-    return ¢;
+  public final R reduce(final R param) {
+    return param;
   }
 
   public abstract R reduce(R r1, R r2);

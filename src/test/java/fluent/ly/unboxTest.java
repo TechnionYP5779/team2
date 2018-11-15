@@ -8,7 +8,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class unboxTest {
+@SuppressWarnings("static-method") public class unboxTest {
   @Test @SuppressWarnings("null") public void itIntTest() {
     for (int ¢ = -100; ¢ < 100; ++¢)
       assertEquals(unbox.it(Integer.valueOf(¢)), ¢);

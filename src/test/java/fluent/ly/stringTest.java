@@ -3,15 +3,12 @@ package fluent.ly;
 import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.assertEquals;
-import static fluent.ly.azzert.assertFalse;
-import static fluent.ly.azzert.assertTrue;
-
 import java.io.*;
 import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class stringTest {
+@SuppressWarnings("static-method") public class stringTest {
   @Test public void testAtod() {
     assertEquals(string.atod("5.534534534"), 5.534534534, 0.00001);
   }
@@ -40,7 +37,7 @@ import org.junit.*;
     assertEquals(string.cat("a", "b", "c", "d", "e"), "abcde");
   }
 
-  @SuppressWarnings("null") @Test public void testCat2() {
+  @Test @SuppressWarnings("null") public void testCat2() {
     assertEquals(string.cat(new String[] { "a", "b", "c" }, new String[] { "d", "e" }), "abcde");
   }
 
@@ -61,19 +58,19 @@ import org.junit.*;
   }
 
   @Test public void testEq1() {
-    assertTrue(string.eq(box.it(5), box.it(5)));
+    assert string.eq(box.it(5), box.it(5));
   }
 
   @Test public void testEq2() {
-    assertFalse(string.eq(box.it(6), box.it(5)));
+    assert !string.eq(box.it(6), box.it(5));
   }
 
   @Test public void testEq3() {
-    assertTrue(string.eq(null, null));
+    assert string.eq(null, null);
   }
 
   @Test public void testEq4() {
-    assertFalse(string.eq(null, box.it(6)));
+    assert !string.eq(null, box.it(6));
   }
 
   @Test public void testEsc1() {
@@ -133,35 +130,35 @@ import org.junit.*;
   }
 
   @Test public void testIsDouble1() {
-    assertTrue(string.isDouble("5.42342"));
+    assert string.isDouble("5.42342");
   }
 
   @Test public void testIsDouble2() {
-    assertFalse(string.isDouble("not double"));
+    assert !string.isDouble("not double");
   }
 
   @Test public void testIsFloat1() {
-    assertTrue(string.isFloat("5.42342"));
+    assert string.isFloat("5.42342");
   }
 
   @Test public void testIsFloat2() {
-    assertFalse(string.isFloat("not float"));
+    assert !string.isFloat("not float");
   }
 
   @Test public void testIsInt1() {
-    assertTrue(string.isInt("5"));
+    assert string.isInt("5");
   }
 
   @Test public void testIsInt2() {
-    assertFalse(string.isInt("5.243"));
+    assert !string.isInt("5.243");
   }
 
   @Test public void testIsLong1() {
-    assertTrue(string.isLong("42342343423425"));
+    assert string.isLong("42342343423425");
   }
 
   @Test public void testIsLong2() {
-    assertFalse(string.isLong("5.243"));
+    assert !string.isLong("5.243");
   }
 
   @Test public void testitoa() {
@@ -264,7 +261,7 @@ import org.junit.*;
     assertEquals(string.pluralize(10, "apple"), "10 apples");
   }
 
-  @SuppressWarnings("null") @Test public void testPretty1() {
+  @Test @SuppressWarnings("null") public void testPretty1() {
     assertEquals(string.pretty("apple", null), "");
   }
 
@@ -315,15 +312,15 @@ import org.junit.*;
     assertEquals(string.sprintf("%d", box.it(3)), "3");
   }
 
-  @SuppressWarnings("null") @Test public void testSprintf2() {
+  @Test @SuppressWarnings("null") public void testSprintf2() {
     assertEquals(string.sprintf(new String[] {}), "");
   }
 
-  @SuppressWarnings("null") @Test public void testSprintf3() {
+  @Test @SuppressWarnings("null") public void testSprintf3() {
     assertEquals(string.sprintf(new String[] { "1" }), "1");
   }
 
-  @SuppressWarnings("null") @Test public void testSprintf4() {
+  @Test @SuppressWarnings("null") public void testSprintf4() {
     assertEquals(string.sprintf(new String[] { "%s", "2" }), "2");
   }
 

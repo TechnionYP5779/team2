@@ -14,8 +14,8 @@ public interface fault {
     return done(stackCapture());
   }
 
-  @NotNull static String done(final Throwable ¢) {
-    return "\n   Stack trace: [[[.................\n\n" + trace(¢) + "\n   END stack trace: .................]]]\n-----this is all I know.";
+  @NotNull static String done(final Throwable param) {
+    return "\n   Stack trace: [[[.................\n\n" + trace(param) + "\n   END stack trace: .................]]]\n-----this is all I know.";
   }
 
   static Throwable stackCapture() {
@@ -26,9 +26,9 @@ public interface fault {
     return trace(stackCapture());
   }
 
-  @NotNull static String trace(final Throwable ¢) {
+  @NotNull static String trace(final Throwable param) {
     final ByteArrayOutputStream $ = new ByteArrayOutputStream();
-    ¢.printStackTrace(new PrintStream($));
+    param.printStackTrace(new PrintStream($));
     return new String($.toByteArray(), StandardCharsets.UTF_8);
   }
 

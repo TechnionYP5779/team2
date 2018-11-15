@@ -48,8 +48,8 @@ import fluent.ly.*;
 
   public abstract Iterable<String> values();
 
-  protected String makeLine(final Iterable<String> ¢) {
-    return renderer.makeLine(¢);
+  protected String makeLine(final Iterable<String> param) {
+    return renderer.makeLine(param);
   }
 
   public static class ListProperties extends AbstractStringProperties {
@@ -92,8 +92,8 @@ import fluent.ly.*;
         return "";
       }
 
-      @Override @NotNull public String makeField(final @Nullable String ¢) {
-        return ¢ == null ? "" : !¢.contains(QUOTE) && !¢.contains(delimiter()) ? ¢ : QUOTE + ¢.replaceAll(QUOTE, QUOTE + QUOTE) + QUOTE;
+      @Override @NotNull public String makeField(final @Nullable String param) {
+        return param == null ? "" : !param.contains(QUOTE) && !param.contains(delimiter()) ? param : QUOTE + param.replaceAll(QUOTE, QUOTE + QUOTE) + QUOTE;
       }
 
       @Override @NotNull String allBottom() {
@@ -144,8 +144,8 @@ import fluent.ly.*;
         return "";
       }
 
-      @Override String makeField(final @NotNull String ¢) {
-        return String.format("%" + WIDTH + "s", ¢);
+      @Override String makeField(final @NotNull String param) {
+        return String.format("%" + WIDTH + "s", param);
       }
     },
     LaTeX() {
@@ -173,16 +173,16 @@ import fluent.ly.*;
         return "\\\\";
       }
 
-      @Override @NotNull String makeField(final @Nullable String ¢) {
-        return ¢ == null ? "" : !¢.contains(delimiter()) ? ¢ : ¢.replaceAll(delimiter(), "\\" + delimiter());
+      @Override @NotNull String makeField(final @Nullable String param) {
+        return param == null ? "" : !param.contains(delimiter()) ? param : param.replaceAll(delimiter(), "\\" + delimiter());
       }
     };
-    public String makeLine(final Iterable<String> ¢) {
-      return lineBegin() + separate(¢) + lineEnd();
+    public String makeLine(final Iterable<String> param) {
+      return lineBegin() + separate(param) + lineEnd();
     }
 
-    public String separate(final Iterable<String> ¢) {
-      return separate.these(¢).by(delimiter());
+    public String separate(final Iterable<String> param) {
+      return separate.these(param).by(delimiter());
     }
 
     abstract String allBottom();

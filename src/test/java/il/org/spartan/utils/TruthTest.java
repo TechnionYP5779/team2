@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class TruthTest {
+@SuppressWarnings("static-method") public class TruthTest {
   /**
    *
    */

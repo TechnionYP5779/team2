@@ -15,10 +15,10 @@ public interface accumulate<T, C extends Collection<T>> {
    * @param c JD */
   static <T, C extends Collection<T>> @NotNull accumulate<T, C> to(final @NotNull C c) {
     return new accumulate<T, C>() {
-      @Override @NotNull public accumulate<T, C> add(final @Nullable T ¢) {
-        if (¢ == null)
+      @Override @NotNull public accumulate<T, C> add(final @Nullable T param) {
+        if (param == null)
           return this;
-        c.add(¢);
+        c.add(param);
         return this;
       }
 

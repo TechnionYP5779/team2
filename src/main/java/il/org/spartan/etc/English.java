@@ -45,8 +45,8 @@ import il.org.spartan.utils.*;
   /** Error string, replacing null/error value. */
   String UNKNOWN = "???";
 
-  static String indefinite(final Object ¢) {
-    return indefinite(English.name(¢));
+  static String indefinite(final Object param) {
+    return indefinite(English.name(param));
   }
 
   @NotNull static String indefinite(final @NotNull String className) {
@@ -63,21 +63,21 @@ import il.org.spartan.utils.*;
   /** Constructs linguistic list of items: [i1, i2, i3] --> "i1, i2 and i3"
    * @param ¢ list of items
    * @return a linguistic list of the items */
-  @NotNull static String list(final List<String> ¢) {
-    return ¢ == null || ¢.isEmpty() ? "nothing"
-        : ¢.size() == 1 ? the.headOf(¢) : separate.these(¢.subList(0, ¢.size() - 1)).by(SEPARATOR) + " and " + the.lastOf(¢);
+  @NotNull static String list(final List<String> param) {
+    return param == null || param.isEmpty() ? "nothing"
+        : param.size() == 1 ? the.headOf(param) : separate.these(param.subList(0, param.size() - 1)).by(SEPARATOR) + " and " + the.lastOf(param);
   }
 
   @NotNull static String lowerFirstLetter(final @NotNull String input) {
     return input.isEmpty() ? "genererated" + new Random().nextInt(100) : input.substring(0, 1).toLowerCase() + input.substring(1);
   }
 
-  @NotNull static String name(final Class<?> ¢) {
-    return ¢.getEnclosingClass() == null ? English.selfName(¢) : English.selfName(¢) + "." + name(¢.getEnclosingClass());
+  @NotNull static String name(final Class<?> param) {
+    return param.getEnclosingClass() == null ? English.selfName(param) : English.selfName(param) + "." + name(param.getEnclosingClass());
   }
 
-  @NotNull static String name(final @Nullable Object ¢) {
-    return English.name(¢ == null ? "null" : ¢.getClass());
+  @NotNull static String name(final @Nullable Object param) {
+    return English.name(param == null ? "null" : param.getClass());
   }
 
   /** Get the plural form of the word if needed, by adding an 'es' to its end.
@@ -128,10 +128,10 @@ import il.org.spartan.utils.*;
     return i == null ? UNKNOWN + " " + s + "s" : i.intValue() != 1 ? i + " " + s + "s" : "one " + s;
   }
 
-  static String pronounce(final char ¢) {
-    if (Character.isUpperCase(¢))
-      return pronounce(Character.toLowerCase(¢));
-    switch (¢) {
+  static String pronounce(final char param) {
+    if (Character.isUpperCase(param))
+      return pronounce(Character.toLowerCase(param));
+    switch (param) {
       case 'a':
         return "aey";
       case 'b':
@@ -191,10 +191,10 @@ import il.org.spartan.utils.*;
     return String.valueOf(new char[i]).replace('\0', c);
   }
 
-  static String selfName(final Class<?> ¢) {
-    return ¢ == null ? English.name(¢)
-        : ¢.isAnonymousClass() ? "{}"
-            : ¢.isAnnotation() ? "@" + ¢.getSimpleName() : !¢.getSimpleName().isEmpty() ? ¢.getSimpleName() : ¢.getCanonicalName();
+  static String selfName(final Class<?> param) {
+    return param == null ? English.name(param)
+        : param.isAnonymousClass() ? "{}"
+            : param.isAnnotation() ? "@" + param.getSimpleName() : !param.getSimpleName().isEmpty() ? param.getSimpleName() : param.getCanonicalName();
   }
 
   static String time(final long $) {
@@ -223,8 +223,8 @@ import il.org.spartan.utils.*;
 
   /** @param ¢ something
    * @return printable {@link String} for it */
-  static <X> String unknownIfNull(final X ¢) {
-    return ¢ != null ? ¢ + "" : UNKNOWN;
+  static <X> String unknownIfNull(final X param) {
+    return param == null ? UNKNOWN : param + "";
   }
 
   /** @param x something

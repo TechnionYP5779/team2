@@ -7,7 +7,7 @@ import static fluent.ly.azzert.assertNotEquals;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class PairTest {
+@SuppressWarnings("static-method") public class PairTest {
   @Test public void testCreate() {
     final Pair<Integer, String> p = new Pair<>(fluent.ly.box.it(1), "Hi");
     assertEquals(1, p.first);

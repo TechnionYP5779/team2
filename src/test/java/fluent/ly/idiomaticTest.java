@@ -28,11 +28,11 @@ import il.org.spartan.etc.idiomatic.*;
     assert idiomatic.incase(false, fluent.ly.box.it(5)) == null;
   }
 
-  @SuppressWarnings("null") @Test public void testKatchingWithNoException() {
+  @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
     assert cantBeNull(idiomatic.catching((Producer<Integer>) () -> box(5))).equals(fluent.ly.box.it(5));
   }
 
-  @SuppressWarnings("null") @Test public void testKatchingWithException() {
+  @Test @SuppressWarnings("null") public void testKatchingWithException() {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream(), errContent = new ByteArrayOutputStream();
     final PrintStream originalOut = System.out, originalErr = System.err;
     System.setOut(new PrintStream(outContent));
@@ -121,8 +121,8 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   class MyTrigger implements Trigger {
-    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
-      return ¢.get();
+    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> param) {
+      return param.get();
     }
   }
 

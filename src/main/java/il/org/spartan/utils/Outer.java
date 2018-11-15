@@ -20,12 +20,12 @@ public class Outer<Inner> {
     return (Outer<Inner>) Utils.cantBeNull(super.clone());
   }
 
-  @Override public boolean equals(final Object ¢) {
-    if (¢ == this)
+  @Override public boolean equals(final Object param) {
+    if (param == this)
       return true;
-    if (¢ == null || getClass() != ¢.getClass())
+    if (param == null || getClass() != param.getClass())
       return false;
-    @SuppressWarnings("unchecked") final Outer<Inner> $ = (Outer<Inner>) ¢;
+    @SuppressWarnings("unchecked") final Outer<Inner> $ = (Outer<Inner>) param;
     return equals($);
   }
 
@@ -44,8 +44,8 @@ public class Outer<Inner> {
   }
 
   /** set current value */
-  public void set(final Inner ¢) {
-    this.inner = ¢;
+  public void set(final Inner param) {
+    this.inner = param;
   }
 
   @Override @SuppressWarnings("null") public int hashCode() {

@@ -29,12 +29,11 @@ public class Rectangle {
   }
 
   public void expand(final int ¢) {
-    final double centerX = (x1 + x2) / 2, centerY = (y1 + y2) / 2;
-    final double width = Math.abs(x1 - x2), height = Math.abs(y1 - y2);
-    x1 = (centerX - width / 2) * Math.sqrt(¢);
-    x2 = (centerX + width / 2) * Math.sqrt(¢);
-    y1 = (centerY - height / 2) * Math.sqrt(¢);
-    y2 = (centerY + height / 2) * Math.sqrt(¢);
+    final double centerX = (x1 + x2) / 2, centerY = (y1 + y2) / 2, width = Math.abs(x1 - x2), height = Math.abs(y1 - y2);
+    x1 = Math.sqrt(¢) * (centerX - width / 2);
+    x2 = Math.sqrt(¢) * (centerX + width / 2);
+    y1 = Math.sqrt(¢) * (centerY - height / 2);
+    y2 = Math.sqrt(¢) * (centerY + height / 2);
   }
 
   public void rotate(final double angle) {

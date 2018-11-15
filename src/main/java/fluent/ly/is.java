@@ -45,19 +45,19 @@ public interface is {
     return !in(candidate, ts);
   }
 
-  static boolean empty(final @Nullable String ¢) {
-    return ¢ == null || ¢.isEmpty();
+  static boolean empty(final @Nullable String param) {
+    return param == null || param.isEmpty();
   }
 
-  static <T> boolean empty(final T[] ¢) {
-    return ¢ == null || ¢.length == 0;
+  static <T> boolean empty(final T[] param) {
+    return param == null || param.length == 0;
   }
 
-  static <T> boolean empty(final Iterable<T> ¢) {
-    return ¢ == null || !¢.iterator().hasNext();
+  static <T> boolean empty(final Iterable<T> param) {
+    return param == null || !param.iterator().hasNext();
   }
 
-  static <T> boolean empty(final Collection<T> ¢) {
-    return ¢ == null || ¢.isEmpty();
+  static <T> boolean empty(final Collection<T> param) {
+    return param == null || param.isEmpty();
   }
 }

@@ -6,8 +6,7 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class angleTest {
   @Test public void testDegrees1() {
-    final angle a1 = angle.degrees(20);
-    assertEquals(20, a1.degrees, 0.1);
+    assertEquals(20, angle.degrees(20).degrees, 0.1);
   }
 
   @Test public void testDegrees2() {

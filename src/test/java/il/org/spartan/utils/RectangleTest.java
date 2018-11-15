@@ -8,7 +8,7 @@ import org.junit.*;
 
 import il.org.spartan.etc.*;
 
-@SuppressWarnings({ "static-method" }) public class RectangleTest {
+@SuppressWarnings("static-method") public class RectangleTest {
   @Test public void testCtor1() throws IllegalArgumentException {
     assertNotEquals(new Rectangle(1, 2, 3, 4), null);
   }

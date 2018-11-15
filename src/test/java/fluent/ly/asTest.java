@@ -9,7 +9,7 @@ import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class asTest {
+@SuppressWarnings("static-method") public class asTest {
   @Test @SuppressWarnings("null") public void asIterableTest1() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;

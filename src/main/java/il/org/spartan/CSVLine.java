@@ -77,8 +77,8 @@ import il.org.spartan.utils.Separate.*;
     return map.keySet();
   }
 
-  public CSVLine put(final Accumulator ¢) {
-    return put(¢.name(), ¢.value());
+  public CSVLine put(final Accumulator param) {
+    return put(param.name(), param.value());
   }
 
   public CSVLine put(@NotNull final Accumulator... as) {

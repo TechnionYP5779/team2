@@ -9,8 +9,8 @@ import il.org.spartan.statistics.*;
  * @since 2016-12-26 */
 public enum Statistic {
   N {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.n();
+    @Override public double of(final RealStatistics param) {
+      return param.n();
     }
   },
   NA {
@@ -18,28 +18,28 @@ public enum Statistic {
       return "N/A";
     }
 
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.missing();
+    @Override public double of(final RealStatistics param) {
+      return param.missing();
     }
   },
   mean {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.mean();
+    @Override public double of(final RealStatistics param) {
+      return param.mean();
     }
   },
   σ {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.sd();
+    @Override public double of(final RealStatistics param) {
+      return param.sd();
     }
   },
   median {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.median();
+    @Override public double of(final RealStatistics param) {
+      return param.median();
     }
   },
   MAD {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.mad();
+    @Override public double of(final RealStatistics param) {
+      return param.mad();
     }
 
     @Override public String toString() {
@@ -47,33 +47,33 @@ public enum Statistic {
     }
   },
   min {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.min();
+    @Override public double of(final RealStatistics param) {
+      return param.min();
     }
   },
   max {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.max();
+    @Override public double of(final RealStatistics param) {
+      return param.max();
     }
   },
   range {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.max() - ¢.min();
+    @Override public double of(final RealStatistics param) {
+      return param.max() - param.min();
     }
   },
   Q1 {
-    @Override public double of(final RealStatistics ¢) {
-      return quartile(25, ¢.all());
+    @Override public double of(final RealStatistics param) {
+      return quartile(25, param.all());
     }
   },
   Q3 {
-    @Override public double of(final RealStatistics ¢) {
-      return quartile(75, ¢.all());
+    @Override public double of(final RealStatistics param) {
+      return quartile(75, param.all());
     }
   },
   Σ {
-    @Override public double of(final RealStatistics ¢) {
-      return ¢.sum();
+    @Override public double of(final RealStatistics param) {
+      return param.sum();
     }
   };
   public abstract double of(RealStatistics s);

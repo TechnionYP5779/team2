@@ -5,7 +5,7 @@ public interface not {
     return !is.in(t, ts);
   }
 
-  static boolean nil(final Object ¢) {
-    return ¢ != null;
+  static boolean nil(final Object param) {
+    return param != null;
   }
 }

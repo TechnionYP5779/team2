@@ -27,28 +27,28 @@ import org.jetbrains.annotations.*;
 @SuppressWarnings("null") public enum unbox {
   // A namespace: no values to this <code><b>enum</b></code>
   ;
-  public static double @NotNull [] it(final @NotNull Double[] ¢) {
-    return unbox(¢);
+  public static double @NotNull [] it(final @NotNull Double[] param) {
+    return unbox(param);
   }
 
-  public static float @NotNull [] it(final Float[] ¢) {
-    return unbox(¢);
+  public static float @NotNull [] it(final Float[] param) {
+    return unbox(param);
   }
 
-  public static int it(final @NotNull Integer ¢) {
-    return ¢.intValue();
+  public static int it(final @NotNull Integer param) {
+    return param.intValue();
   }
 
-  public static int @NotNull [] it(final @NotNull Integer[] ¢) {
-    return unbox(¢);
+  public static int @NotNull [] it(final @NotNull Integer[] param) {
+    return unbox(param);
   }
 
-  public static int @NotNull [] it(final @NotNull List<Integer> ¢) {
-    return it(¢.toArray(new Integer[¢.size()]));
+  public static int @NotNull [] it(final @NotNull List<Integer> param) {
+    return it(param.toArray(new Integer[param.size()]));
   }
 
-  public static boolean unbox(final @NotNull Boolean ¢) {
-    return ¢.booleanValue();
+  public static boolean unbox(final @NotNull Boolean param) {
+    return param.booleanValue();
   }
 
   /** unbox an array of {@link Boolean}s into an array of
@@ -62,8 +62,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static byte unbox(final @NotNull Byte ¢) {
-    return ¢.byteValue();
+  public static byte unbox(final @NotNull Byte param) {
+    return param.byteValue();
   }
 
   /** unbox an array of {@link Byte}s into an array of <code><b>byte</b></code> s.
@@ -76,8 +76,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static char unbox(final @NotNull Character ¢) {
-    return ¢.charValue();
+  public static char unbox(final @NotNull Character param) {
+    return param.charValue();
   }
 
   /** unbox an array of {@link Character}s into an array of
@@ -103,8 +103,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static double unbox(final @NotNull Double ¢) {
-    return ¢.doubleValue();
+  public static double unbox(final @NotNull Double param) {
+    return param.doubleValue();
   }
 
   /** unbox an array of {@link Double}s into an array of
@@ -118,8 +118,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static float unbox(final @NotNull Float ¢) {
-    return ¢.floatValue();
+  public static float unbox(final @NotNull Float param) {
+    return param.floatValue();
   }
 
   /** unbox an array of {@link Float}s into an array of <code><b>float</b></code>
@@ -133,8 +133,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static int unbox(final @NotNull Integer ¢) {
-    return ¢.intValue();
+  public static int unbox(final @NotNull Integer param) {
+    return param.intValue();
   }
 
   /** unbox an array of {@link Integer}s into an array of <code><b>int</b></code>
@@ -148,8 +148,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static long unbox(final @NotNull Long ¢) {
-    return ¢.longValue();
+  public static long unbox(final @NotNull Long param) {
+    return param.longValue();
   }
 
   /** unbox an array of {@link Long}s into an array of <code><b>long</b></code> s.
@@ -162,8 +162,8 @@ import org.jetbrains.annotations.*;
     return $;
   }
 
-  public static short unbox(final @NotNull Short ¢) {
-    return ¢.shortValue();
+  public static short unbox(final @NotNull Short param) {
+    return param.shortValue();
   }
 
   /** unbox an array of {@link Short}s into an array of <code><b>short</b></code>
