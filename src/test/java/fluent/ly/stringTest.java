@@ -269,5 +269,4 @@ public class stringTest {
   @Test public void testWrap() {  
     azzert.assertEquals(string.wrap("1","2"),"121");
   }
-  
 }

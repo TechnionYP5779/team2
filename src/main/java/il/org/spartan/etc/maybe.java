@@ -1,9 +1,6 @@
 package il.org.spartan.etc;
 
-import static fluent.ly.azzert.*;
-
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
 /** @author Yossi Gil <Yossi.Gil@GMail.COM>
  * @param <T> JD
