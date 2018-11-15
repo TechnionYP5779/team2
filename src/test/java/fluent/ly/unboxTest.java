@@ -11,26 +11,26 @@ import java.util.*;
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class unboxTest {
-  @Test @SuppressWarnings("null") public void itIntTest() {
+  @Test  public void itIntTest() {
     for (int ¢ = -100; ¢ < 100; ++¢)
-      assertEquals(unbox.it(Integer.valueOf(¢)), ¢);
+      assertEquals(unbox.it(cantBeNull(box(¢))), ¢);
   }
 
-  @Test @SuppressWarnings("null") public void unboxBoolTest() {
-    assertEquals(unbox.unbox(Boolean.TRUE), true);
-    assertEquals(unbox.unbox(Boolean.FALSE), false);
+  @Test  public void unboxBoolTest() {
+    assertEquals(unbox.unbox(cantBeNull(Boolean.TRUE)), true);
+    assertEquals(unbox.unbox(cantBeNull(Boolean.FALSE)), false);
   }
 
   @Test public void unboxBoolArrayTest() {
-    @SuppressWarnings("null") final boolean newArr[] = unbox
-        .unbox(new Boolean[] { Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE, Boolean.TRUE });
+     final boolean newArr[] = unbox
+        .unbox(box(new boolean[] { true, true, false, true, true }));
     for (int ¢ = 0; ¢ < 5; ++¢)
       assert newArr[¢];
   }
 
-  @Test @SuppressWarnings("null") public void unboxByteTest() {
+  @Test  public void unboxByteTest() {
     for (byte i = -100; i < 100; ++i)
-      assertEquals(unbox.unbox(Byte.valueOf(i)), i);
+      assertEquals(unbox.unbox(box(i)), i);
   }
 
   @Test public void unboxByteArrayTest() {
@@ -39,9 +39,9 @@ import org.junit.*;
       assertEquals(¢ + 1, newArr[¢]);
   }
 
-  @Test @SuppressWarnings("null") public void unboxCharTest() {
+  @Test  public void unboxCharTest() {
     for (char i = 0; i < 128; ++i)
-      assertEquals(unbox.unbox(Character.valueOf(i)), i);
+      assertEquals(unbox.unbox(cantBeNull(box(i))), i);
   }
 
   @Test public void unboxCharArrayTest() {
@@ -62,9 +62,9 @@ import org.junit.*;
       assertEquals(¢, newArr[¢]);
   }
 
-  @Test @SuppressWarnings("null") public void unboxDoubleTest() {
+  @Test  public void unboxDoubleTest() {
     for (double i = -10; i < 10; i += 0.1)
-      assert unbox.unbox(Double.valueOf(i)) == i;
+      assert unbox.unbox(cantBeNull(box(i))) == i;
   }
 
   @Test public void unboxDoubleArrayTest() {
@@ -79,26 +79,26 @@ import org.junit.*;
       assert (¢ + 1) / 10.0f == newArr[¢];
   }
 
-  @Test @SuppressWarnings("null") public void unboxFloatTest() {
+  @Test  public void unboxFloatTest() {
     for (float i = -10f; i < 10; i += 0.1f)
-      assert unbox.unbox(Float.valueOf(i)) == i;
+      assert unbox.unbox(cantBeNull(box(i))) == i;
   }
 
   @Test public void unboxFloatArrayTest() {
-    @SuppressWarnings("boxing") final float newArr[] = unbox.unbox(new Float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f });
+     final float newArr[] = unbox.unbox(box(new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }));
     for (int ¢ = 0; ¢ < 10; ++¢)
       assert (¢ + 1) / 10.0f == newArr[¢];
   }
 
   @Test public void itFloatArrayTest() {
-    @SuppressWarnings("boxing") final float newArr[] = unbox.it(new Float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f });
+     final float newArr[] = unbox.it(box(new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }));
     for (int ¢ = 0; ¢ < 10; ++¢)
       assert (¢ + 1) / 10.0f == newArr[¢];
   }
 
-  @Test @SuppressWarnings("null") public void unboxIntTest() {
+  @Test  public void unboxIntTest() {
     for (int ¢ = -10; ¢ < 10; ++¢)
-      assertEquals(unbox.unbox(Integer.valueOf(¢)), ¢);
+      assertEquals(unbox.unbox(cantBeNull(box(¢))), ¢);
   }
 
   @Test public void unboxIntArrayTest() {
@@ -113,9 +113,9 @@ import org.junit.*;
       assertEquals(¢, newArr[¢]);
   }
 
-  @Test @SuppressWarnings("null") public void unboxLongTest() {
+  @Test  public void unboxLongTest() {
     for (long ¢ = -10; ¢ < 10; ++¢)
-      assertEquals(unbox.unbox(Long.valueOf(¢)), ¢);
+      assertEquals(unbox.unbox(box(¢)), ¢);
   }
 
   @Test public void unboxLongArrayTest() {
@@ -124,9 +124,9 @@ import org.junit.*;
       assertEquals(¢, newArr[¢]);
   }
 
-  @Test @SuppressWarnings("null") public void unboxShortTest() {
+  @Test  public void unboxShortTest() {
     for (short ¢ = -10; ¢ < 10; ++¢)
-      assertEquals(unbox.unbox(Short.valueOf(¢)), ¢);
+      assertEquals(unbox.unbox(cantBeNull(box(¢))), ¢);
   }
 
   @Test public void unboxShortArrayTest() {

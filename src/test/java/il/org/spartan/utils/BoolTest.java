@@ -1,20 +1,22 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
+
+import static fluent.ly.unbox.*;
+
 import org.junit.*;
 
-import fluent.ly.*;
-
 @SuppressWarnings("static-method") public class BoolTest {
-  @Test @SuppressWarnings("null") public void trueConstructorTest() {
-    assert unbox.unbox(new Bool(true).inner());
+  @Test public void trueConstructorTest() {
+    assert unbox(cantBeNull(new Bool(true).inner()));
   }
 
-  @Test @SuppressWarnings("null") public void falseConstructorTest() {
-    assert !unbox.unbox(new Bool(false).inner());
+  @Test  public void falseConstructorTest() {
+    assert !unbox(cantBeNull(new Bool(false).inner()));
   }
 
-  @Test @SuppressWarnings("null") public void emptyConstructorTest() {
-    assert !unbox.unbox(new Bool(false).inner());
+  @Test  public void emptyConstructorTest() {
+    assert !unbox(cantBeNull(new Bool(false).inner()));
   }
 
   @Test public void clearTest1() {

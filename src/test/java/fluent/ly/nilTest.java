@@ -1,5 +1,9 @@
 package fluent.ly;
 
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
+import static il.org.spartan.Utils.*;
+
 import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.assertNull;
@@ -13,10 +17,10 @@ import org.junit.*;
     assertNull(nil.forgetting(new Object(), new Object(), new Object()));
   }
 
-  @Test @SuppressWarnings("boxing") public void guardinglyTest() {
+  @Test public void guardinglyTest() {
     assertNull(nil.guardingly(λ -> λ).on(null));
-    assertEquals(fluent.ly.box.it(5), nil.guardingly(λ -> λ).on(5));
-    assertEquals(fluent.ly.box.it(25), nil.guardingly(λ -> fluent.ly.box.it((Integer) λ * (Integer) λ)).on(5));
+    assertEquals(fluent.ly.box.it(5), nil.guardingly(λ -> λ).on(box(5)));
+    assertEquals(fluent.ly.box.it(25), nil.guardingly((Integer λ) -> fluent.ly.box.it( unbox(cantBeNull(λ)) * unbox(cantBeNull(λ)))).on(box(5)));
   }
 
   @Test public void booleanIgnoringTest() {
