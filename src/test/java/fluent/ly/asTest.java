@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.azzert.assertEquals;
-import static fluent.ly.box.*;
-
 import java.util.*;
 
 import org.junit.*;
@@ -109,7 +107,7 @@ import org.junit.*;
   }
 
   @Test public void iteratorTest1() {
-    final Iterator<Integer> int_iter = as.iterator(box.it(1), it(2), it(3), it(4), it(5));
+    final Iterator<Integer> int_iter = as.iterator(box.it(1), box.it(2), box.it(3), box.it(4), box.it(5));
     for (int ¢ = 1; ¢ < 6; ++¢) {
       assertEquals(int_iter.next(), ¢);
       assert ¢ != 5 ? int_iter.hasNext() : !int_iter.hasNext();
@@ -117,7 +115,7 @@ import org.junit.*;
   }
 
   @Test public void iteratorTest2() {
-    final Iterator<Boolean> bool_iter = as.iterator(box.it(true), it(false), it(true), it(false));
+    final Iterator<Boolean> bool_iter = as.iterator(box.it(true), box.it(false), box.it(true), box.it(false));
     boolean b = true;
     for (int ¢ = 1; ¢ < 5; ++¢) {
       assertEquals(bool_iter.next(), b);
@@ -127,10 +125,10 @@ import org.junit.*;
   }
 
   @Test public void setTest() {
-    final Set<Integer> s1 = cantBeNull(as.set(box.it(1), it(2), it(3), it(4), it(5), it(6), it(7), it(8), it(9), it(10)));
+    final Set<Integer> s1 = cantBeNull(as.set(box.it(1), box.it(2), box.it(3), box.it(4), box.it(5), box.it(6), box.it(7), box.it(8), box.it(9), box.it(10)));
     for (int ¢ = 0; ¢ < 10; ++¢) {
-      assertContains(cantBeNull(s1), it(¢ + 1));
-      assertNotContains(cantBeNull(s1), it(500 * ¢));
+      assertContains(cantBeNull(s1), box.it(¢ + 1));
+      assertNotContains(cantBeNull(s1), box.it(500 * ¢));
     }
     final Set<String> s2 = cantBeNull(as.set("abcdefg", "hijklmnop", "qrstuv", "wxyz"));
     assertContains(s2, "abcdefg");
@@ -141,15 +139,15 @@ import org.junit.*;
     assertNotContains(s2, "543asdfnlj");
     assertContains(s2, "wxyz");
     assertNotContains(s2, "asdasd");
-    final Set<Boolean> s3 = cantBeNull(as.set(box.it(true), it(false), it(true), it(true), it(false), it(false)));
-    assertContains(s3, it(true));
-    assertContains(s3, it(false));
-    final Set<Boolean> s4 = cantBeNull(as.set(box.it(true), it(true), it(true), it(true)));
-    assertContains(s4, it(true));
-    assertNotContains(s4, it(false));
-    final Set<Boolean> s5 = cantBeNull(as.set(box.it(false), it(false)));
-    assertContains(s5, it(false));
-    assertNotContains(s5, it(true));
+    final Set<Boolean> s3 = cantBeNull(as.set(box.it(true), box.it(false), box.it(true), box.it(true), box.it(false), box.it(false)));
+    assertContains(s3, box.it(true));
+    assertContains(s3, box.it(false));
+    final Set<Boolean> s4 = cantBeNull(as.set(box.it(true), box.it(true), box.it(true), box.it(true)));
+    assertContains(s4, box.it(true));
+    assertNotContains(s4, box.it(false));
+    final Set<Boolean> s5 = cantBeNull(as.set(box.it(false), box.it(false)));
+    assertContains(s5, box.it(false));
+    assertNotContains(s5, box.it(true));
   }
 
   @Test public void stringsNullTest() {
@@ -161,7 +159,7 @@ import org.junit.*;
   }
 
   @Test public void stringTest2() {
-    final Integer x1 = it(10);
+    final Integer x1 = box.it(10);
     assertEquals(as.string(x1), x1 + "");
   }
 
@@ -170,7 +168,7 @@ import org.junit.*;
   }
 
   @Test public void stringTest4() {
-    final Float y1 = it(0.44645f);
+    final Float y1 = box.it(0.44645f);
     assertEquals(as.string(y1), y1 + "");
   }
 
@@ -179,7 +177,7 @@ import org.junit.*;
   }
 
   @Test public void stringTest6() {
-    final Boolean b1 = it(false);
+    final Boolean b1 = box.it(false);
     assertEquals(as.string(b1), b1 + "");
   }
 
