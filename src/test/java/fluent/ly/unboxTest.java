@@ -11,24 +11,23 @@ import java.util.*;
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class unboxTest {
-  @Test  public void itIntTest() {
+  @Test public void itIntTest() {
     for (int ¢ = -100; ¢ < 100; ++¢)
       assertEquals(unbox.it(cantBeNull(box(¢))), ¢);
   }
 
-  @Test  public void unboxBoolTest() {
+  @Test public void unboxBoolTest() {
     assertEquals(unbox.unbox(cantBeNull(Boolean.TRUE)), true);
     assertEquals(unbox.unbox(cantBeNull(Boolean.FALSE)), false);
   }
 
   @Test public void unboxBoolArrayTest() {
-     final boolean newArr[] = unbox
-        .unbox(box(new boolean[] { true, true, false, true, true }));
+    final boolean newArr[] = unbox.unbox(box(new boolean[] { true, true, true, true, true }));
     for (int ¢ = 0; ¢ < 5; ++¢)
       assert newArr[¢];
   }
 
-  @Test  public void unboxByteTest() {
+  @Test public void unboxByteTest() {
     for (byte i = -100; i < 100; ++i)
       assertEquals(unbox.unbox(box(i)), i);
   }
@@ -39,7 +38,7 @@ import org.junit.*;
       assertEquals(¢ + 1, newArr[¢]);
   }
 
-  @Test  public void unboxCharTest() {
+  @Test public void unboxCharTest() {
     for (char i = 0; i < 128; ++i)
       assertEquals(unbox.unbox(cantBeNull(box(i))), i);
   }
@@ -62,7 +61,7 @@ import org.junit.*;
       assertEquals(¢, newArr[¢]);
   }
 
-  @Test  public void unboxDoubleTest() {
+  @Test public void unboxDoubleTest() {
     for (double i = -10; i < 10; i += 0.1)
       assert unbox.unbox(cantBeNull(box(i))) == i;
   }
@@ -79,24 +78,24 @@ import org.junit.*;
       assert (¢ + 1) / 10.0f == newArr[¢];
   }
 
-  @Test  public void unboxFloatTest() {
+  @Test public void unboxFloatTest() {
     for (float i = -10f; i < 10; i += 0.1f)
       assert unbox.unbox(cantBeNull(box(i))) == i;
   }
 
   @Test public void unboxFloatArrayTest() {
-     final float newArr[] = unbox.unbox(box(new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }));
+    final float newArr[] = unbox.unbox(box(new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }));
     for (int ¢ = 0; ¢ < 10; ++¢)
       assert (¢ + 1) / 10.0f == newArr[¢];
   }
 
   @Test public void itFloatArrayTest() {
-     final float newArr[] = unbox.it(box(new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }));
+    final float newArr[] = unbox.it(box(new float[] { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1f }));
     for (int ¢ = 0; ¢ < 10; ++¢)
       assert (¢ + 1) / 10.0f == newArr[¢];
   }
 
-  @Test  public void unboxIntTest() {
+  @Test public void unboxIntTest() {
     for (int ¢ = -10; ¢ < 10; ++¢)
       assertEquals(unbox.unbox(cantBeNull(box(¢))), ¢);
   }
@@ -113,7 +112,7 @@ import org.junit.*;
       assertEquals(¢, newArr[¢]);
   }
 
-  @Test  public void unboxLongTest() {
+  @Test public void unboxLongTest() {
     for (long ¢ = -10; ¢ < 10; ++¢)
       assertEquals(unbox.unbox(box(¢)), ¢);
   }
@@ -124,7 +123,7 @@ import org.junit.*;
       assertEquals(¢, newArr[¢]);
   }
 
-  @Test  public void unboxShortTest() {
+  @Test public void unboxShortTest() {
     for (short ¢ = -10; ¢ < 10; ++¢)
       assertEquals(unbox.unbox(cantBeNull(box(¢))), ¢);
   }

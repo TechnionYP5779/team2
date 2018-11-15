@@ -38,7 +38,7 @@ import org.junit.*;
     assertEquals(string.cat("a", "b", "c", "d", "e"), "abcde");
   }
 
-  @SuppressWarnings("null") @Test public void testCat2() {
+  @Test @SuppressWarnings("null") public void testCat2() {
     assertEquals(string.cat(new String[] { "a", "b", "c" }, new String[] { "d", "e" }), "abcde");
   }
 

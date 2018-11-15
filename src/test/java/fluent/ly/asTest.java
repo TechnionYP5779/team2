@@ -1,12 +1,11 @@
 package fluent.ly;
 
-import static fluent.ly.box.*;
 import static il.org.spartan.Utils.*;
-
 import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.azzert.assertEquals;
+import static fluent.ly.box.*;
 
 import java.util.*;
 
@@ -148,7 +147,7 @@ import org.junit.*;
     final Set<Boolean> s4 = cantBeNull(as.set(box.it(true), it(true), it(true), it(true)));
     assertContains(s4, it(true));
     assertNotContains(s4, it(false));
-    final Set<Boolean> s5 = cantBeNull( as.set(box.it(false), it(false)));
+    final Set<Boolean> s5 = cantBeNull(as.set(box.it(false), it(false)));
     assertContains(s5, it(false));
     assertNotContains(s5, it(true));
   }

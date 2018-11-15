@@ -11,11 +11,11 @@ import org.junit.*;
     assert unbox(cantBeNull(new Bool(true).inner()));
   }
 
-  @Test  public void falseConstructorTest() {
+  @Test public void falseConstructorTest() {
     assert !unbox(cantBeNull(new Bool(false).inner()));
   }
 
-  @Test  public void emptyConstructorTest() {
+  @Test public void emptyConstructorTest() {
     assert !unbox(cantBeNull(new Bool(false).inner()));
   }
 
