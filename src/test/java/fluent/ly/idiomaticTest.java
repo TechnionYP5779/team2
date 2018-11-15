@@ -1,5 +1,10 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
+
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
+
 import java.io.*;
 import java.util.function.*;
 
@@ -10,9 +15,9 @@ import il.org.spartan.etc.*;
 import il.org.spartan.etc.idiomatic.*;
 
 @SuppressWarnings("static-method") public class idiomaticTest {
-  @Test @SuppressWarnings("null") public void testIncaseTrueReturnSameObj() {
-    final Integer integer = Integer.valueOf(5);
-    assert idiomatic.incase(true, integer).equals(integer);
+  @Test public void testIncaseTrueReturnSameObj() {
+    final Integer integer = box(5);
+    assert cantBeNull(idiomatic.incase(true, integer)).equals(integer);
   }
 
   @Test public void testEval() {
@@ -23,11 +28,11 @@ import il.org.spartan.etc.idiomatic.*;
     assert idiomatic.incase(false, fluent.ly.box.it(5)) == null;
   }
 
-  @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
-    assert idiomatic.catching((Producer<Integer>) () -> Integer.valueOf(5)).equals(fluent.ly.box.it(5));
+  @SuppressWarnings("null") @Test public void testKatchingWithNoException() {
+    assert cantBeNull(idiomatic.catching((Producer<Integer>) () -> box(5))).equals(fluent.ly.box.it(5));
   }
 
-  @Test @SuppressWarnings("null") public void testKatchingWithException() {
+  @SuppressWarnings("null") @Test public void testKatchingWithException() {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream(), errContent = new ByteArrayOutputStream();
     final PrintStream originalOut = System.out, originalErr = System.err;
     System.setOut(new PrintStream(outContent));
@@ -51,16 +56,16 @@ import il.org.spartan.etc.idiomatic.*;
     assert "''a''".equals(idiomatic.quote(idiomatic.quote("a")));
   }
 
-  @Test @SuppressWarnings("null") public void testWhenTrueReturnsSame() {
-    assert idiomatic.when(true).eval(() -> Integer.valueOf(5)).equals(Integer.valueOf(5));
+  @Test public void testWhenTrueReturnsSame() {
+    assert cantBeNull(idiomatic.when(true).eval(() -> box(5))).equals(box(5));
   }
 
   @Test public void testWhenFalseReturnsNull() {
     assert idiomatic.when(1 == 3).eval(() -> fluent.ly.box.it(5)) == null;
   }
 
-  @Test @SuppressWarnings("null") public void testUnlessFalseReturnsSame() {
-    assert idiomatic.unless(1 == 3).eval(() -> fluent.ly.box.it(5)).equals(fluent.ly.box.it(5));
+  @Test public void testUnlessFalseReturnsSame() {
+    assert cantBeNull(idiomatic.unless(1 == 3).eval(() -> fluent.ly.box.it(5))).equals(fluent.ly.box.it(5));
   }
 
   @Test public void testUnlessTrueReturnsNull() {
@@ -68,7 +73,7 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   @Test public void testUnlessFalseWithoutEval() {
-    final Integer i = Integer.valueOf(5);
+    final Integer i = box(5);
     assert idiomatic.unless(false, i) == i;
   }
 
@@ -92,37 +97,37 @@ import il.org.spartan.etc.idiomatic.*;
   @Test public void testRunnerRun() {
     final MyRunnable r = new MyRunnable();
     final Runner runner = idiomatic.run(r);
-    assert !r.didRun();
+    assert !unbox(cantBeNull(r.didRun()));
     runner.run();
-    assert r.didRun();
+    assert unbox(cantBeNull(r.didRun()));
   }
 
   @Test public void testRunnerWhen() {
     @NotNull final MyRunnable r = new MyRunnable();
     final Runner runner = idiomatic.run(r);
     runner.when(false);
-    assert !r.didRun();
+    assert !unbox(cantBeNull(r.didRun()));
     runner.when(true);
-    assert r.didRun();
+    assert unbox(cantBeNull(r.didRun()));
   }
 
   @Test public void testRunnerUnless() {
     final MyRunnable r = new MyRunnable();
     final Runner runner = idiomatic.run(r);
     runner.unless(true);
-    assert !r.didRun();
+    assert !unbox(cantBeNull(r.didRun()));
     runner.unless(false);
-    assert r.didRun();
+    assert unbox(cantBeNull(r.didRun()));
   }
 
   class MyTrigger implements Trigger {
-    @Override @SuppressWarnings("null") public <T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
+    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
       return ¢.get();
     }
   }
 
-  @Test @SuppressWarnings("null") public void testTriggerDefaultEval() {
-    assert new MyTrigger().eval(fluent.ly.box.it(4)).equals(fluent.ly.box.it(4));
+  @Test public void testTriggerDefaultEval() {
+    assert cantBeNull(new MyTrigger().eval(fluent.ly.box.it(4))).equals(fluent.ly.box.it(4));
   }
 
   @Test public void testTestUses() {

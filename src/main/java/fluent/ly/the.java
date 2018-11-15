@@ -8,14 +8,16 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
+import il.org.spartan.*;
+
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-12 */
 public interface the {
   static int index(final int i, final int... is) {
     for (final Integer $ : range.from(0).to(is.length))
-      if (is[unbox.unbox($)] == i)
-        return unbox.unbox($);
+      if (is[unbox.unbox(Utils.cantBeNull($))] == i)
+        return unbox.unbox(Utils.cantBeNull($));
     return -1;
   }
 
