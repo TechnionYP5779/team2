@@ -1,5 +1,6 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
 import static org.junit.Assert.assertNotEquals;
 
 import static fluent.ly.azzert.assertEquals;
@@ -12,7 +13,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings({ "static-method", "null" }) public class RangeTest {
+@SuppressWarnings("static-method") public class RangeTest {
   @Test public void rangeFrom() {
     range.from(2);
   }
@@ -29,7 +30,7 @@ import fluent.ly.*;
 
   @Test public void testStartingPoint() {
     assertEquals(2, new Range().from(2).from());
-    assertNotEquals(8, fluent.ly.unbox.it(new Range().from(-4).from()));
+    assertNotEquals(8, fluent.ly.unbox.it(cantBeNull(new Range().from(-4).from())));
   }
 
   @Test public void testFromAndTo() {

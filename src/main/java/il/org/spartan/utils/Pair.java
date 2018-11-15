@@ -31,7 +31,8 @@ public class Pair<First, Second> {
   }
 
   @Override public boolean equals(final @Nullable Object param) {
-    return param == this || param != null && getClass().equals(param.getClass()) && eq(first, ((Pair<?, ?>) param).first) && eq(second, ((Pair<?, ?>) param).second);
+    return param == this
+        || param != null && getClass().equals(param.getClass()) && eq(first, ((Pair<?, ?>) param).first) && eq(second, ((Pair<?, ?>) param).second);
   }
 
   @Override public int hashCode() {

@@ -45,7 +45,7 @@ public class Range {
   }
 
   @SuppressWarnings("hiding") public Range intersect(final Range r) {
-    final int $ = Math.max(this.from, r.from), to = Math.min(this.to, r.to) + 1;
+    final int $ = Math.max(from, r.from), to = Math.min(this.to, r.to) + 1;
     return $ >= to ? null : new Range().from($).to(to);
   }
 }

@@ -93,7 +93,8 @@ import fluent.ly.*;
       }
 
       @Override @NotNull public String makeField(final @Nullable String param) {
-        return param == null ? "" : !param.contains(QUOTE) && !param.contains(delimiter()) ? param : QUOTE + param.replaceAll(QUOTE, QUOTE + QUOTE) + QUOTE;
+        return param == null ? ""
+            : !param.contains(QUOTE) && !param.contains(delimiter()) ? param : QUOTE + param.replaceAll(QUOTE, QUOTE + QUOTE) + QUOTE;
       }
 
       @Override @NotNull String allBottom() {

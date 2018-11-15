@@ -1,10 +1,12 @@
 package fluent.ly;
 
+import static fluent.ly.box.*;
+
 import java.util.*;
 
 import org.junit.*;
 
-@SuppressWarnings({ "static-method", "boxing" }) public class isTest {
+@SuppressWarnings("static-method") public class isTest {
   @Test public void inEmptyListReturnsFasle() {
     assert !is.in("some string");
     assert !is.in("");
@@ -33,8 +35,7 @@ import org.junit.*;
     assert !is.in("not the same", "", "some string", Integer.valueOf(5), Boolean.FALSE, null);
     assert !is.in(Integer.valueOf(10), "", Integer.valueOf(5), Boolean.FALSE, null);
     assert !is.in(Boolean.TRUE, "", Integer.valueOf(5), Boolean.FALSE, null);
-    final int[] intArr1 = {}, intArr2 = {};
-    assert !is.in(intArr1, "", Integer.valueOf(5), intArr2, Boolean.FALSE, null);
+    assert !is.in(new int[] {}, "", Integer.valueOf(5), new int[] {}, Boolean.FALSE, null);
     final int[] intArr3 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 },
         intArr4 = { 1, 2, 4, Integer.MAX_VALUE, Integer.MIN_VALUE, 0, -54, 42 };
     assert !is.in(intArr3, "", Integer.valueOf(5), intArr4, Boolean.FALSE, null);
@@ -150,7 +151,7 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsFalseForNotEmptyArray() {
-    assert !is.empty(new Integer[] { 1, 2, 3, 4 });
+    assert !is.empty(box(new int[] { 1, 2, 3, 4 }));
   }
 
   @Test public void emptyReturnsTrueForEmptyIterable() {
@@ -159,7 +160,7 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsFalseForNotEmptyIterable() {
-    assert !is.empty((Iterable<Integer>) Arrays.asList(new Integer[] { 1, 2, 3, 4 }));
+    assert !is.empty((Iterable<Integer>) Arrays.asList(box(new int[] { 1, 2, 3, 4 })));
   }
 
   @Test public void emptyReturnsTrueForEmptyCollection() {
@@ -168,6 +169,6 @@ import org.junit.*;
   }
 
   @Test public void emptyReturnsFalseForNotEmptyCollection() {
-    assert !is.empty((Collection<Integer>) Arrays.asList(new Integer[] { 1, 2, 3, 4 }));
+    assert !is.empty((Collection<Integer>) Arrays.asList(box(new int[] { 1, 2, 3, 4 })));
   }
 }

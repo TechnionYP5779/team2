@@ -194,7 +194,8 @@ import il.org.spartan.utils.*;
   static String selfName(final Class<?> param) {
     return param == null ? English.name(param)
         : param.isAnonymousClass() ? "{}"
-            : param.isAnnotation() ? "@" + param.getSimpleName() : !param.getSimpleName().isEmpty() ? param.getSimpleName() : param.getCanonicalName();
+            : param.isAnnotation() ? "@" + param.getSimpleName()
+                : !param.getSimpleName().isEmpty() ? param.getSimpleName() : param.getCanonicalName();
   }
 
   static String time(final long $) {
