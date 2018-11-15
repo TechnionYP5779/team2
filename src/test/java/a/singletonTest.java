@@ -1,24 +1,25 @@
 package a;
 
-import static org.junit.Assert.*;
-
 import java.util.*;
 
 import org.junit.*;
+
+import fluent.ly.*;
+import static fluent.ly.azzert.*;
 
 @SuppressWarnings("static-method") public class singletonTest {
   @Test public void testList() {
     Integer a = Integer.valueOf(3);
     List<Integer> l = singleton.list(a);
-    assertEquals(l.size(), 1);
-    assertEquals(l.get(0), a);
+    azzert.that(l.size(), is(1));
+    azzert.that(l.get(0), is(a));
     l.add(a);
-    assertEquals(l.size(), 2);
+    azzert.that(l.size(), is(2));
   }
 
   @Test public void testArray() {
     Object[] l = singleton.array(null);
-    assertEquals(l.length, 1);
-    Assert.assertEquals(l[0], null);
+    azzert.that(l.length, is(1));
+    azzert.isNull(l[0]);
   }
 }
