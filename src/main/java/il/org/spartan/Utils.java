@@ -1,19 +1,13 @@
 package il.org.spartan;
 
-import static org.junit.Assert.*;
-
-import static fluent.ly.azzert.*;
-
 import java.io.*;
 import java.util.*;
 import java.util.function.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
 import fluent.ly.*;
 import il.org.spartan.Utils.FoundHandleForT.*;
-import il.org.spartan.etc.*;
 
 /** An empty <code><b>interface</b></code> with a variety of <code>public
  * static</code> utility functions of reasonably wide use.
@@ -74,8 +68,8 @@ import il.org.spartan.etc.*;
   /** @param <F> JD
    * @param   <T> JD
    * @param ¢ JD */
-  static <F, T> Applicator<F, T> apply(final Function<F, T> ¢) {
-    return new Applicator<>(¢);
+  static <F, T> Applicator<F, T> apply(final Function<F, T> param) {
+    return new Applicator<>(param);
   }
 
   @Nullable static <T> T canBeNull(final T $) {
@@ -163,14 +157,14 @@ import il.org.spartan.etc.*;
   }
 
   /** @param ¢ JD */
-  static FoundHandleForInt found(final int ¢) {
-    return new FoundHandleForInt(¢);
+  static FoundHandleForInt found(final int param) {
+    return new FoundHandleForInt(param);
   }
 
   /** @param <T> JD
    * @param ¢ JD */
-  static <T> FoundHandleForT<T> found(final T ¢) {
-    return new FoundHandleForT<>(¢);
+  static <T> FoundHandleForT<T> found(final T param) {
+    return new FoundHandleForT<>(param);
   }
 
   /** Determine whether a <code><b>null</b></code> occurs in a sequence of objects
@@ -229,8 +223,8 @@ import il.org.spartan.etc.*;
 
   /** @param ¢ JD
    * @return name of the parameter, which must not be <code><b>null</b></code> */
-  static String name(final File ¢) {
-    return cantBeNull(¢.getName());
+  static String name(final File param) {
+    return cantBeNull(param.getName());
   }
 
   /** Determine whether an {@link Object} is penultimate in its {@link List} .
@@ -250,7 +244,8 @@ import il.org.spartan.etc.*;
    * @return {@link StringBuilder} parameter with the <code><b>char</b></code>
    *         parameter prepended to it */
   static StringBuilder prepend(final @NotNull StringBuilder $, final char c) {
-    return cantBeNull($.insert(0, c));
+    @NotNull StringBuilder b1 = cantBeNull($.insert(0, c));
+    return b1;
   }
 
   /** Prepend a given {@link String} to a {@link StringBuilder}
@@ -259,7 +254,8 @@ import il.org.spartan.etc.*;
    * @return {@link StringBuilder} parameter with the {@link String} parameter
    *         prepended to it */
   static StringBuilder prepend(final @NotNull StringBuilder $, final @NotNull String s) {
-    return cantBeNull($.insert(0, s));
+    @NotNull StringBuilder b1 = cantBeNull($.insert(0, s));
+    return b1;
   }
 
   /** Quote a given {@link String}
@@ -301,23 +297,23 @@ import il.org.spartan.etc.*;
   /** Remove all occurrences of white space character in a given {@link String}
    * @param ¢ JD
    * @return parameter after all such occurrences are removed. */
-  static String removeWhites(final @NotNull String ¢) {
-    return cantBeNull(¢.replaceAll("\\s+", ""));
+  static String removeWhites(final @NotNull String param) {
+    return cantBeNull(param.replaceAll("\\s+", ""));
   }
 
   /** Sorts an array
    * @param ¢ what to sort
    * @return given array with elements in sorted order */
-  static int @NotNull [] sort(final int @NotNull [] ¢) {
-    Arrays.sort(¢);
-    return ¢;
+  static int @NotNull [] sort(final int @NotNull [] param) {
+    Arrays.sort(param);
+    return param;
   }
 
   /** Computes the square of a given double
    * @param ¢ some number
    * @return square of the parameter */
-  static double sqr(final double ¢) {
-    return ¢ * ¢;
+  static double sqr(final double param) {
+    return param * param;
   }
 
   /** Determine whether a file name ends with any one of the supplied extensions.
@@ -450,107 +446,8 @@ import il.org.spartan.etc.*;
     }
   }
 
-  /** A static nested class hosting unit tests for the nesting class Unit test for
-   * the containing class. Note the naming convention: a) names of test methods do
-   * not use are not prefixed by "test". This prefix is redundant. b) test methods
-   * begin with the name of the method they check.
-   * @author Yossi Gil
-   * @since 2014-05-31 */
-  @SuppressWarnings("static-method") class TEST {
-    @NotNull public static Integer[] intToIntegers(final int... is) {
-      final Integer @NotNull [] $ = new Integer @NotNull [is.length];
-      for (int ¢ = 0; ¢ < is.length; ++¢)
-        $[¢] = fluent.ly.box.it(is[¢]);
-      return $;
-    }
 
-    @Test @SuppressWarnings("unchecked") public void addAllTypical() {
-      final Set<String> ss = new HashSet<>();
-      accumulate.to(ss).addAll(as.set("A", "B"), null, as.set("B", "C", "D"));
-      azzert.nay(ss.contains("E"));
-      azzert.nay(ss.contains(null));
-      azzert.that(ss.size(), is(4));
-      for (final @NotNull String ¢ : ss)
-        azzert.aye("", ss.contains(¢));
-    }
-
-    @Test public void addTypical() {
-      final Set<String> ss = new HashSet<>();
-      accumulate.to(ss).add(null, "A", null, "B", "B", null, "C", "D", null);
-      azzert.nay(ss.contains("E"));
-      azzert.nay(ss.contains(null));
-      azzert.that(ss.size(), is(4));
-      for (final @NotNull String ¢ : ss)
-        azzert.aye("", ss.contains(¢));
-      azzert.aye(ss.contains("A"));
-    }
-
-    @Test public void cantBeNullOfNull() {
-      try {
-        cantBeNull(null);
-        azzert.fail("AssertionError expected prior to this line.");
-      } catch (final AssertionError ¢) {
-        forget.it(¢);
-        azzert.aye("", true);
-      }
-    }
-
-    @Test public void cantBeNullTypical() {
-      assert cantBeNull(new Object()) != null;
-    }
-
-    @Test public void isNullTypical() {
-      try {
-        isNull(mustBeNull(null));
-        azzert.fail("AssertionError expected prior to this line.");
-      } catch (final AssertionError ¢) {
-        forget.it(¢);
-        azzert.aye("", true);
-      }
-    }
-
-    @Test public void mustBeNullOfNotNull() {
-      try {
-        mustBeNull(new Object());
-        azzert.fail("AssertionError expected prior to this line.");
-      } catch (final AssertionError ¢) {
-        forget.it(¢);
-        azzert.aye("", true);
-      }
-    }
-
-    @Test public void quoteEmptyString() {
-      azzert.that(idiomatic.quote(""), is("''"));
-    }
-
-    @Test public void quoteNull() {
-      azzert.that(idiomatic.quote(null), is("<null reference>"));
-    }
-
-    @Test public void quoteSimpleString() {
-      azzert.that(idiomatic.quote("A"), is("'A'"));
-    }
-
-    @Test public void swapDegenerate() {
-      final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
-      swap(ss, 1, 1);
-      assertArrayEquals(as.array("A", "B", "C", "D"), ss);
-    }
-
-    @Test public void swapTypical() {
-      final @NotNull String @NotNull [] ss = as.array("A", "B", "C", "D");
-      swap(ss, 1, 2);
-      assertArrayEquals(as.array("A", "C", "B", "D"), ss);
-    }
-
-    @Test public void swapTypicalCase() {
-      final Integer @NotNull [] $ = intToIntegers(29, 1, 60);
-      swap($, 0, 1);
-      assertArrayEquals(intToIntegers(1, 29, 60), $);
-    }
-  }
-
-  static int hash(final Object ¢) {
-    return ¢ == null ? 0 : ¢.hashCode();
+  static int hash(final Object param) {
+    return param == null ? 0 : param.hashCode();
   }
 }
