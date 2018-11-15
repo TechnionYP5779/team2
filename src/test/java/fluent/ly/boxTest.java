@@ -1,15 +1,16 @@
 package fluent.ly;
 
 import org.junit.*;
+import static fluent.ly.box.*;
 
 @SuppressWarnings({ "static-method", "static-access" }) public class boxTest {
   @Test public void booleanBoxingTest() {
-    azzert.assertEquals(Boolean.TRUE, box.box(true));
-    azzert.assertEquals(Boolean.FALSE, box.box(false));
+    azzert.assertEquals(Boolean.TRUE, box(true));
+    azzert.assertEquals(Boolean.FALSE, box(false));
   }
 
   @Test public void booleanEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Boolean[0], box.box(new boolean[0]));
+    azzert.assertArrayEquals(new Boolean[0], box(new boolean[0]));
   }
 
   @Test public void booleanArrayBoxingTest() {
@@ -17,17 +18,17 @@ import org.junit.*;
     final Boolean[] expected = new Boolean[boolArray.length];
     for (int ¢ = 0; ¢ < boolArray.length; ++¢)
       expected[¢] = Boolean.valueOf(boolArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(boolArray));
+    azzert.assertArrayEquals(expected, box(boolArray));
   }
 
   @Test public void byteBoxingTest() {
     for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; ++i)
-      azzert.assertEquals(Byte.valueOf(i), box.box(i));
-    azzert.assertEquals(Byte.valueOf(Byte.MAX_VALUE), box.box(Byte.MAX_VALUE));
+      azzert.assertEquals(Byte.valueOf(i), box(i));
+    azzert.assertEquals(Byte.valueOf(Byte.MAX_VALUE), box(Byte.MAX_VALUE));
   }
 
   @Test public void byteEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Byte[0], box.box(new byte[0]));
+    azzert.assertArrayEquals(new Byte[0], box(new byte[0]));
   }
 
   @Test public void byteArrayBoxingTest() {
@@ -35,17 +36,17 @@ import org.junit.*;
     final Byte[] expected = new Byte[byteArray.length];
     for (int ¢ = 0; ¢ < byteArray.length; ++¢)
       expected[¢] = Byte.valueOf(byteArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(byteArray));
+    azzert.assertArrayEquals(expected, box(byteArray));
   }
 
   @Test public void charBoxingTest() {
     for (char i = Character.MIN_VALUE; i < Character.MAX_VALUE; ++i)
-      azzert.assertEquals(Character.valueOf(i), box.box(i));
-    azzert.assertEquals(Character.valueOf(Character.MAX_VALUE), box.box(Character.MAX_VALUE));
+      azzert.assertEquals(Character.valueOf(i), box(i));
+    azzert.assertEquals(Character.valueOf(Character.MAX_VALUE), box(Character.MAX_VALUE));
   }
 
   @Test public void charEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Character[0], box.box(new char[0]));
+    azzert.assertArrayEquals(new Character[0], box(new char[0]));
   }
 
   @Test public void charArrayBoxingTest() {
@@ -53,22 +54,22 @@ import org.junit.*;
     final Character[] expected = new Character[charArray.length];
     for (int ¢ = 0; ¢ < charArray.length; ++¢)
       expected[¢] = Character.valueOf(charArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(charArray));
+    azzert.assertArrayEquals(expected, box(charArray));
   }
 
   @Test public void doubleBoxingTest() {
-    azzert.assertEquals(Double.valueOf(Double.MAX_VALUE), box.box(Double.MAX_VALUE));
-    azzert.assertEquals(Double.valueOf(Double.MIN_VALUE), box.box(Double.MIN_VALUE));
-    azzert.assertEquals(Double.valueOf(Double.MIN_NORMAL), box.box(Double.MIN_NORMAL));
-    azzert.assertEquals(Double.valueOf(0.0), box.box(0.0));
-    azzert.assertEquals(Double.valueOf(Math.E), box.box(Math.E));
-    azzert.assertEquals(Double.valueOf(Math.PI), box.box(Math.PI));
-    azzert.assertEquals(Double.valueOf(-Math.sqrt(2)), box.box(-Math.sqrt(2)));
-    azzert.assertEquals(Double.valueOf(238.0), box.box(238.0));
+    azzert.assertEquals(Double.valueOf(Double.MAX_VALUE), box(Double.MAX_VALUE));
+    azzert.assertEquals(Double.valueOf(Double.MIN_VALUE), box(Double.MIN_VALUE));
+    azzert.assertEquals(Double.valueOf(Double.MIN_NORMAL), box(Double.MIN_NORMAL));
+    azzert.assertEquals(Double.valueOf(0.0), box(0.0));
+    azzert.assertEquals(Double.valueOf(Math.E), box(Math.E));
+    azzert.assertEquals(Double.valueOf(Math.PI), box(Math.PI));
+    azzert.assertEquals(Double.valueOf(-Math.sqrt(2)), box(-Math.sqrt(2)));
+    azzert.assertEquals(Double.valueOf(238.0), box(238.0));
   }
 
   @Test public void doubleEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Double[0], box.box(new double[0]));
+    azzert.assertArrayEquals(new Double[0], box(new double[0]));
   }
 
   @Test public void doubleArrayBoxingTest() {
@@ -76,22 +77,22 @@ import org.junit.*;
     final Double[] expected = new Double[doubleArray.length];
     for (int ¢ = 0; ¢ < doubleArray.length; ++¢)
       expected[¢] = Double.valueOf(doubleArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(doubleArray));
+    azzert.assertArrayEquals(expected, box(doubleArray));
   }
 
   @Test public void floatBoxingTest() {
-    azzert.assertEquals(Float.valueOf(Float.MAX_VALUE), box.box(Float.MAX_VALUE));
-    azzert.assertEquals(Float.valueOf(Float.MIN_VALUE), box.box(Float.MIN_VALUE));
-    azzert.assertEquals(Float.valueOf(Float.MIN_NORMAL), box.box(Float.MIN_NORMAL));
-    azzert.assertEquals(Float.valueOf((float) 0.0), box.box((float) 0.0));
-    azzert.assertEquals(Float.valueOf((float) Math.E), box.box((float) Math.E));
-    azzert.assertEquals(Float.valueOf((float) Math.PI), box.box((float) Math.PI));
-    azzert.assertEquals(Float.valueOf((float) -Math.sqrt(2)), box.box((float) -Math.sqrt(2)));
-    azzert.assertEquals(Float.valueOf((float) 238.0), box.box((float) 238.0));
+    azzert.assertEquals(Float.valueOf(Float.MAX_VALUE), box(Float.MAX_VALUE));
+    azzert.assertEquals(Float.valueOf(Float.MIN_VALUE), box(Float.MIN_VALUE));
+    azzert.assertEquals(Float.valueOf(Float.MIN_NORMAL), box(Float.MIN_NORMAL));
+    azzert.assertEquals(Float.valueOf((float) 0.0), box((float) 0.0));
+    azzert.assertEquals(Float.valueOf((float) Math.E), box((float) Math.E));
+    azzert.assertEquals(Float.valueOf((float) Math.PI), box((float) Math.PI));
+    azzert.assertEquals(Float.valueOf((float) -Math.sqrt(2)), box((float) -Math.sqrt(2)));
+    azzert.assertEquals(Float.valueOf((float) 238.0), box((float) 238.0));
   }
 
   @Test public void floatEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Float[0], box.box(new float[0]));
+    azzert.assertArrayEquals(new Float[0], box(new float[0]));
   }
 
   @Test public void floatArrayBoxingTest() {
@@ -100,19 +101,19 @@ import org.junit.*;
     final Float[] expected = new Float[floatArray.length];
     for (int ¢ = 0; ¢ < floatArray.length; ++¢)
       expected[¢] = Float.valueOf(floatArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(floatArray));
+    azzert.assertArrayEquals(expected, box(floatArray));
   }
 
   @Test public void intBoxingTest() {
-    azzert.assertEquals(Integer.valueOf(Integer.MAX_VALUE), box.box(Integer.MAX_VALUE));
-    azzert.assertEquals(Integer.valueOf(Integer.MIN_VALUE), box.box(Integer.MIN_VALUE));
-    azzert.assertEquals(Integer.valueOf(0), box.box(0));
-    azzert.assertEquals(Integer.valueOf(500), box.box(500));
-    azzert.assertEquals(Integer.valueOf(-3), box.box(-3));
+    azzert.assertEquals(Integer.valueOf(Integer.MAX_VALUE), box(Integer.MAX_VALUE));
+    azzert.assertEquals(Integer.valueOf(Integer.MIN_VALUE), box(Integer.MIN_VALUE));
+    azzert.assertEquals(Integer.valueOf(0), box(0));
+    azzert.assertEquals(Integer.valueOf(500), box(500));
+    azzert.assertEquals(Integer.valueOf(-3), box(-3));
   }
 
   @Test public void intEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Integer[0], box.box(new int[0]));
+    azzert.assertArrayEquals(new Integer[0], box(new int[0]));
   }
 
   @Test public void intArrayBoxingTest() {
@@ -120,19 +121,19 @@ import org.junit.*;
     final Integer[] expected = new Integer[intArray.length];
     for (int ¢ = 0; ¢ < intArray.length; ++¢)
       expected[¢] = Integer.valueOf(intArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(intArray));
+    azzert.assertArrayEquals(expected, box(intArray));
   }
 
   @Test public void longBoxingTest() {
-    azzert.assertEquals(Long.valueOf(Long.MAX_VALUE), box.box(Long.MAX_VALUE));
-    azzert.assertEquals(Long.valueOf(Long.MIN_VALUE), box.box(Long.MIN_VALUE));
-    azzert.assertEquals(Long.valueOf(0L), box.box(0L));
-    azzert.assertEquals(Long.valueOf(500L), box.box(500L));
-    azzert.assertEquals(Long.valueOf(-3L), box.box(-3L));
+    azzert.assertEquals(Long.valueOf(Long.MAX_VALUE), box(Long.MAX_VALUE));
+    azzert.assertEquals(Long.valueOf(Long.MIN_VALUE), box(Long.MIN_VALUE));
+    azzert.assertEquals(Long.valueOf(0L), box(0L));
+    azzert.assertEquals(Long.valueOf(500L), box(500L));
+    azzert.assertEquals(Long.valueOf(-3L), box(-3L));
   }
 
   @Test public void longEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Long[0], box.box(new long[0]));
+    azzert.assertArrayEquals(new Long[0], box(new long[0]));
   }
 
   @Test public void longArrayBoxingTest() {
@@ -140,19 +141,19 @@ import org.junit.*;
     final Long[] expected = new Long[longArray.length];
     for (int ¢ = 0; ¢ < longArray.length; ++¢)
       expected[¢] = Long.valueOf(longArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(longArray));
+    azzert.assertArrayEquals(expected, box(longArray));
   }
 
   @Test public void shortBoxingTest() {
-    azzert.assertEquals(Short.valueOf(Short.MAX_VALUE), box.box(Short.MAX_VALUE));
-    azzert.assertEquals(Short.valueOf(Short.MIN_VALUE), box.box(Short.MIN_VALUE));
-    azzert.assertEquals(Short.valueOf((short) 0), box.box((short) 0));
-    azzert.assertEquals(Short.valueOf((short) 500), box.box((short) 500));
-    azzert.assertEquals(Short.valueOf((short) -3), box.box((short) -3));
+    azzert.assertEquals(Short.valueOf(Short.MAX_VALUE), box(Short.MAX_VALUE));
+    azzert.assertEquals(Short.valueOf(Short.MIN_VALUE), box(Short.MIN_VALUE));
+    azzert.assertEquals(Short.valueOf((short) 0), box((short) 0));
+    azzert.assertEquals(Short.valueOf((short) 500), box((short) 500));
+    azzert.assertEquals(Short.valueOf((short) -3), box((short) -3));
   }
 
   @Test public void shortEmptyArrayBoxingTest() {
-    azzert.assertArrayEquals(new Short[0], box.box(new short[0]));
+    azzert.assertArrayEquals(new Short[0], box(new short[0]));
   }
 
   @Test public void shortArrayBoxingTest() {
@@ -160,7 +161,7 @@ import org.junit.*;
     final Short[] expected = new Short[shortArray.length];
     for (int ¢ = 0; ¢ < shortArray.length; ++¢)
       expected[¢] = Short.valueOf(shortArray[¢]);
-    azzert.assertArrayEquals(expected, box.box(shortArray));
+    azzert.assertArrayEquals(expected, box(shortArray));
   }
 
   @Test public void booleanItTest() {
