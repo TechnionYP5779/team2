@@ -761,7 +761,7 @@ public class azzert extends org.junit.Assert {
     }
 
     @NotNull public Asserter andAye(final @NotNull String reason, final boolean claim) {
-      azzert.that(reason, claim, is(true));
+      azzert.assertTrue(reason, claim);
       return this;
     }
 
@@ -770,7 +770,7 @@ public class azzert extends org.junit.Assert {
     }
 
     @NotNull public Asserter andNay(final @NotNull String reason, final boolean claim) {
-      azzert.that(reason, claim, is(false));
+      azzert.assertFalse(reason, claim);
       return this;
     }
   }
