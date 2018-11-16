@@ -1,4 +1,4 @@
-package fluent.ly;
+package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
 
@@ -11,7 +11,6 @@ import java.util.function.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-import il.org.spartan.etc.*;
 import il.org.spartan.etc.idiomatic.*;
 
 @SuppressWarnings("static-method") public class idiomaticTest {
