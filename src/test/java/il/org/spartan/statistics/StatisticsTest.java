@@ -1,37 +1,39 @@
 package il.org.spartan.statistics;
 
-import static org.junit.Assert.*;
+import static fluent.ly.azzert.*;
 
 import org.junit.*;
 
+import fluent.ly.*;
+
 @SuppressWarnings("static-method") public class StatisticsTest {
   @Test public void medianTest() {
-    assertEquals(Statistics.median(new double[] { 1, 2, 3, 4, 5 }), 3, 0.00001);
-    assertEquals(Statistics.median(new double[] { 1, 1, 1, 1, 1, 1 }), 1, 0.00001);
-    assertEquals(Statistics.median(new double[] { 2, 3, 2, 5, 2, 2 }), 2, 0.00001);
+    azzert.that(Statistics.median(new double[] { 1, 2, 3, 4, 5 }), is(3.0));
+    azzert.that(Statistics.median(new double[] { 1, 1, 1, 1, 1, 1 }), is(1.0));
+    azzert.that(Statistics.median(new double[] { 2, 3, 2, 5, 2, 2 }), is(2.0));
   }
 
   @Test public void madTest() {
-    assertEquals(Statistics.mad(new double[] { 1, 2, 3, 4, 5 }), 1, 0.00001);
-    assertEquals(Statistics.mad(new double[] { 1, 1, 1, 1, 1, 1 }), 0, 0.00001);
-    assertEquals(Statistics.mad(new double[] { 2, 3, 2, 5, 2, 2 }), 0, 0.00001);
+    azzert.that(Statistics.mad(new double[] { 1, 2, 3, 4, 5 }), is(1.0));
+    azzert.that(Statistics.mad(new double[] { 1, 1, 1, 1, 1, 1 }), is(0.0));
+    azzert.that(Statistics.mad(new double[] { 2, 3, 2, 5, 2, 2 }), is(0.0));
   }
 
   @Test public void sampleMeanTest() {
-    assertEquals(Statistics.sampleMean(new double[] { 1, 2, 3, 4, 5 }), 3.0, 0.00001);
-    assertEquals(Statistics.sampleMean(new double[] { 1, 1, 1, 1, 1, 1 }), 1.0, 0.00001);
-    assertEquals(Statistics.sampleMean(new double[] { 2, 3, 2, 5, 2, 2 }), 2.6666666666666665, 0.00001);
+    azzert.that(Statistics.sampleMean(new double[] { 1, 2, 3, 4, 5 }), is(3.0));
+    azzert.that(Statistics.sampleMean(new double[] { 1, 1, 1, 1, 1, 1 }), is(1.0));
+    azzert.that(Statistics.sampleMean(new double[] { 2, 3, 2, 5, 2, 2 }), is(2.6666666666666665));
   }
 
   @Test public void sampleVarianceTest() {
-    assertEquals(Statistics.sampleVariance(new double[] { 1, 2, 3, 4, 5 }), 2.5, 0.00001);
-    assertEquals(Statistics.sampleVariance(new double[] { 1, 1, 1, 1, 1, 1 }), 0.0, 0.00001);
-    assertEquals(Statistics.sampleVariance(new double[] { 2, 3, 2, 5, 2, 2 }), 1.4666666666666668, 0.00001);
+    azzert.that(Statistics.sampleVariance(new double[] { 1, 2, 3, 4, 5 }), is(2.5));
+    azzert.that(Statistics.sampleVariance(new double[] { 1, 1, 1, 1, 1, 1 }), is(0.0));
+    azzert.that(Statistics.sampleVariance(new double[] { 2, 3, 2, 5, 2, 2 }), is(1.4666666666666668));
   }
 
   @Test public void isEmptyTest() {
-    assertEquals(Boolean.valueOf(new RealStatistics().record().isEmpty()), Boolean.TRUE);
-    assertEquals(Boolean.valueOf(new RealStatistics().record(1, 2, 3, 4, 5).isEmpty()), Boolean.FALSE);
+    assert new RealStatistics().record().isEmpty();
+    assert !new RealStatistics().record(1, 2, 3, 4, 5).isEmpty();
   }
 
   @Test(expected = ArithmeticException.class) public void maxTestExp() {
@@ -39,9 +41,9 @@ import org.junit.*;
   }
 
   @Test public void maxTest() {
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).max(), 5, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).max(), 1, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).max(), 5, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).max(), is(5.0));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).max(), is(1.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).max(), is(5.0));
   }
 
   @Test(expected = ArithmeticException.class) public void minTestExp() {
@@ -49,9 +51,9 @@ import org.junit.*;
   }
 
   @Test public void minTest() {
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).min(), 1, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).min(), 1, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).min(), 2, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).min(), is(1.0));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).min(), is(1.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).min(), is(2.0));
   }
 
   @Test(expected = ArithmeticException.class) public void meanTestExp() {
@@ -59,24 +61,24 @@ import org.junit.*;
   }
 
   @Test public void meanTest() {
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).mean(), 3, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).mean(), 1, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).mean(), 2.6666666666666665, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).mean(), is(3.0));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).mean(), is(1.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).mean(), is(2.6666666666666665));
   }
 
   @Test public void missingTest() {
     final RealStatistics z = new RealStatistics().record();
-    assertEquals(z.missing(), 0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).record(z.v()).missing(), 1, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).missing(), 0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).missing(), 0, 0.00001);
+    azzert.that(z.missing(), is(0));
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).record(z.v()).missing(), is(1));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).missing(), is(0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).missing(), is(0));
   }
 
   @Test public void nTest() {
-    assertEquals(new RealStatistics().record().n(), 0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).n(), 5, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).n(), 6, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).n(), 6, 0.00001);
+    azzert.that(new RealStatistics().record().n(), is(0));
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).n(), is(5));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).n(), is(6));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).n(), is(6));
   }
 
   @Test(expected = ArithmeticException.class) public void sdTestExp() {
@@ -84,9 +86,9 @@ import org.junit.*;
   }
 
   @Test public void sdTest() {
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).sd(), 1.4142135623730951, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).sd(), 0.0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).sd(), 1.1055415967851336, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).sd(), is(1.4142135623730951));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).sd(), is(0.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).sd(), is(1.1055415967851336));
   }
 
   @Test(expected = ArithmeticException.class) public void relativeErrorTestExp() {
@@ -94,30 +96,30 @@ import org.junit.*;
   }
 
   @Test public void relativeErrorTest() {
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).relativeError(), 0.47140452079103173, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).relativeError(), 0.0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).relativeError(), 0.41457809879442514, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).relativeError(), is(0.47140452079103173));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).relativeError(), is(0.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).relativeError(), is(0.41457809879442514));
   }
 
   @Test public void sumTest() {
-    assertEquals(new RealStatistics().record().sum(), 0.0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).sum(), 15.0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).sum(), 6.0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).sum(), 16.0, 0.00001);
+    azzert.that(new RealStatistics().record().sum(), is(0.0));
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).sum(), is(15.0));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).sum(), is(6.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).sum(), is(16.0));
   }
 
   @Test public void sum2Test() {
-    assertEquals(new RealStatistics().record().sum2(), 0.0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).sum2(), 55.0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).sum2(), 6.0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).sum2(), 50.0, 0.00001);
+    azzert.that(new RealStatistics().record().sum2(), is(0.0));
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).sum2(), is(55.0));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).sum2(), is(6.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).sum2(), is(50.0));
   }
 
   @Test public void vTest() {
     assert Double.isNaN(new RealStatistics().record().v());
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).v(), 2.5, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).v(), 0.0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).v(), 1.4666666666666668, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).v(), is(2.5));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).v(), is(0.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).v(), is(1.4666666666666668));
   }
 
   @Test(expected = ArithmeticException.class) public void varianceTestExp() {
@@ -125,9 +127,9 @@ import org.junit.*;
   }
 
   @Test public void varianceTest() {
-    assertEquals(new RealStatistics().record(1, 2, 3, 4, 5).variance(), 2.0, 0.00001);
-    assertEquals(new RealStatistics().record(1, 1, 1, 1, 1, 1).variance(), 0.0, 0.00001);
-    assertEquals(new RealStatistics().record(2, 3, 2, 5, 2, 2).variance(), 1.2222222222222232, 0.00001);
+    azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).variance(), is(2.0));
+    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).variance(), is(0.0));
+    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).variance(), is(1.2222222222222232));
   }
 
   @Test(expected = ArithmeticException.class) public void checkEmptyTestExp() {
