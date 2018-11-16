@@ -1,167 +1,163 @@
 package fluent.ly;
 
 import java.util.*;
-import java.util.stream.*;
 
-/** A fluent API implementation for range
- * @author Dor Ma'ayan
- * @since 26-11-2016 */
+
 public class range {
-  public class AfterTo extends RangeIterator<AfterTo> {
-    public AfterTo from(final int param) {
-      to = param;
-      return this;
-    }
 
-    public Iterable<Integer> infinite() {
-      return range.infiniteFrom(from, step);
-    }
-
-    public AfterTo step(final int param) {
-      step = param;
-      return this;
-    }
-
-    public Stream<Integer> stream() {
-      return StreamSupport.stream(spliterator(), false);
-    }
-
-    @Override AfterTo self() {
-      return this;
-    }
-  }
-
-  public class BeforeTo extends RangeIterator<BeforeTo> {
-    public Infinite infinite() {
-      return range.infiniteFrom(from, step);
-    }
-
-    public AfterTo step(final int param) {
-      step = param;
-      return new AfterTo();
-    }
-
-    public AfterTo to(final int param) {
-      to = param;
-      return new AfterTo();
-    }
-
-    @Override BeforeTo self() {
-      return this;
-    }
-  }
-
-  public class Infinite extends RangeIterator<Infinite> {
-    public Infinite from(final int param) {
-      from = param;
-      step = 1;
-      return this;
-    }
-
-    public Iterable<Integer> step(final int param) {
-      step = param;
-      return this;
-    }
-
-    @Override Infinite self() {
-      return this;
-    }
-  }
-
-  abstract class RangeIterator<Self extends RangeIterator<Self>> implements Iterable<Integer> {
-    public final Self exclusive() {
-      inclusive = false;
-      return self();
-    }
-
-    public final Self inclusive() {
-      inclusive = true;
-      return self();
-    }
-
-    public final Self infiniteRange() {
-      infinite = true;
-      return self();
-    }
+  public int from = Integer.MIN_VALUE;
+  public int to = Integer.MAX_VALUE;
+  int jumpBy = 1;
+  
+  boolean infinite = true;
+  boolean empty;
+  
+ 
+  /*
+   * a class for representing an iteration over range
+   */
+  abstract class RangeIterator<T extends RangeIterator<T>> implements Iterable<Integer> {
 
     @Override public Iterator<Integer> iterator() {
       return new Iterator<Integer>() {
-        int next = from;
+        int currentNumber = from;
 
+        //the range has next iff it is infinte or the current number is not yet "to"
         @Override public boolean hasNext() {
-          return infinite || (inclusive ? next <= to : next < to);
+          return infinite || currentNumber < to;
         }
 
+        //the next number is the current one plus the step we do (jumpBy)
         @Override public Integer next() {
           if (!hasNext())
             throw new NoSuchElementException();
-          final int $ = next;
-          next += step;
-          return Integer.valueOf($);
+          
+          int $ = currentNumber;
+          currentNumber += jumpBy;
+          return box.box($);
         }
       };
     }
 
-    abstract Self self();
+    //an abstract method for returning the current object
+    abstract T selfObject();
+    
+    public boolean includes(int x) {
+      return from <= x && to > x;
+    }
+    
+
+    public boolean isInfinite() {
+      return infinite;
+    }
+    
+    public boolean isEmpty() {
+      return empty;
+    }
+    
+    
+    @SuppressWarnings("boxing") public PerformedTo intersect(PerformedTo r) {
+      Integer $ = r.from(), to2 = r.to();
+      return to > $ && to2 > from ? range.from(Math.max(from, $)).to(Math.min(to, to2)) : new range() {
+        {
+          empty = true;
+        }
+      }.new PerformedTo();
+    }
+    
+    @SuppressWarnings("boxing") public PerformedTo intersect(PerformedFrom ¢) {
+      Integer $ = ¢.from();
+      return to > $ ? range.from($).to(to) : new range() {
+        {
+          empty = true;
+        }
+      }.new PerformedTo();
+    }
+    
+   
+  }
+  
+  /*
+   * a class for representing a range that the method to() has NOT already been operated on it
+   */
+  public class PerformedFrom extends RangeIterator<PerformedFrom> {
+    
+    public PerformedTo to(final int toParam) {
+      to = toParam;
+      infinite = false;
+      return new PerformedTo();
+    }
+    
+    @Override PerformedFrom selfObject() {
+      return this;
+    }
+    
+    public int from() {
+      return from;
+    }
+    
+    public Integer to() {
+      return infinite ? null : box.box(to);
+    }
+
+    
+    
+
   }
 
-  public static BeforeTo from(final int param) {
-    return makeFrom(param).new BeforeTo();
-  }
+  
+  /*
+   * a class for representing a range that the method to() has already been operated on it
+   */
+  public class PerformedTo extends RangeIterator<PerformedTo> {
+    public PerformedTo from(final int fromParam) {
+      return new PerformedTo() {
+        {
+          from = fromParam;
+          empty = infinite = false;
+          jumpBy = 1;
+        }
+      };
+    }
+    
+    public Integer from() {
+      return infinite ? null : box.box(from);
+    }
+    
+    public int to() {
+      return to;
+    }
 
-  public static Infinite infinite() {
-    return infiniteFrom(0, 1);
+    @Override PerformedTo selfObject() {
+      return this;
+    }
+    
+    
   }
-
-  public static Iterable<Integer> infinite(final int param) {
-    return from(param).to(param).step(0).inclusive();
-  }
-
-  public static RangeIterator<?> naturals() {
-    return from(0).to(-1).step(1);
-  }
-
-  public static RangeIterator<?> numerals() {
-    return from(1).to(-1).step(1);
-  }
-
-  public static RangeIterator<?> odds() {
-    return from(1).to(-1).step(2);
-  }
-
-  public static <T> RangeIterator<?> of(final T[] param) {
-    return from(0).to(param.length);
-  }
-
-  public static AfterTo to(final int to) {
-    return makeTo(to).new AfterTo();
-  }
-
-  private static range makeFrom(final int param) {
+  
+  //statically create an infinite range with range.from($)
+  public static PerformedFrom from(int fromParam) {
     return new range() {
       {
-        from = param;
+        from = fromParam;
+        empty = false;
+        infinite = true;
       }
-    };
+    }.new PerformedFrom();
   }
 
-  private static range makeTo(final int param) {
+  
+//statically create an infinite range with range.to($)
+  public static PerformedTo to(int toParam) {
     return new range() {
       {
-        to = param;
+        jumpBy = -1; //down
+        to = toParam;
+        empty = false;
+        infinite = true;
       }
-    };
+    }.new PerformedTo();
   }
-
-  static Infinite infiniteFrom(final int ¢, final int ¢2) {
-    final Infinite $ = makeFrom(¢).new Infinite().infiniteRange();
-    $.step(¢2);
-    return $;
-  }
-
-  int from;
-  boolean inclusive;
-  boolean infinite;
-  int step = 1;
-  int to = -1;
+  
+  public static PerformedTo numbers = range.from(Integer.MIN_VALUE).to(Integer.MAX_VALUE);
 }
