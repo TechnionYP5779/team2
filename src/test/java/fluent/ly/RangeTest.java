@@ -92,7 +92,7 @@ public class RangeTest {
   }
 
   
-  @Test @SuppressWarnings("boxing") public void testNumbersFunction() {
+  public void testNumbersFunction() {
     int c = Integer.MIN_VALUE;
     for (final Integer $ : range.numbers) {
       if (c < 22)
