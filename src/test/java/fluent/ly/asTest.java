@@ -1,7 +1,6 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
-
 import static org.junit.Assert.assertEquals;
 
 import static fluent.ly.azzert.*;
