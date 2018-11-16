@@ -129,7 +129,7 @@ public class IntTest {
   }
   
   @Test public void valueChanges7() {
-    Int v = new Int(), v1 = new Int(), v2 = new Int();
+    Int v = new Int(), v1 = new Int();
     azzert.assertEquals(v.get(), v1.get());
   }
   

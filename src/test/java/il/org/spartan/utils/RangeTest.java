@@ -1,6 +1,5 @@
 package il.org.spartan.utils;
 
-import static fluent.ly.azzert.*;
 
 
 // import fluent.ly.azzert;
