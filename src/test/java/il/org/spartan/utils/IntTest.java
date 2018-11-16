@@ -9,7 +9,7 @@ import fluent.ly.*;
 @SuppressWarnings({"static-method", "static-access"}) 
 public class IntTest { 
   @Test public void creation() {
-    azzert.assertEquals(new Int().get(), 0);
+    azzert.assertZero(new Int().get());
   }
   
   @Test public void creation0() {
@@ -34,7 +34,7 @@ public class IntTest {
 
   @Test public void innerValue() {
     final Int v_default = new Int();
-    azzert.assertEquals(v_default.get(), 0);
+    azzert.assertZero(v_default.get());
   }
   
   @Test public void innerValue1() {
@@ -79,7 +79,7 @@ public class IntTest {
 
   @Test public void valueChanges() {
     Int v = new Int(); 
-    azzert.assertEquals(v.get(), 0);
+    azzert.assertZero(v.get());
   }
   
   @Test public void valueChanges1() {
@@ -92,7 +92,7 @@ public class IntTest {
     Int v = new Int();
     v.step();
     v.add(-1);
-    azzert.assertEquals(v.get(), 0);
+    azzert.assertZero(v.get());
   }
   
   @Test public void valueChanges3() {
@@ -125,7 +125,7 @@ public class IntTest {
     v.add(4);
     v.set(-354654);
     v.clear();
-    azzert.assertEquals(v.get(), 0);
+    azzert.assertZero(v.get());
   }
   
   @Test public void valueChanges7() {
@@ -272,7 +272,7 @@ public class IntTest {
     min.add(addon.next());
     min.set(-354654);
     min.clear();
-    azzert.assertEquals(min.get(), 0);
+    azzert.assertZero(min.get());
   }
   
   @Test public void toStringCheck() {
