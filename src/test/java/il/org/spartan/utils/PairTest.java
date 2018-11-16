@@ -46,7 +46,7 @@ import fluent.ly.*;
     assert (new Pair<>(null, null)).equals(new Pair<>(null, null));
   }
   
-  @Test
+  @SuppressWarnings("unlikely-arg-type") @Test
   public void testEqualsNotSameClass() {
     assert !(new Pair<>(null, null)).equals(box(2));
   }
