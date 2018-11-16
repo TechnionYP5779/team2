@@ -1,69 +1,67 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
+
+import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
+
 import java.util.*;
 
 import org.junit.*;
 
-import il.org.spartan.*;
-
-import static fluent.ly.azzert.*;
-
-import static fluent.ly.box.*;
-
-@SuppressWarnings({ "static-method", "static-access" }) public class asTest {
+@SuppressWarnings("static-method") public class asTest {
   @Test public void asIterableTest1() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
-    for (final Integer f : as.asIterable(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), Utils.cantBeNull(box(3)), 
-        Utils.cantBeNull(box(4)), Utils.cantBeNull(box(5))))
-      for (final Integer p : as.asIterable(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), Utils.cantBeNull(box(3))))
-        azzert.assertEquals(unbox.it(Utils.cantBeNull(f)) * unbox.it(Utils.cantBeNull(p)), res[i++]);
+    for (final Integer f : as.asIterable(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))))
+      for (final Integer p : as.asIterable(cantBeNull(box(new int[] { 1, 2, 3 }))))
+        azzert.that(unbox(cantBeNull(f)) * unbox(cantBeNull(p)), is(res[i++]));
   }
 
   @Test public void asIterableTest2() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
-    for (final Integer f : as.asIterable(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), Utils.cantBeNull(box(3)), 
-        Utils.cantBeNull(box(4)), Utils.cantBeNull(box(5))))
-      for (final Integer p : as.asIterable(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), Utils.cantBeNull(box(3))))
-        azzert.assertEquals(unbox.it(Utils.cantBeNull(f)) * unbox.it(Utils.cantBeNull(p)), res[i++]);
+    for (final Integer f : as.asIterable(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))))
+      for (final Integer p : as.asIterable(cantBeNull(box(new int[] { 1, 2, 3 }))))
+        azzert.that(unbox(cantBeNull(f)) * unbox(cantBeNull(p)), is(res[i++]));
   }
 
   @Test public void bitTrueTest() {
-    azzert.assertEquals(as.bit(true), 1);
+    azzert.that(as.bit(true), is(1));
   }
 
   @Test public void bitFalseTest() {
-    azzert.assertEquals(as.bit(false), 0);
+    azzert.zero(as.bit(false));
   }
 
   @Test public void bitNullTest() {
-    azzert.assertEquals(as.bit(null), 0);
+    azzert.zero(as.bit(null));
   }
 
   @Test public void bitIntTest() {
-    azzert.assertEquals(as.bit(box(5)), 1);
+    azzert.that(as.bit(box(5)), is(1));
   }
 
   @Test public void bitFloatTest() {
-    azzert.assertEquals(as.bit(box(0.05f)), 1);
+    azzert.that(as.bit(box(0.05f)), is(1));
   }
 
   @Test public void listTest1() {
-    azzert.that(as.ingeterList(-1, -2, -3), is(Arrays.asList(new Integer[] { box(-1), box(-2), box(-3) })));
+    azzert.that(as.ingeterList(-1, -2, -3), is(Arrays.asList(box(new int[] { -1, -2, -3 }))));
   }
 
   @Test public void listTest2() {
-    azzert.that(as.ingeterList(1, 2, 3, 4, 5, 6), is(Arrays.asList(new Integer[] { box(1), box(2), box(3), box(4), box(5), box(6) })));
+    azzert.that(as.ingeterList(1, 2, 3, 4, 5, 6), is(Arrays.asList(box(new int[] { 1, 2, 3, 4, 5, 6 }))));
   }
 
   @Test public void listTest3() {
     azzert.that(as.list("a", "abc", "test"), is(Arrays.asList(new String[] { "a", "abc", "test" })));
-  } 
+  }
 
   @Test public void listTest4() {
-    azzert.that(as.list(Boolean.TRUE, Boolean.FALSE, Boolean.FALSE, Boolean.TRUE, Boolean.FALSE, Boolean.TRUE),
-        is(Arrays.asList(new Boolean[] { box(true), box(false), box(false), box(true), box(false), box(true) })));
+    azzert.that(as.list(box(new boolean[] { true, false, false, true, false, true })),
+        is(Arrays.asList(box(new boolean[] { true, false, false, true, false, true }))));
   }
 
   @Test public void listTest5() {
@@ -72,211 +70,209 @@ import static fluent.ly.box.*;
       al.add(box(¢ + 1));
     final List<Integer> al_lst = as.list(al);
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(al_lst.get(¢), ¢ + 1);
+      azzert.that(al_lst.get(¢), is(¢ + 1));
   }
 
   @Test public void intArrayTest() {
     final int[] array1 = as.intArray(1, 2, 3, 4, 5, 6);
     for (int ¢ = 0; ¢ < 6; ++¢)
-      azzert.assertEquals(array1[¢], ¢ + 1);
+      azzert.that(array1[¢], is(¢ + 1));
     final int[] array2 = as.intArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(array2[¢], ¢ + 1);
+      azzert.that(array2[¢], is(¢ + 1));
   }
-  
+
   @Test public void intArrayTest1() {
-    final int[] array = as.intArray(new ArrayList<>(Arrays.asList(new Integer[] { box(10), box(20), box(30), box(40), box(50) })));
-    for (int ¢ = 10; ¢ < 6; ¢+=10)
-      azzert.assertEquals(array[¢], ¢);
+    final int[] array = as.intArray(new ArrayList<>(Arrays.asList(box(new int[] { 10, 20, 30, 40, 50 }))));
+    for (int ¢ = 10; ¢ < 6; ¢ += 10)
+      azzert.that(array[¢], is(¢));
   }
 
   @Test public void iteratorTest1() {
-    final Iterator<Integer> int_iter = as.iterator(box(1), box(2), box(3), box(4), box(5));
+    final Iterator<Integer> int_iter = as.iterator(box(new int[] { 1, 2, 3, 4, 5 }));
     for (int ¢ = 1; ¢ < 6; ++¢) {
-      azzert.assertEquals(int_iter.next(), ¢);
+      azzert.that(int_iter.next(), is(¢));
       assert ¢ != 5 ? int_iter.hasNext() : !int_iter.hasNext();
     }
   }
 
   @Test public void iteratorTest2() {
-    final Iterator<Boolean> bool_iter = as.iterator(box(true), box(false), box(true), box(false));
+    final Iterator<Boolean> bool_iter = as.iterator(box(new boolean[] { true, false, true, false }));
     boolean b = true;
     for (int ¢ = 1; ¢ < 5; ++¢) {
-      azzert.assertEquals(bool_iter.next(), b);
+      azzert.that(bool_iter.next(), is(b));
       b = !b;
       assert ¢ != 4 ? bool_iter.hasNext() : !bool_iter.hasNext();
     }
   }
-  
+
   @Test public void setTest1() {
-    @SuppressWarnings("unchecked") final Set<Integer> s1 = (Set<Integer>) as.set(box(1), box(2), box(3),
-        box(4), box(5), box(6), box(7), box(8), box(9), box(10));
+    @SuppressWarnings("unchecked") final Set<Integer> s1 = (Set<Integer>) as.set(box(1), box(2), box(3), box(4), box(5), box(6), box(7), box(8),
+        box(9), box(10));
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertContains(Utils.cantBeNull(s1), box(¢ + 1));
+      azzert.assertContains(cantBeNull(s1), box(¢ + 1));
   }
-  
+
   @Test public void setTest2() {
     @SuppressWarnings("unchecked") final Set<String> s2 = (Set<String>) as.set("abcdefg", "hijklmnop", "qrstuv", "wxyz");
-    Set<String> s = new LinkedHashSet<>(Arrays.asList(new String[] { "abcdefg", "hijklmnop", "qrstuv", "wxyz" }));
-    azzert.assertSubset(s, Utils.cantBeNull(s2));
-    azzert.assertSubset(Utils.cantBeNull(s2), s);
+    final Set<String> s = new LinkedHashSet<>(Arrays.asList(new String[] { "abcdefg", "hijklmnop", "qrstuv", "wxyz" }));
+    azzert.assertSubset(s, cantBeNull(s2));
+    azzert.assertSubset(cantBeNull(s2), s);
   }
-  
+
   @Test public void setTest3() {
-    @SuppressWarnings("unchecked") final Set<Boolean> s3 = (Set<Boolean>) as.set(box(true), box(false),
-        box(true), box(true), box(false), box(false));
-    azzert.assertContains(Utils.cantBeNull(s3), box(true));
-    azzert.assertContains(Utils.cantBeNull(s3), box(false));
+    @SuppressWarnings("unchecked") final Set<Boolean> s3 = (Set<Boolean>) as.set(box(true), box(false), box(true), box(true), box(false), box(false));
+    azzert.assertContains(cantBeNull(s3), box(true));
+    azzert.assertContains(cantBeNull(s3), box(false));
   }
-  
+
   @Test public void setTest4() {
-    @SuppressWarnings("unchecked") final Set<Boolean> s4 = (Set<Boolean>) as.set(box(true), box(true),
-        box(true), box(true));
-    azzert.assertContains(Utils.cantBeNull(s4), box(true));
-    azzert.assertNotContains(Utils.cantBeNull(s4), box(false));
+    @SuppressWarnings("unchecked") final Set<Boolean> s4 = (Set<Boolean>) as.set(box(true), box(true), box(true), box(true));
+    azzert.assertContains(cantBeNull(s4), box(true));
+    azzert.assertNotContains(cantBeNull(s4), box(false));
   }
-  
+
   @Test public void setTest5() {
     @SuppressWarnings("unchecked") final Set<Boolean> s5 = (Set<Boolean>) as.set(box(false), box(false));
-    azzert.assertContains(Utils.cantBeNull(s5), box(false));
-    azzert.assertNotContains(Utils.cantBeNull(s5), box(true));
+    azzert.assertContains(cantBeNull(s5), box(false));
+    azzert.assertNotContains(cantBeNull(s5), box(true));
   }
 
   @Test public void stringsNullTest() {
-    azzert.assertEquals(as.string(null), "null");
+    azzert.that(as.string(null), is("null"));
   }
 
   @Test public void stringTest1() {
-    azzert.assertEquals(as.string(box(5)), "5");
+    azzert.that(as.string(box(5)), is("5"));
   }
 
   @Test public void stringTest2() {
     final Integer x1 = box(10);
-    azzert.assertEquals(as.string(x1), x1 + "");
+    azzert.that(as.string(x1), is(x1 + ""));
   }
 
   @Test public void stringTest3() {
-    azzert.assertEquals(as.string(box(654.654f)), "654.654");
+    azzert.that(as.string(box(654.654f)), is("654.654"));
   }
 
   @Test public void stringTest4() {
     final Float y1 = box(0.44645f);
-    azzert.assertEquals(as.string(y1), y1 + "");
+    azzert.that(as.string(y1), is(y1 + ""));
   }
 
   @Test public void stringTest5() {
-    azzert.assertEquals(as.string(box(true)), "true");
+    azzert.that(as.string(box(true)), is("true"));
   }
 
   @Test public void stringTest6() {
     final Boolean b1 = box(false);
-    azzert.assertEquals(as.string(b1), b1 + "");
+    azzert.that(as.string(b1), is(b1 + ""));
   }
 
   @Test public void stringCharTest1() {
-    azzert.assertEquals(as.string('a'), "a");
+    azzert.that(as.string('a'), is("a"));
   }
 
   @Test public void stringCharTest2() {
-    azzert.assertEquals(as.string('b'), "b");
+    azzert.that(as.string('b'), is("b"));
   }
 
   @Test public void stringCharTest3() {
-    azzert.assertEquals(as.string('c'), "c");
+    azzert.that(as.string('c'), is("c"));
   }
 
   @Test public void stringCharTest4() {
-    azzert.assertEquals(as.string('d'), "d");
+    azzert.that(as.string('d'), is("d"));
   }
 
   @Test public void stringCharTest5() {
-    azzert.assertEquals(as.string('e'), "e");
+    azzert.that(as.string('e'), is("e"));
   }
 
   @Test public void stringCharTest6() {
-    azzert.assertEquals(as.string('f'), "f");
+    azzert.that(as.string('f'), is("f"));
   }
 
   @Test public void stringSignCharTest1() {
-    azzert.assertEquals(as.string('+'), "+");
+    azzert.that(as.string('+'), is("+"));
   }
 
   @Test public void stringSignCharTest2() {
-    azzert.assertEquals(as.string('*'), "*");
+    azzert.that(as.string('*'), is("*"));
   }
 
   @Test public void stringSignCharTest3() {
-    azzert.assertEquals(as.string('_'), "_");
+    azzert.that(as.string('_'), is("_"));
   }
 
   @Test public void stringSignCharTest4() {
-    azzert.assertEquals(as.string('='), "=");
+    azzert.that(as.string('='), is("="));
   }
 
   @Test public void stringSignCharTest5() {
-    azzert.assertEquals(as.string('\\'), "\\");
+    azzert.that(as.string('\\'), is("\\"));
   }
 
   @Test public void stringSignCharTest6() {
-    azzert.assertEquals(as.string('\n'), "\n");
+    azzert.that(as.string('\n'), is("\n"));
   }
 
   @Test public void stringSignCharTest7() {
-    azzert.assertEquals(as.string('\t'), "\t");
+    azzert.that(as.string('\t'), is("\t"));
   }
 
   @Test public void stringNumCharTest1() {
-    azzert.assertEquals(as.string('1'), "1");
+    azzert.that(as.string('1'), is("1"));
   }
 
   @Test public void stringNumCharTest2() {
-    azzert.assertEquals(as.string('2'), "2");
+    azzert.that(as.string('2'), is("2"));
   }
 
   @Test public void stringNumCharTest3() {
-    azzert.assertEquals(as.string('3'), "3");
+    azzert.that(as.string('3'), is("3"));
   }
 
   @Test public void stringNumCharTest4() {
-    azzert.assertEquals(as.string('4'), "4");
+    azzert.that(as.string('4'), is("4"));
   }
 
   @Test public void stringNumCharTest5() {
-    azzert.assertEquals(as.string('5'), "5");
+    azzert.that(as.string('5'), is("5"));
   }
 
   @Test public void stringNullInputTest() {
-    azzert.assertEquals(as.string(null), "null");
+    azzert.that(as.string(null), is("null"));
   }
 
   @Test public void stringStrTest1() {
-    azzert.assertEquals(as.string("abc"), "abc");
+    azzert.that(as.string("abc"), is("abc"));
   }
 
   @Test public void stringStrTest2() {
-    azzert.assertEquals(as.string("abc"), "abc");
+    azzert.that(as.string("abc"), is("abc"));
   }
 
   @Test public void stringStrTest3() {
-    azzert.assertEquals(as.string("supercalifragilisticexpialidocious"), "supercalifragilisticexpialidocious");
+    azzert.that(as.string("supercalifragilisticexpialidocious"), is("supercalifragilisticexpialidocious"));
   }
 
   @Test public void stringsStrTest1() {
-    azzert.assertEquals(as.strings(null).length, 0);
+    azzert.zero(as.strings(null).length);
   }
 
   @Test public void stringsTest2() {
-    azzert.assertEquals(as.strings(new ArrayList<>()).length, 0);
+    azzert.zero(as.strings(new ArrayList<>()).length);
   }
 
   @Test public void stringsTest3() {
     final ArrayList<Integer> al = new ArrayList<>();
-    azzert.assertEquals(as.strings(al).length, 0);
+    azzert.that(as.strings(al).length, is(0));
     for (int ¢ = 0; ¢ < 10; ++¢)
       al.add(box(¢ + 1));
     final String[] intarr = as.strings(al);
     for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertEquals(intarr[¢], ¢ + 1 + "");
+      azzert.that(intarr[¢], is(¢ + 1 + ""));
   }
 
   @Test public void stringsTest4() {
@@ -287,48 +283,55 @@ import static fluent.ly.box.*;
     al1.add("qrstuv");
     al1.add("wxyz");
     al1.add("+_-*/\n\t");
-    azzert.that(al1, is(Arrays.asList(new String[]{"abcd", "efg", "hijklmonp", "qrstuv", "wxyz", "+_-*/\n\t"})));
-    
+    azzert.that(al1, is(Arrays.asList(new String[] { "abcd", "efg", "hijklmonp", "qrstuv", "wxyz", "+_-*/\n\t" })));
   }
-  
+
   @Test public void asIterableLambdaTest() {
-    final Iterable<Integer> iter = as.asIterableLambda(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), 
-        Utils.cantBeNull(box(3)), Utils.cantBeNull(box(4)), Utils.cantBeNull(box(5)));
-    //for(int ¢ = 0; ¢ < 5; ++¢) System.out.println(iter.iterator().next());
-    // next should return the current member and only than proceed to the next one
-    azzert.assertEquals(iter.iterator().hasNext(), true);
-    azzert.assertEquals(iter.iterator().next(), 1);
-    /* azzert.assertEquals(iter.iterator().hasNext(), true);
-     * azzert.assertEquals(iter.iterator().next(), 2);
-     * azzert.assertEquals(iter.iterator().hasNext(), true);
-     * azzert.assertEquals(iter.iterator().next(), 3);
-     * azzert.assertEquals(iter.iterator().hasNext(), true);
-     * azzert.assertEquals(iter.iterator().next(), 4);
-     * azzert.assertEquals(iter.iterator().hasNext(), false);
-     * azzert.assertEquals(iter.iterator().next(), 5); */
+    final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(1));
   }
 
   @Test public void asIterableEssenceTest() {
-    // azzert.assertEquals(iter.iterator().hasNext(), true);
-    final Iterable<Integer> iter = as.asIterableEssence(Utils.cantBeNull(box(1)), Utils.cantBeNull(box(2)), 
-        Utils.cantBeNull(box(3)), Utils.cantBeNull(box(4)), Utils.cantBeNull(box(5)));
-    /* for(int ¢ = 0; ¢ < 5; ++¢) { System.out.println(iter.iterator().next()); } */
-    // next should return the current member and only than proceed to the next one
-    azzert.assertEquals(iter.iterator().hasNext(), true);
-    azzert.assertEquals(iter.iterator().next(), 1);
-    /* azzert.assertEquals(iter.iterator().hasNext(), true);
-     * azzert.assertEquals(iter.iterator().next(), 2);
-     * azzert.assertEquals(iter.iterator().hasNext(), true);
-     * azzert.assertEquals(iter.iterator().next(), 3);
-     * azzert.assertEquals(iter.iterator().hasNext(), true);
-     * azzert.assertEquals(iter.iterator().next(), 4);
-     * azzert.assertEquals(iter.iterator().hasNext(), false);
-     * azzert.assertEquals(iter.iterator().next(), 5); */
+    final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(1));
   }
-  
+
+  @Ignore @Test public void asIterableLambdaTest2() {
+    final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
+    // next should return the current member and only than proceed to the next one
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(1));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(2));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(3));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(4));
+    assert !iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(5));
+  }
+
+  @Ignore @Test public void asIterableEssenceTest2() {
+    final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
+    assert iter.iterator().hasNext();
+    // next should return the current member and only than proceed to the next one
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(1));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(2));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(3));
+    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(4));
+    assert !iter.iterator().hasNext();
+    azzert.that(iter.iterator().next(), is(5));
+  }
+
   @Test public void arrayTest() {
-    final Integer[] array = as.array(box(new int[] {1, 2, 3, 4, 5}));
-    for(int ¢ = 0; ¢ < 5; ++¢)
-      azzert.assertEquals(array[¢], ¢ + 1);
+    final Integer[] array = as.array(box(new int[] { 1, 2, 3, 4, 5 }));
+    for (int ¢ = 0; ¢ < 5; ++¢)
+      azzert.that(array[¢], is(¢ + 1));
   }
 }
