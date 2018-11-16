@@ -29,7 +29,6 @@ public class Range {
     return param >= from && param <= to;
   }
 
-  /** [[SuppressWarningsSpartan]] */
   public Iterator<Integer> numbers() {
     return new Iterator<Integer>() {
       int current = from;
