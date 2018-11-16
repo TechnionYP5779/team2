@@ -1,14 +1,11 @@
 package il.org.spartan.utils;
 
 import static il.org.spartan.Utils.*;
-import static org.junit.Assert.assertNotEquals;
 
-import static fluent.ly.azzert.assertEquals;
-import static fluent.ly.azzert.assertNull;
+import static fluent.ly.azzert.*;
 
 import java.util.*;
 
-// import fluent.ly.azzert;
 import org.junit.*;
 
 import fluent.ly.*;
@@ -28,9 +25,9 @@ import fluent.ly.*;
     assert !r.includes(-7);
   }
 
-  @Test public void testStartingPoint() {
-    assertEquals(2, new Range().from(2).from());
-    assertNotEquals(8, fluent.ly.unbox.it(cantBeNull(new Range().from(-4).from())));
+  @SuppressWarnings("null") @Test public void testStartingPoint() {
+    azzert.that(new Range().from(2).from(), is(2));
+    azzert.that(cantBeNull(new Range().from(-4).from()), is(not(8)));
   }
 
   @Test public void testFromAndTo() {
@@ -54,7 +51,7 @@ import fluent.ly.*;
   }
 
   @Test public void testFromMinInt() {
-    assertNull(new Range().to(2).from());
+    azzert.isNull(new Range().to(2).from());
   }
 
   @Test public void testToFrom() {
@@ -72,12 +69,12 @@ import fluent.ly.*;
     Iterator<Integer> numbers = new Range().from(3).to(10).numbers();
     int i = 4;
     for (; numbers.hasNext(); ++i)
-      assertEquals(i, numbers.next());
-    assertEquals(10, i);
+      azzert.that(numbers.next(), is(i));
+    azzert.that(i, is(10));
     // infinite range
     numbers = new Range().numbers();
-    assertEquals(Integer.MIN_VALUE + 1, numbers.next());
-    assertEquals(Integer.MIN_VALUE + 2, numbers.next());
+    azzert.that(numbers.next(), is(Integer.MIN_VALUE + 1));
+    azzert.that(numbers.next(), is(Integer.MIN_VALUE + 2));
   }
 
   @Test public void testIntersectionTwoInfinite() {
@@ -90,8 +87,8 @@ import fluent.ly.*;
   }
 
   @Test public void testIntersectionEmpty() {
-    assertNull(new Range().to(-3).intersect(new Range().from(3)));
-    assertNull(new Range().to(3).intersect(new Range().from(3)));
+    azzert.isNull(new Range().to(-3).intersect(new Range().from(3)));
+    azzert.isNull(new Range().to(3).intersect(new Range().from(3)));
   }
 
   @Test public void testIntersectionOne() {

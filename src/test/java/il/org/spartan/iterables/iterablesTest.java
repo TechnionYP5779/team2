@@ -1,7 +1,7 @@
 package il.org.spartan.iterables;
 
 import static il.org.spartan.Utils.*;
-import static org.junit.Assert.*;
+import static fluent.ly.azzert.*;
 
 import org.junit.*;
 
@@ -37,18 +37,18 @@ import fluent.ly.*;
   }
 
   @Test public void countDoesNotIncludeNull() {
-    assertEquals(3, iterables.count(iterable.over(null, "One", null, "Two", null, "Three")));
+    azzert.that(3, is(iterables.count(iterable.over(null, "One", null, "Two", null, "Three"))));
   }
 
   @Test public void countEmpty() {
-    assertEquals(0, iterables.count(iterables.<String> empty()));
+    azzert.that(0, is(iterables.count(iterables.<String> empty())));
   }
 
   @Test public void countSingleton() {
-    assertEquals(1, iterables.count(iterable.singleton(new Object())));
+    azzert.that(1, is(iterables.count(iterable.singleton(new Object()))));
   }
 
   @Test public void countThree() {
-    assertEquals(3, iterables.count(iterable.over("One", "Two", "Three")));
+    azzert.that(3, is(iterables.count(iterable.over("One", "Two", "Three"))));
   }
 }
