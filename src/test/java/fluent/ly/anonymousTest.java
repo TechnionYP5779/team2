@@ -1,8 +1,7 @@
 package fluent.ly;
 
-import static org.junit.Assert.assertEquals;
-
-import static fluent.ly.azzert.assertEquals;
+import static fluent.ly.anonymous.*;
+import static fluent.ly.azzert.*;
 
 import java.util.function.*;
 
@@ -10,29 +9,29 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class anonymousTest {
   @Test public void booleanTest() {
-    assert anonymous.ly(() -> true);
-    assert !anonymous.ly(() -> false);
+    assert ly(() -> true);
+    assert !ly(() -> false);
   }
 
   @Test public void doubleTest() {
-    assertEquals(1.5, anonymous.ly(() -> 1.5), 0.0);
-    assertEquals(500.0, anonymous.ly(() -> 500.0), 0.0);
+    azzert.that(1.5, is(ly(() -> 1.5)));
+    azzert.that(500.0, is(ly(() -> 500.0)));
   }
 
   @Test public void intTest() {
-    assertEquals(1, anonymous.ly(() -> 1));
-    assertEquals(500, anonymous.ly(() -> 500));
+    azzert.that(1, is(ly(() -> 1)));
+    azzert.that(500, is(ly(() -> 500)));
   }
 
   @Test public void longTest() {
-    assertEquals(1325489434L, anonymous.ly(() -> 1325489434L));
-    assertEquals(500548943L, anonymous.ly(() -> 500548943L));
+    azzert.that(1325489434L, is(ly(() -> 1325489434L)));
+    azzert.that(500548943L, is(ly(() -> 500548943L)));
   }
 
   @Test public void tTest() {
-    assert anonymous.ly((BooleanSupplier) () -> true);
-    assertEquals(fluent.ly.box.it(1), anonymous.ly((IntSupplier) () -> 1));
-    assertEquals(1.5, anonymous.ly((DoubleSupplier) () -> 1.5), 0.0);
-    assertEquals(1325489434L, anonymous.ly((LongSupplier) () -> 1325489434L));
+    assert ly((BooleanSupplier) () -> true);
+    azzert.that(box.it(1), is(ly((IntSupplier) () -> 1)));
+    azzert.that(1.5, is(ly((DoubleSupplier) () -> 1.5)));
+    azzert.that(1325489434L, is(ly((LongSupplier) () -> 1325489434L)));
   }
 }
