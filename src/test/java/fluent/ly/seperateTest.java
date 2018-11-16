@@ -12,9 +12,8 @@ import org.junit.*;
 
 import an.*;
 import fluent.ly.separate.*;
-import il.org.spartan.Utils.*;
 
-@SuppressWarnings({ "static-method", "synthetic-access" }) //
+@SuppressWarnings({ "static-method" }) //
 public class seperateTest {
   private static final Function<String, String> quote = λ -> "'" + λ + "'";
 
@@ -23,7 +22,7 @@ public class seperateTest {
   }
 
   @Test public final void asArrayBetweenChar() {
-    azzert.that(separate.these(as.array("Hello", "World")).by(','), is("Hello,World"));
+    azzert.that(separate.these(cantBeNull(as.array("Hello", "World"))).by(','), is("Hello,World"));
   }
 
   @Test public final void byArrayString() {
@@ -31,7 +30,7 @@ public class seperateTest {
   }
 
   @Test public final void byArrayStringUsingLiterals() {
-    azzert.that(separate.these(as.array("Hello", "World")).by(", "), is("Hello, World"));
+    azzert.that(separate.these(cantBeNull(as.array("Hello", "World"))).by(", "), is("Hello, World"));
   }
 
   @Test public final void byBooleanArrayChar() {
@@ -79,11 +78,11 @@ public class seperateTest {
   }
 
   @Test public final void byFOfTIterableOfTChar() {
-    azzert.that(separate.these(apply(λ -> "<" + λ + ">").to("A", "B")).by(' '), is("<A> <B>"));
+    azzert.that(separate.these(cantBeNull(apply(λ -> "<" + λ + ">").to("A", "B"))).by(' '), is("<A> <B>"));
   }
 
   @Test public final void byFOfTIterableOfTString() {
-    azzert.that(separate.these(new Applicator<>(quote).to(as.list("Hello", "World"))).by(", "), is("'Hello', 'World'"));
+    azzert.that(separate.these(cantBeNull(new Applicator<>(quote).to(as.list("Hello", "World")))).by(", "), is("'Hello', 'World'"));
   }
 
   @Test public final void byFOfTTArrayChar() {
@@ -91,13 +90,13 @@ public class seperateTest {
     assert f != null : "Function literals should never by null.";
     final @NotNull Collection<String> c = as.list("Hello", "World");
     azzert.that(c.size(), is(2));
-    final @NotNull Iterable<String> ts = f.to(c);
+    final @NotNull Iterable<String> ts = cantBeNull(f.to(c));
     azzert.that(count.of(ts), is(2));
     azzert.that(separate.these(ts).by(' '), is("'Hello' 'World'"));
   }
 
   @Test public final void byFOfTTArrayString() {
-    azzert.that(separate.these(apply(quote).to("Hello", "World")).by(", "), is("'Hello', 'World'"));
+    azzert.that(separate.these(cantBeNull(apply(quote).to("Hello", "World"))).by(", "), is("'Hello', 'World'"));
   }
 
   @Test public final void byIntArrayChar() {
@@ -109,7 +108,7 @@ public class seperateTest {
   }
 
   @Test public final void byIterableOfChar() {
-    azzert.that(separate.these(as.array("Hello", "World")).by(','), is("Hello,World"));
+    azzert.that(separate.these(cantBeNull(as.array("Hello", "World"))).by(','), is("Hello,World"));
   }
 
   @Test public final void byIterableOfString() {
@@ -169,13 +168,13 @@ public class seperateTest {
     azzert.that(separate.these("Hello", "World").byNLs(), is("Hello\nWorld"));
   }
 
-  @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
+  @SuppressWarnings("null") @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
     final @NotNull SeparationSubject these = separate.these();
     assert these != null : null;
     final Iterable<?> os = these.os;
     assert os != null : null;
     azzert.aye(is.empty(os));
-    final @NotNull String[] ss = as.strings(os);
+    final @NotNull String[] ss = cantBeNull(as.strings(os));
     assert ss != null : null;
     azzert.zero(ss.length);
     final @NotNull String[] noWhites = prune.whites(ss);
@@ -184,7 +183,7 @@ public class seperateTest {
   }
 
   @Test public final void separateByNoItemslSpaceSeparated() {
-    azzert.that(SeparationSubject.separateBy(separate.these().os, " "), is(""));
+    azzert.that(SeparationSubject.separateBy(cantBeNull(separate.these().os), " "), is(""));
   }
 
   @Test public void separateBySpaceEmpty() {
@@ -224,19 +223,19 @@ public class seperateTest {
   }
 
   @Test public final void theseArraySize0() {
-    azzert.that(count.of(separate.these(as.array()).os), is(0));
+    azzert.that(count.of(separate.these(cantBeNull(as.array())).os), is(0));
   }
 
   @Test public final void theseArraySize1() {
-    azzert.that(count.of(separate.these(as.array("Rosebud")).os), is(1));
+    azzert.that(count.of(separate.these(cantBeNull(as.array("Rosebud"))).os), is(1));
   }
 
   @Test public final void theseArraySize2() {
-    azzert.that(count.of(separate.these(as.array("Hello", "World")).os), is(2));
+    azzert.that(count.of(separate.these(cantBeNull(as.array("Hello", "World"))).os), is(2));
   }
 
   @Test public final void theseArraySize3() {
-    azzert.that(count.of(separate.these(as.array("A", "B", "C")).os), is(3));
+    azzert.that(count.of(separate.these(cantBeNull(as.array("A", "B", "C"))).os), is(3));
   }
 
   @Test public final void theseFromOneItem() {

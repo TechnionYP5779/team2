@@ -1,5 +1,7 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
+
 import static fluent.ly.azzert.*;
 
 import org.jetbrains.annotations.*;
@@ -32,12 +34,12 @@ import fluent.ly.*;
   @Test public void testBeginAtLevelOne() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
-    azzert.that(cat(t.begin(), t + ""), is(cat("abc", "abcabc")));
+    azzert.that(cat(cantBeNull(t.begin()), t + ""), is(cat("abc", "abcabc")));
   }
 
   @Test public void testBeginAtZero() {
     final @NotNull Tab t = new Tab("abc");
-    azzert.that(cat(t.begin(), t + ""), is(cat("", "abc")));
+    azzert.that(cat(cantBeNull(t.begin()), t + ""), is(cat("", "abc")));
   }
 
   @Test(expected = ___.Bug.Contract.Precondition.class) //
@@ -52,20 +54,20 @@ import fluent.ly.*;
   @Test public void testEndAtLevelOne() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
-    azzert.that(cat(t.end(), t + ""), is(cat("", "")));
+    azzert.that(cat(cantBeNull(t.end()), t + ""), is(cat("", "")));
   }
 
   @Test public void testEndAtLevelTwo() {
     final @NotNull Tab t = new Tab("abc");
     t.more();
     t.more();
-    azzert.that(cat(t.end(), t + ""), is(cat("abc", "abc")));
+    azzert.that(cat(cantBeNull(t.end()), t + ""), is(cat("abc", "abc")));
   }
 
   @Test(expected = ___.Bug.Contract.Precondition.class) //
   public void testEndAtLevelZero() {
     final @NotNull Tab t = new Tab("abc");
-    azzert.that(cat(t.end(), t + ""), is(cat("", "")));
+    azzert.that(cat(cantBeNull(t.end()), t + ""), is(cat("", "")));
   }
 
   @Test public void testOneMore() {

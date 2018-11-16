@@ -3,8 +3,6 @@ package il.org.spartan.etc;
 import org.junit.*;
 
 import fluent.ly.*;
-import il.org.spartan.etc.*;
-import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("static-method") public class maybeTest {
   @Test public void usecase0() {

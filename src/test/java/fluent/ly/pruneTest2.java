@@ -1,5 +1,6 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
 import static org.junit.Assert.*;
 
 import java.util.*;
@@ -10,7 +11,7 @@ import org.junit.*;
 /** A JUnit test class for the enclosing class.
  * @author Yossi Gil, the Technion.
  * @since 27/08/2008 */
-@SuppressWarnings({ "static-method", "synthetic-access" }) //
+@SuppressWarnings({ "static-method" }) //
 public class pruneTest2 {
   @Nullable final String[] alternatingArray = new @Nullable String[] { null, "A", null, null, "B", null, null, null, "C", null };
   @NotNull final String[] nonNullArray = { "1", "2", "4" };
@@ -18,23 +19,23 @@ public class pruneTest2 {
       null, null, null);
 
   @Test public void nullsNotNullArrayLength() {
-    assertEquals(nonNullArray.length, prune.nulls(nonNullArray).length);
+    assertEquals(nonNullArray.length, prune.nulls(cantBeNull(nonNullArray)).length);
   }
 
   @Test public void nullsNullArrayItems() {
-    assertEquals("1", prune.nulls(nonNullArray)[0]);
-    assertEquals("2", prune.nulls(nonNullArray)[1]);
-    assertEquals("4", prune.nulls(nonNullArray)[2]);
+    assertEquals("1", prune.nulls(cantBeNull(nonNullArray))[0]);
+    assertEquals("2", prune.nulls(cantBeNull(nonNullArray))[1]);
+    assertEquals("4", prune.nulls(cantBeNull(nonNullArray))[2]);
   }
 
   @Test public void nullsPruneArrayAltenatingItems() {
-    assertEquals("A", prune.nulls(alternatingArray)[0]);
-    assertEquals("B", prune.nulls(alternatingArray)[1]);
-    assertEquals("C", prune.nulls(alternatingArray)[2]);
+    assertEquals("A", prune.nulls(cantBeNull(alternatingArray))[0]);
+    assertEquals("B", prune.nulls(cantBeNull(alternatingArray))[1]);
+    assertEquals("C", prune.nulls(cantBeNull(alternatingArray))[2]);
   }
 
   @Test public void nullsPruneArrayAltenatingLength() {
-    assertEquals(3, prune.nulls(alternatingArray).length);
+    assertEquals(3, prune.nulls(cantBeNull(alternatingArray)).length);
   }
 
   @Test public void nullsPruneSparseCollectionContents() {
