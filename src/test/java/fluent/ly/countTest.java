@@ -1,6 +1,7 @@
 package fluent.ly;
 
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import java.util.*;
 
@@ -14,19 +15,19 @@ public class countTest {
   }
 
   @Test public void testCreateEmpty() {
-    assertEquals(0, count.of(l));
+    azzert.zero(count.of(l));
   }
 
   @Test public void testAdd() {
-    l.add(fluent.ly.box.it(3));
-    l.add(fluent.ly.box.it(2));
-    l.add(fluent.ly.box.it(111));
-    assertEquals(3, count.of(l));
+    l.add(box(3));
+    l.add(box(2));
+    l.add(box(111));
+    azzert.that(count.of(l), is(3));
   }
 
   @Test public void testAddRemove() {
-    l.add(fluent.ly.box.it(5));
+    l.add(box(5));
     l.remove(0);
-    assertEquals(0, count.of(l));
+    azzert.zero(count.of(l));
   }
 }

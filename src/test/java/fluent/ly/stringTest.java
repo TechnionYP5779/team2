@@ -1,8 +1,8 @@
 package fluent.ly;
 
-import static org.junit.Assert.assertEquals;
-
-import static fluent.ly.azzert.assertEquals;
+import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
+import static fluent.ly.string.*;
 
 import java.io.*;
 import java.util.*;
@@ -11,349 +11,349 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class stringTest {
   @Test public void testAtod() {
-    assertEquals(string.atod("5.534534534"), 5.534534534, 0.00001);
+    azzert.that(atod("5.534534534"), is(5.534534534));
   }
 
   @Test public void testAtof() {
-    assertEquals(string.atof("5.534534534"), 5.534534534f, 0.00001f);
+    azzert.that(atof("5.534534534"), is(5.534534534f));
   }
 
   @Test public void testAtoi() {
-    assertEquals(string.atoi("5"), 5);
+    azzert.that(atoi("5"), is(5));
   }
 
   @Test public void testAtol() {
-    assertEquals(string.atol("5234234234234234"), 5234234234234234l);
+    azzert.that(atol("5234234234234234"), is(5234234234234234l));
   }
 
   @Test public void testCapitelize() {
-    assertEquals(string.capitalize("capital"), "Capital");
+    azzert.that(capitalize("capital"), is("Capital"));
   }
 
   @Test public void testEmptyCapitelize() {
-    assertEquals(string.capitalize(""), "");
+    azzert.that(capitalize(""), is(""));
   }
 
   @Test public void testCat1() {
-    assertEquals(string.cat("a", "b", "c", "d", "e"), "abcde");
+    azzert.that(cat("a", "b", "c", "d", "e"), is("abcde"));
   }
 
   @Test @SuppressWarnings("null") public void testCat2() {
-    assertEquals(string.cat(new String[] { "a", "b", "c" }, new String[] { "d", "e" }), "abcde");
+    azzert.that(cat(new String[] { "a", "b", "c" }, new String[] { "d", "e" }), is("abcde"));
   }
 
   @Test public void testDelta1() {
-    assertEquals(string.delta(12, 12), 0, 0);
+    azzert.that(delta(12, 12), is(0.0));
   }
 
   @Test public void testDelta2() {
-    assertEquals(string.delta(12, -11), Double.NaN, 0);
+    azzert.that(delta(12, -11), is(Double.NaN));
   }
 
   @Test public void testDelta3() {
-    assertEquals(string.delta(1, 2), 2.0 / 3, 0);
+    azzert.that(delta(1, 2), is(2.0 / 3));
   }
 
   @Test public void testDtoa() {
-    assertEquals(string.dtoa(5.534534534), "5.534534534");
+    azzert.that(dtoa(5.534534534), is("5.534534534"));
   }
 
   @Test public void testEq1() {
-    assert string.eq(box.it(5), box.it(5));
+    assert eq(box(5), box(5));
   }
 
   @Test public void testEq2() {
-    assert !string.eq(box.it(6), box.it(5));
+    assert !eq(box(6), box(5));
   }
 
   @Test public void testEq3() {
-    assert string.eq(null, null);
+    assert eq(null, null);
   }
 
   @Test public void testEq4() {
-    assert !string.eq(null, box.it(6));
+    assert !eq(null, box(6));
   }
 
   @Test public void testEsc1() {
-    assertEquals(string.esc('\n'), "\\n");
+    azzert.that(esc('\n'), is("\\n"));
   }
 
   @Test public void testEsc2() {
-    assertEquals(string.esc('\r'), "\\r");
+    azzert.that(esc('\r'), is("\\r"));
   }
 
   @Test public void testEsc3() {
-    assertEquals(string.esc('\t'), "\\t");
+    azzert.that(esc('\t'), is("\\t"));
   }
 
   @Test public void testEsc4() {
-    assertEquals(string.esc('\f'), "\\f");
+    azzert.that(esc('\f'), is("\\f"));
   }
 
   @Test public void testEsc5() {
-    assertEquals(string.esc('\b'), "\\b");
+    azzert.that(esc('\b'), is("\\b"));
   }
 
   @Test public void testEsc6() {
-    assertEquals(string.esc('\\'), "\\\\");
+    azzert.that(esc('\\'), is("\\\\"));
   }
 
   @Test public void testEsc7() {
-    assertEquals(string.esc('x'), "x");
+    azzert.that(esc('x'), is("x"));
   }
 
   @Test public void testEsc8() {
-    assertEquals(string.esc(null), "(null)");
+    azzert.that(esc(null), is("(null)"));
   }
 
   @Test public void testEsc9() {
-    assertEquals(string.esc("hello world\n"), "hello world\\n");
+    azzert.that(esc("hello world\n"), is("hello world\\n"));
   }
 
   @Test public void testexpandLeadingTabs1() {
-    assertEquals(string.expandLeadingTabs("\thello world"), "    hello world");
+    azzert.that(expandLeadingTabs("\thello world"), is("    hello world"));
   }
 
   @Test public void testfill1() {
-    assertEquals(string.fill(5, 'a'), "aaaaa");
+    azzert.that(fill(5, 'a'), is("aaaaa"));
   }
 
   @Test public void testfill2() {
-    assertEquals(string.fill(5, "ab"), "ababababab");
+    azzert.that(fill(5, "ab"), is("ababababab"));
   }
 
   @Test public void testfirst() {
-    assertEquals(string.first("abcde"), 'a');
+    azzert.that(first("abcde"), is('a'));
   }
 
   @Test public void testftoa() {
-    assertEquals(string.ftoa(5.42342f), "5.42342");
+    azzert.that(ftoa(5.42342f), is("5.42342"));
   }
 
   @Test public void testIsDouble1() {
-    assert string.isDouble("5.42342");
+    assert isDouble("5.42342");
   }
 
   @Test public void testIsDouble2() {
-    assert !string.isDouble("not double");
+    assert !isDouble("not double");
   }
 
   @Test public void testIsFloat1() {
-    assert string.isFloat("5.42342");
+    assert isFloat("5.42342");
   }
 
   @Test public void testIsFloat2() {
-    assert !string.isFloat("not float");
+    assert !isFloat("not float");
   }
 
   @Test public void testIsInt1() {
-    assert string.isInt("5");
+    assert isInt("5");
   }
 
   @Test public void testIsInt2() {
-    assert !string.isInt("5.243");
+    assert !isInt("5.243");
   }
 
   @Test public void testIsLong1() {
-    assert string.isLong("42342343423425");
+    assert isLong("42342343423425");
   }
 
   @Test public void testIsLong2() {
-    assert !string.isLong("5.243");
+    assert !isLong("5.243");
   }
 
   @Test public void testitoa() {
-    assertEquals(string.itoa(5), "5");
+    azzert.that(itoa(5), is("5"));
   }
 
   @Test public void testJavaCase1() {
-    assertEquals(string.javaCase(""), "");
+    azzert.that(javaCase(""), is(""));
   }
 
   @Test public void testJavaCase2() {
-    assertEquals(string.javaCase("Hello"), "hello");
+    azzert.that(javaCase("Hello"), is("hello"));
   }
 
   @Test public void testLast() {
-    assertEquals(string.last("Hello"), 'o');
+    azzert.that(last("Hello"), is('o'));
   }
 
   @Test public void testLowCounter1() {
-    assertEquals(string.lowCounter(-1), "");
+    azzert.that(lowCounter(-1), is(""));
   }
 
   @Test public void testLowCounter2() {
-    assertEquals(string.lowCounter(0), "a");
+    azzert.that(lowCounter(0), is("a"));
   }
 
   @Test public void testLowCounter3() {
-    assertEquals(string.lowCounter(1), "b");
+    azzert.that(lowCounter(1), is("b"));
   }
 
   @Test public void testLtoa() {
-    assertEquals(string.ltoa(123456789), "123456789");
+    azzert.that(ltoa(123456789), is("123456789"));
   }
 
   @Test public void testOrdinal1() {
-    assertEquals(string.ordinal(1), "1st");
+    azzert.that(ordinal(1), is("1st"));
   }
 
   @Test public void testOrdinal2() {
-    assertEquals(string.ordinal(11), "11th");
+    azzert.that(ordinal(11), is("11th"));
   }
 
   @Test public void testOrdinal3() {
-    assertEquals(string.ordinal(2), "2nd");
+    azzert.that(ordinal(2), is("2nd"));
   }
 
   @Test public void testOrdinal4() {
-    assertEquals(string.ordinal(12), "12th");
+    azzert.that(ordinal(12), is("12th"));
   }
 
   @Test public void testOrdinal5() {
-    assertEquals(string.ordinal(13), "13th");
+    azzert.that(ordinal(13), is("13th"));
   }
 
   @Test public void testParen() {
-    assertEquals(string.paren("hello"), "(hello)");
+    azzert.that(paren("hello"), is("(hello)"));
   }
 
   @Test public void testPluralize0() {
-    assertEquals(string.pluralize(0, "apple"), "no apples");
+    azzert.that(pluralize(0, "apple"), is("no apples"));
   }
 
   @Test public void testPluralize1() {
-    assertEquals(string.pluralize(1, "apple"), "apple");
+    azzert.that(pluralize(1, "apple"), is("apple"));
   }
 
   @Test public void testPluralize2() {
-    assertEquals(string.pluralize(2, "apple"), "two apples");
+    azzert.that(pluralize(2, "apple"), is("two apples"));
   }
 
   @Test public void testPluralize3() {
-    assertEquals(string.pluralize(3, "apple"), "three apples");
+    azzert.that(pluralize(3, "apple"), is("three apples"));
   }
 
   @Test public void testPluralize4() {
-    assertEquals(string.pluralize(4, "apple"), "four apples");
+    azzert.that(pluralize(4, "apple"), is("four apples"));
   }
 
   @Test public void testPluralize5() {
-    assertEquals(string.pluralize(5, "apple"), "five apples");
+    azzert.that(pluralize(5, "apple"), is("five apples"));
   }
 
   @Test public void testPluralize6() {
-    assertEquals(string.pluralize(6, "apple"), "six apples");
+    azzert.that(pluralize(6, "apple"), is("six apples"));
   }
 
   @Test public void testPluralize7() {
-    assertEquals(string.pluralize(7, "apple"), "seven apples");
+    azzert.that(pluralize(7, "apple"), is("seven apples"));
   }
 
   @Test public void testPluralize8() {
-    assertEquals(string.pluralize(8, "apple"), "eight apples");
+    azzert.that(pluralize(8, "apple"), is("eight apples"));
   }
 
   @Test public void testPluralize9() {
-    assertEquals(string.pluralize(9, "apple"), "nine apples");
+    azzert.that(pluralize(9, "apple"), is("nine apples"));
   }
 
   @Test public void testPluralize10() {
-    assertEquals(string.pluralize(10, "apple"), "10 apples");
+    azzert.that(pluralize(10, "apple"), is("10 apples"));
   }
 
   @Test @SuppressWarnings("null") public void testPretty1() {
-    assertEquals(string.pretty("apple", null), "");
+    azzert.that(pretty("apple", null), is(""));
   }
 
   @Test public void testPretty2() {
-    assertEquals(string.pretty("apple", new ArrayList<Integer>()), "");
+    azzert.that(pretty("apple", new ArrayList<Integer>()), is(""));
   }
 
   @Test public void testPretty3() {
-    assertEquals(string.pretty("apple", new ArrayList<>(Arrays.asList(box.it(1)))), "1 apple: 1\n");
+    azzert.that(pretty("apple", new ArrayList<>(Arrays.asList(box(1)))), is("1 apple: 1\n"));
   }
 
   @Test public void testPretty4() {
-    assertEquals(string.pretty("apple", new ArrayList<>(Arrays.asList(box.it(1), box.it(2)))), "2 apples:\n\t1) 1\n\t2) 2\n");
+    azzert.that(pretty("apple", new ArrayList<>(Arrays.asList(box(1), box(2)))), is("2 apples:\n\t1) 1\n\t2) 2\n"));
   }
 
   @Test public void testPretty5() {
-    assertEquals(
-        string.pretty("apple",
-            new ArrayList<>(Arrays.asList(box.it(1), box.it(2), box.it(3), box.it(4), box.it(5), box.it(6), box.it(7), box.it(8), box.it(9),
-                box.it(10), box.it(11), box.it(12), box.it(13), box.it(14), box.it(15), box.it(16), box.it(17), box.it(18), box.it(19), box.it(20),
-                box.it(21), box.it(22), box.it(23), box.it(24), box.it(25), box.it(26), box.it(27), box.it(28), box.it(29), box.it(30), box.it(31)))),
-        "31 apples:\n\t1) 1\n\t2) 2\n\t3) 3\n\t4) 4\n\t5) 5\n\t6) 6\n\t7) 7\n\t8) 8\n\t9) 9\n\t10) 10\n"
-            + "\t11) 11\n\t12) 12\n\t13) 13\n\t14) 14\n\t15) 15\n\t16) 16\n\t17) 17\n\t18) 18\n\t19) 19\n\t20) 20\n"
-            + "\t...\n\t22) 22\n\t23) 23\n\t24) 24\n\t25) 25\n\t26) 26\n\t27) 27\n\t28) 28\n\t29) 29\n\t30) 30\n\t31) 31\n");
+    azzert
+        .that(
+            pretty("apple",
+                new ArrayList<>(Arrays.asList(box(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+                    25, 26, 27, 28, 29, 30, 31 })))),
+            is("31 apples:\n\t1) 1\n\t2) 2\n\t3) 3\n\t4) 4\n\t5) 5\n\t6) 6\n\t7) 7\n\t8) 8\n\t9) 9\n\t10) 10\n"
+                + "\t11) 11\n\t12) 12\n\t13) 13\n\t14) 14\n\t15) 15\n\t16) 16\n\t17) 17\n\t18) 18\n\t19) 19\n\t20) 20\n"
+                + "\t...\n\t22) 22\n\t23) 23\n\t24) 24\n\t25) 25\n\t26) 26\n\t27) 27\n\t28) 28\n\t29) 29\n\t30) 30\n\t31) 31\n"));
   }
 
   @Test public void testQuote() {
-    assertEquals(string.quote("apple"), "\'apple\'");
+    azzert.that(quote("apple"), is("\'apple\'"));
   }
 
   @Test public void testRepeat() {
-    assertEquals(string.repeat(2, 'a'), "aa");
+    azzert.that(repeat(2, 'a'), is("aa"));
   }
 
   @Test public void testSignum1() {
-    assertEquals(string.signum(0), 0);
+    azzert.zero(signum(0));
   }
 
   @Test public void testSignum2() {
-    assertEquals(string.signum(1), 1);
+    azzert.that(signum(1), is(1));
   }
 
   @Test public void testSignum3() {
-    assertEquals(string.signum(-1), -1);
+    azzert.that(signum(-1), is(-1));
   }
 
   @Test public void testSprintf1() {
-    assertEquals(string.sprintf("%d", box.it(3)), "3");
+    azzert.that(sprintf("%d", box(3)), is("3"));
   }
 
   @Test @SuppressWarnings("null") public void testSprintf2() {
-    assertEquals(string.sprintf(new String[] {}), "");
+    azzert.that(sprintf(new String[] {}), is(""));
   }
 
   @Test @SuppressWarnings("null") public void testSprintf3() {
-    assertEquals(string.sprintf(new String[] { "1" }), "1");
+    azzert.that(sprintf(new String[] { "1" }), is("1"));
   }
 
   @Test @SuppressWarnings("null") public void testSprintf4() {
-    assertEquals(string.sprintf(new String[] { "%s", "2" }), "2");
+    azzert.that(sprintf(new String[] { "%s", "2" }), is("2"));
   }
 
   @Test(expected = RuntimeException.class) public void testStrip1() {
-    assertEquals(string.strip(""), "");
+    azzert.that(strip(""), is(""));
   }
 
   @Test public void testStrip2() {
-    assertEquals(string.strip("123"), "2");
+    azzert.that(strip("123"), is("2"));
   }
 
   @Test public void testToLines() throws IOException {
-    assertEquals(string.toLines("1\n2\n3\n"), new ArrayList<>(Arrays.asList("1", "2", "3")));
+    azzert.that(toLines("1\n2\n3\n"), is(new ArrayList<>(Arrays.asList("1", "2", "3"))));
   }
 
   @Test public void testUpCounter1() {
-    assertEquals(string.upCounter(-1), "");
+    azzert.that(upCounter(-1), is(""));
   }
 
   @Test public void testUpCounter2() {
-    assertEquals(string.upCounter(0), "A");
+    azzert.that(upCounter(0), is("A"));
   }
 
   @Test public void testUpCounter3() {
-    assertEquals(string.upCounter(1), "B");
+    azzert.that(upCounter(1), is("B"));
   }
 
   @Test public void testVisualize() {
-    assertEquals(string.visualize("hello world\n"), "hellosworld\\n");
+    azzert.that(visualize("hello world\n"), is("hellosworld\\n"));
   }
 
   @Test public void testWrap() {
-    assertEquals(string.wrap("1", "2"), "121");
+    azzert.that(wrap("1", "2"), is("121"));
   }
 }
