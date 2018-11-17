@@ -15,9 +15,11 @@ import il.org.spartan.*;
  * @since 2017-04-12 */
 public interface the {
   static int index(final int i, final int... is) {
-    for (final Integer $ : range.from(0).to(is.length))
-      if (is[unbox.unbox(Utils.cantBeNull($))] == i)
+    for (final Integer $ : range.from(0).to(is.length)) {
+      if (is[unbox.unbox(Utils.cantBeNull($))] == i) {
         return unbox.unbox(Utils.cantBeNull($));
+      }
+    }
     return -1;
   }
 

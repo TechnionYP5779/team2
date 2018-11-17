@@ -1,8 +1,10 @@
 package il.org.spartan.utils;
 
-import static org.junit.Assert.*;
+import static fluent.ly.azzert.*;
 
 import org.junit.*;
+
+import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class TruthTest {
   /**
@@ -10,51 +12,51 @@ import org.junit.*;
    */
   @Test public void truthOfTest() {
     Truth t = Truth.truthOf(() -> true);
-    assertEquals(t, Truth.T);
+    azzert.that(t, is(Truth.T));
     t = Truth.truthOf(() -> false);
-    assertEquals(t, Truth.F);
+    azzert.that(t, is(Truth.F));
     t = Truth.truthOf(null);
-    assertEquals(t, Truth.N);
+    azzert.that(t, is(Truth.N));
     t = Truth.truthOf(() -> {
       assert false;
       return false;
     });
-    assertEquals(t, Truth.X);
+    azzert.that(t, is(Truth.X));
     t = Truth.truthOf(() -> 1 / 0 == 1);
-    assertEquals(t, Truth.R);
+    azzert.that(t, is(Truth.R));
     t = Truth.truthOf(() -> {
       throw new ExceptionInInitializerError();
     });
-    assertEquals(t, Truth.Ħ);
+    azzert.that(t, is(Truth.Ħ));
   }
 
   @Test public void notTest() {
     Truth t = Truth.truthOf(() -> true);
-    assertEquals(t.not(), Truth.F);
+    azzert.that(t.not(), is(Truth.F));
     t = Truth.truthOf(() -> false);
-    assertEquals(t.not(), Truth.T);
+    azzert.that(t.not(), is(Truth.T));
     t = Truth.truthOf(() -> {
       throw new ExceptionInInitializerError();
     });
-    assertEquals(t.not(), Truth.Ħ);
+    azzert.that(t.not(), is(Truth.Ħ));
   }
 
   @Test public void orTest() {
     Truth t = Truth.truthOf(() -> true);
-    assertEquals(t.or(Truth.F), Truth.T);
-    assertEquals(t.or(Truth.T), Truth.T);
+    azzert.that(t.or(Truth.F), is(Truth.T));
+    azzert.that(t.or(Truth.T), is(Truth.T));
     t = Truth.truthOf(() -> false);
-    assertEquals(t.or(Truth.T), Truth.T);
-    assertEquals(t.or(Truth.F), Truth.F);
+    azzert.that(t.or(Truth.T), is(Truth.T));
+    azzert.that(t.or(Truth.F), is(Truth.F));
   }
 
   @Test public void andTest() {
     Truth t = Truth.truthOf(() -> true);
-    assertEquals(t.and(Truth.F), Truth.F);
-    assertEquals(t.and(Truth.T), Truth.T);
+    azzert.that(t.and(Truth.F), is(Truth.F));
+    azzert.that(t.and(Truth.T), is(Truth.T));
     t = Truth.truthOf(() -> false);
-    assertEquals(t.and(Truth.T), Truth.F);
-    assertEquals(t.and(Truth.F), Truth.F);
+    azzert.that(t.and(Truth.T), is(Truth.F));
+    azzert.that(t.and(Truth.F), is(Truth.F));
   }
 
   @Test public void letterOfTest() {
@@ -63,10 +65,10 @@ import org.junit.*;
 
   @Test public void toStringTest() {
     Truth t = Truth.truthOf(() -> true);
-    assertEquals("true", t + "");
+    azzert.that("true", is(t + ""));
     t = Truth.truthOf(() -> false);
-    assertEquals("false", t + "");
+    azzert.that("false", is(t + ""));
     t = Truth.truthOf(null);
-    assertEquals("Null pointer exception", t + "");
+    azzert.that("Null pointer exception", is(t + ""));
   }
 }
