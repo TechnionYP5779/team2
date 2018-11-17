@@ -1,117 +1,208 @@
 package fluent.ly;
 
-import static org.junit.Assert.*;
-
 import java.util.*;
 
+import org.eclipse.jdt.annotation.*;
 import org.junit.*;
 
-@SuppressWarnings("static-method")public class theTest {
-  @Ignore @Test public void testIndex1() {
-   assert the.index(0, 1,2,3)==1;
+import an.*;
+import il.org.spartan.*;
+import static fluent.ly.azzert.*;
+@SuppressWarnings("static-method") public class theTest {
+  @Test public void testIndex1() {
+    azzert.zero(the.index(0, 0, 2, 3));
   }
-  
-  @Ignore @Test public void testIndex2() {
-    assert the.index(3, 1,2,3)==-1;
-   }
+
+  @Test public void testIndex2() {
+    azzert.that(the.index(4, 1, 2, 3),is(-1));
+  }
 
   @Test public void testNil() {
     azzert.isNull(the.nil());
   }
 
-  @Ignore @Test public void testNthIntCollectionOfQ() {
-    assert the.nth(4,new ArrayList<Integer>(20)).equals(new String("41"));
+  @Test public void testNthIntCollectionOfQ() {
+    azzert.that(the.nth(4, new ArrayList<Integer>()),is(new String(" #4/0")));
   }
 
-  @Ignore @Test public void testNthIntInt() {
-    assert the.nth(4,2).equals(new String("42"));
+  @Test public void testNthIntInt() {
+    azzert.that(the.nth(4, 2),is(new String(" #4/2")));
   }
-
+  
   @Test public void testNthStringString() {
-    assert the.nth("abc","def").equals(new String(" #abc/def"));
+    azzert.that(the.nth("abc", "def"),is(new String(" #abc/def")));
   }
 
-  @Ignore @Test public void testPenultimateOf() {
-    fail("Not yet implemented");
+  @Test public void testPenultimateOf1() {
+    azzert.isNull(the.penultimateOf(null));
   }
 
-  @Ignore @Test public void testPrevious() {
-    fail("Not yet implemented");
+  @Test public void testPenultimateOf2() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(5));
+    azzert.isNull(the.penultimateOf(l));
   }
 
-  @Ignore @Test public void testTailOfListOfT() {
-    fail("Not yet implemented");
+  @SuppressWarnings("null") @Test public void testPenultimateOf3() {
+    List<@Nullable Integer> l = new ArrayList<>();
+    l.add(box.box(5));
+    l.add(box.box(4));
+    azzert.that(Utils.cantBeNull(the.penultimateOf(l)),is(box.box(5)));
   }
 
-  @Ignore @Test public void testTailOfString() {
-    fail("Not yet implemented");
+  @Test public void testPrevious1() {
+    azzert.isNull(the.previous(box.box(3), null));
   }
 
-  @Ignore @Test public void testRestTIterableOfT() {
-    fail("Not yet implemented");
+  @Test public void testPrevious2() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(5));
+    azzert.isNull(the.previous(box.box(3), l));
   }
 
-  @Ignore @Test public void testHeadOf() {
-    fail("Not yet implemented");
+  @SuppressWarnings("null") @Test public void testPrevious3() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(5));
+    l.add(box.box(3));
+    l.add(box.box(4));
+    azzert.that(Utils.cantBeNull(the.previous(box.box(4), l)),is(box.box(3)));
   }
 
-  @Ignore @Test public void testCharacterOf() {
-    fail("Not yet implemented");
+  @Test public void testTailOfListOfT() {
+    List<Integer> l = null;
+    azzert.assertZero(the.tailOf(l).size());
   }
 
-  @Ignore @Test public void testIth() {
-    fail("Not yet implemented");
+  @Test public void testTailOfString() {
+    String s = new String("abc");
+    azzert.that(the.tailOf(s),is("bc"));
   }
 
-  @Ignore @Test public void testLastOfListOfT() {
-    fail("Not yet implemented");
+  @Test public void testRestTIterableOfT1() {
+    List<Integer> l = new ArrayList<>();
+    Integer i = box.box(2);
+    l.add(i);
+    l.add(box.box(4));
+    azzert.that(the.rest(i,l).get(0),is(box.box(4)));
+  }
+  
+  @Test public void testRestTIterableOfT2() {
+    List<Integer> l = new ArrayList<>();
+    Integer i = box.box(2);
+    l.add(box.box(4));
+    azzert.assertZero(the.rest(i,l).size());
   }
 
-  @Ignore @Test public void testLastOfString() {
-    fail("Not yet implemented");
+  @Test public void testHeadOf1() {
+    azzert.isNull(the.headOf(null));
   }
 
-  @Ignore @Test public void testBeforeLastOf() {
-    fail("Not yet implemented");
+  @Test public void testHeadOf2() {
+    azzert.isNull(the.penultimateOf(empty.list()));
   }
 
-  @Ignore @Test public void testLastOfIterableOfT() {
-    fail("Not yet implemented");
+  @SuppressWarnings("null") @Test public void testHeadOf3() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(5));
+    l.add(box.box(4));
+    azzert.that(Utils.cantBeNull(the.headOf(l)),is(box.box(5)));
+  }
+  @Test public void testCharacterOf() {
+    azzert.that(the.characterOf("abc"),is('c'));
   }
 
-  @Ignore @Test public void testOnlyOneOf() {
-    fail("Not yet implemented");
+  @Test public void testIth() {
+    azzert.that(the.ith("abc", 1),is('b'));
   }
 
-  @Ignore @Test public void testSecondOf() {
-    fail("Not yet implemented");
+  @Test public void testLastOfListOfT1() {
+    List<Integer> l = null;
+    azzert.isNull(the.lastOf(l));
   }
 
-  @Ignore @Test public void testMax() {
-    fail("Not yet implemented");
+  @SuppressWarnings("null") @Test public void testLastOfListOfT2() {
+    @Nullable List<@Nullable Integer> l = new ArrayList<>();
+    azzert.isNull(the.lastOf(l));
   }
 
-  @Ignore @Test public void testMin() {
-    fail("Not yet implemented");
+  @SuppressWarnings("null") @Test public void testLastOfListOfT3() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(5));
+    l.add(box.box(4));
+    azzert.that(Utils.cantBeNull(the.lastOf(l)),is(box.box(4)));
   }
 
-  @Ignore @Test public void testLastOfTArray() {
-    fail("Not yet implemented");
+  @Test public void testLastOfString() {
+    azzert.that(the.lastOf("abc"),is('c'));
   }
 
-  @Ignore @Test public void testLast() {
-    fail("Not yet implemented");
+  @Test public void testBeforeLastOf() {
+    azzert.that(the.beforeLastOf("abc", 0),is('c'));
   }
 
-  @Ignore @Test public void testSqr() {
-    fail("Not yet implemented");
+  @Test public void testLastOfIterableOfT() {
+    List<Integer> t = new ArrayList<>();
+    t.add(box.box(1));
+    t.add(box.box(1));
+    Iterable<Integer> l = new ArrayList<>(t);
+    Iterator<Integer> iter = the.lastOf(l).iterator();
+    while(iter.hasNext()) {
+      azzert.that(iter.next(),is(box.box(1)));
+    }
+    
   }
 
-  @Ignore @Test public void testRestString() {
-    fail("Not yet implemented");
+  @Test public void testOnlyOneOf1() {
+    azzert.isNull(the.onlyOneOf(null));
+  }
+  
+  @Test public void testOnlyOneOf2() {
+    azzert.isNull(the.onlyOneOf(empty.list()));
+  }
+  
+  @SuppressWarnings("null") @Test public void testOnlyOneOf3() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(1));
+    azzert.that(Utils.cantBeNull(the.onlyOneOf(l)),is(box.box(1)));
   }
 
-  @Ignore @Test public void testTailOfTArray() {
-    fail("Not yet implemented");
+  @Test public void testSecondOf1() {
+    azzert.isNull(the.secondOf(null));
   }
+  
+  @Test public void testSecondOf2() {
+    azzert.isNull(the.secondOf(empty.list()));
+  }
+  
+  @SuppressWarnings("null") @Test public void testSecondOf3() {
+    List<Integer> l = new ArrayList<>();
+    l.add(box.box(1));
+    l.add(box.box(2));
+    azzert.that(Utils.cantBeNull(the.secondOf(l)),is(box.box(2)));
+  }
+
+  @Test public void testMax() {
+    azzert.that(the.max(1, 3,2),azzert.is(3));
+  }
+
+  @Test public void testMin() {
+    azzert.that(the.min(1, 3,2),azzert.is(1));
+  }
+
+  @SuppressWarnings("null") @Test public void testLastOfTArray() {
+    @Nullable Integer[] arr = {box.box(1)};
+    azzert.that(the.lastOf(arr),azzert.is(box.box(1)));
+  }
+
+
+  @Test public void testSqr() {
+    azzert.that(the.sqr(2),azzert.is(4));
+  }
+
+
+  @Test public void testTailOfTArray() {
+    Integer[] arr = {box.box(1),box.box(2)};
+    azzert.that(the.tailOf(arr)[0],is(box.box(2)));
+  }
+
 }
