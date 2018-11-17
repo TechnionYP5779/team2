@@ -275,6 +275,34 @@ public class IntTest {
     azzert.assertZero(min.get());
   }
   
+  @Test public void valueOfTest0() {
+    azzert.assertEquals(Int.valueOf(0).get(), 0);
+  }
+  
+  @Test public void valueOfTest1() {
+    azzert.assertEquals(Int.valueOf(0).inner(), box(0));
+  }
+  
+  @Test public void valueOfTest2() {
+    Int max = new Int(Integer.MAX_VALUE);
+    azzert.assertEquals(max.get(), Int.valueOf(Integer.MAX_VALUE).get());
+  }
+
+  @Test public void valueOfTest3() {
+    Int max = new Int(Integer.MAX_VALUE);
+    azzert.assertEquals(max.inner(), Int.valueOf(Integer.MAX_VALUE).inner());
+  }
+  
+  @Test public void valueOfTest4() {
+    Int min = new Int(Integer.MIN_VALUE);
+    azzert.assertEquals(min.get(), Int.valueOf(Integer.MIN_VALUE).get());
+  }
+  
+  @Test public void valueOfTest5() {
+    Int min = new Int(Integer.MIN_VALUE);
+    azzert.assertEquals(min.inner(), Int.valueOf(Integer.MIN_VALUE).inner());
+  }
+  
   @Test public void toStringCheck() {
     final Int v = new Int();
     azzert.assertEquals(v + "", "0");
