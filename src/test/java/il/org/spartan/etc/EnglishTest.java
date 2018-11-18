@@ -179,4 +179,60 @@ public class EnglishTest {
   @Test public void testPronounce26() {
     azzert.that(pronounce('z'),is("zee"));
   }
+  @Test public void testRepeat() {
+    azzert.that(repeat(3,'a'),is("aaa"));
+  }
+  @Test public void testSelfName1() {
+    azzert.that(English.selfName(Object.class),is("Object"));
+  }
+  @Test public void testSelfName2() {
+    azzert.that(English.selfName(new Object() {@Override protected Object clone() throws CloneNotSupportedException {
+      return super.clone();
+    }}.getClass()),is("{}"));
+  }
+  @Test public void testSelfName3() {
+    azzert.that(English.selfName(Deprecated.class),is("@Deprecated"));
+  }
+  @Test public void testTime() {
+    azzert.that(time(10000000000000l),is("10000.00"));
+  }
+  @Test public void testTrim1() {
+    azzert.assertNull(trim(null));
+  }
+  @Test public void testTrim2() {
+    azzert.that(trim("1\n2\n3\n"),is("1\n2\n3"));
+  }
+  @Test public void testTrimAbsolute1() {
+    azzert.that(trimAbsolute("123456",6,""),is("123456"));
+  }
+  @Test public void testTrimAbsolute2() {
+    azzert.that(trimAbsolute("123456",5,"789"),is("12789"));
+  }
+  @Test public void testUnknownIfNull1() {
+    azzert.that(unknownIfNull(null),is(English.UNKNOWN));
+  }
+  @Test public void testUnknownIfNull2() {
+    azzert.that(unknownIfNull("1"),is("1"));
+  }
+  @Test public void testUnknownIfNull3() {
+    azzert.that(unknownIfNull(null , x -> "3"),is(English.UNKNOWN));
+  }
+  @Test public void testUnknownIfNull4() {
+    azzert.that(unknownIfNull("1" , x -> "3"),is("3"));
+  }
+  @Test public void testUpperFirstLetter1() {
+    azzert.that(upperFirstLetter("").substring(0,11),is("genererated"));
+  }
+  @Test public void testUpperFirstLetter2() {
+    azzert.that(upperFirstLetter("test"),is("Test"));
+  }
+  @Test public void testIndefinite1() {
+    azzert.that(indefinite("apple"),is("an apple"));
+  }
+  @Test public void testIndefinite2() {
+    azzert.that(indefinite("Test"),is("a Test"));
+  }
+  @Test public void testIndefinite3() {
+    azzert.that(indefinite("T"),is("an tee"));
+  }
 }
