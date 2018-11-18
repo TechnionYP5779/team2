@@ -10,8 +10,8 @@ public interface iterable {
    * @param ¢ JD
    * @return PureIterable.Sized<T> for returned value of method
    *         <code>singleton</code> */
-  @NotNull static <T> Iterable<T> singleton(final T param) {
-    return iterable.over(param);
+  @NotNull static <T> Iterable<T> singleton(final T ¢) {
+    return iterable.over(¢);
   }
 
   /** Creates an iterable for an array of objects
