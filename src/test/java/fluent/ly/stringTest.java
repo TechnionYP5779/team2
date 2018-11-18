@@ -262,7 +262,7 @@ import org.junit.*;
     azzert.that(pluralize(10, "apple"), is("10 apples"));
   }
 
-  @Test @SuppressWarnings("null") public void testPretty1() {
+  @SuppressWarnings("null") @Test public void testPretty1() {
     azzert.that(pretty("apple", null), is(""));
   }
 
