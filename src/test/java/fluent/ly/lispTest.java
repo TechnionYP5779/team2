@@ -1,6 +1,5 @@
 package fluent.ly;
 
-import static org.junit.Assert.*;
 
 import java.util.*;
 
@@ -132,7 +131,7 @@ import il.org.spartan.*;
   }
   
   @Test public void testAreEqual3() {
-    assert lisp.areEqual(box.box(1),box.box(2));
+    assert !lisp.areEqual(box.box(1),box.box(2));
   }
 
   @Test public void testChopLastListOfT() {
