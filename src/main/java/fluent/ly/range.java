@@ -46,8 +46,8 @@ public class range {
       return empty;
     }
 
-    @SuppressWarnings("boxing") public PerformedTo intersect(final PerformedTo r) {
-      final Integer $ = r.from(), to2 = r.to();
+    @SuppressWarnings("boxing") public PerformedTo intersect(final PerformedTo t) {
+      final Integer $ = t.from(), to2 = t.to();
       return to > $ && to2 > from ? range.from(Math.max(from, $)).to(Math.min(to, to2)) : new range() {
         {
           empty = true;
