@@ -143,8 +143,8 @@ import il.org.spartan.*;
     final List<Integer> t = new ArrayList<>();
     t.add(box.box(1));
     t.add(box.box(1));
-    for (final Integer integer : the.lastOf((Iterable<Integer>) new ArrayList<>(t)))
-      azzert.that(integer, is(box.box(1)));
+    for (final Integer ¢ : the.lastOf((Iterable<Integer>) new ArrayList<>(t)))
+      azzert.that(¢, is(box.box(1)));
   }
 
   @Test public void testOnlyOneOf1() {

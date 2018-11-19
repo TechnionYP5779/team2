@@ -116,8 +116,8 @@ import il.org.spartan.*;
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
-    for (final Integer integer : lisp.rest2(l))
-      azzert.that(integer, is(box.box(3)));
+    for (final Integer ¢ : lisp.rest2(l))
+      azzert.that(¢, is(box.box(3)));
   }
 
   @Test public void testAreEqual1() {

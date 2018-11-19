@@ -10,7 +10,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-@SuppressWarnings({ "static-method"}) public class IntTest {
+@SuppressWarnings("static-method") public class IntTest {
   @Test public void creation() {
     azzert.assertZero(new Int().get());
   }

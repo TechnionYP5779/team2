@@ -1,7 +1,6 @@
 package il.org.spartan.utils;
 
 import static fluent.ly.azzert.*;
-
 import static fluent.ly.box.*;
 
 import org.junit.*;
@@ -16,7 +15,7 @@ import fluent.ly.*;
   }
 
   @Test public void testHashCode2() {
-    azzert.that((new Outer<>(box(1))).hashCode(), is(box(1).hashCode()));
+    azzert.that(new Outer<>(box(1)).hashCode(), is(box(1).hashCode()));
   }
 
   @Test public void testEqualsObject1() {
@@ -28,12 +27,12 @@ import fluent.ly.*;
     azzert.notNull(new Outer<>(box(1)));
   }
 
-  @SuppressWarnings("unlikely-arg-type") @Test public void testEqualsObject3() {
-    assert !(new Outer<>(box(1))).equals(box(1));
+  @Test @SuppressWarnings("unlikely-arg-type") public void testEqualsObject3() {
+    assert !new Outer<>(box(1)).equals(box(1));
   }
 
   @Test public void testEqualsObject4() {
-    assert !(new Outer<>(box(1))).equals(new Outer<>(box(2)));
+    assert !new Outer<>(box(1)).equals(new Outer<>(box(2)));
   }
 
   @Test public void testEqualsOuterOfInner1() {
@@ -51,7 +50,7 @@ import fluent.ly.*;
   }
 
   @Test public void testEqualsOuterOfInner3() {
-    assert (new Outer<>(box(1))).equals(new Outer<>(box(1)));
+    assert new Outer<>(box(1)).equals(new Outer<>(box(1)));
   }
 
   @Test public void testGet() {
