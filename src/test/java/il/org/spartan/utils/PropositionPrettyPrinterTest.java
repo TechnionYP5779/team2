@@ -63,6 +63,5 @@ public class PropositionPrettyPrinterTest {
     azzert.that(listener.upCalled, is(1));
     azzert.that(listener.nextCalled, is(2));
     azzert.that(listener.inTrueCalled, is(3));
-    listener.print();
   }
 }
