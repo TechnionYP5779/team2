@@ -15,27 +15,26 @@ public class PropositionPrettyPrinterTest {
   
   static class MockListener implements Listener<BooleanSupplier>{
     
-    public int downCalled = 0;
-    public int upCalled = 0;
-    public int nextCalled = 0;
-    public int inTrueCalled = 0;
-    public int inFalseCalled = 0;
+    public int downCalled;
+    public int upCalled;
+    public int nextCalled;
+    public int inTrueCalled;
+    public int inFalseCalled;
     
     @Override public void down(){
-      downCalled++;
+      ++downCalled;
     }
     @Override public void up(){
-      upCalled++;
+      ++upCalled;
     }
     @Override public void next(){
-      nextCalled++;
+      ++nextCalled;
     }
     @Override public void in(final BooleanSupplier __){
-      if(__.getAsBoolean()) {
-        inTrueCalled++;
-      }else {
-        inFalseCalled++;
-      }
+      if(__.getAsBoolean())
+        ++inTrueCalled;
+      else
+        ++inFalseCalled;
     }
     
     public void print() {
@@ -79,8 +78,7 @@ public class PropositionPrettyPrinterTest {
   }
   
   @Test public void testTopDown3() {
-    PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
-    propositionTreeTraversal.topDown(Proposition.that(Proposition.T));
+    new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     
     azzert.that(listener.downCalled, is(2));
     azzert.that(listener.upCalled, is(2));
@@ -90,14 +88,13 @@ public class PropositionPrettyPrinterTest {
   }
   
   @Test public void testNumberLess() {
-    PropositionPrettyPrinter.Number number = new PropositionPrettyPrinter.Number();
-    azzert.assertNull(number.less());
+    azzert.assertNull((new PropositionPrettyPrinter.Number()).less());
   }
   
   @Test public void testNumberNext() {
     PropositionPrettyPrinter.Number number = new PropositionPrettyPrinter.Number();
     number.next();
-    azzert.that(number.toString(), is("2"));
+    azzert.that(number + "", is("2"));
   }
   
   @Test public void testNumberMore() {
@@ -105,68 +102,39 @@ public class PropositionPrettyPrinterTest {
     number.next();
     number = number.more();
     number.next();
-    azzert.that(number.toString(), is("2.2"));
+    azzert.that(number + "", is("2.2"));
   }
   
   @Test public void testNumberWithTabMore() {
     PropositionPrettyPrinter.NumberWithTab number = new PropositionPrettyPrinter.NumberWithTab();
     number.more();
-    azzert.that(number.toString(), is("\t1.1) "));
+    azzert.that(number + "", is("\t1.1) "));
   }
   
   @Test public void testNumberWithTabLess() {
     PropositionPrettyPrinter.NumberWithTab number = new PropositionPrettyPrinter.NumberWithTab();
     number.more();
     number.less();
-    azzert.that(number.toString(), is("1) "));
+    azzert.that(number + "", is("1) "));
   }
   
   @Test public void testNumberWithTabNext() {
     PropositionPrettyPrinter.NumberWithTab number = new PropositionPrettyPrinter.NumberWithTab();
     number.more();
     number.next();
-    azzert.that(number.toString(), is("\t1.2) "));
+    azzert.that(number + "", is("\t1.2) "));
   }
   
   @Test public void testMain(){
-    final String main_output = new StringBuilder()
-      .append("1) (And) MAIN, SUB1 ==> Assertion exception\r\n")
-        .append("\t1.1)  X ==> Assertion exception\r\n")
-        .append("\t1.2)  F ==> false\r\n")
-        .append("\t1.3) (Or) SUB2 ==> true\r\n")
-          .append("\t\t1.3.1)  T ==> true\r\n")
-          .append("\t\t1.3.2) (Not) N ==> Null pointer exception\r\n")
-            .append("\t\t\t1.3.2.1)  N ==> Null pointer exception\r\n")
-          .append("\t\t1.3.3)  ==> true\r\n")
-          .append("\t\t1.3.4)  OH NO ==> Runtime exception\r\n")
-.append("\r\n")
-      .append("1) (And) MAIN ==> true\r\n")
-        .append("\t1.1) (Or) SUB ==> true\r\n")
-          .append("\t\t1.1.1)  T ==> true\r\n")
-          .append("\t\t1.1.2)  F ==> false\r\n")
-        .append("\t1.2)  T ==> true\r\n")
-.append("\r\n")
-      .append("1)  MAIN ==> true\r\n")
-        .append("\t1.1)  T ==> true\r\n")
-.append("\r\n")
-      .append("1) (And) [SUB, T] ==> true\r\n")
-        .append("\t1.1) (Or) SUB ==> true\r\n")
-          .append("\t\t1.1.1)  T ==> true\r\n")
-          .append("\t\t1.1.2)  F ==> false\r\n")
-        .append("\t1.2)  T ==> true\r\n")
-.append("\r\n")
-      .append("1) (And) [F, X] ==> false\r\n")
-        .append("\t1.1)  F ==> false\r\n")
-        .append("\t1.2)  X ==> Assertion exception\r\n")
-.append("\r\n")
-      .append("1) (Or) SUB2 ==> true\r\n")
-        .append("\t1.1)  T ==> true\r\n")
-        .append("\t1.2) (Not) N ==> Null pointer exception\r\n")
-          .append("\t\t1.2.1) (Not) N ==> Null pointer exception\r\n")
-            .append("\t\t\t1.2.1.1)  N ==> Null pointer exception\r\n")
-        .append("\t1.3)  ==> true\r\n")
-        .append("\t1.4)  OH NO ==> Runtime exception\r\n")
-.append("\r\n").toString();
+    final String main_output = "1) (And) MAIN, SUB1 ==> Assertion exception\r\n\t1.1)  X ==> Assertion exception\r\n\t1.2)  F ==> false\r\n"
+        + "\t1.3) (Or) SUB2 ==> true\r\n\t\t1.3.1)  T ==> true\r\n\t\t1.3.2) (Not) N ==> Null pointer exception\r\n"
+        + "\t\t\t1.3.2.1)  N ==> Null pointer exception\r\n\t\t1.3.3)  ==> true\r\n\t\t1.3.4)  OH NO ==> Runtime exception\r\n\r\n"
+        + "1) (And) MAIN ==> true\r\n\t1.1) (Or) SUB ==> true\r\n\t\t1.1.1)  T ==> true\r\n\t\t1.1.2)  F ==> false\r\n"
+        + "\t1.2)  T ==> true\r\n\r\n1)  MAIN ==> true\r\n\t1.1)  T ==> true\r\n\r\n1) (And) [SUB, T] ==> true\r\n"
+        + "\t1.1) (Or) SUB ==> true\r\n\t\t1.1.1)  T ==> true\r\n\t\t1.1.2)  F ==> false\r\n\t1.2)  T ==> true\r\n\r\n"
+        + "1) (And) [F, X] ==> false\r\n\t1.1)  F ==> false\r\n\t1.2)  X ==> Assertion exception\r\n\r\n1) (Or) SUB2 ==> true\r\n"
+        + "\t1.1)  T ==> true\r\n\t1.2) (Not) N ==> Null pointer exception\r\n\t\t1.2.1) (Not) N ==> Null pointer exception\r\n"
+        + "\t\t\t1.2.1.1)  N ==> Null pointer exception\r\n\t1.3)  ==> true\r\n\t1.4)  OH NO ==> Runtime exception\r\n\r\n";
 
     
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream(), errContent = new ByteArrayOutputStream();
@@ -177,7 +145,7 @@ public class PropositionPrettyPrinterTest {
     
     PropositionPrettyPrinter.main(null);
     
-    azzert.that(outContent.toString(), is(main_output));
+    azzert.that(outContent + "", is(main_output));
     
     System.setOut(originalOut);
     System.setErr(originalErr);
