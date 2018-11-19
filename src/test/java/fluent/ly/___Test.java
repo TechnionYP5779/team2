@@ -9,6 +9,7 @@ import fluent.ly.___.Bug.Assertion.*;
 import fluent.ly.___.Bug.Assertion.Value.*;
 import fluent.ly.___.Bug.Assertion.Variant.*;
 import fluent.ly.___.Variant;
+import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class ___Test {
   @Test public void ensure() {
@@ -214,7 +215,7 @@ import fluent.ly.___.Variant;
       azzert.that(0, is(v.value()));
     }
     try {
-      ___.unused(new Variant(-1));
+      forget.unused(new Variant(-1));
     } catch (final Initial e) {
       azzert.that("Initial variant value (-1) is negative", is(e.getMessage()));
     }
