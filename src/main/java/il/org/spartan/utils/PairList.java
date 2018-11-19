@@ -12,7 +12,7 @@ public class PairList {
     list = new ArrayList<>();
   }
 
-  public void record(double d, double e) {
+  public void record(final double d, final double e) {
     list.add(new SortableDoublePair(d, e));
   }
 
@@ -25,7 +25,7 @@ public class PairList {
     return list.listIterator();
   }
 
-  public Pair<Double, Double> at(int i) {
+  public Pair<Double, Double> at(final int i) {
     return list.get(i).getPair();
   }
 
@@ -34,18 +34,16 @@ public class PairList {
   }
 
   public double distSum() {
-    double sum = 0;
-    for (int i = 0; i < list.size(); i++) {
-      sum += Math.sqrt(Math.pow(unbox.unbox(Utils.cantBeNull(this.at(i).first)), 2) + Math.pow(unbox.unbox(Utils.cantBeNull(this.at(i).second)), 2));
-    }
-    return sum;
+    double $ = 0;
+    for (int ¢ = 0; ¢ < list.size(); ++¢)
+      $ += Math.sqrt(Math.pow(unbox.unbox(Utils.cantBeNull(this.at(¢).first)), 2) + Math.pow(unbox.unbox(Utils.cantBeNull(this.at(¢).second)), 2));
+    return $;
   }
 
   public double sum() {
-    double sum = 0;
-    for (int i = 0; i < list.size(); i++) {
-      sum += unbox.unbox(Utils.cantBeNull(this.at(i).first)) + unbox.unbox(Utils.cantBeNull(this.at(i).second));
-    }
-    return sum;
+    double $ = 0;
+    for (int ¢ = 0; ¢ < list.size(); ++¢)
+      $ += unbox.unbox(Utils.cantBeNull(this.at(¢).first)) + unbox.unbox(Utils.cantBeNull(this.at(¢).second));
+    return $;
   }
 }

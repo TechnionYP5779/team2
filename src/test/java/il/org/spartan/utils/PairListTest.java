@@ -10,11 +10,11 @@ import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class PairListTest {
   @Test public void testRecord() {
-    (new PairList()).record(1.0, 2.0);
+    new PairList().record(1.0, 2.0);
   }
 
   @Test public void testAt() {
-    PairList pl = new PairList();
+    final PairList pl = new PairList();
     pl.record(0.0, 3.0);
     pl.record(0.0, 1.0);
     pl.record(0.0, 2.0);
@@ -26,7 +26,7 @@ import fluent.ly.*;
   }
 
   @Test public void testSort() {
-    PairList pl = new PairList();
+    final PairList pl = new PairList();
     pl.record(0.0, 3.0);
     pl.record(0.0, 1.0);
     pl.record(0.0, 2.0);
@@ -39,16 +39,16 @@ import fluent.ly.*;
   }
 
   @Test public void testIteratorSort() {
-    PairList pl = new PairList();
+    final PairList pl = new PairList();
     pl.record(0.0, 3.0);
     pl.record(0.0, 1.0);
-    ListIterator<SortableDoublePair> iter = pl.sortedIterator();
+    final ListIterator<SortableDoublePair> iter = pl.sortedIterator();
     assert iter.hasNext();
     azzert.that(iter.next().getPair().second, is(1.0));
   }
 
   @Test public void testCount() {
-    PairList pl = new PairList();
+    final PairList pl = new PairList();
     pl.record(0.0, 3.0);
     pl.record(0.0, 1.0);
     pl.record(0.0, 2.0);
@@ -57,7 +57,7 @@ import fluent.ly.*;
   }
 
   @Test public void testDistSum() {
-    PairList pl = new PairList();
+    final PairList pl = new PairList();
     pl.record(0.0, 3.0);
     pl.record(0.0, 1.0);
     pl.record(0.0, 2.0);
@@ -66,7 +66,7 @@ import fluent.ly.*;
   }
 
   @Test public void testSum() {
-    PairList pl = new PairList();
+    final PairList pl = new PairList();
     pl.record(0.0, 3.0);
     pl.record(0.0, 1.0);
     pl.record(0.0, 2.0);
