@@ -5,7 +5,7 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/TechnionYP5779/team2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TechnionYP5779/team2/alerts/)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=2592000)]()
 [![codecov.io](http://codecov.io/github/TechnionYP5779/team2/coverage.svg?branch=master)](http://codecov.io/github/TechnionYP5779/team2?branch=master)
-[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=com.lapots.breed.judge:judge-rule-engine&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.lapots.breed.judge:judge-rule-engine)
+
 
 
 
