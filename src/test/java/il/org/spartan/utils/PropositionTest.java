@@ -110,11 +110,4 @@ public class PropositionTest {
   }
   
   
-  
-  @Ignore @Test public void testToString() {
-    System.out.println(Proposition.AND(()->true, ()->true).or("str",()->false).toString());
-    azzert.assertEquals(Proposition.AND(()->true, ()->true).or("str",()->false).toString(),"str");
-  }
-  
-  
 }
