@@ -47,7 +47,7 @@ import fluent.ly.*;
     }
   }
 
-  @SuppressWarnings("null") @Test public void testSave() {
+  @Test @SuppressWarnings("null") public void testSave() {
     final File f = new File("src/test/resources/CSV_input.csv");
     try {
       CSV.save(f, Utils.cantBeNull(CSV.load(f)));

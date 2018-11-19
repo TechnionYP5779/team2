@@ -25,8 +25,8 @@ public class PairList {
     return list.listIterator();
   }
 
-  public Pair<Double, Double> at(final int i) {
-    return list.get(i).getPair();
+  public Pair<Double, Double> at(final int ¢) {
+    return list.get(¢).getPair();
   }
 
   public int count() {

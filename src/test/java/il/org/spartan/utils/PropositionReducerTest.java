@@ -1,6 +1,8 @@
 package il.org.spartan.utils;
 
-import static org.junit.Assert.*;
+import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
 
 import java.util.function.*;
 
@@ -8,11 +10,7 @@ import org.junit.*;
 
 import fluent.ly.*;
 
-import static fluent.ly.box.*;
-import static fluent.ly.unbox.*;
-import static fluent.ly.azzert.is;
 
-@SuppressWarnings("static-access")
 public class PropositionReducerTest {
   
   class MyReduce extends Reduce<Integer>{
@@ -22,7 +20,9 @@ public class PropositionReducerTest {
     }
 
     @Override public Integer reduce(Integer r1, Integer r2) {
-      return box(unbox(r1) + unbox(r2));
+      if(r1 == null || r2 == null)
+        return null;
+      return box(unbox(r1) +unbox(r2));
     }
 
     

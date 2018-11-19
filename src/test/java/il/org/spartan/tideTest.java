@@ -45,6 +45,6 @@ import org.junit.*;
   }
 
   @Test public void testEq6() {
-    assert tide.eq(new String("str"), new String("str"));
+    assert tide.eq(String.valueOf("str"), String.valueOf("str"));
   }
 }
