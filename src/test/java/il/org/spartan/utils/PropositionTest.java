@@ -1,19 +1,9 @@
 package il.org.spartan.utils;
 
-import static org.junit.Assert.*;
-import static il.org.spartan.Utils.*;
-
-import static fluent.ly.azzert.*;
-import static fluent.ly.box.*;
-import static fluent.ly.unbox.*;
-
 import org.junit.*;
 
-import fluent.ly.*;
 
-import java.util.function.*;
-
-
+@SuppressWarnings("static-method")
 public class PropositionTest {
   @Test public void testAND1() {
     assert Proposition.AND(()->true, ()->true).eval();
