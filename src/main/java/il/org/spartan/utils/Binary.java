@@ -12,20 +12,20 @@ public class Binary {
     return of(b1 != F && b2 != F);
   }
 
-  public static Binary asBoolean(final Binary param) {
-    return of(param != F);
+  public static Binary asBoolean(final Binary ¢) {
+    return of(¢ != F);
   }
 
   public static Binary eq(final Binary b1, final Binary b2) {
     return of(b1 == b2);
   }
 
-  public static Binary not(final Binary param) {
-    return param == F ? T : F;
+  public static Binary not(final Binary ¢) {
+    return ¢ == F ? T : F;
   }
 
-  public static Binary of(final boolean param) {
-    return param ? T : F;
+  public static Binary of(final boolean ¢) {
+    return ¢ ? T : F;
   }
 
   public static Binary or(final Binary b1, final Binary b2) {
@@ -36,8 +36,8 @@ public class Binary {
   private Binary() {
     /**/}
 
-  @Override public boolean equals(final Object param) {
-    throw new IllegalArgumentException(param + "");
+  @Override public boolean equals(final Object ¢) {
+    throw new IllegalArgumentException(¢ + "");
   }
 
   @Override public int hashCode() {

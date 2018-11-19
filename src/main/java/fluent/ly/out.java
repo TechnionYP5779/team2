@@ -8,8 +8,8 @@ public class out {
   static final int MAX_FIRST = 20;
   static final int MAX_LAST = 10;
 
-  public static void out(final @NotNull String param) {
-    System.out.print(param);
+  public static void out(final @NotNull String ¢) {
+    System.out.print(¢);
   }
 
   public static void out(final @NotNull String name, final boolean b) {

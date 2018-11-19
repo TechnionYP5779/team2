@@ -18,8 +18,8 @@ public class BigInteger {
     return Objects.hash(number);
   }
 
-  @Override public boolean equals(final Object param) {
-    return param == this || param != null && param instanceof BigInteger && Objects.equals(number, ((BigInteger) param).number);
+  @Override public boolean equals(final Object ¢) {
+    return ¢ == this || ¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number);
   }
 
   public BigInteger add(final BigInteger bigInteger) {

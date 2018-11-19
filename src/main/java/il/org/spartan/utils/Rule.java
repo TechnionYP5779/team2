@@ -75,8 +75,8 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
         return null;
       }
 
-      @Override public boolean ok(final T param) {
-        return p.test(param);
+      @Override public boolean ok(final T ¢) {
+        return p.test(¢);
       }
     };
   }
@@ -103,8 +103,8 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
 
   @Check default Rule<T, R> afterCheck(final Predicate<T> p) {
     return new Interceptor<T, R>(this) {
-      @Override public boolean check(final T param) {
-        return inner.check(param) && p.test(param);
+      @Override public boolean check(final T ¢) {
+        return inner.check(¢) && p.test(¢);
       }
     };
   }
@@ -137,8 +137,8 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
 
   default Rule<T, R> beforeCheck(final Predicate<T> p) {
     return new Interceptor<T, R>(this) {
-      @Override public boolean check(final T param) {
-        return p.test(param) && inner.check(param);
+      @Override public boolean check(final T ¢) {
+        return p.test(¢) && inner.check(¢);
       }
     };
   }
@@ -225,22 +225,22 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
       return null;
     }
 
-    @Override public boolean check(final T param) {
-      return inner.check(param);
+    @Override public boolean check(final T ¢) {
+      return inner.check(¢);
     }
 
     @Override public T current() {
       return inner.current();
     }
 
-    @Override public R apply(final T param) {
-      return inner.apply(param);
+    @Override public R apply(final T ¢) {
+      return inner.apply(¢);
     }
   }
 
   interface Listener<T, R> extends Supplier<T> {
-    default boolean afterCheck(final BooleanSupplier param) {
-      return param.getAsBoolean();
+    default boolean afterCheck(final BooleanSupplier ¢) {
+      return ¢.getAsBoolean();
     }
 
     @Override T get();
@@ -278,18 +278,18 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
   abstract class Stateful<@Nullable T, R> implements Rule<T, R> {
     public T current;
 
-    @Override public final R apply(final T param) {
+    @Override public final R apply(final T ¢) {
       if (!ready())
         return badTypeState(//
             "Attempt to apply rule before previously checking\n" + //
                 "    Argument to rule application is: %s\n",
-            param);
-      if (param != current())
+            ¢);
+      if (¢ != current())
         return badTypeState(//
             "Argument to rule application is distinct from previous checked argument\n" + //
                 "    Previously checked arguments was: %s\n" + //
                 "    Operand to rule application is: %s\n",
-            param, current());
+            ¢, current());
       final R $ = fire();
       current = null;
       return $;
@@ -307,8 +307,8 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
       );
     }
 
-    @Override public final boolean check(final T param) {
-      return ok(current = param);
+    @Override public final boolean check(final T ¢) {
+      return ok(current = ¢);
     }
 
     public abstract R fire();

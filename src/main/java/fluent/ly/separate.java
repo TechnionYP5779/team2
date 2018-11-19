@@ -51,46 +51,46 @@ import il.org.spartan.*;
     return new SeparationSubject(new String[] {});
   }
 
-  @NotNull public static SeparationSubject these(final boolean @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final boolean @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
-  @NotNull public static SeparationSubject these(final byte @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final byte @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
-  @NotNull public static SeparationSubject these(final char @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final char @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
-  @NotNull public static SeparationSubject these(final double @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final double @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
-  @NotNull public static SeparationSubject these(final float @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final float @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
   @NotNull public static SeparationSubject these(final Iterable<?> os) {
     return new SeparationSubject(os);
   }
 
-  @NotNull public static SeparationSubject these(final long @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final long @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
-  @NotNull public static <Key, Value> SeparationSubject these(final @NotNull Map<Key, Value> param) {
-    cantBeNull(param);
-    final @NotNull List<Object> $ = param.keySet().stream().map(λ -> λ + "->" + param.get(λ)).collect(Collectors.toList());
+  @NotNull public static <Key, Value> SeparationSubject these(final @NotNull Map<Key, Value> ¢) {
+    cantBeNull(¢);
+    final @NotNull List<Object> $ = ¢.keySet().stream().map(λ -> λ + "->" + ¢.get(λ)).collect(Collectors.toList());
     return new SeparationSubject($);
   }
 
-  @NotNull public static SeparationSubject these(final short @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull public static SeparationSubject these(final short @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
-  @SafeVarargs @NotNull public static <T> SeparationSubject these(final T... param) {
-    return new SeparationSubject(param);
+  @SafeVarargs @NotNull public static <T> SeparationSubject these(final T... ¢) {
+    return new SeparationSubject(¢);
   }
 
   static <T> void assertEquals(final @NotNull String reason, final T t1, final T t2) {
@@ -101,8 +101,8 @@ import il.org.spartan.*;
     azzert.that(t2, is(t1));
   }
 
-  static void assertFalse(final boolean param) {
-    azzert.nay(param);
+  static void assertFalse(final boolean ¢) {
+    azzert.nay(¢);
   }
 
   static void assertFalse(final @NotNull String reason, final boolean b) {
@@ -113,16 +113,16 @@ import il.org.spartan.*;
     azzert.that(t2, is(t1));
   }
 
-  static void assertTrue(final boolean param) {
-    azzert.aye(param);
+  static void assertTrue(final boolean ¢) {
+    azzert.aye(¢);
   }
 
   static void assertTrue(final @NotNull String reason, final boolean b) {
     azzert.aye(reason, b);
   }
 
-  @NotNull static SeparationSubject these(final int @NotNull [] param) {
-    return these(box.it(param));
+  @NotNull static SeparationSubject these(final int @NotNull [] ¢) {
+    return these(box.it(¢));
   }
 
   /** Auxiliary class for fluent API.

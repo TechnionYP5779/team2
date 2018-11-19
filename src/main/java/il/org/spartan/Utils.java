@@ -68,8 +68,8 @@ import il.org.spartan.Utils.FoundHandleForT.*;
   /** @param <F> JD
    * @param   <T> JD
    * @param ¢ JD */
-  static <F, T> Applicator<F, T> apply(final Function<F, T> param) {
-    return new Applicator<>(param);
+  static <F, T> Applicator<F, T> apply(final Function<F, T> ¢) {
+    return new Applicator<>(¢);
   }
 
   @Nullable static <T> T canBeNull(final T $) {
@@ -157,14 +157,14 @@ import il.org.spartan.Utils.FoundHandleForT.*;
   }
 
   /** @param ¢ JD */
-  static FoundHandleForInt found(final int param) {
-    return new FoundHandleForInt(param);
+  static FoundHandleForInt found(final int ¢) {
+    return new FoundHandleForInt(¢);
   }
 
   /** @param <T> JD
    * @param ¢ JD */
-  static <T> FoundHandleForT<T> found(final T param) {
-    return new FoundHandleForT<>(param);
+  static <T> FoundHandleForT<T> found(final T ¢) {
+    return new FoundHandleForT<>(¢);
   }
 
   /** Determine whether a <code><b>null</b></code> occurs in a sequence of objects
@@ -223,8 +223,8 @@ import il.org.spartan.Utils.FoundHandleForT.*;
 
   /** @param ¢ JD
    * @return name of the parameter, which must not be <code><b>null</b></code> */
-  static String name(final File param) {
-    return cantBeNull(param.getName());
+  static String name(final File ¢) {
+    return cantBeNull(¢.getName());
   }
 
   /** Determine whether an {@link Object} is penultimate in its {@link List} .
@@ -297,23 +297,23 @@ import il.org.spartan.Utils.FoundHandleForT.*;
   /** Remove all occurrences of white space character in a given {@link String}
    * @param ¢ JD
    * @return parameter after all such occurrences are removed. */
-  static String removeWhites(final @NotNull String param) {
-    return cantBeNull(param.replaceAll("\\s+", ""));
+  static String removeWhites(final @NotNull String ¢) {
+    return cantBeNull(¢.replaceAll("\\s+", ""));
   }
 
   /** Sorts an array
    * @param ¢ what to sort
    * @return given array with elements in sorted order */
-  static int @NotNull [] sort(final int @NotNull [] param) {
-    Arrays.sort(param);
-    return param;
+  static int @NotNull [] sort(final int @NotNull [] ¢) {
+    Arrays.sort(¢);
+    return ¢;
   }
 
   /** Computes the square of a given double
    * @param ¢ some number
    * @return square of the parameter */
-  static double sqr(final double param) {
-    return param * param;
+  static double sqr(final double ¢) {
+    return ¢ * ¢;
   }
 
   /** Determine whether a file name ends with any one of the supplied extensions.
@@ -446,7 +446,7 @@ import il.org.spartan.Utils.FoundHandleForT.*;
     }
   }
 
-  static int hash(final Object param) {
-    return param == null ? 0 : param.hashCode();
+  static int hash(final Object ¢) {
+    return ¢ == null ? 0 : ¢.hashCode();
   }
 }

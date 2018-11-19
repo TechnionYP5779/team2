@@ -32,8 +32,8 @@ import il.org.spartan.etc.*;
 
   /** Exercise the {@link Invariantable#check()}
    * @param v a Invariantable object whose invariant should be checked */
-  public static void check(final ___.Invariantable param) {
-    param.check();
+  public static void check(final ___.Invariantable ¢) {
+    ¢.check();
   }
 
   /** A possibly non-returning method to be used for checking postconditions.
@@ -76,8 +76,8 @@ import il.org.spartan.etc.*;
    * be negative.
    * @param¢ a value which must be negative
    * @throws Negative in case <code>d</code> was nonnegative */
-  public static void negative(final double param) throws Negative {
-    negative(param, "");
+  public static void negative(final double ¢) throws Negative {
+    negative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -107,8 +107,8 @@ import il.org.spartan.etc.*;
    * be negative.
    * @param n a value which must be negative
    * @throws Negative in case <code>n</code> was nonnegative */
-  public static void negative(final int param) throws Negative {
-    negative(param, "");
+  public static void negative(final int ¢) throws Negative {
+    negative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -138,8 +138,8 @@ import il.org.spartan.etc.*;
    * be non-NaN.
    * @param d a value which must be not be NaN
    * @throws NonNan in case <code>d</code> was NaN */
-  public static void nonNaN(final double param) throws NonNan {
-    nonNaN(param, "");
+  public static void nonNaN(final double ¢) throws NonNan {
+    nonNaN(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -178,16 +178,16 @@ import il.org.spartan.etc.*;
    * be nonnegative.
    * @param ¢ a value which must be nonnegative
    * @throws NonNegative in case <code>n</code> was negative */
-  public static void nonnegativ(final int param) throws NonNegative {
-    nonnegative(param, "");
+  public static void nonnegativ(final int ¢) throws NonNegative {
+    nonnegative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
    * be nonnegative.
    * @param d a value which must be nonnegative
    * @throws NonNegative in case <code>d</code> was negative */
-  public static void nonnegative(final double param) throws NonNegative {
-    nonnegative(param, "");
+  public static void nonnegative(final double ¢) throws NonNegative {
+    nonnegative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -248,8 +248,8 @@ import il.org.spartan.etc.*;
    * never be <code><b>null</b></code>.
    * @param o if <code><b>null</b></code>, program will halt.
    * @throws NotNull in case <code>o</code> was <code><b>null</b></code> */
-  public static void nonnull(final Object param) throws NotNullValue {
-    nonnull(param, "");
+  public static void nonnull(final Object ¢) throws NotNullValue {
+    nonnull(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking objects that should
@@ -278,8 +278,8 @@ import il.org.spartan.etc.*;
    * be nonpositive.
    * @param d a value which must be nonpositive
    * @throws NonPositive in case <code>d</code> was positive */
-  public static void nonpositive(final double param) throws NonPositive {
-    nonpositive(param, "");
+  public static void nonpositive(final double ¢) throws NonPositive {
+    nonpositive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -309,8 +309,8 @@ import il.org.spartan.etc.*;
    * be nonpositive.
    * @param n a value which must be positive
    * @throws NonPositive in case <code>n</code> was positive. */
-  public static void nonpositive(final int param) throws NonPositive {
-    nonpositive(param, "");
+  public static void nonpositive(final int ¢) throws NonPositive {
+    nonpositive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -362,8 +362,8 @@ import il.org.spartan.etc.*;
    * numbers which must be positive.
    * @param d a value which must be positive
    * @throws Positive in case <code>d</code> was nonpositive */
-  public static void positive(final double param) throws Positive {
-    positive(param, "");
+  public static void positive(final double ¢) throws Positive {
+    positive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -393,8 +393,8 @@ import il.org.spartan.etc.*;
    * be positive.
    * @param n a value which must be positive
    * @throws Positive in case <code>n</code> was nonpositive */
-  public static void positive(final int param) throws Positive {
-    positive(param, "");
+  public static void positive(final int ¢) throws Positive {
+    positive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must

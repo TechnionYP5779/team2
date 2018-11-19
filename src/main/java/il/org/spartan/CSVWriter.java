@@ -57,8 +57,8 @@ public final class CSVWriter {
     return header;
   }
 
-  public void write(final AbstractStringProperties param) {
-    writeln(param.line());
+  public void write(final AbstractStringProperties ¢) {
+    writeln(¢.line());
   }
 
   public void write(final CSVLine cl) {

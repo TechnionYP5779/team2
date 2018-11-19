@@ -1,11 +1,12 @@
 package fluent.ly;
 
+import static fluent.ly.azzert.*;
 
 import java.util.*;
 
 import org.eclipse.jdt.annotation.*;
 import org.junit.*;
-import static fluent.ly.azzert.*;
+
 import an.*;
 import il.org.spartan.*;
 
@@ -15,7 +16,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testChop2() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -23,19 +24,19 @@ import il.org.spartan.*;
   }
 
   @Test public void testCons() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     azzert.that(lisp.cons(box.box(3), l).get(0), is(box.box(3)));
   }
 
-  @SuppressWarnings("null") @Test public void testNext1() {
-    List<@Nullable Integer> l = new ArrayList<>();
+  @Test @SuppressWarnings("null") public void testNext1() {
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     azzert.that(lisp.next(2, l), is(box.box(1)));
   }
 
-  @SuppressWarnings("null") @Test public void testNext2() {
-    List<@Nullable Integer> l = new ArrayList<>();
+  @Test @SuppressWarnings("null") public void testNext2() {
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -46,24 +47,24 @@ import il.org.spartan.*;
     azzert.isNull(lisp.get(null, 0));
   }
 
-  @SuppressWarnings("null") @Test public void testGet2() {
-    List<Integer> l = new ArrayList<>();
+  @Test @SuppressWarnings("null") public void testGet2() {
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
     azzert.that(Utils.cantBeNull(lisp.get(l, 1)), is(box.box(3)));
   }
 
-  @SuppressWarnings("null") @Test public void testPrev1() {
-    List<@Nullable Integer> l = new ArrayList<>();
+  @Test @SuppressWarnings("null") public void testPrev1() {
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
     azzert.that(lisp.prev(0, l), is(box.box(1)));
   }
 
-  @SuppressWarnings("null") @Test public void testPrev2() {
-    List<@Nullable Integer> l = new ArrayList<>();
+  @Test @SuppressWarnings("null") public void testPrev2() {
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -71,7 +72,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testReplace1() {
-    List<@Nullable Integer> l = new ArrayList<>();
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -79,7 +80,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testReplace2() {
-    List<@Nullable Integer> l = new ArrayList<>();
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -87,7 +88,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testReplace3() {
-    List<@Nullable Integer> l = new ArrayList<>();
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -95,7 +96,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testReplaceFirst() {
-    List<@Nullable Integer> l = new ArrayList<>();
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -103,7 +104,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testReplaceLast() {
-    List<@Nullable Integer> l = new ArrayList<>();
+    final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -111,31 +112,28 @@ import il.org.spartan.*;
   }
 
   @Test public void testRest2() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
-    Iterable<Integer> l2 = lisp.rest2(l);
-    Iterator<Integer> iter = l2.iterator();
-    while(iter.hasNext()) {
-      azzert.that(iter.next(),is(box.box(3)));
-    }
+    for (final Integer integer : lisp.rest2(l))
+      azzert.that(integer, is(box.box(3)));
   }
 
   @Test public void testAreEqual1() {
     assert !lisp.areEqual(null);
   }
-  
+
   @Test public void testAreEqual2() {
-    assert lisp.areEqual(box.box(1),box.box(1));
+    assert lisp.areEqual(box.box(1), box.box(1));
   }
-  
+
   @Test public void testAreEqual3() {
-    assert !lisp.areEqual(box.box(1),box.box(2));
+    assert !lisp.areEqual(box.box(1), box.box(2));
   }
 
   @Test public void testChopLastListOfT() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -143,13 +141,12 @@ import il.org.spartan.*;
   }
 
   @Test public void testChopLastString() {
-    String str = "abc";
-    azzert.that(lisp.chopLast(str), is("ab"));
+    azzert.that(lisp.chopLast("abc"), is("ab"));
   }
 
   @Test public void testRemoveFromList() {
-    List<Integer> l1 = new ArrayList<>();
-    List<Integer> l2 = new ArrayList<>();
+    final List<Integer> l1 = new ArrayList<>();
+    final List<Integer> l2 = new ArrayList<>();
     l1.add(box.box(1));
     l1.add(box.box(2));
     l1.add(box.box(3));
@@ -159,7 +156,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testRemoveLast() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
@@ -168,23 +165,23 @@ import il.org.spartan.*;
   }
 
   @Test public void testSwap1() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
     assert lisp.swap(l, 5, 5) == l;
   }
-  
+
   @Test public void testSwap2() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
     assert lisp.swap(l, 1, 5) == l;
   }
-  
+
   @Test public void testSwap3() {
-    List<Integer> l = new ArrayList<>();
+    final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));

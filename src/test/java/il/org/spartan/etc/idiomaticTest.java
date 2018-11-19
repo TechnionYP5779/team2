@@ -120,8 +120,8 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   class MyTrigger implements Trigger {
-    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> param) {
-      return param.get();
+    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
+      return ¢.get();
     }
   }
 

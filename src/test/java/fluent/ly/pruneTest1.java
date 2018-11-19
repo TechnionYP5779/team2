@@ -11,8 +11,9 @@ import org.junit.*;
 /** A JUnit test class for the enclosing class.
  * @author Yossi Gil, the Technion.
  * @since 27/08/2008 */
-@SuppressWarnings({ "static-method" }) public class pruneTest1 {
-  @SuppressWarnings("null") @NotNull final String @NotNull [] alternatingArray = new String[] { null, "A", null, null, "B", null, null, null, "C", null };
+@SuppressWarnings("static-method") public class pruneTest1 {
+  @NotNull @SuppressWarnings("null") final String @NotNull [] alternatingArray = new String[] { null, "A", null, null, "B", null, null, null, "C",
+      null };
   @NotNull final String @NotNull [] nonNullArray = { "1", "2", "4" };
   @NotNull final Supplier<List<String>> x = () -> {
     final List<String> $ = an.empty.list();

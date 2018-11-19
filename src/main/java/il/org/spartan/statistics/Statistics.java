@@ -24,9 +24,9 @@ public abstract class Statistics {
     return median($);
   }
 
-  public static double median(final double @NotNull [] param) {
-    Arrays.sort(param);
-    return (param[param.length / 2] + param[(param.length - 1) / 2]) / 2;
+  public static double median(final double @NotNull [] ¢) {
+    Arrays.sort(¢);
+    return (¢[¢.length / 2] + ¢[(¢.length - 1) / 2]) / 2;
   }
 
   public static double @NotNull [] prune(final double @NotNull [] ds) {

@@ -10,8 +10,8 @@ import il.org.spartan.utils.Example.*;
 public class Examples implements Iterable<Example> {
   private final List<Example> inner = an.empty.list();
 
-  public Examples add(final Example param) {
-    inner.add(param);
+  public Examples add(final Example ¢) {
+    inner.add(¢);
     return this;
   }
 

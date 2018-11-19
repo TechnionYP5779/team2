@@ -1,9 +1,9 @@
 package fluent.ly;
 
-import static fluent.ly.azzert.*;
-
-import static fluent.ly.box.*;
 import static il.org.spartan.Utils.*;
+
+import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 import static fluent.ly.unbox.*;
 
 import org.junit.*;
@@ -22,9 +22,7 @@ import org.junit.*;
   }
 
   @Test public void booleanArrayBoxingTest() {
-    final boolean[] boolArray = { true, true, false, false, true, false };
-    final Boolean[] expected = new Boolean[] { true, true, false, false, true, false };
-    azzert.that(expected, is(box(boolArray)));
+    azzert.that(new Boolean[] { true, true, false, false, true, false }, is(box(new boolean[] { true, true, false, false, true, false })));
   }
 
   @Test public void itTrue() {
@@ -40,9 +38,7 @@ import org.junit.*;
   }
 
   @Test public void booleanArrayItTest() {
-    final boolean[] boolArray = { true, true, false, false, true, false };
-    final Boolean[] expected = new Boolean[] { true, true, false, false, true, false };
-    azzert.that(expected, is(box.it(boolArray)));
+    azzert.that(new Boolean[] { true, true, false, false, true, false }, is(box.it(new boolean[] { true, true, false, false, true, false })));
   }
 
   @Test public void byteBoxingTest() {
@@ -56,9 +52,8 @@ import org.junit.*;
   }
 
   @Test public void byteArrayBoxingTest() {
-    final byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
-    final Byte[] expected = new Byte[] { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
-    azzert.that(expected, is(box(byteArray)));
+    azzert.that(new Byte[] { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 },
+        is(box(new byte[] { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 })));
   }
 
   @Test public void byteItTest() {
@@ -72,9 +67,8 @@ import org.junit.*;
   }
 
   @Test public void byteArrayItTest() {
-    final byte[] byteArray = { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
-    final Byte[] expected = new Byte[] { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 };
-    azzert.that(expected, is(box.it(byteArray)));
+    azzert.that(new Byte[] { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 },
+        is(box.it(new byte[] { 1, 2, 3, 4, 5, 6, 10, Byte.MAX_VALUE, Byte.MIN_VALUE, -127, 0, 127, 50, 100 })));
   }
 
   @Test public void charBoxingTest() {
@@ -88,9 +82,8 @@ import org.junit.*;
   }
 
   @Test public void charArrayBoxingTest() {
-    final char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
-    final Character[] expected = new Character[] { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
-    azzert.that(expected, is(box(charArray)));
+    azzert.that(new Character[] { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 },
+        is(box(new char[] { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 })));
   }
 
   @Test public void charItTest() {
@@ -104,16 +97,14 @@ import org.junit.*;
   }
 
   @Test public void charArrayItTest() {
-    final char[] charArray = { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
-    final Character[] expected = new Character[] { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 };
-    azzert.that(expected, is(box.it(charArray)));
+    azzert.that(new Character[] { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 },
+        is(box.it(new char[] { 1, 2, 3, 4, 5, 6, 10, 127, 128, 127, 0, 127, 50, 100, 65535, 55555 })));
   }
 
   @Test public void doubleBoxingTest() {
-    final Double[] expected = new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    final Double[] doubleArray = new Double[] { box(Double.MAX_VALUE), box(Double.MIN_VALUE), box(Double.MIN_NORMAL), box(Math.E), box(-Math.PI),
-        box(0.0), box(55555.0), box(Math.sqrt(2)) };
-    azzert.that(expected, is(doubleArray));
+    azzert.that(new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) },
+        is(new Double[] { box(Double.MAX_VALUE), box(Double.MIN_VALUE), box(Double.MIN_NORMAL), box(Math.E), box(-Math.PI), box(0.0), box(55555.0),
+            box(Math.sqrt(2)) }));
   }
 
   @Test public void doubleEmptyArrayBoxingTest() {
@@ -121,16 +112,14 @@ import org.junit.*;
   }
 
   @Test public void doubleArrayBoxingTest() {
-    final double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    final Double[] expected = new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    azzert.that(expected, is(box(doubleArray)));
+    azzert.that(new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) },
+        is(box(new double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) })));
   }
 
   @Test public void doubleItTest() {
-    final Double[] expected = new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    final Double[] doubleArray = new Double[] { box.it(Double.MAX_VALUE), box.it(Double.MIN_VALUE), box.it(Double.MIN_NORMAL), box.it(Math.E),
-        box.it(-Math.PI), box.it(0.0), box.it(55555.0), box.it(Math.sqrt(2)) };
-    azzert.that(expected, is(doubleArray));
+    azzert.that(new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) },
+        is(new Double[] { box.it(Double.MAX_VALUE), box.it(Double.MIN_VALUE), box.it(Double.MIN_NORMAL), box.it(Math.E), box.it(-Math.PI),
+            box.it(0.0), box.it(55555.0), box.it(Math.sqrt(2)) }));
   }
 
   @Test public void doubleEmptyArrayItTest() {
@@ -138,9 +127,8 @@ import org.junit.*;
   }
 
   @Test public void doubleArrayItTest() {
-    final double[] doubleArray = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    final Double[] expected = new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) };
-    azzert.that(expected, is(box.it(doubleArray)));
+    azzert.that(new Double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) },
+        is(box.it(new double[] { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_NORMAL, Math.E, -Math.PI, 0.0, 55555.0, Math.sqrt(2) })));
   }
 
   @Test public void floatBoxingTest() {
@@ -152,9 +140,8 @@ import org.junit.*;
   }
 
   @Test public void floatArrayBoxingTest() {
-    final float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 };
-    final Float[] expected = new Float[] { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 };
-    azzert.that(expected, is(box(floatArray)));
+    azzert.that(new Float[] { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 },
+        is(box(new float[] { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 })));
   }
 
   @Test public void floatItTest() {
@@ -166,9 +153,8 @@ import org.junit.*;
   }
 
   @Test public void floatArrayItTest() {
-    final float[] floatArray = { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 };
-    final Float[] expected = new Float[] { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 };
-    azzert.that(expected, is(box.it(floatArray)));
+    azzert.that(new Float[] { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 },
+        is(box.it(new float[] { Float.MAX_VALUE, Float.MIN_VALUE, Float.MIN_NORMAL, (float) Math.E, (float) -Math.PI, (float) 0.0 })));
   }
 
   @Test public void intBoxingTest() {
@@ -181,9 +167,8 @@ import org.junit.*;
   }
 
   @Test public void intArrayBoxingTest() {
-    final int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
-    final Integer[] expected = new Integer[] { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
-    azzert.that(expected, is(box(intArray)));
+    azzert.that(new Integer[] { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 },
+        is(box(new int[] { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 })));
   }
 
   @Test public void intItTest() {
@@ -196,9 +181,8 @@ import org.junit.*;
   }
 
   @Test public void intArrayItTest() {
-    final int[] intArray = { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
-    final Integer[] expected = new Integer[] { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 };
-    azzert.that(expected, is(box.it(intArray)));
+    azzert.that(new Integer[] { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 },
+        is(box.it(new int[] { 10, Integer.MAX_VALUE, Integer.MIN_VALUE, -127, 0, 58745, -124856, 100 })));
   }
 
   @Test public void longBoxingTest() {
@@ -211,9 +195,8 @@ import org.junit.*;
   }
 
   @Test public void longArrayBoxingTest() {
-    final long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
-    final Long[] expected = new Long[] { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
-    azzert.that(expected, is(box(longArray)));
+    azzert.that(new Long[] { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L },
+        is(box(new long[] { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L })));
   }
 
   @Test public void longItTest() {
@@ -226,9 +209,8 @@ import org.junit.*;
   }
 
   @Test public void longArrayItTest() {
-    final long[] longArray = { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
-    final Long[] expected = new Long[] { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L };
-    azzert.that(expected, is(box.it(longArray)));
+    azzert.that(new Long[] { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L },
+        is(box.it(new long[] { 10L, Long.MAX_VALUE, Long.MIN_VALUE, 0L, 58745L, -124856L, 100L })));
   }
 
   @Test public void shortBoxingTest() {
@@ -241,9 +223,8 @@ import org.junit.*;
   }
 
   @Test public void shortArrayBoxingTest() {
-    final short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
-    final Short[] expected = new Short[] { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
-    azzert.that(expected, is(box(shortArray)));
+    azzert.that(new Short[] { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 },
+        is(box(new short[] { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 })));
   }
 
   @Test public void shortItTest() {
@@ -256,8 +237,7 @@ import org.junit.*;
   }
 
   @Test public void shortArrayItTest() {
-    final short[] shortArray = { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
-    final Short[] expected = new Short[] { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 };
-    azzert.that(expected, is(box.it(shortArray)));
+    azzert.that(new Short[] { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 },
+        is(box.it(new short[] { 10, Short.MAX_VALUE, Short.MIN_VALUE, -127, 0, 100 })));
   }
 }

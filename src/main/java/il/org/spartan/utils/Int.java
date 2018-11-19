@@ -24,9 +24,9 @@ public final class Int {
 
   /** @param ¢ JD
    * @return */
-  public static Int valueOf(final int param) {
+  public static Int valueOf(final int ¢) {
     final Int $ = new Int();
-    $.inner = param;
+    $.inner = ¢;
     return $;
   }
 

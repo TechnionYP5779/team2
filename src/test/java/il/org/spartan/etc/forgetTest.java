@@ -1,7 +1,8 @@
 package il.org.spartan.etc;
 
-import org.junit.*;
 import static fluent.ly.box.*;
+
+import org.junit.*;
 
 @SuppressWarnings("static-method") public class forgetTest {
   @Test public void testForgetAll() {
@@ -21,7 +22,7 @@ import static fluent.ly.box.*;
   }
 
   @Test public void testForgetItLong() {
-    forget.it(box(Long.MAX_VALUE/2));
+    forget.it(box(Long.MAX_VALUE / 2));
   }
 
   @Test public void testForgetItObject() {
