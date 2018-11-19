@@ -11,8 +11,7 @@ import fluent.ly.*;
 @SuppressWarnings("static-method") public class PairListTest {
   
   @Test public void testRecord() {
-    PairList pl = new PairList();
-    pl.record(1.0,2.0);
+    (new PairList()).record(1.0, 2.0);
   }
   
   @Test public void testAt() {

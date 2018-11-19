@@ -42,7 +42,7 @@ package il.org.spartan.etc;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
-  public static void ______unused(final long l, final Object... os) {
+  static void ______unused(final long l, final Object... os) {
     forget.it(l);
     forget.all(os);
   }
@@ -52,20 +52,11 @@ package il.org.spartan.etc;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
- public static void unused(final double __, final double... ____) {
+ static void unused(final double __, final double... ____) {
     // empty
   }
 
- public static void unused(final double __, final Object... ____) {
-    // empty
-  }
-
-  /** A do nothing method to document the fact that a <code><b>long</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
- public static void unused(final int __, final int... ____) {
+ static void unused(final double __, final Object... ____) {
     // empty
   }
 
@@ -74,7 +65,16 @@ package il.org.spartan.etc;
    * function, and to suppress the warning.
    * @param __   the unused parameter
    * @param ____ more unused parameters */
- public static void unused(final long __, final long... ____) {
+ static void unused(final int __, final int... ____) {
+    // empty
+  }
+
+  /** A do nothing method to document the fact that a <code><b>long</b></code>
+   * parameter, along with a optional list of {@link Object}s are not used by a
+   * function, and to suppress the warning.
+   * @param __   the unused parameter
+   * @param ____ more unused parameters */
+ static void unused(final long __, final long... ____) {
     // empty
   }
 
@@ -83,7 +83,7 @@ package il.org.spartan.etc;
    * method saves the caller the trouble of suppressing a "variable unused"
    * warnings on the argument(s).
    * @param ____ the unused parameters */
-  public static void unused(final Object... ____) {
+  static void unused(final Object... ____) {
     forget.it(____);
   }
 }
