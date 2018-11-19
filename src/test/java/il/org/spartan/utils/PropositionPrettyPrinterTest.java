@@ -126,15 +126,19 @@ public class PropositionPrettyPrinterTest {
   }
   
   @Test public void testMain(){
-    final String main_output = "1) (And) MAIN, SUB1 ==> Assertion exception\r\n\t1.1)  X ==> Assertion exception\r\n\t1.2)  F ==> false\r\n"
-        + "\t1.3) (Or) SUB2 ==> true\r\n\t\t1.3.1)  T ==> true\r\n\t\t1.3.2) (Not) N ==> Null pointer exception\r\n"
-        + "\t\t\t1.3.2.1)  N ==> Null pointer exception\r\n\t\t1.3.3)  ==> true\r\n\t\t1.3.4)  OH NO ==> Runtime exception\r\n\r\n"
-        + "1) (And) MAIN ==> true\r\n\t1.1) (Or) SUB ==> true\r\n\t\t1.1.1)  T ==> true\r\n\t\t1.1.2)  F ==> false\r\n"
-        + "\t1.2)  T ==> true\r\n\r\n1)  MAIN ==> true\r\n\t1.1)  T ==> true\r\n\r\n1) (And) [SUB, T] ==> true\r\n"
-        + "\t1.1) (Or) SUB ==> true\r\n\t\t1.1.1)  T ==> true\r\n\t\t1.1.2)  F ==> false\r\n\t1.2)  T ==> true\r\n\r\n"
-        + "1) (And) [F, X] ==> false\r\n\t1.1)  F ==> false\r\n\t1.2)  X ==> Assertion exception\r\n\r\n1) (Or) SUB2 ==> true\r\n"
-        + "\t1.1)  T ==> true\r\n\t1.2) (Not) N ==> Null pointer exception\r\n\t\t1.2.1) (Not) N ==> Null pointer exception\r\n"
-        + "\t\t\t1.2.1.1)  N ==> Null pointer exception\r\n\t1.3)  ==> true\r\n\t1.4)  OH NO ==> Runtime exception\r\n\r\n";
+    String endline = String.format("%n");
+    
+    
+    
+    final String main_output = "1) (And) MAIN, SUB1 ==> Assertion exception"+endline+"\t1.1)  X ==> Assertion exception"+endline+"\t1.2)  F ==> false"+endline+""
+        + "\t1.3) (Or) SUB2 ==> true"+endline+"\t\t1.3.1)  T ==> true"+endline+"\t\t1.3.2) (Not) N ==> Null pointer exception"+endline+""
+        + "\t\t\t1.3.2.1)  N ==> Null pointer exception"+endline+"\t\t1.3.3)  ==> true"+endline+"\t\t1.3.4)  OH NO ==> Runtime exception"+endline+""+endline+""
+        + "1) (And) MAIN ==> true"+endline+"\t1.1) (Or) SUB ==> true"+endline+"\t\t1.1.1)  T ==> true"+endline+"\t\t1.1.2)  F ==> false"+endline+""
+        + "\t1.2)  T ==> true"+endline+""+endline+"1)  MAIN ==> true"+endline+"\t1.1)  T ==> true"+endline+""+endline+"1) (And) [SUB, T] ==> true"+endline+""
+        + "\t1.1) (Or) SUB ==> true"+endline+"\t\t1.1.1)  T ==> true"+endline+"\t\t1.1.2)  F ==> false"+endline+"\t1.2)  T ==> true"+endline+""+endline+""
+        + "1) (And) [F, X] ==> false"+endline+"\t1.1)  F ==> false"+endline+"\t1.2)  X ==> Assertion exception"+endline+""+endline+"1) (Or) SUB2 ==> true"+endline+""
+        + "\t1.1)  T ==> true"+endline+"\t1.2) (Not) N ==> Null pointer exception"+endline+"\t\t1.2.1) (Not) N ==> Null pointer exception"+endline+""
+        + "\t\t\t1.2.1.1)  N ==> Null pointer exception"+endline+"\t1.3)  ==> true"+endline+"\t1.4)  OH NO ==> Runtime exception"+endline+""+endline+"";
 
     
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream(), errContent = new ByteArrayOutputStream();
