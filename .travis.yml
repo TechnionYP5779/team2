@@ -1,12 +1,11 @@
 language: java
 
-language: java
-
 script: "mvn cobertura:cobertura"
+  
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  
-install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
+
 jdk:
   - oraclejdk8
