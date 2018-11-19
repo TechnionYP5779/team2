@@ -28,3 +28,14 @@ Institute of Technology], and was later developed for several years by
 different students and members of the Computer Science faculty.
 
 The refactorings made by this plug-in are based on the concept of Spartan Programming, which suggests guidelines for writing short, clean code. There's a lot of reading material on the subject in the [project wiki].
+
+
+<h2>Contributers</h2>
+<ul>
+  <li>Jessica Shelly Milgram</li>
+  <li>Dor Kabareti</li>
+  <li>Omer Glick</li>
+  <li>Guy Suday</li>
+  <li>Nerya Cohen</li>
+  <li>Tal Porat</li>
+  <li>Addir Abasker</li>
