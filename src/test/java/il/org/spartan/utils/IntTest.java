@@ -1,8 +1,8 @@
 package il.org.spartan.utils;
 
 import static il.org.spartan.Utils.*;
-import static fluent.ly.azzert.*;
 
+import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
 import static fluent.ly.unbox.*;
 
