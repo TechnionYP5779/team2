@@ -17,9 +17,9 @@ import org.junit.*;
     azzert.that(new BigInteger("123"), is(new BigInteger("123")));
   }
 
-  @SuppressWarnings("null") @Test public void testNotEquals() {
+  @Test @SuppressWarnings("null") public void testNotEquals() {
     BigInteger i = new BigInteger("100");
-    azzert.that(new BigInteger("123"),  is(not(i)));
+    azzert.that(new BigInteger("123"), is(not(i)));
   }
 
   @Test public void testAdd() {
@@ -105,6 +105,10 @@ import org.junit.*;
 
   @Test public void testIsBiggerThan9() {
     assert unbox(cantBeNull(new BigInteger("12345").isBiggerThan(new BigInteger("-12345"))));
+  }
+  
+  @Test public void testIsBiggerThan10() {
+    assert !unbox(cantBeNull(new BigInteger("-12343").isBiggerThan(new BigInteger("12345"))));
   }
   
   @Test public void testSubstract1() {

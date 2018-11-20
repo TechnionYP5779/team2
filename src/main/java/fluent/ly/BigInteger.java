@@ -40,18 +40,11 @@ public class BigInteger {
     cantBeNull($);
     String firstStr = stringNumber;
     String secondStr = $.getStringNumber();
-    if (firstStr.length() != secondStr.length()) {
-      if (firstStr.length() > secondStr.length()) {
-        return box(!unbox(cantBeNull(this.negative)));
-      }
-      return $.isNegative();
-    }
-    if (firstStr.compareTo(secondStr) > 0) {
-      return box(!unbox(cantBeNull(this.negative)));
-    }
-    if (firstStr.compareTo(secondStr) == 0)
-      return box(!unbox(cantBeNull(this.negative)) && unbox(cantBeNull($.isNegative())));
-    return box(!unbox(cantBeNull($.isNegative())));
+    return firstStr.length() == secondStr.length()
+        ? box(firstStr.compareTo(secondStr) > 0 ? !unbox(cantBeNull(this.negative))
+            : firstStr.compareTo(secondStr) != 0 ? unbox(cantBeNull($.isNegative()))
+                : !unbox(cantBeNull(this.negative)) && unbox(cantBeNull($.isNegative())))
+        : firstStr.length() > secondStr.length() ? box(!unbox(cantBeNull(this.negative))) : $.isNegative();
   }
   
   private String getStringNumber() {
@@ -165,14 +158,8 @@ public class BigInteger {
     
     return new BigInteger(this.number, box(!unbox(cantBeNull(this.isZero())) && !unbox(cantBeNull(this.isNegative()))));
   }
-  
-  public void print() {
-    System.out.println(unbox(cantBeNull(negative))? "-" : "+");
-    for(String ¢: number)
-      System.out.println(¢);
-  }
 
-  public BigInteger subtract(BigInteger bigInteger) {
-    return this.add(bigInteger.negate());
+  public BigInteger subtract(BigInteger ¢) {
+    return this.add(¢.negate());
   }
 }
