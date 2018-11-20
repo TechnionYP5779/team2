@@ -1,5 +1,3 @@
-<h2>Current Developement Status</h2>
-
 ## Development Status
 [![Build Status](https://travis-ci.org/TechnionYP5779/team2.svg?branch=master)](https://travis-ci.org/TechnionYP5779/team2)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/TechnionYP5779/team2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TechnionYP5779/team2/alerts/)
