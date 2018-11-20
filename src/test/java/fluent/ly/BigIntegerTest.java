@@ -24,18 +24,15 @@ import org.junit.*;
   }
 
   @Test public void testNegativeAdd() {
-    BigInteger i = new BigInteger("100").add(new BigInteger("-10"));
-    azzert.assertEquals(i, new BigInteger("90"));
+    azzert.assertEquals(new BigInteger("100").add(new BigInteger("-10")), new BigInteger("90"));
   }
 
   @Test public void testNegativeAdd2() {
-    BigInteger i = new BigInteger("-1234").add(new BigInteger("1234"));
-    azzert.assertEquals(i, new BigInteger("0"));
+    azzert.assertEquals(new BigInteger("-1234").add(new BigInteger("1234")), new BigInteger("0"));
   }
 
   @Test public void testNegativeAdd3() {
-    BigInteger i = new BigInteger("-1234").add(new BigInteger("1"));
-    azzert.assertEquals(i, new BigInteger("-1233"));
+    azzert.assertEquals(new BigInteger("-1234").add(new BigInteger("1")), new BigInteger("-1233"));
   }
 
   @Test public void testAddBigNumber() {
@@ -57,4 +54,47 @@ import org.junit.*;
     azzert.assertEquals(new BigInteger("10").negate(), new BigInteger("-10"));
   }
   
+  @Test public void testNegative2() {
+    azzert.assertEquals(new BigInteger("1234567890123456789012345678901234567890").negate(), new BigInteger("-1234567890123456789012345678901234567890"));
+  }
+  
+  @Test public void testNegative3() {
+    azzert.assertEquals(new BigInteger("175688854").negate(), new BigInteger("-175688854"));
+  }
+  
+  @Test public void testIsBiggerThan() {
+    assert (new BigInteger("4")).isBiggerThan(new BigInteger("2"));
+  }
+  
+  @Test public void testIsBiggerThan2() {
+    assert (new BigInteger("7")).isBiggerThan(new BigInteger("-3"));
+  }
+  
+  @Test public void testIsBiggerThan3() {
+    assert (new BigInteger("7")).isBiggerThan(new BigInteger("-34"));
+  }
+  
+  @Test public void testIsBiggerThan4() {
+    assert (new BigInteger("77")).isBiggerThan(new BigInteger("-34"));
+  }
+  
+  @Test public void testIsBiggerThan5() {
+    assert (new BigInteger("77")).isBiggerThan(new BigInteger("-3"));
+  }
+  
+  @Test public void testIsBiggerThan6() {
+    assert (new BigInteger("77")).isBiggerThan(new BigInteger("0"));
+  }
+  
+  @Test public void testIsBiggerThan7() {
+    assert (new BigInteger("-77")).isBiggerThan(new BigInteger("-100"));
+  }
+  
+  @Test public void testIsBiggerThan8() {
+    assert (new BigInteger("1234567890123456789012345678901234567890")).isBiggerThan(new BigInteger("1234567890123456789012345678901234567889"));
+  }
+  
+  @Test public void testIsBiggerThan9() {
+    assert (new BigInteger("12345")).isBiggerThan(new BigInteger("-12345"));
+  }
 }
