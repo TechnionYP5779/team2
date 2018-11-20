@@ -68,14 +68,14 @@ import fluent.ly.*;
 
   @Test public void missingTest() {
     final RealStatistics z = new RealStatistics().record();
-    azzert.that(z.missing(), is(0));
+    azzert.zero(z.missing());
     azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).record(z.v()).missing(), is(1));
-    azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).missing(), is(0));
-    azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).missing(), is(0));
+    azzert.zero(new RealStatistics().record(1, 1, 1, 1, 1, 1).missing());
+    azzert.zero(new RealStatistics().record(2, 3, 2, 5, 2, 2).missing());
   }
 
   @Test public void nTest() {
-    azzert.that(new RealStatistics().record().n(), is(0));
+    azzert.zero(new RealStatistics().record().n());
     azzert.that(new RealStatistics().record(1, 2, 3, 4, 5).n(), is(5));
     azzert.that(new RealStatistics().record(1, 1, 1, 1, 1, 1).n(), is(6));
     azzert.that(new RealStatistics().record(2, 3, 2, 5, 2, 2).n(), is(6));

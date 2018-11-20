@@ -11,7 +11,7 @@ import il.org.spartan.utils.Accumulator.Counter;
 @SuppressWarnings("static-method") public class AccumulatorCounterTest {
   @Test public void booleanAdds() {
     final @NotNull Accumulator.Counter c = new Counter();
-    azzert.that(c.value(), is(0));
+    azzert.zero(c.value());
     c.add(true);
     azzert.that(c.value(), is(1));
     c.add(false);
