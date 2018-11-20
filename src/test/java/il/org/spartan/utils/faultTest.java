@@ -25,10 +25,10 @@ import fluent.ly.*;
   }
 
   @Test public void testUnreachableIsFalse() {
-    azzert.that(fault.unreachable(), is(false));
+    assert !fault.unreachable();
   }
 
   @Test public void testBoolIsFalse() {
-    azzert.that(fault.bool("Hey"), is(false));
+    assert !fault.bool("Hey");
   }
 }
