@@ -6,7 +6,7 @@ import static fluent.ly.azzert.*;
 import org.junit.*;
 import static fluent.ly.box.*;
 
-@SuppressWarnings("static-method") public class RangeTest {
+@SuppressWarnings("static-method") public class rangeTest {
   @Test public void testInfinteRangeNotEmpty() {
     assert !range.from(2).isEmpty();
   }
