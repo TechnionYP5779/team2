@@ -70,9 +70,14 @@ import fluent.ly.*;
     assert !iter.hasNext();
   }
 
-  @Test public void isEmptyTest() {
+  @Test public void isEmptyTestFalse() {
     assert !iterables.isEmpty(iterable.over("nope"));
   }
+  
+  @Test public void isEmptyTestTrue() {
+    assert iterables.isEmpty(iterable.over());
+  }
+  
 
   public static class Alternate {
     @Test public void alternateTest1() {
