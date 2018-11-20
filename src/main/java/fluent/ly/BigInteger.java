@@ -1,15 +1,16 @@
 package fluent.ly;
 
 import java.util.*;
-import java.util.function.*;
 
-import javax.sound.midi.*;
-import javax.swing.plaf.basic.BasicTreeUI.*;
+import static fluent.ly.unbox.*;
+import static fluent.ly.box.*;
+
+import static il.org.spartan.Utils.*;
 
 public class BigInteger {
   private List<String> number;
   private static final int chunkSize = 5;
-  private Boolean negative = false;
+  private Boolean negative = box(false);
   private String stringNumber;
 
   public BigInteger(final String string) {
@@ -24,36 +25,37 @@ public class BigInteger {
   }
   
   public Boolean isZero() {
-    return number.size() == 1 && "0".equals(number.get(0));
+    return box(number.size() == 1 && "0".equals(number.get(0)));
   }
   
   private static Boolean isZero(List<String> $) {
-    return $.size() == 1 && "0".equals($.get(0));
+    return box($.size() == 1 && "0".equals($.get(0)));
   }
   
   private static Boolean isFirstBiggerThanSecond(String number1, String number2) {
-    return number1.length() == number2.length() ? number1.compareTo(number2) < 0 : number1.length() > number2.length();
+    return box(number1.length() == number2.length() ? number1.compareTo(number2) < 0 : number1.length() > number2.length());
   }
   
   public Boolean isBiggerThan(BigInteger $) {
+    cantBeNull($);
     String firstStr = stringNumber;
     String secondStr = $.getStringNumber();
     if (firstStr.length() != secondStr.length()) {
       if (firstStr.length() > secondStr.length()) {
         System.out.println("1");
-        return !this.negative;
+        return box(!unbox(cantBeNull(this.negative)));
       }
       System.out.println("2");
       return $.isNegative();
     }
     if (firstStr.compareTo(secondStr) > 0) {
       System.out.println("3");
-      return !this.negative;
+      return box(!unbox(cantBeNull(this.negative)));
     }
     if (firstStr.compareTo(secondStr) == 0)
-      return !this.negative && $.isNegative();
+      return box(!unbox(cantBeNull(this.negative)) && unbox(cantBeNull($.isNegative())));
     System.out.println("4");
-    return !$.isNegative();
+    return box(!unbox(cantBeNull($.isNegative())));
   }
   
   private String getStringNumber() {
@@ -61,13 +63,13 @@ public class BigInteger {
   }
   
   private static Boolean isStringNegative(String ¢){
-    return ¢.charAt(0) == '-';
+    return box(¢.charAt(0) == '-');
   }
   
   
 
   private static String absoluteVal(String ¢) {
-    return !isStringNegative(¢) ? ¢ : ¢.substring(1);
+    return !unbox(cantBeNull(isStringNegative(¢))) ? ¢ : ¢.substring(1);
   }
 
   public BigInteger(final List<String> stringList,Boolean isNegative) {
@@ -83,28 +85,29 @@ public class BigInteger {
     return ¢ == this || ¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number) && (negative == ((BigInteger) ¢).negative);
   }
   
-  public static Boolean isFinalAnswerNegativeAdd(Boolean firstSignIsNagative, Boolean secondSignIsNegative, Boolean isZero) {
-    return !isZero && firstSignIsNagative;
+  public static Boolean isFinalAnswerNegativeAdd(Boolean firstSignIsNagative, Boolean isZero) {
+    return box(!unbox(cantBeNull(isZero)) && unbox(cantBeNull(firstSignIsNagative)));
   }
 
   public BigInteger add(final BigInteger bigInteger) {
     final List<String> $ = new ArrayList<>();
     int carry = 0;
     boolean isAdd = (negative == bigInteger.isNegative());
-    final List<String> biggerTmp = new ArrayList<>(isFirstBiggerThanSecond(this.stringNumber, bigInteger.getStringNumber()) ? this.number : bigInteger.getValueAsStringList());
-    final List<String> smallerTmp = new ArrayList<>(!isFirstBiggerThanSecond(this.stringNumber, bigInteger.getStringNumber()) ? this.number : bigInteger.getValueAsStringList());
+    boolean isThisBiggerThanOther = unbox(cantBeNull(isFirstBiggerThanSecond(this.stringNumber, bigInteger.getStringNumber())));
+    final List<String> biggerTmp = new ArrayList<>(isThisBiggerThanOther ? this.number : bigInteger.getValueAsStringList());
+    final List<String> smallerTmp = new ArrayList<>(!isThisBiggerThanOther ? this.number : bigInteger.getValueAsStringList());
     
     Collections.reverse(biggerTmp);
     Collections.reverse(smallerTmp);
     
     for (int i = 0; i < smallerTmp.size(); ++i) {
-      final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), smallerTmp.get(i), carry, isAdd);
+      final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), smallerTmp.get(i), carry, box(isAdd));
       carry = sc.carry;
       $.add(sc.string);
     }
     
     for (int i = smallerTmp.size(); i < biggerTmp.size(); ++i) {
-      final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), "0", carry, isAdd);
+      final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), "0", carry, box(isAdd));
       carry = sc.carry;
       $.add(sc.string);
     }
@@ -113,11 +116,11 @@ public class BigInteger {
     if (carry != 0)
       $.add(String.valueOf(carry));
     Collections.reverse($);
-    return new BigInteger($, isFinalAnswerNegativeAdd(this.isNegative(), bigInteger.isNegative(),isZero($)));
+    return new BigInteger($, isFinalAnswerNegativeAdd(this.isNegative(),isZero($)));
   }
   
   private static StringWithCarry addOrRemoveStringWithCarry(final String s1, final String s2, final int carry, Boolean isAdd) {
-    return isAdd ? addStringWithCarry(s1, s2, carry) : removeStringWithCarry(s1, s2, carry);
+    return unbox(cantBeNull(isAdd)) ? addStringWithCarry(s1, s2, carry) : removeStringWithCarry(s1, s2, carry);
   }
 
   private static String addStringsSimple(final String s1, final String s2, final int carry) {
@@ -135,7 +138,7 @@ public class BigInteger {
 
   private static StringWithCarry removeStringWithCarry(final String s1, final String s2, final int carry) {
     String $ = removeStringsSimple(s1, s2, carry);
-    if (!isStringNegative($))
+    if (!unbox(cantBeNull(isStringNegative($))))
       return new StringWithCarry($, 0);
     $ = $.substring(1);
     return new StringWithCarry($, 1);
@@ -165,11 +168,11 @@ public class BigInteger {
 
   public BigInteger negate() {
     
-    return new BigInteger(this.number, !this.isZero() && !this.isNegative());
+    return new BigInteger(this.number, box(!unbox(cantBeNull(this.isZero())) && !unbox(cantBeNull(this.isNegative()))));
   }
   
   public void print() {
-    System.out.println(negative? "-" : "+");
+    System.out.println(unbox(cantBeNull(negative))? "-" : "+");
     for(String ¢: number)
       System.out.println(¢);
   }

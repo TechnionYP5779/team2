@@ -2,6 +2,10 @@ package fluent.ly;
 
 import org.junit.*;
 
+import static fluent.ly.unbox.*;
+
+import static il.org.spartan.Utils.*;
+
 @SuppressWarnings({ "static-method", "static-access" }) public class BigIntegerTest {
   @Test public void testCreateFromString() {
     azzert.assertNotEquals(new BigInteger("123"), null);
@@ -63,38 +67,39 @@ import org.junit.*;
   }
   
   @Test public void testIsBiggerThan() {
-    assert (new BigInteger("4")).isBiggerThan(new BigInteger("2"));
+    assert unbox(cantBeNull(cantBeNull((new BigInteger("4"))).isBiggerThan(new BigInteger("2"))));
   }
   
   @Test public void testIsBiggerThan2() {
-    assert (new BigInteger("7")).isBiggerThan(new BigInteger("-3"));
+    assert unbox(cantBeNull((new BigInteger("7")).isBiggerThan(new BigInteger("-3"))));
   }
   
   @Test public void testIsBiggerThan3() {
-    assert (new BigInteger("7")).isBiggerThan(new BigInteger("-34"));
+    assert unbox(cantBeNull((new BigInteger("7")).isBiggerThan(new BigInteger("-34"))));
   }
   
   @Test public void testIsBiggerThan4() {
-    assert (new BigInteger("77")).isBiggerThan(new BigInteger("-34"));
+    assert unbox(cantBeNull((new BigInteger("77")).isBiggerThan(new BigInteger("-34"))));
   }
   
   @Test public void testIsBiggerThan5() {
-    assert (new BigInteger("77")).isBiggerThan(new BigInteger("-3"));
+    assert unbox(cantBeNull((new BigInteger("77")).isBiggerThan(new BigInteger("-3"))));
   }
   
   @Test public void testIsBiggerThan6() {
-    assert (new BigInteger("77")).isBiggerThan(new BigInteger("0"));
+    assert unbox(cantBeNull((new BigInteger("77")).isBiggerThan(new BigInteger("0"))));
   }
   
   @Test public void testIsBiggerThan7() {
-    assert (new BigInteger("-77")).isBiggerThan(new BigInteger("-100"));
+    assert unbox(cantBeNull((new BigInteger("-77")).isBiggerThan(new BigInteger("-100"))));
   }
   
   @Test public void testIsBiggerThan8() {
-    assert (new BigInteger("1234567890123456789012345678901234567890")).isBiggerThan(new BigInteger("1234567890123456789012345678901234567889"));
+    assert unbox(cantBeNull((new BigInteger("1234567890123456789012345678901234567890"))
+        .isBiggerThan(new BigInteger("1234567890123456789012345678901234567889"))));
   }
   
   @Test public void testIsBiggerThan9() {
-    assert (new BigInteger("12345")).isBiggerThan(new BigInteger("-12345"));
+    assert unbox(cantBeNull((new BigInteger("12345")).isBiggerThan(new BigInteger("-12345"))));
   }
 }
