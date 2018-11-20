@@ -11,113 +11,93 @@ import fluent.ly.*;
    *
    */
   @Test public void truthOftTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that(t, is(Truth.T));
+    azzert.that(Truth.truthOf(() -> true), is(Truth.T));
   }
-  
+
   @Test public void truthOffTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that(t, is(Truth.F));
+    azzert.that(Truth.truthOf(() -> false), is(Truth.F));
   }
-  
+
   @Test public void truthOfnTest() {
-    Truth t = Truth.truthOf(null);
-    azzert.that(t, is(Truth.N));
+    azzert.that(Truth.truthOf(null), is(Truth.N));
   }
-  
+
   @Test public void truthOfxTest() {
-    Truth t = Truth.truthOf(() -> {
+    azzert.that(Truth.truthOf(() -> {
       assert false;
       return true;
-    });
-    azzert.that(t, is(Truth.X));
+    }), is(Truth.X));
   }
-  
+
   @Test public void truthOfrTest() {
-    Truth t = Truth.truthOf(() -> 1 / 0 == 1);
-    azzert.that(t, is(Truth.R));
+    azzert.that(Truth.truthOf(() -> 1 / 0 == 1), is(Truth.R));
   }
-  
+
   @Test public void truthOfhTest() {
-    Truth t = Truth.truthOf(() -> {
+    azzert.that(Truth.truthOf(() -> {
       throw new ExceptionInInitializerError();
-    });
-    azzert.that(t, is(Truth.Ħ));
+    }), is(Truth.Ħ));
   }
-  
+
   @Test public void notfTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that(t.not(), is(Truth.F));
+    azzert.that(Truth.truthOf(() -> true).not(), is(Truth.F));
   }
-  
+
   @Test public void nottTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that(t.not(), is(Truth.T));
+    azzert.that(Truth.truthOf(() -> false).not(), is(Truth.T));
   }
-  
+
   @Test public void nothTest() {
-    Truth t = Truth.truthOf(() -> {
+    azzert.that(Truth.truthOf(() -> {
       throw new ExceptionInInitializerError();
-    });
-    azzert.that(t.not(), is(Truth.Ħ));
+    }).not(), is(Truth.Ħ));
   }
-  
+
   @Test public void ortfTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that(t.or(Truth.F), is(Truth.T));
+    azzert.that(Truth.truthOf(() -> true).or(Truth.F), is(Truth.T));
   }
-  
+
   @Test public void orttTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that(t.or(Truth.T), is(Truth.T));
+    azzert.that(Truth.truthOf(() -> true).or(Truth.T), is(Truth.T));
   }
-  
+
   @Test public void orftTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that(t.or(Truth.T), is(Truth.T));
+    azzert.that(Truth.truthOf(() -> false).or(Truth.T), is(Truth.T));
   }
-  
+
   @Test public void orffTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that(t.or(Truth.F), is(Truth.F));
+    azzert.that(Truth.truthOf(() -> false).or(Truth.F), is(Truth.F));
   }
 
   @Test public void andtfTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that(t.and(Truth.F), is(Truth.F));
+    azzert.that(Truth.truthOf(() -> true).and(Truth.F), is(Truth.F));
   }
-  
+
   @Test public void andttTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that(t.and(Truth.T), is(Truth.T));
+    azzert.that(Truth.truthOf(() -> true).and(Truth.T), is(Truth.T));
   }
-  
+
   @Test public void andftTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that(t.and(Truth.T), is(Truth.F));
+    azzert.that(Truth.truthOf(() -> false).and(Truth.T), is(Truth.F));
   }
-  
+
   @Test public void andffTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that(t.and(Truth.F), is(Truth.F));
+    azzert.that(Truth.truthOf(() -> false).and(Truth.F), is(Truth.F));
   }
 
   @Test public void letterOfTest() {
     assert "true".equals(Truth.letterOf(() -> true));
   }
-  
+
   @Test public void toStringtTest() {
-    Truth t = Truth.truthOf(() -> true);
-    azzert.that("true", is(t + ""));
+    azzert.that("true", is(Truth.truthOf(() -> true) + ""));
   }
 
   @Test public void toStringfTest() {
-    Truth t = Truth.truthOf(() -> false);
-    azzert.that("false", is(t + ""));
+    azzert.that("false", is(Truth.truthOf(() -> false) + ""));
   }
-  
+
   @Test public void toStringnTest() {
-    Truth t = Truth.truthOf(null);
-    azzert.that("Null pointer exception", is(t + ""));
+    azzert.that("Null pointer exception", is(Truth.truthOf(null) + ""));
   }
 }

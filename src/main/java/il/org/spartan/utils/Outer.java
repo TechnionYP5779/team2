@@ -2,7 +2,7 @@ package il.org.spartan.utils;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
@@ -17,15 +17,15 @@ public class Outer<Inner> {
   }
 
   @Override @NotNull @SuppressWarnings("unchecked") public Outer<Inner> clone() throws CloneNotSupportedException {
-    return (Outer<Inner>) Utils.cantBeNull(super.clone());
+    return (Outer<Inner>) cantBeNull(super.clone());
   }
 
-  @Override public boolean equals(final Object param) {
-    if (param == this)
+  @Override public boolean equals(final Object ¢) {
+    if (¢ == this)
       return true;
-    if (param == null || getClass() != param.getClass())
+    if (¢ == null || getClass() != ¢.getClass())
       return false;
-    @SuppressWarnings("unchecked") final Outer<Inner> $ = (Outer<Inner>) param;
+    @SuppressWarnings("unchecked") final Outer<Inner> $ = (Outer<Inner>) ¢;
     return equals($);
   }
 
@@ -44,8 +44,8 @@ public class Outer<Inner> {
   }
 
   /** set current value */
-  public void set(final Inner param) {
-    this.inner = param;
+  public void set(final Inner ¢) {
+    this.inner = ¢;
   }
 
   @Override @SuppressWarnings("null") public int hashCode() {
@@ -53,6 +53,6 @@ public class Outer<Inner> {
   }
 
   @Override @NotNull public String toString() {
-    return inner == null ? "null" : Utils.cantBeNull(inner + "");
+    return inner == null ? "null" : cantBeNull(inner + "");
   }
 }

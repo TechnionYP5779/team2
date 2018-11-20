@@ -14,8 +14,8 @@ public final class Str {
     inner = ¢ + "";
   }
 
-  public void set(final Object param) {
-    inner = param + "";
+  public void set(final Object ¢) {
+    inner = ¢ + "";
   }
 
   public String inner() {

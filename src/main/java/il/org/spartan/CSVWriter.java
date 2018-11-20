@@ -8,7 +8,7 @@ import java.io.*;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.etc.*;
+import fluent.ly.*;
 
 public final class CSVWriter {
   @Nullable private static FileWriter open(final File $) {
@@ -57,8 +57,8 @@ public final class CSVWriter {
     return header;
   }
 
-  public void write(final AbstractStringProperties param) {
-    writeln(param.line());
+  public void write(final AbstractStringProperties ¢) {
+    writeln(¢.line());
   }
 
   public void write(final CSVLine cl) {

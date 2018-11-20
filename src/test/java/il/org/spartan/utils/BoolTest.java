@@ -10,11 +10,11 @@ import org.junit.*;
   @Test public void trueConstructorTest() {
     assert unbox(cantBeNull(new Bool(true).inner()));
   }
-  
+
   @Test public void valueOfTrueTest() {
     assert Bool.valueOf(true).inner;
   }
-  
+
   @Test public void valueOfFalseTest() {
     assert !Bool.valueOf(false).inner;
   }

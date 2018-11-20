@@ -24,12 +24,12 @@ import fluent.ly.*;
     return new And(toString, s1, s2, ss);
   }
 
-  static Proposition not(final BooleanSupplier param) {
-    return new Not(param);
+  static Proposition not(final BooleanSupplier ¢) {
+    return new Not(¢);
   }
 
-  static Proposition that(final BooleanSupplier param) {
-    return new Singleton(param);
+  static Proposition that(final BooleanSupplier ¢) {
+    return new Singleton(¢);
   }
 
   static Proposition that(final @NotNull String toString, final BooleanSupplier s) {
@@ -76,8 +76,8 @@ import fluent.ly.*;
     return or(Proposition.that(toString, s));
   }
 
-  default <R> R reduce(final PropositionReducer<R> param) {
-    return param.reduce(this);
+  default <R> R reduce(final PropositionReducer<R> ¢) {
+    return ¢.reduce(this);
   }
 
   abstract class Aggregate<Inner> extends Outer<Inner> implements Proposition {
@@ -218,8 +218,8 @@ import fluent.ly.*;
       inner.addAll(newInner);
     }
 
-    final Proposition add(final BooleanSupplier... param) {
-      inner.addAll(as.list(param));
+    final Proposition add(final BooleanSupplier... ¢) {
+      inner.addAll(as.list(¢));
       simplify();
       return this;
     }

@@ -2,8 +2,10 @@ package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
 
+import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
 import static fluent.ly.unbox.*;
+import static il.org.spartan.etc.idiomatic.*;
 
 import java.io.*;
 import java.util.function.*;
@@ -11,7 +13,8 @@ import java.util.function.*;
 import org.jetbrains.annotations.*;
 import org.junit.*;
 
-import il.org.spartan.etc.idiomatic.*;
+import fluent.ly.*;
+
 
 @SuppressWarnings("static-method") public class idiomaticTest {
   @Test public void testIncaseTrueReturnSameObj() {
@@ -120,28 +123,65 @@ import il.org.spartan.etc.idiomatic.*;
   }
 
   class MyTrigger implements Trigger {
-    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> param) {
-      return param.get();
+    @Override public <@Nullable T> @Nullable T eval(final Supplier<@Nullable T> ¢) {
+      return ¢.get();
     }
   }
 
   @Test public void testTriggerDefaultEval() {
     assert cantBeNull(new MyTrigger().eval(fluent.ly.box.it(4))).equals(fluent.ly.box.it(4));
   }
-
-  @Test public void testTestUses() {
-    final idiomatic.TEST testClass = new idiomatic.TEST();
-    testClass.use0();
-    testClass.use1();
-    testClass.use2();
-    testClass.use3();
-    testClass.use4();
-    testClass.use5();
-    testClass.use6();
-    testClass.use7();
-    testClass.use8();
-    testClass.use9();
-    testClass.use10();
-    testClass.use11();
+  
+  @Test public void use0() {
+    azzert.assertNotEquals(new Storer<>(this), null);
   }
+
+  @Test public void use8() {
+    azzert.isNull(unless(true).eval(() -> new Object()));
+  }
+
+  @Test public void use9() {
+    assert unless(false).eval(() -> new Object()) != null;
+  }
+
+  @Test public void use1() {
+    assert new Storer<>(this) != null;
+    new Storer<>(this).when(true);
+  }
+
+  @Test public void use10() {
+    assert when(true).eval(() -> new Object()) != null;
+  }
+
+  @Test public void use11() {
+    azzert.isNull(when(false).eval(() -> new Object()));
+  }
+
+  @Test public void use2() {
+    assert take(this) != null;
+    azzert.isNull(take(this).when(false));
+  }
+
+  @Test public void use3() {
+    azzert.that(take(this).when(true), is(this));
+  }
+
+  @Test public void use4() {
+    azzert.isNull(take(this).when(false));
+  }
+
+  @Test public void use5() {
+    azzert.that(take(this).unless(false), is(this));
+  }
+
+  @Test public void use6() {
+    azzert.isNull(take(this).unless(true));
+  }
+
+  @Test public void use7() {
+    azzert.isNull(take(this).unless(true));
+    azzert.isNull(take(null).unless(true));
+    azzert.isNull(take(null).unless(false));
+  }
+
 }

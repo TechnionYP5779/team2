@@ -20,8 +20,7 @@ import org.junit.*;
   }
 
   @Test public void inReturnsTrueForExistingItem() {
-    final int[] intArr1 = {};
-    assert is.in(intArr1, "", box(5), intArr1, Boolean.FALSE, null);
+    assert !is.in(new int[] {}, "", box(5), new int[] {}, Boolean.FALSE, null);
   }
 
   @Test public void inReturnsFalseForMissingItem() {

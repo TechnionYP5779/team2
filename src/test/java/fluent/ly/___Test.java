@@ -4,11 +4,11 @@ import static fluent.ly.azzert.*;
 
 import org.junit.*;
 
-import fluent.ly.___.Variant;
 import fluent.ly.___.Bug.*;
 import fluent.ly.___.Bug.Assertion.*;
 import fluent.ly.___.Bug.Assertion.Value.*;
 import fluent.ly.___.Bug.Assertion.Variant.*;
+import fluent.ly.___.Variant;
 
 @SuppressWarnings("static-method") public class ___Test {
   @Test public void ensure() {
@@ -52,7 +52,7 @@ import fluent.ly.___.Bug.Assertion.Variant.*;
     try {
       ___.negative(-1.0);
     } catch (final Numerical.Negative ¢) {
-      azzert.that("Found -1.00000 while expecting a negative number.",is( ¢.getMessage()));
+      azzert.that("Found -1.00000 while expecting a negative number.", is(¢.getMessage()));
     }
   }
 
@@ -65,12 +65,12 @@ import fluent.ly.___.Bug.Assertion.Variant.*;
     try {
       ___.nonnegative(1);
     } catch (final Numerical.NonNegative ¢) {
-      azzert.that("Found -1 while expecting a negative integer.",is( ¢.getMessage()));
+      azzert.that("Found -1 while expecting a negative integer.", is(¢.getMessage()));
     }
     try {
       ___.nonnegative(1.0);
     } catch (final Numerical.NonNegative ¢) {
-      azzert.that("Found -1.00000 while expecting a negative number.",is( ¢.getMessage()));
+      azzert.that("Found -1.00000 while expecting a negative number.", is(¢.getMessage()));
     }
   }
 
@@ -214,7 +214,7 @@ import fluent.ly.___.Bug.Assertion.Variant.*;
       azzert.that(0, is(v.value()));
     }
     try {
-      ___.unused(new Variant(-1));
+      forget.unused(new Variant(-1));
     } catch (final Initial e) {
       azzert.that("Initial variant value (-1) is negative", is(e.getMessage()));
     }

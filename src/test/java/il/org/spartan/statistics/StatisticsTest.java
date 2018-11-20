@@ -139,4 +139,5 @@ import fluent.ly.*;
   @Test public void checkEmptyTest() {
     new RealStatistics().record(1, 2, 3, 4, 5).checkEmpty();
   }
+  
 }

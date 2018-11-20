@@ -2,12 +2,14 @@ package il.org.spartan.etc;
 
 import java.util.function.*;
 
+import fluent.ly.*;
+
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-14 */
 public interface Selfie<Self extends Selfie<Self>> {
-  default <U> void change(final U param) {
-    forget.it(param);
+  default <U> void change(final U ¢) {
+    forget.it(¢);
   }
 
   Self self();

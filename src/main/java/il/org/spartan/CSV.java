@@ -7,7 +7,7 @@ import java.lang.reflect.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-
+import static il.org.spartan.Utils.*;
 import fluent.ly.*;
 
 /** This class realize the CSV specification, by comprising methods for
@@ -30,7 +30,7 @@ import fluent.ly.*;
   public static String combine(final Class<?>[] cs) {
     final String @NotNull [] $ = new String[cs.length];
     for (int ¢ = 0; ¢ < $.length; ++¢)
-      $[¢] = cs[¢] == null ? null : Utils.cantBeNull(cs[¢].getName());
+      $[¢] = cs[¢] == null ? null : cantBeNull(cs[¢].getName());
     return combine($);
   }
 
@@ -80,8 +80,8 @@ import fluent.ly.*;
    * @param ¢ Input file
    * @return A two dimensional array of strings
    * @throws IOException some problem with file 'filename' */
-  public static String[][] load(final File param) throws IOException {
-    try (FileReader $ = new FileReader(param)) {
+  public static String[][] load(final File ¢) throws IOException {
+    try (FileReader $ = new FileReader(¢)) {
       return load($);
     }
   }

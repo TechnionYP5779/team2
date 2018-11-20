@@ -13,8 +13,7 @@ import org.junit.*;
 import an.*;
 import fluent.ly.separate.*;
 
-@SuppressWarnings({ "static-method" }) //
-public class seperateTest {
+@SuppressWarnings("static-method") public class seperateTest {
   private static final Function<String, String> quote = λ -> "'" + λ + "'";
 
   static <T> void assertEquals(final @NotNull String reason, final T t1, final T t2) {
@@ -168,7 +167,7 @@ public class seperateTest {
     azzert.that(separate.these("Hello", "World").byNLs(), is("Hello\nWorld"));
   }
 
-  @SuppressWarnings("null") @Test public final void separateByNoItemslPruneWhitesSpaceSeparated() {
+  @Test @SuppressWarnings("null") public final void separateByNoItemslPruneWhitesSpaceSeparated() {
     final @NotNull SeparationSubject these = separate.these();
     assert these != null : null;
     final Iterable<?> os = these.os;

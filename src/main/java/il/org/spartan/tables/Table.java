@@ -154,15 +154,15 @@ import il.org.spartan.utils.*;
     return this;
   }
 
-  public Table remove(final Statistic... param) {
+  public Table remove(final Statistic... ¢) {
     final List<Statistic> $ = as.list(statisics);
-    $.removeAll(as.list(param));
+    $.removeAll(as.list(¢));
     return set($);
   }
 
-  public Table add(final Statistic... param) {
+  public Table add(final Statistic... ¢) {
     final List<Statistic> $ = as.list(statisics);
-    $.addAll(as.list(param));
+    $.addAll(as.list(¢));
     return set($);
   }
 
@@ -176,17 +176,17 @@ import il.org.spartan.utils.*;
 
    protected Table self() { return this; } /*@formatter:on*/
 
-  private Table set(final List<Statistic> param) {
-    return set(param.toArray(new Statistic[param.size()]));
+  private Table set(final List<Statistic> ¢) {
+    return set(¢.toArray(new Statistic[¢.size()]));
   }
 
-  Table set(final Statistic... param) {
-    statisics = param;
+  Table set(final Statistic... ¢) {
+    statisics = ¢;
     return this;
   }
 
-  public static String classToNormalizedFileName(final Class<?> param) {
-    return classToNormalizedFileName(param.getSimpleName());
+  public static String classToNormalizedFileName(final Class<?> ¢) {
+    return classToNormalizedFileName(¢.getSimpleName());
   }
 
   static String classToNormalizedFileName(final @NotNull String className) {

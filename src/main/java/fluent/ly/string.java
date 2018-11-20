@@ -7,7 +7,6 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.etc.*;
 
 /** A bunch of string functions.
  * @author Yossi Gil */
@@ -17,24 +16,24 @@ public enum string {
   static final int MAX_FIRST = 20;
   static final int MAX_LAST = 10;
 
-  public static double atod(final @NotNull String param) {
-    return Double.valueOf(param).doubleValue();
+  public static double atod(final @NotNull String ¢) {
+    return Double.valueOf(¢).doubleValue();
   }
 
-  public static float atof(final @NotNull String param) {
-    return Float.valueOf(param).floatValue();
+  public static float atof(final @NotNull String ¢) {
+    return Float.valueOf(¢).floatValue();
   }
 
-  public static int atoi(final @NotNull String param) {
-    return Integer.valueOf(param).intValue();
+  public static int atoi(final @NotNull String ¢) {
+    return Integer.valueOf(¢).intValue();
   }
 
-  public static long atol(final @NotNull String param) {
-    return Long.valueOf(param).longValue();
+  public static long atol(final @NotNull String ¢) {
+    return Long.valueOf(¢).longValue();
   }
 
-  @NotNull public static String capitalize(final @NotNull String param) {
-    return param.length() == 0 ? param : (first(param) + "").toUpperCase() + the.rest(param).toLowerCase();
+  @NotNull public static String capitalize(final @NotNull String ¢) {
+    return ¢.length() == 0 ? ¢ : (first(¢) + "").toUpperCase() + the.rest(¢).toLowerCase();
   }
 
   @NotNull public static String cat(final @NotNull String... ss) {
@@ -55,16 +54,16 @@ public enum string {
     return a == d ? 0 : signum(a) != signum(d) ? Double.NaN : 2 * Math.abs(a - d) / Math.abs(a + d);
   }
 
-  @NotNull public static String dtoa(final double param) {
-    return param + "";
+  @NotNull public static String dtoa(final double ¢) {
+    return ¢ + "";
   }
 
   public static <T> boolean eq(final @Nullable T a, final @Nullable T b) {
     return a == null ? b == null : a.equals(b);
   }
 
-  @NotNull public static String esc(final char param) {
-    switch (param) {
+  @NotNull public static String esc(final char ¢) {
+    switch (¢) {
       case '\n':
         return "\\n";
       case '\r':
@@ -78,7 +77,7 @@ public enum string {
       case '\\':
         return "\\\\";
       default:
-        return param + "";
+        return ¢ + "";
     }
   }
 
@@ -112,14 +111,14 @@ public enum string {
     return $ + "";
   }
 
-  public static char first(final @NotNull String param) {
-    nonnull(param);
-    positive(param.length());
-    return param.charAt(0);
+  public static char first(final @NotNull String ¢) {
+    nonnull(¢);
+    positive(¢.length());
+    return ¢.charAt(0);
   }
 
-  @NotNull public static String ftoa(final float param) {
-    return param + "";
+  @NotNull public static String ftoa(final float ¢) {
+    return ¢ + "";
   }
 
   public static boolean isDouble(final @NotNull String s) {
@@ -162,49 +161,49 @@ public enum string {
     }
   }
 
-  @NotNull public static String itoa(final int param) {
-    return param + "";
+  @NotNull public static String itoa(final int ¢) {
+    return ¢ + "";
   }
 
-  @NotNull public static String javaCase(final @NotNull String param) {
-    return param.length() == 0 ? param : (first(param) + "").toLowerCase() + the.rest(param);
+  @NotNull public static String javaCase(final @NotNull String ¢) {
+    return ¢.length() == 0 ? ¢ : (first(¢) + "").toLowerCase() + the.rest(¢);
   }
 
-  public static char last(final @NotNull String param) {
-    nonnull(param);
-    positive(param.length());
-    return param.charAt(param.length() - 1);
+  public static char last(final @NotNull String ¢) {
+    nonnull(¢);
+    positive(¢.length());
+    return ¢.charAt(¢.length() - 1);
   }
 
-  @NotNull public static String lowCounter(final int param) {
-    switch (param) {
+  @NotNull public static String lowCounter(final int ¢) {
+    switch (¢) {
       case -1:
         return "";
       case 0:
         return "a";
       default:
-        return tolow(param);
+        return tolow(¢);
     }
   }
 
-  @NotNull public static String ltoa(final long param) {
-    return param + "";
+  @NotNull public static String ltoa(final long ¢) {
+    return ¢ + "";
   }
 
-  @NotNull public static String ordinal(final int param) {
-    nonnegative(param);
-    switch (param % 10) {
+  @NotNull public static String ordinal(final int ¢) {
+    nonnegative(¢);
+    switch (¢ % 10) {
       case 1:
-        return param + (param == 11 ? "th" : "st");
+        return ¢ + (¢ == 11 ? "th" : "st");
       case 2:
-        return param + (param == 12 ? "th" : "nd");
+        return ¢ + (¢ == 12 ? "th" : "nd");
       default:
-        return param + "th";
+        return ¢ + "th";
     }
   }
 
-  @NotNull public static String paren(final Object param) {
-    return "(" + param + ")";
+  @NotNull public static String paren(final Object ¢) {
+    return "(" + ¢ + ")";
   }
 
   @NotNull public static String pluralize(final int i, final @NotNull String singular) {
@@ -257,8 +256,8 @@ public enum string {
     return $;
   }
 
-  @NotNull public static String quote(final Object param) {
-    return wrap('\'', param + "");
+  @NotNull public static String quote(final Object ¢) {
+    return wrap('\'', ¢ + "");
   }
 
   @NotNull public static String repeat(final int i, final char c) {
@@ -272,8 +271,8 @@ public enum string {
     return $ + "";
   }
 
-  public static int signum(final double param) {
-    return param == 0 ? 0 : param > 0 ? 1 : -1;
+  public static int signum(final double ¢) {
+    return ¢ == 0 ? 0 : ¢ > 0 ? 1 : -1;
   }
 
   @NotNull public static String sprintf(final @NotNull String format, final Object... args) {
@@ -300,10 +299,10 @@ public enum string {
    * @param ¢ a non-<code><b>null</b></code> string of length at least two to
    *          strip
    * @return <code>s</code> but without its first and last character. */
-  public static String strip(final @NotNull String param) {
-    nonnull(param);
-    require(param.length() >= 2);
-    return param.substring(1, param.length() - 1);
+  public static String strip(final @NotNull String ¢) {
+    nonnull(¢);
+    require(¢.length() >= 2);
+    return ¢.substring(1, ¢.length() - 1);
   }
 
   @NotNull public static List<String> toLines(final @NotNull String s) throws IOException {
@@ -316,19 +315,19 @@ public enum string {
     }
   }
 
-  @NotNull public static String upCounter(final int param) {
-    switch (param) {
+  @NotNull public static String upCounter(final int ¢) {
+    switch (¢) {
       case -1:
         return "";
       case 0:
         return "A";
       default:
-        return toup(param);
+        return toup(¢);
     }
   }
 
-  public static String visualize(final @NotNull String param) {
-    return esc(param).replaceAll(" ", "\\s");
+  public static String visualize(final @NotNull String ¢) {
+    return esc(¢).replaceAll(" ", "\\s");
   }
 
   @NotNull public static String wrap(final char with, final @NotNull String s) {
@@ -339,11 +338,11 @@ public enum string {
     return with + s + with;
   }
 
-  @NotNull private static String tolow(final int param) {
-    return param == 0 ? "" : tolow(param / 26) + (char) (param % 26 + 'a');
+  @NotNull private static String tolow(final int ¢) {
+    return ¢ == 0 ? "" : tolow(¢ / 26) + (char) (¢ % 26 + 'a');
   }
 
-  @NotNull private static String toup(final int param) {
-    return param == 0 ? "" : toup(param / 26) + (char) (param % 26 + 'A');
+  @NotNull private static String toup(final int ¢) {
+    return ¢ == 0 ? "" : toup(¢ / 26) + (char) (¢ % 26 + 'A');
   }
 }

@@ -3,7 +3,7 @@ package il.org.spartan.etc;
 import org.junit.*;
 
 import fluent.ly.*;
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 @SuppressWarnings("static-method") public class maybeTest {
   @Test public void usecase0() {
@@ -19,27 +19,26 @@ import il.org.spartan.*;
   }
 
   @Test public void testClear() {
-    azzert.isNull(maybe.yes(new Integer(3)).clear().get());
+    azzert.isNull(maybe.yes(Integer.valueOf(3)).clear().get());
   }
 
   @Test public void testMissing1() {
-    assert maybe.yes(new Integer(3)).clear().missing();
+    assert maybe.yes(Integer.valueOf(3)).clear().missing();
   }
 
   @Test public void testMissing2() {
-    assert !maybe.yes(new Integer(3)).missing();
+    assert !maybe.yes(Integer.valueOf(3)).missing();
   }
 
   @Test public void testPresent1() {
-    assert !maybe.yes(new Integer(3)).clear().present();
+    assert !maybe.yes(Integer.valueOf(3)).clear().present();
   }
 
   @Test public void testPresent2() {
-    assert maybe.yes(new Integer(3)).present();
+    assert maybe.yes(Integer.valueOf(3)).present();
   }
 
   @Test public void testSet() {
-    Integer i = maybe.yes(new Integer(3)).set(new Integer(10)).get();
-    assert Utils.cantBeNull(i).equals(new Integer(10));
+    assert cantBeNull(maybe.yes(Integer.valueOf(3)).set(Integer.valueOf(10)).get()).equals(Integer.valueOf(10));
   }
 }

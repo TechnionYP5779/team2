@@ -5,7 +5,7 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 /** A collection of <code><b>static</b></code> functions for converting from one
  * aggregate type to another.
@@ -69,8 +69,8 @@ import il.org.spartan.*;
    * @return <code>0</code> if the parameter is <code><b>null</b></code>.
    *         <code>1</code> otherwise.
    * @see as#bit(Object) */
-  public static int bit(final @Nullable Object param) {
-    return param == null ? 0 : 1;
+  public static int bit(final @Nullable Object ¢) {
+    return ¢ == null ? 0 : 1;
   }
 
   @NotNull public static List<Integer> ingeterList(final int... is) {
@@ -104,16 +104,16 @@ import il.org.spartan.*;
    * @param   <T> an arbitrary type
    * @param ¢ what to iterate on
    * @return an {@link Iterable} over the parameter */
-  @SafeVarargs public static <T> Iterator<T> iterator(final T... param) {
-    return as.list(param).iterator();
+  @SafeVarargs public static <T> Iterator<T> iterator(final T... ¢) {
+    return as.list(¢).iterator();
   }
 
   /** Converts a list of <code><b>int</b></code>s into a {@link List} of
    * {@link Integer}s
    * @param ¢ what to convert
    * @return a {@link List} of of all <code><b>int</b></code>s in the parameter */
-  public static List<Integer> list(final int... param) {
-    return as.list(box.it(param));
+  public static List<Integer> list(final int... ¢) {
+    return as.list(box.it(¢));
   }
 
   /** Converts an {@link Iterable} of a given type into a {@link List} of values
@@ -138,8 +138,8 @@ import il.org.spartan.*;
    * @param   <T> type of objects to be converted
    * @param ¢ what to covert
    * @return parameter, converted into a {@link Set} */
-  @SafeVarargs public static <T> Set<? extends T> set(final @Nullable T... param) {
-    return accumulate.to(new HashSet<T>()).add(param).elements();
+  @SafeVarargs public static <T> Set<? extends T> set(final @Nullable T... ¢) {
+    return accumulate.to(new HashSet<T>()).add(¢).elements();
   }
 
   @NotNull public static String string(final @Nullable Object $) {
@@ -164,7 +164,7 @@ import il.org.spartan.*;
       for (final @Nullable Object ¢ : os)
         if (¢ != null)
           $.add(¢ + "");
-    return Utils.cantBeNull($.toArray(new String @NotNull [$.size()]));
+    return cantBeNull($.toArray(new String @NotNull [$.size()]));
   }
 
   static Iterable<Integer> asIterableEssence(final @NotNull Integer... is) {

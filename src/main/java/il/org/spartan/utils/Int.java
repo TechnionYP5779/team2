@@ -1,6 +1,6 @@
 package il.org.spartan.utils;
 
-import il.org.spartan.etc.*;
+import fluent.ly.*;
 
 /** A poor man's approximation of a mutable int, which is so much more
  * convenient than {@link Integer}
@@ -24,9 +24,9 @@ public final class Int {
 
   /** @param ¢ JD
    * @return */
-  public static Int valueOf(final int param) {
+  public static Int valueOf(final int ¢) {
     final Int $ = new Int();
-    $.inner = param;
+    $.inner = ¢;
     return $;
   }
 

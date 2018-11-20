@@ -11,7 +11,6 @@ import fluent.ly.___.Bug.Assertion.Value.*;
 import fluent.ly.___.Bug.Assertion.Value.Numerical.*;
 import fluent.ly.___.Bug.Assertion.Variant.*;
 import fluent.ly.___.Bug.Contract.*;
-import il.org.spartan.etc.*;
 
 /** A simple implementation of design by contract services. Violations are
  * reported to <code>System.err</code>. Error descriptions are passed by a
@@ -20,20 +19,10 @@ import il.org.spartan.etc.*;
  * @author Yossi Gil (
  * @since 11/01/2006) */
 @SuppressWarnings("null") public abstract class ___ {
-  /** A do nothing method to document the fact that a <code><b>long</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
-  public static void ______unused(final long l, final Object... os) {
-    forget.it(l);
-    forget.all(os);
-  }
-
   /** Exercise the {@link Invariantable#check()}
    * @param v a Invariantable object whose invariant should be checked */
-  public static void check(final ___.Invariantable param) {
-    param.check();
+  public static void check(final ___.Invariantable ¢) {
+    ¢.check();
   }
 
   /** A possibly non-returning method to be used for checking postconditions.
@@ -76,8 +65,8 @@ import il.org.spartan.etc.*;
    * be negative.
    * @param¢ a value which must be negative
    * @throws Negative in case <code>d</code> was nonnegative */
-  public static void negative(final double param) throws Negative {
-    negative(param, "");
+  public static void negative(final double ¢) throws Negative {
+    negative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -107,8 +96,8 @@ import il.org.spartan.etc.*;
    * be negative.
    * @param n a value which must be negative
    * @throws Negative in case <code>n</code> was nonnegative */
-  public static void negative(final int param) throws Negative {
-    negative(param, "");
+  public static void negative(final int ¢) throws Negative {
+    negative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -138,8 +127,8 @@ import il.org.spartan.etc.*;
    * be non-NaN.
    * @param d a value which must be not be NaN
    * @throws NonNan in case <code>d</code> was NaN */
-  public static void nonNaN(final double param) throws NonNan {
-    nonNaN(param, "");
+  public static void nonNaN(final double ¢) throws NonNan {
+    nonNaN(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -178,16 +167,16 @@ import il.org.spartan.etc.*;
    * be nonnegative.
    * @param ¢ a value which must be nonnegative
    * @throws NonNegative in case <code>n</code> was negative */
-  public static void nonnegativ(final int param) throws NonNegative {
-    nonnegative(param, "");
+  public static void nonnegativ(final int ¢) throws NonNegative {
+    nonnegative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
    * be nonnegative.
    * @param d a value which must be nonnegative
    * @throws NonNegative in case <code>d</code> was negative */
-  public static void nonnegative(final double param) throws NonNegative {
-    nonnegative(param, "");
+  public static void nonnegative(final double ¢) throws NonNegative {
+    nonnegative(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -248,8 +237,8 @@ import il.org.spartan.etc.*;
    * never be <code><b>null</b></code>.
    * @param o if <code><b>null</b></code>, program will halt.
    * @throws NotNull in case <code>o</code> was <code><b>null</b></code> */
-  public static void nonnull(final Object param) throws NotNullValue {
-    nonnull(param, "");
+  public static void nonnull(final Object ¢) throws NotNullValue {
+    nonnull(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking objects that should
@@ -278,8 +267,8 @@ import il.org.spartan.etc.*;
    * be nonpositive.
    * @param d a value which must be nonpositive
    * @throws NonPositive in case <code>d</code> was positive */
-  public static void nonpositive(final double param) throws NonPositive {
-    nonpositive(param, "");
+  public static void nonpositive(final double ¢) throws NonPositive {
+    nonpositive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -309,8 +298,8 @@ import il.org.spartan.etc.*;
    * be nonpositive.
    * @param n a value which must be positive
    * @throws NonPositive in case <code>n</code> was positive. */
-  public static void nonpositive(final int param) throws NonPositive {
-    nonpositive(param, "");
+  public static void nonpositive(final int ¢) throws NonPositive {
+    nonpositive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -362,8 +351,8 @@ import il.org.spartan.etc.*;
    * numbers which must be positive.
    * @param d a value which must be positive
    * @throws Positive in case <code>d</code> was nonpositive */
-  public static void positive(final double param) throws Positive {
-    positive(param, "");
+  public static void positive(final double ¢) throws Positive {
+    positive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -393,8 +382,8 @@ import il.org.spartan.etc.*;
    * be positive.
    * @param n a value which must be positive
    * @throws Positive in case <code>n</code> was nonpositive */
-  public static void positive(final int param) throws Positive {
-    positive(param, "");
+  public static void positive(final int ¢) throws Positive {
+    positive(¢, "");
   }
 
   /** A possibly non-returning method to be used for checking integers which must
@@ -519,46 +508,6 @@ import il.org.spartan.etc.*;
 
   @SuppressWarnings("unused") public static void unuse(final long __, final Object... ____) {
     // empty
-  }
-
-  /** A do nothing method to document the fact that a <code><b>double</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
-  @SuppressWarnings("unused") public static void unused(final double __, final double... ____) {
-    // empty
-  }
-
-  @SuppressWarnings("unused") public static void unused(final double __, final Object... ____) {
-    // empty
-  }
-
-  /** A do nothing method to document the fact that a <code><b>long</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
-  @SuppressWarnings("unused") public static void unused(final int __, final int... ____) {
-    // empty
-  }
-
-  /** A do nothing method to document the fact that a <code><b>long</b></code>
-   * parameter, along with a optional list of {@link Object}s are not used by a
-   * function, and to suppress the warning.
-   * @param __   the unused parameter
-   * @param ____ more unused parameters */
-  @SuppressWarnings("unused") public static void unused(final long __, final long... ____) {
-    // empty
-  }
-
-  /** A do nothing method to document the fact that some <code>Object</code>(s)
-   * parameter(s) (or local variable(s)) are not used by a function. Calling this
-   * method saves the caller the trouble of suppressing a "variable unused"
-   * warnings on the argument(s).
-   * @param ____ the unused parameters */
-  public static void unused(final Object... ____) {
-    forget.it(____);
   }
 
   /** The base of all exception classes thrown as a result of violations of

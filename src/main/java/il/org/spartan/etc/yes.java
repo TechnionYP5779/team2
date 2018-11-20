@@ -8,8 +8,8 @@ public interface yes {
     R on(T t);
   }
 
-  static boolean forgetting(final Runnable param) {
-    param.run();
+  static boolean forgetting(final Runnable ¢) {
+    ¢.run();
     return true;
   }
 

@@ -6,7 +6,7 @@ import static fluent.ly.azzert.assertNotEquals;
 
 import org.junit.*;
 
-import il.org.spartan.etc.*;
+import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class RectangleTest {
   @Test public void testCtor1() throws IllegalArgumentException {

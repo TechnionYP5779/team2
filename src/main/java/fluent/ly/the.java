@@ -8,18 +8,16 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.*;
-
+import static il.org.spartan.Utils.*;
+import static fluent.ly.unbox.*;
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-12 */
 public interface the {
   static int index(final int i, final int... is) {
-    for (final Integer $ : range.from(0).to(is.length)) {
-      if (is[unbox.unbox(Utils.cantBeNull($))] == i) {
-        return unbox.unbox(Utils.cantBeNull($));
-      }
-    }
+    for (final Integer $ : range.from(0).to(is.length))
+      if (is[unbox(cantBeNull($))] == i)
+        return unbox(cantBeNull($));
     return -1;
   }
 
@@ -39,8 +37,8 @@ public interface the {
     return " #" + s + "/" + n;
   }
 
-  static <T> @Nullable T penultimateOf(final List<T> param) {
-    return param == null || param.size() < 2 ? null : param.get(param.size() - 2);
+  static <T> @Nullable T penultimateOf(final List<T> ¢) {
+    return ¢ == null || ¢.size() < 2 ? null : ¢.get(¢.size() - 2);
   }
 
   static <T> @Nullable T previous(final T t, final List<T> ts) {
@@ -50,14 +48,14 @@ public interface the {
     return $ < 1 ? null : ts.get($ - 1);
   }
 
-  static <@Nullable T> @NotNull List<T> tailOf(final @Nullable List<T> param) {
-    final @NotNull List<T> $ = as.list(param);
+  static <@Nullable T> @NotNull List<T> tailOf(final @Nullable List<T> ¢) {
+    final @NotNull List<T> $ = as.list(¢);
     $.remove(the.headOf($));
     return $;
   }
 
-  static String tailOf(final @NotNull String param) {
-    return param.substring(1);
+  static String tailOf(final @NotNull String ¢) {
+    return ¢.substring(1);
   }
 
   static <T> List<T> rest(final T t, final Iterable<T> ts) {
@@ -71,33 +69,33 @@ public interface the {
     return $;
   }
 
-  @Contract("null -> null") @Nullable static <T> T headOf(final @Nullable List<T> param) {
-    return param == null || param.isEmpty() ? null : param.get(0);
+  @Contract("null -> null") @Nullable static <T> T headOf(final @Nullable List<T> ¢) {
+    return ¢ == null || ¢.isEmpty() ? null : ¢.get(0);
   }
 
-  static char characterOf(final @NotNull String param) {
-    return the.beforeLastOf(param, 0);
+  static char characterOf(final @NotNull String ¢) {
+    return the.beforeLastOf(¢, 0);
   }
 
   @Contract(pure = true) static char ith(final @NotNull String s, final int i) {
     return s.charAt(i);
   }
 
-  @Contract("null -> null") @Nullable static <@Nullable T> T lastOf(final @Nullable List<@Nullable T> param) {
-    return param == null || param.isEmpty() ? null : param.get(param.size() - 1);
+  @Contract("null -> null") @Nullable static <@Nullable T> T lastOf(final @Nullable List<@Nullable T> ¢) {
+    return ¢ == null || ¢.isEmpty() ? null : ¢.get(¢.size() - 1);
   }
 
-  static char lastOf(final @NotNull String param) {
-    return beforeLastOf(param, 0);
+  static char lastOf(final @NotNull String ¢) {
+    return beforeLastOf(¢, 0);
   }
 
   static char beforeLastOf(final @NotNull String s, final int i) {
     return s.charAt(s.length() - i - 1);
   }
 
-  @NotNull static <T> Iterable<T> lastOf(final @NotNull Iterable<T> param) {
+  @NotNull static <T> Iterable<T> lastOf(final @NotNull Iterable<T> ¢) {
     return () -> new Iterator<T>() {
-      Iterator<T> $ = param.iterator();
+      Iterator<T> $ = ¢.iterator();
       {
         $.next();
       }
@@ -112,12 +110,12 @@ public interface the {
     };
   }
 
-  @Nullable static <T> T onlyOneOf(final @Nullable List<T> param) {
-    return param == null || param.size() != 1 ? null : headOf(param);
+  @Nullable static <T> T onlyOneOf(final @Nullable List<T> ¢) {
+    return ¢ == null || ¢.size() != 1 ? null : headOf(¢);
   }
 
-  @Contract("null -> null") @Nullable static <T> T secondOf(final @Nullable List<T> param) {
-    return param == null || param.size() < 2 ? null : param.get(1);
+  @Contract("null -> null") @Nullable static <T> T secondOf(final @Nullable List<T> ¢) {
+    return ¢ == null || ¢.size() < 2 ? null : ¢.get(1);
   }
 
   /** Computes the maximum of two or more integers.
@@ -142,35 +140,35 @@ public interface the {
     return $;
   }
 
-  static <T> T lastOf(final T[] param) {
-    return param[param.length - 1];
+  static <T> T lastOf(final T[] ¢) {
+    return ¢[¢.length - 1];
   }
 
   /** @param <T> JD
    * @param ¢ JD
    * @return last item in a list or <code><b>null</b></code> if the parameter is
    *         <code><b>null</b></code> or empty */
-  @SuppressWarnings("null") static <T> @Nullable T last(final @Nullable List<T> param) {
-    return eval(() -> param.get(param.size() - 1)).unless(param == null || param.isEmpty());
+  @SuppressWarnings("null") static <T> @Nullable T last(final @Nullable List<T> ¢) {
+    return eval(() -> ¢.get(¢.size() - 1)).unless(¢ == null || ¢.isEmpty());
   }
 
   /** Computes the square of a given integer
    * @param ¢ some integer
    * @return square of the parameter */
-  static int sqr(final int param) {
-    return param * param;
+  static int sqr(final int ¢) {
+    return ¢ * ¢;
   }
 
   /** Chop the first character of a string.
    * @param ¢ a non-<code><b>null</b></code> string of length at least one
    * @return <code>s</code> but without its first character. */
-  static String rest(final @NotNull String param) {
-    nonnull(param);
-    positive(param.length());
-    return param.substring(1);
+  static String rest(final @NotNull String ¢) {
+    nonnull(¢);
+    positive(¢.length());
+    return ¢.substring(1);
   }
 
-  static <T> T[] tailOf(final T[] param) {
-    return Arrays.copyOfRange(param, 1, param.length);
+  static <T> T[] tailOf(final T[] ¢) {
+    return Arrays.copyOfRange(¢, 1, ¢.length);
   }
 }

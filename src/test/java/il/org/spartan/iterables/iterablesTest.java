@@ -1,6 +1,7 @@
 package il.org.spartan.iterables;
 
 import static il.org.spartan.Utils.*;
+
 import static fluent.ly.azzert.*;
 
 import org.junit.*;

@@ -32,8 +32,8 @@ public class angle {
     return degrees;
   }
 
-  public static angle of(final int param) {
-    return new angle(param);
+  public static angle of(final int ¢) {
+    return new angle(¢);
   }
 
   public double radians() {
