@@ -43,7 +43,7 @@ import fluent.ly.range.*;
 
   @Test public void testTo1() {
     // assert range.from(1).to() == null;
-    Assert.assertThat(box(range.to(2).from(1).to()), is(box(2)));
+    azzert.that(box(range.to(2).from(1).to()), is(box(2)));
   }
 
   @Test public void testTo2() {
