@@ -6,6 +6,7 @@ import static fluent.ly.azzert.assertNotEquals;
 
 import org.junit.*;
 
+import fluent.ly.*;
 import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class RectangleTest {

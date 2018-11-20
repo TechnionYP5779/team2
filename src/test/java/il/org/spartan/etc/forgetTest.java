@@ -4,6 +4,8 @@ import static fluent.ly.box.*;
 
 import org.junit.*;
 
+import fluent.ly.*;
+
 @SuppressWarnings("static-method") public class forgetTest {
   @Test public void testForgetAll() {
     forget.all("hi");
