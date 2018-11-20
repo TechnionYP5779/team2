@@ -177,19 +177,19 @@ import il.org.spartan.*;
   }
 
   @Test public void testMax() {
-    azzert.that(the.max(1, 3, 2), azzert.is(3));
+    azzert.that(the.max(1, 3, 2), is(3));
   }
 
   @Test public void testMin() {
-    azzert.that(the.min(1, 3, 2), azzert.is(1));
+    azzert.that(the.min(1, 3, 2), is(1));
   }
 
   @Test @SuppressWarnings("null") public void testLastOfTArray() {
-    azzert.that(the.lastOf(new Integer[] { box.box(1) }), azzert.is(box.box(1)));
+    azzert.that(the.lastOf(new Integer[] { box.box(1) }), is(box.box(1)));
   }
 
   @Test public void testSqr() {
-    azzert.that(the.sqr(2), azzert.is(4));
+    azzert.that(the.sqr(2), is(4));
   }
 
   @Test public void testTailOfTArray() {
