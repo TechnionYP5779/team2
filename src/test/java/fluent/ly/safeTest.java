@@ -1,15 +1,11 @@
 package fluent.ly;
 
-import java.util.function.*;
 
-import org.eclipse.jdt.annotation.*;
 import org.junit.*;
 
 import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 
-
-import org.junit.*;
 
 @SuppressWarnings("static-method")
 public class safeTest {
