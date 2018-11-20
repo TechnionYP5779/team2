@@ -1,6 +1,5 @@
 package fluent.ly;
 
-import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
 
 import org.junit.*;
