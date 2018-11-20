@@ -16,14 +16,14 @@ import static fluent.ly.azzert.*;
   }
 
   @Test public void testZeroForgetBoolean() {
-    azzert.that(zero.forgetting(box(true)), is(0));
+    azzert.that(zero.forget(true), is(0));
   }
 
   @Test public void testZeroForgetDouble() {
-    azzert.that(zero.forgetting(box(19.5)), is(0));
+    azzert.that(zero.forget(19.5), is(0));
   }
 
   @Test public void testZeroForgetLong() {
-    azzert.that(zero.forgetting(Long.valueOf(12123213123123123L)), is(0));
+    azzert.that(zero.forget(12123213123123123L), is(0));
   }
 }
