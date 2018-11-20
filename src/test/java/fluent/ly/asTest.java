@@ -151,33 +151,50 @@ import org.junit.*;
   }
 
   @Test public void setTest1() {
-    @SuppressWarnings("unchecked") final Set<Integer> s1 = (Set<Integer>) as.set(box(1), box(2), box(3), box(4), box(5), box(6), box(7), box(8),
-        box(9), box(10));
-    for (int ¢ = 0; ¢ < 10; ++¢)
-      azzert.assertContains(cantBeNull(s1), box(¢ + 1));
+    final Set<Integer> s = new HashSet<>();
+    for(int ¢ = 1; ¢ < 6; ++¢)
+      s.add(box(¢));
+    azzert.that(s, is(as.set(box(1), box(1), box(2), box(2), box(3), box(3), box(4), box(4), box(5), box(5))));
   }
 
   @Test public void setTest2() {
-    @SuppressWarnings("unchecked") final Set<String> s2 = (Set<String>) as.set("abcdefg", "hijklmnop", "qrstuv", "wxyz");
+    final Set<String> s2 = new HashSet<>();
+    s2.add("abcdefg");
+    s2.add("hijklmnop");
+    s2.add("qrstuv");
+    s2.add("wxyz");
     final Set<String> s = new LinkedHashSet<>(Arrays.asList(new String[] { "abcdefg", "hijklmnop", "qrstuv", "wxyz" }));
     azzert.assertSubset(s, cantBeNull(s2));
     azzert.assertSubset(cantBeNull(s2), s);
   }
 
   @Test public void setTest3() {
-    @SuppressWarnings("unchecked") final Set<Boolean> s3 = (Set<Boolean>) as.set(box(true), box(false), box(true), box(true), box(false), box(false));
+    final Set<Boolean> s3 = new HashSet<>();
+    s3.add(box(true));
+    s3.add(box(false));
+    s3.add(box(true));
+    s3.add(box(true));
+    s3.add(box(false));
+    s3.add(box(false));
     azzert.assertContains(cantBeNull(s3), box(true));
     azzert.assertContains(cantBeNull(s3), box(false));
   }
 
   @Test public void setTest4() {
-    @SuppressWarnings("unchecked") final Set<Boolean> s4 = (Set<Boolean>) as.set(box(true), box(true), box(true), box(true));
+    final Set<Boolean> s4 = new HashSet<>();
+    s4.add(box(true));
+    s4.add(box(true));
+    s4.add(box(true));
+    s4.add(box(true));
     azzert.assertContains(cantBeNull(s4), box(true));
     azzert.assertNotContains(cantBeNull(s4), box(false));
   }
 
   @Test public void setTest5() {
-    @SuppressWarnings("unchecked") final Set<Boolean> s5 = (Set<Boolean>) as.set(box(false), box(false));
+    final Set<Boolean> s5 = new HashSet<>();
+    s5.add(box(false));
+    s5.add(box(false));
+    s5.add(box(false));
     azzert.assertContains(cantBeNull(s5), box(false));
     azzert.assertNotContains(cantBeNull(s5), box(true));
   }
@@ -339,38 +356,81 @@ import org.junit.*;
   @Test public void asIterableEssenceTest() {
     final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
     assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(1));
   }
-
-  @Ignore @Test public void asIterableLambdaTest2() {
-    final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
-    // next should return the current member and only than proceed to the next one
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(1));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(2));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(3));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(4));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(5));
+  
+  @Test public void asIterableLambdaTest2() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    azzert.that(iter.next(), is(1));
   }
-
-  @Ignore @Test public void asIterableEssenceTest2() {
-    final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
-    assert iter.iterator().hasNext();
-    // next should return the current member and only than proceed to the next one
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(1));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(2));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(3));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(4));
-    assert iter.iterator().hasNext();
-    azzert.that(iter.iterator().next(), is(5));
+  
+  @Test public void asIterableLambdaTest3() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    assert iter.hasNext();
+  }
+  
+  @Test public void asIterableLambdaTest4() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    azzert.that(iter.next(), is(2));
+  }
+  
+  @Test public void asIterableLambdaTest5() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    assert iter.hasNext();
+  }
+  
+  @Test public void asIterableLambdaTest6() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    azzert.that(iter.next(), is(3));
+  }
+  
+  @Test public void asIterableLambdaTest7() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    iter.next();
+    assert iter.hasNext();
+  }
+  
+  @Test public void asIterableLambdaTest8() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    iter.next();
+    azzert.that(iter.next(), is(4));
+  }
+  
+  @Test public void asIterableLambdaTest9() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    iter.next();
+    iter.next();
+    assert iter.hasNext();
+  }
+  
+  @Test public void asIterableLambdaTest10() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    iter.next();
+    iter.next();
+    azzert.that(iter.next(), is(5));
+  }
+  
+  @Test public void asIterableLambdaTest11() {
+    final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
+    iter.next();
+    iter.next();
+    iter.next();
+    iter.next();
+    iter.next();
+    assert !iter.hasNext();
   }
 
   @Test public void arrayTest() {
