@@ -1,6 +1,8 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package il.org.spartan.iterables;
 
+import static il.org.spartan.Utils.*;
+
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -46,11 +48,26 @@ public enum iterables {
   public static <T> Iterator<T> singletonIterator(final T $) {
     return iterable.singleton($).iterator();
   }
-  
-  public static <T> Iterator<T> alternate(@Nullable Iterable<T> it1, @Nullable Iterable<T> it2) {
-    if(it1 == null && it2 == null)
-      return null;
-    return null;
+
+  public static <T> Iterable<T> alternate(@Nullable final Iterable<T> it1, @Nullable final Iterable<T> it2) {
+    return it1 == null && it2 == null ? null : it1 != null && it2 == null ? it1 : it1 == null && it2 != null ? it2 : new Iterable<T>() {
+      @Override @NotNull public Iterator<T> iterator() {
+        return new Iterator<T>() {
+          Iterator<T> iter1 = cantBeNull(it1).iterator(), iter2 = cantBeNull(it2).iterator();
+          boolean flag = true;
+
+          @Override public boolean hasNext() {
+            return iter1.hasNext() || iter2.hasNext();
+          }
+
+          @Override public T next() {
+            if (!iter1.hasNext() || !iter2.hasNext())
+              return (iter1.hasNext() && !iter2.hasNext() ? iter1 : iter2).next();
+            flag = !flag;
+            return (flag ? iter2 : iter1).next();
+          }
+        };
+      }
+    };
   }
-  
 }
