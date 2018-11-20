@@ -1,9 +1,10 @@
 package fluent.ly;
 
+import static fluent.ly.box.*;
+
 import java.util.*;
 
 import org.junit.*;
-import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class allTest {
   @Test public void testNotNullIterableOfT1() {

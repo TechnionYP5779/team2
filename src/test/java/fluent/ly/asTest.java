@@ -11,15 +11,15 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 import org.junit.*;
-//No values in an 'enum' which serves as a name space for a collection of
-//'static' functions.
-/** A static nested class hosting unit tests for the nesting class Unit test for
-* the containing class. Note the naming convention: a) names of test methods do
-* not use are not prefixed by "test". This prefix is redundant. b) test methods
-* begin with the name of the method they check.
-* @author Yossi Gil
-* @since 2014-05-31 */
 
+// No values in an 'enum' which serves as a name space for a collection of
+// 'static' functions.
+/** A static nested class hosting unit tests for the nesting class Unit test for
+ * the containing class. Note the naming convention: a) names of test methods do
+ * not use are not prefixed by "test". This prefix is redundant. b) test methods
+ * begin with the name of the method they check.
+ * @author Yossi Gil
+ * @since 2014-05-31 */
 @SuppressWarnings("static-method") public class asTest {
   @Test public void asBitOfFalse() {
     azzert.that(as.bit(false), is(0));
@@ -54,6 +54,7 @@ import org.junit.*;
       }
     }), is("null"));
   }
+
   @Test public void asIterableTest1() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
@@ -135,7 +136,7 @@ import org.junit.*;
     final Iterator<Integer> int_iter = as.iterator(box(new int[] { 1, 2, 3, 4, 5 }));
     for (int ¢ = 1; ¢ < 6; ++¢) {
       azzert.that(int_iter.next(), is(¢));
-      assert ¢ != 5 ? int_iter.hasNext() : !int_iter.hasNext();
+      azzert.that(int_iter.hasNext(), is(¢ != 5));
     }
   }
 
@@ -145,7 +146,7 @@ import org.junit.*;
     for (int ¢ = 1; ¢ < 5; ++¢) {
       azzert.that(bool_iter.next(), is(b));
       b = !b;
-      assert ¢ != 4 ? bool_iter.hasNext() : !bool_iter.hasNext();
+      azzert.that(bool_iter.hasNext(), is(¢ != 4));
     }
   }
 
@@ -331,28 +332,28 @@ import org.junit.*;
 
   @Test public void asIterableLambdaTest() {
     final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(1));
   }
 
   @Test public void asIterableEssenceTest() {
     final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(1));
   }
 
   @Ignore @Test public void asIterableLambdaTest2() {
     final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
     // next should return the current member and only than proceed to the next one
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(1));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(2));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(3));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(4));
-    assert !iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(5));
   }
 
@@ -360,15 +361,15 @@ import org.junit.*;
     final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
     assert iter.iterator().hasNext();
     // next should return the current member and only than proceed to the next one
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(1));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(2));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(3));
-    assert iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(4));
-    assert !iter.iterator().hasNext();
+    azzert.that(iter.iterator().hasNext(), is(true));
     azzert.that(iter.iterator().next(), is(5));
   }
 

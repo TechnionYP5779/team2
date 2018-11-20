@@ -1,11 +1,11 @@
 package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
+import static il.org.spartan.etc.idiomatic.*;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
 import static fluent.ly.unbox.*;
-import static il.org.spartan.etc.idiomatic.*;
 
 import java.io.*;
 import java.util.function.*;
@@ -14,7 +14,6 @@ import org.jetbrains.annotations.*;
 import org.junit.*;
 
 import fluent.ly.*;
-
 
 @SuppressWarnings("static-method") public class idiomaticTest {
   @Test public void testIncaseTrueReturnSameObj() {
@@ -131,7 +130,7 @@ import fluent.ly.*;
   @Test public void testTriggerDefaultEval() {
     assert cantBeNull(new MyTrigger().eval(fluent.ly.box.it(4))).equals(fluent.ly.box.it(4));
   }
-  
+
   @Test public void use0() {
     azzert.assertNotEquals(new Storer<>(this), null);
   }
@@ -183,5 +182,4 @@ import fluent.ly.*;
     azzert.isNull(take(null).unless(true));
     azzert.isNull(take(null).unless(false));
   }
-
 }

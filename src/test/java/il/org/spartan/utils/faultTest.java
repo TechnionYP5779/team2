@@ -1,10 +1,11 @@
 package il.org.spartan.utils;
 
+import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
+
 import org.junit.*;
 
 import fluent.ly.*;
-import static fluent.ly.azzert.*;
-import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class faultTest {
   @Test public void testDoneStackCaptureNotNull() {

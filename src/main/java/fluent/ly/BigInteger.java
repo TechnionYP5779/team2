@@ -135,10 +135,8 @@ public class BigInteger {
 
   private static StringWithCarry removeStringWithCarry(final String s1, final String s2, final int carry) {
     String $ = removeStringsSimple(s1, s2, carry);
-    if (!unbox(cantBeNull(isStringNegative($))))
-      return new StringWithCarry($, 0);
-    $ = $.substring(1);
-    return new StringWithCarry($, 1);
+    return new StringWithCarry($, 0);
+   
   }
 
   private List<String> getValueAsStringList() {

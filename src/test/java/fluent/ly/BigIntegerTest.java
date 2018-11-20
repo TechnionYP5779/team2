@@ -1,15 +1,14 @@
 package fluent.ly;
 
 
-import org.junit.*;
+import static il.org.spartan.Utils.*;
 
 import static fluent.ly.unbox.*;
-
-import static il.org.spartan.Utils.*;
 import static fluent.ly.azzert.*;
 
+import org.junit.*;
 
-@SuppressWarnings({ "static-method" }) public class BigIntegerTest {
+@SuppressWarnings("static-method") public class BigIntegerTest {
   @Test public void testCreateFromString() {
     azzert.notNull(new BigInteger("123"));
   }
@@ -56,55 +55,56 @@ import static fluent.ly.azzert.*;
   @Test public void testAddBigNumber3() {
     azzert.that(new BigInteger("9000000000000000000000000000000000000000").add(new BigInteger("1234567890123456789012345678901234567890")),
         is(new BigInteger("10234567890123456789012345678901234567890")));
+
   }
-  
+
   @Test public void testNegative() {
     azzert.that(new BigInteger("10").negate(), is(new BigInteger("-10")));
   }
-  
+
   @Test public void testNegative2() {
     azzert.that(new BigInteger("1234567890123456789012345678901234567890").negate(), is(new BigInteger("-1234567890123456789012345678901234567890")));
   }
-  
+
   @Test public void testNegative3() {
     azzert.that(new BigInteger("175688854").negate(), is(new BigInteger("-175688854")));
   }
-  
+
   @Test public void testIsBiggerThan() {
-    assert unbox(cantBeNull(cantBeNull((new BigInteger("4"))).isBiggerThan(new BigInteger("2"))));
+    assert unbox(cantBeNull(cantBeNull(new BigInteger("4")).isBiggerThan(new BigInteger("2"))));
   }
-  
+
   @Test public void testIsBiggerThan2() {
-    assert unbox(cantBeNull((new BigInteger("7")).isBiggerThan(new BigInteger("-3"))));
+    assert unbox(cantBeNull(new BigInteger("7").isBiggerThan(new BigInteger("-3"))));
   }
-  
+
   @Test public void testIsBiggerThan3() {
-    assert unbox(cantBeNull((new BigInteger("7")).isBiggerThan(new BigInteger("-34"))));
+    assert unbox(cantBeNull(new BigInteger("7").isBiggerThan(new BigInteger("-34"))));
   }
-  
+
   @Test public void testIsBiggerThan4() {
-    assert unbox(cantBeNull((new BigInteger("77")).isBiggerThan(new BigInteger("-34"))));
+    assert unbox(cantBeNull(new BigInteger("77").isBiggerThan(new BigInteger("-34"))));
   }
-  
+
   @Test public void testIsBiggerThan5() {
-    assert unbox(cantBeNull((new BigInteger("77")).isBiggerThan(new BigInteger("-3"))));
+    assert unbox(cantBeNull(new BigInteger("77").isBiggerThan(new BigInteger("-3"))));
   }
-  
+
   @Test public void testIsBiggerThan6() {
-    assert unbox(cantBeNull((new BigInteger("77")).isBiggerThan(new BigInteger("0"))));
+    assert unbox(cantBeNull(new BigInteger("77").isBiggerThan(new BigInteger("0"))));
   }
-  
+
   @Test public void testIsBiggerThan7() {
-    assert unbox(cantBeNull((new BigInteger("-77")).isBiggerThan(new BigInteger("-100"))));
+    assert unbox(cantBeNull(new BigInteger("-77").isBiggerThan(new BigInteger("-100"))));
   }
-  
+
   @Test public void testIsBiggerThan8() {
-    assert unbox(cantBeNull((new BigInteger("1234567890123456789012345678901234567890"))
-        .isBiggerThan(new BigInteger("1234567890123456789012345678901234567889"))));
+    assert unbox(cantBeNull(
+        new BigInteger("1234567890123456789012345678901234567890").isBiggerThan(new BigInteger("1234567890123456789012345678901234567889"))));
   }
-  
+
   @Test public void testIsBiggerThan9() {
-    assert unbox(cantBeNull((new BigInteger("12345")).isBiggerThan(new BigInteger("-12345"))));
+    assert unbox(cantBeNull(new BigInteger("12345").isBiggerThan(new BigInteger("-12345"))));
   }
   
   @Test public void testSubstract1() {
