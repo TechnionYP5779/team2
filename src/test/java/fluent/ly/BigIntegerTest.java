@@ -67,7 +67,7 @@ import static il.org.spartan.Utils.*;
   }
   
   @Test public void testIsBiggerThan() {
-    assert unbox(cantBeNull(cantBeNull((new BigInteger("4"))).isBiggerThan(new BigInteger("2"))));
+    assert unbox(cantBeNull(cantBeNull(new BigInteger("4")).isBiggerThan(new BigInteger("2"))));
   }
   
   @Test public void testIsBiggerThan2() {

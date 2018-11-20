@@ -11,7 +11,7 @@ import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class iterableTest {
   @Test public void singletonTest1() {
-    azzert.that(iterable.singleton(box(1)).iterator().hasNext(), is(true));
+    assert iterable.singleton(box(1)).iterator().hasNext();
   }
 
   @Test public void singletonTest2() {
@@ -21,11 +21,11 @@ import fluent.ly.*;
   @Test public void singletonTest3() {
     final Iterator<Integer> iter = iterable.singleton(box(1)).iterator();
     iter.next();
-    azzert.that(iter.hasNext(), is(false));
+    assert !iter.hasNext();
   }
 
   @Test public void overTest1() {
-    azzert.that(iterable.over(box(1), box(2), box(3), box(4), box(5)).iterator().hasNext(), is(true));
+    assert iterable.over(box(1), box(2), box(3), box(4), box(5)).iterator().hasNext();
   }
 
   @Test public void overTest2() {
@@ -35,7 +35,7 @@ import fluent.ly.*;
   @Test public void overTest3() {
     final Iterator<Integer> iter = iterable.over(box(1), box(2), box(3), box(4), box(5)).iterator();
     iter.next();
-    azzert.that(iter.hasNext(), is(true));
+    assert iter.hasNext();
   }
 
   @Test public void overTest4() {
@@ -48,7 +48,7 @@ import fluent.ly.*;
     final Iterator<Integer> iter = iterable.over(box(1), box(2), box(3), box(4), box(5)).iterator();
     iter.next();
     iter.next();
-    azzert.that(iter.hasNext(), is(true));
+    assert iter.hasNext();
   }
 
   @Test public void overTest6() {
@@ -63,7 +63,7 @@ import fluent.ly.*;
     iter.next();
     iter.next();
     iter.next();
-    azzert.that(iter.hasNext(), is(true));
+    assert iter.hasNext();
   }
 
   @Test public void overTest8() {
@@ -80,7 +80,7 @@ import fluent.ly.*;
     iter.next();
     iter.next();
     iter.next();
-    azzert.that(iter.hasNext(), is(true));
+    assert iter.hasNext();
   }
 
   @Test public void overTest10() {
@@ -99,6 +99,6 @@ import fluent.ly.*;
     iter.next();
     iter.next();
     iter.next();
-    azzert.that(iter.hasNext(), is(false));
+    assert !iter.hasNext();
   }
 }

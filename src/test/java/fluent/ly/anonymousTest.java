@@ -9,11 +9,11 @@ import org.junit.*;
 
 @SuppressWarnings("static-method") public class anonymousTest {
   @Test public void booleanTest1() {
-    azzert.that(ly(() -> true), is(true));
+    assert ly(() -> true);
   }
 
   @Test public void booleanTest2() {
-    azzert.that(!ly(() -> true), is(false));
+    assert !ly(() -> false);
   }
 
   @Test public void doubleTest1() {
