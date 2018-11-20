@@ -1,6 +1,10 @@
 package il.org.spartan.utils;
 
+import java.util.function.*;
+
 import org.junit.*;
+
+import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class PropositionTest {
   @Test public void testAND1() {
@@ -97,5 +101,17 @@ import org.junit.*;
 
   @Test public void testOr1() {
     assert Proposition.AND(() -> true, () -> true).or("str", () -> false).eval();
+  }
+  
+  
+  
+  @Test public void testOr2() {
+    assert (new Proposition.Or(() -> true, () -> false)).eval();
+  }
+  @Test public void testAnd6() {
+    assert !(new Proposition.And(() -> true, new BooleanSupplier[] {() -> false})).eval();
+  }
+  @Test public void testSelf() {
+    azzert.assertNull(new Proposition.Singleton(() -> true).self());
   }
 }
