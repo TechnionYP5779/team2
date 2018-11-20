@@ -30,9 +30,11 @@ import org.jetbrains.annotations.*;
   }
 
   /** @param fileName where to write
-   * @param text     what to write
+   * @param text what to write
    * @throws FileNotFoundException in case the file could not be found */
   public static void writeToFile(final @NotNull String fileName, final @NotNull String text) throws FileNotFoundException {
+    if (!new File(fileName).isFile())
+      throw new FileNotFoundException();
     try (@NotNull PrintWriter p = new PrintWriter(fileName)) {
       p.write(text);
       p.flush();
