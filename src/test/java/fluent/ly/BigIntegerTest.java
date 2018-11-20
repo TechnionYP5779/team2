@@ -1,10 +1,9 @@
 package fluent.ly;
 
-
 import static il.org.spartan.Utils.*;
 
-import static fluent.ly.unbox.*;
 import static fluent.ly.azzert.*;
+import static fluent.ly.unbox.*;
 
 import org.junit.*;
 
@@ -18,7 +17,7 @@ import org.junit.*;
   }
 
   @Test @SuppressWarnings("null") public void testNotEquals() {
-    BigInteger i = new BigInteger("100");
+    final BigInteger i = new BigInteger("100");
     azzert.that(new BigInteger("123"), is(not(i)));
   }
 
@@ -27,7 +26,7 @@ import org.junit.*;
   }
 
   @Test public void testAdd2() {
-    azzert.that(new BigInteger("312345").add(new BigInteger("90000")),is(new BigInteger("402345")));
+    azzert.that(new BigInteger("312345").add(new BigInteger("90000")), is(new BigInteger("402345")));
   }
 
   @Test public void testNegativeAdd() {
@@ -55,7 +54,6 @@ import org.junit.*;
   @Test public void testAddBigNumber3() {
     azzert.that(new BigInteger("9000000000000000000000000000000000000000").add(new BigInteger("1234567890123456789012345678901234567890")),
         is(new BigInteger("10234567890123456789012345678901234567890")));
-
   }
 
   @Test public void testNegative() {
@@ -106,13 +104,13 @@ import org.junit.*;
   @Test public void testIsBiggerThan9() {
     assert unbox(cantBeNull(new BigInteger("12345").isBiggerThan(new BigInteger("-12345"))));
   }
-  
+
   @Test public void testIsBiggerThan10() {
     assert !unbox(cantBeNull(new BigInteger("-12343").isBiggerThan(new BigInteger("12345"))));
   }
-  
+
   @Test public void testSubstract1() {
-    BigInteger i = new BigInteger("100").subtract(new BigInteger("10"));
+    final BigInteger i = new BigInteger("100").subtract(new BigInteger("10"));
     azzert.that(i, is(new BigInteger("90")));
   }
 }

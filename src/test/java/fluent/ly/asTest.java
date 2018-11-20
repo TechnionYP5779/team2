@@ -152,7 +152,7 @@ import org.junit.*;
 
   @Test public void setTest1() {
     final Set<Integer> s = new HashSet<>();
-    for(int ¢ = 1; ¢ < 6; ++¢)
+    for (int ¢ = 1; ¢ < 6; ++¢)
       s.add(box(¢));
     azzert.that(s, is(as.set(box(1), box(1), box(2), box(2), box(3), box(3), box(4), box(4), box(5), box(5))));
   }
@@ -357,38 +357,38 @@ import org.junit.*;
     final Iterable<Integer> iter = as.asIterableEssence(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
     assert iter.iterator().hasNext();
   }
-  
+
   @Test public void asIterableLambdaTest2() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     azzert.that(iter.next(), is(1));
   }
-  
+
   @Test public void asIterableLambdaTest3() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
     assert iter.hasNext();
   }
-  
+
   @Test public void asIterableLambdaTest4() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
     azzert.that(iter.next(), is(2));
   }
-  
+
   @Test public void asIterableLambdaTest5() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
     iter.next();
     assert iter.hasNext();
   }
-  
+
   @Test public void asIterableLambdaTest6() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
     iter.next();
     azzert.that(iter.next(), is(3));
   }
-  
+
   @Test public void asIterableLambdaTest7() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
@@ -396,7 +396,7 @@ import org.junit.*;
     iter.next();
     assert iter.hasNext();
   }
-  
+
   @Test public void asIterableLambdaTest8() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
@@ -404,7 +404,7 @@ import org.junit.*;
     iter.next();
     azzert.that(iter.next(), is(4));
   }
-  
+
   @Test public void asIterableLambdaTest9() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
@@ -413,7 +413,7 @@ import org.junit.*;
     iter.next();
     assert iter.hasNext();
   }
-  
+
   @Test public void asIterableLambdaTest10() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
@@ -422,7 +422,7 @@ import org.junit.*;
     iter.next();
     azzert.that(iter.next(), is(5));
   }
-  
+
   @Test public void asIterableLambdaTest11() {
     final Iterator<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 }))).iterator();
     iter.next();
