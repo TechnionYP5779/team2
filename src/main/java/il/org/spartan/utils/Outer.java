@@ -2,7 +2,7 @@ package il.org.spartan.utils;
 
 import org.jetbrains.annotations.*;
 
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
@@ -17,7 +17,7 @@ public class Outer<Inner> {
   }
 
   @Override @NotNull @SuppressWarnings("unchecked") public Outer<Inner> clone() throws CloneNotSupportedException {
-    return (Outer<Inner>) Utils.cantBeNull(super.clone());
+    return (Outer<Inner>) cantBeNull(super.clone());
   }
 
   @Override public boolean equals(final Object ¢) {
@@ -53,6 +53,6 @@ public class Outer<Inner> {
   }
 
   @Override @NotNull public String toString() {
-    return inner == null ? "null" : Utils.cantBeNull(inner + "");
+    return inner == null ? "null" : cantBeNull(inner + "");
   }
 }

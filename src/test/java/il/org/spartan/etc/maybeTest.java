@@ -3,7 +3,7 @@ package il.org.spartan.etc;
 import org.junit.*;
 
 import fluent.ly.*;
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 @SuppressWarnings("static-method") public class maybeTest {
   @Test public void usecase0() {
@@ -39,6 +39,6 @@ import il.org.spartan.*;
   }
 
   @Test public void testSet() {
-    assert Utils.cantBeNull(maybe.yes(Integer.valueOf(3)).set(Integer.valueOf(10)).get()).equals(Integer.valueOf(10));
+    assert cantBeNull(maybe.yes(Integer.valueOf(3)).set(Integer.valueOf(10)).get()).equals(Integer.valueOf(10));
   }
 }

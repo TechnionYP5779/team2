@@ -8,7 +8,7 @@ import org.eclipse.jdt.annotation.*;
 import org.junit.*;
 
 import an.*;
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 @SuppressWarnings("static-method") public class theTest {
   @Test public void testIndex1() {
@@ -49,7 +49,7 @@ import il.org.spartan.*;
     final List<@Nullable Integer> l = new ArrayList<>();
     l.add(box.box(5));
     l.add(box.box(4));
-    azzert.that(Utils.cantBeNull(the.penultimateOf(l)), is(box.box(5)));
+    azzert.that(cantBeNull(the.penultimateOf(l)), is(box.box(5)));
   }
 
   @Test public void testPrevious1() {
@@ -67,7 +67,7 @@ import il.org.spartan.*;
     l.add(box.box(5));
     l.add(box.box(3));
     l.add(box.box(4));
-    azzert.that(Utils.cantBeNull(the.previous(box.box(4), l)), is(box.box(3)));
+    azzert.that(cantBeNull(the.previous(box.box(4), l)), is(box.box(3)));
   }
 
   @Test public void testTailOfListOfT() {
@@ -75,7 +75,7 @@ import il.org.spartan.*;
   }
 
   @Test public void testTailOfString() {
-    azzert.that(the.tailOf(Utils.cantBeNull(String.valueOf("abc"))), is("bc"));
+    azzert.that(the.tailOf(cantBeNull(String.valueOf("abc"))), is("bc"));
   }
 
   @Test public void testRestTIterableOfT1() {
@@ -105,7 +105,7 @@ import il.org.spartan.*;
     final List<Integer> l = new ArrayList<>();
     l.add(box.box(5));
     l.add(box.box(4));
-    azzert.that(Utils.cantBeNull(the.headOf(l)), is(box.box(5)));
+    azzert.that(cantBeNull(the.headOf(l)), is(box.box(5)));
   }
 
   @Test public void testCharacterOf() {
@@ -128,7 +128,7 @@ import il.org.spartan.*;
     final List<Integer> l = new ArrayList<>();
     l.add(box.box(5));
     l.add(box.box(4));
-    azzert.that(Utils.cantBeNull(the.lastOf(l)), is(box.box(4)));
+    azzert.that(cantBeNull(the.lastOf(l)), is(box.box(4)));
   }
 
   @Test public void testLastOfString() {
@@ -158,7 +158,7 @@ import il.org.spartan.*;
   @Test @SuppressWarnings("null") public void testOnlyOneOf3() {
     final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
-    azzert.that(Utils.cantBeNull(the.onlyOneOf(l)), is(box.box(1)));
+    azzert.that(cantBeNull(the.onlyOneOf(l)), is(box.box(1)));
   }
 
   @Test public void testSecondOf1() {
@@ -173,7 +173,7 @@ import il.org.spartan.*;
     final List<Integer> l = new ArrayList<>();
     l.add(box.box(1));
     l.add(box.box(2));
-    azzert.that(Utils.cantBeNull(the.secondOf(l)), is(box.box(2)));
+    azzert.that(cantBeNull(the.secondOf(l)), is(box.box(2)));
   }
 
   @Test public void testMax() {

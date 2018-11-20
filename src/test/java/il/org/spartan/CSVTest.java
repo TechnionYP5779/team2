@@ -5,7 +5,7 @@ import static fluent.ly.azzert.*;
 import java.io.*;
 
 import org.junit.*;
-
+import static il.org.spartan.Utils.*;
 import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class CSVTest {
@@ -50,7 +50,7 @@ import fluent.ly.*;
   @Test @SuppressWarnings("null") public void testSave() {
     final File f = new File("src/test/resources/CSV_input.csv");
     try {
-      CSV.save(f, Utils.cantBeNull(CSV.load(f)));
+      CSV.save(f, cantBeNull(CSV.load(f)));
     } catch (final IOException ¢) {
       ¢.printStackTrace();
       assert false;

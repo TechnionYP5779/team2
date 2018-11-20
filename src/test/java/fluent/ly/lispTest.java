@@ -8,7 +8,7 @@ import org.eclipse.jdt.annotation.*;
 import org.junit.*;
 
 import an.*;
-import il.org.spartan.*;
+import static il.org.spartan.Utils.*;
 
 @SuppressWarnings("static-method") public class lispTest {
   @Test public void testChop1() {
@@ -20,7 +20,7 @@ import il.org.spartan.*;
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
-    azzert.that(Utils.cantBeNull(lisp.chop(l)).get(0), is(box.box(2)));
+    azzert.that(cantBeNull(lisp.chop(l)).get(0), is(box.box(2)));
   }
 
   @Test public void testCons() {
@@ -52,7 +52,7 @@ import il.org.spartan.*;
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
-    azzert.that(Utils.cantBeNull(lisp.get(l, 1)), is(box.box(3)));
+    azzert.that(cantBeNull(lisp.get(l, 1)), is(box.box(3)));
   }
 
   @Test @SuppressWarnings("null") public void testPrev1() {
@@ -108,7 +108,7 @@ import il.org.spartan.*;
     l.add(box.box(1));
     l.add(box.box(2));
     l.add(box.box(3));
-    azzert.that(Utils.cantBeNull(lisp.replaceLast(l, box.box(10))).get(l.size() - 1), is(box.box(10)));
+    azzert.that(cantBeNull(lisp.replaceLast(l, box.box(10))).get(l.size() - 1), is(box.box(10)));
   }
 
   @Test public void testRest2() {
