@@ -37,7 +37,7 @@ import org.junit.*;
     $.add(null);
     return $;
   };
-  
+
   @Test public void nullsNotNullArrayLength() {
     azzert.that(nonNullArray.length, is(prune.nulls(cantBeNull(nonNullArray)).length));
   }
@@ -89,6 +89,7 @@ import org.junit.*;
   @Test public void whitesEmptyList() {
     azzert.that(0, is(prune.whites().length));
   }
+
   @NotNull private final List<String> sparseCollection = new Supplier<List<String>>() {
     @Override @NotNull public List<String> get() {
       @NotNull final List<String> $ = an.empty.list();

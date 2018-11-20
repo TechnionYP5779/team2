@@ -1,10 +1,9 @@
 package fluent.ly;
 
+import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import org.junit.*;
-
-import static fluent.ly.box.*;
-import static fluent.ly.azzert.*;
 
 @SuppressWarnings("static-method") public class zeroTest {
   @Test public void testForgettingOneObject() {

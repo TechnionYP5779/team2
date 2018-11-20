@@ -11,7 +11,6 @@ import java.util.function.*;
 
 import org.junit.*;
 
-
 @SuppressWarnings("static-method") public class nilTest {
   @Test public void forgettingTest() {
     azzert.isNull(forgetting(new Object()));
@@ -39,7 +38,7 @@ import org.junit.*;
     for (long i = -100; i < 101; ++i)
       assert ignoring(i) == null;
   }
-  
+
   static String helloString = "Hello";
 
   @Test public void t() {

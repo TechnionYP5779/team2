@@ -32,10 +32,9 @@ import fluent.ly.*;
     forget.it(true);
     forget.it(box(3));
   }
-  
+
   @Test public void testUnused() {
-    forget.______unused(4234234l,new Object());
+    forget.______unused(4234234l, new Object());
     forget.unused(new Object());
   }
-  
 }

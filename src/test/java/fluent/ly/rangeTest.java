@@ -1,50 +1,56 @@
 package fluent.ly;
-import java.util.*;
 
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
+
+import java.util.*;
 
 // import fluent.ly.azzert;
 import org.junit.*;
 
 import fluent.ly.range.*;
 
-import static fluent.ly.box.*;
-
 @SuppressWarnings("static-method") public class rangeTest {
-  
   @Test public void testHasNext1() {
     assert !range.from(1).to(1).iterator().hasNext();
   }
+
   @Test public void testHasNext2() {
     assert range.from(1).to(2).iterator().hasNext();
   }
+
   @Test public void testHasNext3() {
     assert range.from(1).iterator().hasNext();
   }
+
   @Test(expected = NoSuchElementException.class) public void testNext() {
     range.from(1).to(1).iterator().next();
   }
+
   @Test public void testIncludes() {
     assert !range.from(1).to(2).includes(0);
   }
+
   @Test public void testSelfObject1() {
-    PerformedTo pt = range.from(1).to(2);
+    final PerformedTo pt = range.from(1).to(2);
     assert pt == pt.selfObject();
   }
+
   @Test public void testSelfObject2() {
-    PerformedFrom pf = range.from(2);
+    final PerformedFrom pf = range.from(2);
     assert pf == pf.selfObject();
   }
-   @Test @SuppressWarnings("static-access") public void testTo1() {
-//    assert range.from(1).to() == null;
-    azzert.assertThat(box(range.to(2).from(1).to()), is(box(2)));
+
+  @Test public void testTo1() {
+    // assert range.from(1).to() == null;
+    Assert.assertThat(box(range.to(2).from(1).to()), is(box(2)));
   }
-   @Test public void testTo2() {
-//   assert range.from(1).to() == null;
-   azzert.assertNull(range.from(1).to());
- }
-  
-  
+
+  @Test public void testTo2() {
+    // assert range.from(1).to() == null;
+    azzert.assertNull(range.from(1).to());
+  }
+
   @Test public void testInfinteRangeNotEmpty() {
     assert !range.from(2).isEmpty();
   }
