@@ -22,6 +22,6 @@ public class LongestCommonSubsequenceTest {
      azzert.assertThat(box(new LongestCommonSubsequence("a","").similarity()),is(0.0));
    }
    @Test public void testCompute() {
-     azzert.assertThat(box(new LongestCommonSubsequence("1234abcd5678","5678abcd1234").similarity()),is(2. * 4 / (12 + 12)));
+     azzert.assertThat(box(new LongestCommonSubsequence("1234abcd5678","5678abcd1234").similarity()),is(8.0 / 24));
    }
 }
