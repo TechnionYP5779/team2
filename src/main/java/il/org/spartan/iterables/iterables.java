@@ -46,4 +46,11 @@ public enum iterables {
   public static <T> Iterator<T> singletonIterator(final T $) {
     return iterable.singleton($).iterator();
   }
+  
+  public static <T> Iterator<T> alternate(@Nullable Iterable<T> it1, @Nullable Iterable<T> it2) {
+    if(it1 == null && it2 == null)
+      return null;
+    return null;
+  }
+  
 }
