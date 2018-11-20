@@ -1,7 +1,7 @@
 package fluent.ly;
 
 import java.util.*;
-
+import static fluent.ly.box.*;
 public class range {
   public int from = Integer.MIN_VALUE;
   public int to = Integer.MAX_VALUE;
@@ -26,7 +26,7 @@ public class range {
             throw new NoSuchElementException();
           final int $ = currentNumber;
           currentNumber += jumpBy;
-          return box.box($);
+          return box($);
         }
       };
     }
@@ -83,7 +83,7 @@ public class range {
     }
 
     public Integer to() {
-      return infinite ? null : box.box(to);
+      return infinite ? null : box(to);
     }
   }
 
@@ -101,7 +101,7 @@ public class range {
     }
 
     public Integer from() {
-      return infinite ? null : box.box(from);
+      return infinite ? null : box(from);
     }
 
     public int to() {

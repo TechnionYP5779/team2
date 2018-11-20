@@ -2,8 +2,8 @@ package il.org.spartan.utils;
 
 import java.util.*;
 
-import fluent.ly.*;
 import static il.org.spartan.Utils.*;
+import static fluent.ly.unbox.*;
 public class PairList {
   List<SortableDoublePair> list;
 
@@ -35,14 +35,14 @@ public class PairList {
   public double distSum() {
     double $ = 0;
     for (int ¢ = 0; ¢ < list.size(); ++¢)
-      $ += Math.sqrt(Math.pow(unbox.unbox(cantBeNull(this.at(¢).first)), 2) + Math.pow(unbox.unbox(cantBeNull(this.at(¢).second)), 2));
+      $ += Math.sqrt(Math.pow(unbox(cantBeNull(this.at(¢).first)), 2) + Math.pow(unbox(cantBeNull(this.at(¢).second)), 2));
     return $;
   }
 
   public double sum() {
     double $ = 0;
     for (int ¢ = 0; ¢ < list.size(); ++¢)
-      $ += unbox.unbox(cantBeNull(this.at(¢).first)) + unbox.unbox(cantBeNull(this.at(¢).second));
+      $ += unbox(cantBeNull(this.at(¢).first)) + unbox(cantBeNull(this.at(¢).second));
     return $;
   }
 }

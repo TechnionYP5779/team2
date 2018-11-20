@@ -9,15 +9,15 @@ import java.util.*;
 import org.jetbrains.annotations.*;
 
 import static il.org.spartan.Utils.*;
-
+import static fluent.ly.unbox.*;
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-12 */
 public interface the {
   static int index(final int i, final int... is) {
     for (final Integer $ : range.from(0).to(is.length))
-      if (is[unbox.unbox(cantBeNull($))] == i)
-        return unbox.unbox(cantBeNull($));
+      if (is[unbox(cantBeNull($))] == i)
+        return unbox(cantBeNull($));
     return -1;
   }
 

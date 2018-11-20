@@ -32,8 +32,7 @@ public class outTest {
     String name = "Amit";
     ByteArrayOutputStream ba = new ByteArrayOutputStream();
     System.setOut(new PrintStream(ba));
-    ArrayList<String> collection = null;
-    out.out(name, collection);
+    out.out(name, (ArrayList<String>)null);
     azzert.that("No " + name + "\n", is(ba + ""));
   }
 

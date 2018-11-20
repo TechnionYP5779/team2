@@ -4,6 +4,7 @@ import static fluent.ly.azzert.*;
 
 // import fluent.ly.azzert;
 import org.junit.*;
+import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class RangeTest {
   @Test public void testInfinteRangeNotEmpty() {
@@ -67,7 +68,7 @@ import org.junit.*;
   }
 
   @Test public void testToFromFromNotNull() {
-    azzert.that(range.to(2).from(-19).from(), is(box.box(-19)));
+    azzert.that(range.to(2).from(-19).from(), is(box(-19)));
   }
 
   @Test public void testFrom2InfiniteToIsNull() {
@@ -83,7 +84,7 @@ import org.junit.*;
     for (final Integer $ : range.numbers) {
       if (c < 22)
         break;
-      azzert.that(box.box(c), is($));
+      azzert.that(box(c), is($));
       ++c;
     }
   }

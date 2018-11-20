@@ -3,6 +3,7 @@ package fluent.ly;
 import java.util.*;
 
 import org.junit.*;
+import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class allTest {
   @Test public void testNotNullIterableOfT1() {
@@ -11,15 +12,15 @@ import org.junit.*;
 
   @Test public void testNotNullIterableOfT2() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(1));
+    l.add(box(1));
     l.add(null);
     assert !all.notNull(l);
   }
 
   @Test public void testNotNullIterableOfT3() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(1));
-    l.add(box.box(2));
+    l.add(box(1));
+    l.add(box(2));
     assert all.notNull(l);
   }
 
@@ -28,10 +29,10 @@ import org.junit.*;
   }
 
   @Test @SuppressWarnings("null") public void testNotNullTArray2() {
-    assert !all.notNull(new Integer[] { box.box(1), null });
+    assert !all.notNull(new Integer[] { box(1), null });
   }
 
   @Test @SuppressWarnings("null") public void testNotNullTArray3() {
-    assert all.notNull(new Integer[] { box.box(1), box.box(2) });
+    assert all.notNull(new Integer[] { box(1), box(2) });
   }
 }

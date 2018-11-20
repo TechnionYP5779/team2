@@ -9,6 +9,7 @@ import org.junit.*;
 
 import an.*;
 import static il.org.spartan.Utils.*;
+import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class theTest {
   @Test public void testIndex1() {
@@ -41,33 +42,33 @@ import static il.org.spartan.Utils.*;
 
   @Test public void testPenultimateOf2() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(5));
+    l.add(box(5));
     azzert.isNull(the.penultimateOf(l));
   }
 
   @Test @SuppressWarnings("null") public void testPenultimateOf3() {
     final List<@Nullable Integer> l = new ArrayList<>();
-    l.add(box.box(5));
-    l.add(box.box(4));
-    azzert.that(cantBeNull(the.penultimateOf(l)), is(box.box(5)));
+    l.add(box(5));
+    l.add(box(4));
+    azzert.that(cantBeNull(the.penultimateOf(l)), is(box(5)));
   }
 
   @Test public void testPrevious1() {
-    azzert.isNull(the.previous(box.box(3), null));
+    azzert.isNull(the.previous(box(3), null));
   }
 
   @Test public void testPrevious2() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(5));
-    azzert.isNull(the.previous(box.box(3), l));
+    l.add(box(5));
+    azzert.isNull(the.previous(box(3), l));
   }
 
   @Test @SuppressWarnings("null") public void testPrevious3() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(5));
-    l.add(box.box(3));
-    l.add(box.box(4));
-    azzert.that(cantBeNull(the.previous(box.box(4), l)), is(box.box(3)));
+    l.add(box(5));
+    l.add(box(3));
+    l.add(box(4));
+    azzert.that(cantBeNull(the.previous(box(4), l)), is(box(3)));
   }
 
   @Test public void testTailOfListOfT() {
@@ -80,16 +81,16 @@ import static il.org.spartan.Utils.*;
 
   @Test public void testRestTIterableOfT1() {
     final List<Integer> l = new ArrayList<>();
-    final Integer i = box.box(2);
+    final Integer i = box(2);
     l.add(i);
-    l.add(box.box(4));
-    azzert.that(the.rest(i, l).get(0), is(box.box(4)));
+    l.add(box(4));
+    azzert.that(the.rest(i, l).get(0), is(box(4)));
   }
 
   @Test public void testRestTIterableOfT2() {
     final List<Integer> l = new ArrayList<>();
-    final Integer i = box.box(2);
-    l.add(box.box(4));
+    final Integer i = box(2);
+    l.add(box(4));
     azzert.assertZero(the.rest(i, l).size());
   }
 
@@ -103,9 +104,9 @@ import static il.org.spartan.Utils.*;
 
   @Test @SuppressWarnings("null") public void testHeadOf3() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(5));
-    l.add(box.box(4));
-    azzert.that(cantBeNull(the.headOf(l)), is(box.box(5)));
+    l.add(box(5));
+    l.add(box(4));
+    azzert.that(cantBeNull(the.headOf(l)), is(box(5)));
   }
 
   @Test public void testCharacterOf() {
@@ -126,9 +127,9 @@ import static il.org.spartan.Utils.*;
 
   @Test @SuppressWarnings("null") public void testLastOfListOfT3() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(5));
-    l.add(box.box(4));
-    azzert.that(cantBeNull(the.lastOf(l)), is(box.box(4)));
+    l.add(box(5));
+    l.add(box(4));
+    azzert.that(cantBeNull(the.lastOf(l)), is(box(4)));
   }
 
   @Test public void testLastOfString() {
@@ -141,10 +142,10 @@ import static il.org.spartan.Utils.*;
 
   @Test public void testLastOfIterableOfT() {
     final List<Integer> t = new ArrayList<>();
-    t.add(box.box(1));
-    t.add(box.box(1));
+    t.add(box(1));
+    t.add(box(1));
     for (final Integer ¢ : the.lastOf((Iterable<Integer>) new ArrayList<>(t)))
-      azzert.that(¢, is(box.box(1)));
+      azzert.that(¢, is(box(1)));
   }
 
   @Test public void testOnlyOneOf1() {
@@ -157,8 +158,8 @@ import static il.org.spartan.Utils.*;
 
   @Test @SuppressWarnings("null") public void testOnlyOneOf3() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(1));
-    azzert.that(cantBeNull(the.onlyOneOf(l)), is(box.box(1)));
+    l.add(box(1));
+    azzert.that(cantBeNull(the.onlyOneOf(l)), is(box(1)));
   }
 
   @Test public void testSecondOf1() {
@@ -171,9 +172,9 @@ import static il.org.spartan.Utils.*;
 
   @Test @SuppressWarnings("null") public void testSecondOf3() {
     final List<Integer> l = new ArrayList<>();
-    l.add(box.box(1));
-    l.add(box.box(2));
-    azzert.that(cantBeNull(the.secondOf(l)), is(box.box(2)));
+    l.add(box(1));
+    l.add(box(2));
+    azzert.that(cantBeNull(the.secondOf(l)), is(box(2)));
   }
 
   @Test public void testMax() {
@@ -185,7 +186,7 @@ import static il.org.spartan.Utils.*;
   }
 
   @Test @SuppressWarnings("null") public void testLastOfTArray() {
-    azzert.that(the.lastOf(new Integer[] { box.box(1) }), is(box.box(1)));
+    azzert.that(the.lastOf(new Integer[] { box(1) }), is(box(1)));
   }
 
   @Test public void testSqr() {
@@ -193,6 +194,6 @@ import static il.org.spartan.Utils.*;
   }
 
   @Test public void testTailOfTArray() {
-    azzert.that(the.tailOf(new Integer[] { box.box(1), box.box(2) })[0], is(box.box(2)));
+    azzert.that(the.tailOf(new Integer[] { box(1), box(2) })[0], is(box(2)));
   }
 }
