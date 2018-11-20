@@ -3,24 +3,66 @@ package fluent.ly;
 import java.util.*;
 import java.util.function.*;
 
+import javax.sound.midi.*;
+import javax.swing.plaf.basic.BasicTreeUI.*;
+
 public class BigInteger {
   private List<String> number;
   private static final int chunkSize = 5;
   private Boolean negative = false;
+  private String stringNumber;
 
   public BigInteger(final String string) {
     String absString = absoluteVal(string);
+    stringNumber = absString;
     number = breakStringToList(absString);
-    negative = Integer.parseInt(absString) < 0 ? true : false;
+    negative = isStringNegative(string) ? true : false;
   }
   
   public Boolean isNegative() {
     return negative;
   }
   
+  public Boolean isZero() {
+    return number.size() == 1 && number.get(0).equals("0");
+  }
+  
+  private static Boolean isZero(List<String> $) {
+    return $.size() == 1 && $.get(0).equals("0");
+  }
+  
+  private static Boolean isFirstBiggerThanSecond(String number1, String number2) {
+    if(number1.length() != number2.length()) {
+      return number1.length() > number2.length();
+    }
+    return (number1.compareTo(number2) < 0);
+    
+  }
+  
+  public Boolean isBiggerThan(BigInteger bigInteger) {
+    String firstStr = stringNumber;
+    String secondStr = bigInteger.getStringNumber();
+    if(firstStr.length() != secondStr.length()) {
+      if(firstStr.length() > secondStr.length()) {
+        return !this.negative;
+      }
+      return !bigInteger.isNegative();
+    }
+    if(firstStr.compareTo(secondStr) < 0) {
+      return !this.negative;
+    }
+    return !bigInteger.isNegative();
+  }
+  
+  private String getStringNumber() {
+    return stringNumber;
+  }
+  
   private static Boolean isStringNegative(String string){
     return string.charAt(0) == '-';
   }
+  
+  
 
   private static String absoluteVal(String string) {
     if(isStringNegative(string)) {
@@ -41,36 +83,45 @@ public class BigInteger {
   @Override public boolean equals(final Object ¢) {
     return ¢ == this || ¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number) && (negative == ((BigInteger) ¢).negative);
   }
+  
+  public static Boolean isFinalAnswerNegativeAdd(Boolean firstSignIsNagative, Boolean secondSignIsNegative, Boolean isZero) {
+    if(isZero) {
+      return false;
+    }
+    if(firstSignIsNagative == secondSignIsNegative) {
+      return firstSignIsNagative;
+    }
+    return firstSignIsNagative;
+  }
 
   public BigInteger add(final BigInteger bigInteger) {
     final List<String> $ = new ArrayList<>();
     int carry = 0;
-    final int len = Math.min(number.size(), bigInteger.getValueAsStringList().size());
     boolean isAdd = (negative == bigInteger.isNegative());
-    final List<String> tmp1 = new ArrayList<>(number), tmp2 = new ArrayList<>(bigInteger.getValueAsStringList());
-    Collections.reverse(tmp1);
-    Collections.reverse(tmp2);
-    for (int i = 0; i < len; ++i) {
-      final StringWithCarry sc = addOrRemoveStringWithCarry(tmp1.get(i), tmp2.get(i), carry, isAdd);
+    final List<String> biggerTmp = new ArrayList<>(isFirstBiggerThanSecond(this.stringNumber, bigInteger.getStringNumber()) ? this.number : bigInteger.getValueAsStringList());
+    final List<String> smallerTmp = new ArrayList<>(isFirstBiggerThanSecond(this.stringNumber, bigInteger.getStringNumber()) ? bigInteger.getValueAsStringList() : this.number);
+    
+    Collections.reverse(biggerTmp);
+    Collections.reverse(smallerTmp);
+    
+    for (int i = 0; i < smallerTmp.size(); ++i) {
+      final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), smallerTmp.get(i), carry, isAdd);
       carry = sc.carry;
       $.add(sc.string);
     }
-    if (tmp1.size() > len)
-      for (int i = len; i < tmp1.size(); ++i) {
-        final StringWithCarry sc = addOrRemoveStringWithCarry(tmp1.get(i), "0", carry, isAdd);
-        carry = sc.carry;
-        $.add(sc.string);
-      }
-    else
-      for (int i = len; i < tmp2.size(); ++i) {
-        final StringWithCarry sc = addOrRemoveStringWithCarry(tmp2.get(i), "0", carry, isAdd);
-        carry = sc.carry;
-        $.add(sc.string);
-      }
-    if (carry != 0)
+    
+    for (int i = smallerTmp.size(); i < biggerTmp.size(); ++i) {
+      final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), "0", carry, isAdd);
+      carry = sc.carry;
+      $.add(sc.string);
+    }
+    
+     
+    if (carry != 0) {
       $.add(String.valueOf(carry));
+    }
     Collections.reverse($);
-    return new BigInteger($, carry == 1);
+    return new BigInteger($, isFinalAnswerNegativeAdd(this.isNegative(), bigInteger.isNegative(),isZero($)));
   }
   
   private static StringWithCarry addOrRemoveStringWithCarry(final String s1, final String s2, final int carry, Boolean isAdd) {
@@ -128,6 +179,13 @@ public class BigInteger {
 
   public BigInteger negate() {
     
-    return null;
+    return new BigInteger(this.number, this.isZero()? false : !this.isNegative());
+  }
+  
+  public void print() {
+    System.out.println(negative? "-" : "+");
+    for(String s: number) {
+      System.out.println(s);
+    }
   }
 }

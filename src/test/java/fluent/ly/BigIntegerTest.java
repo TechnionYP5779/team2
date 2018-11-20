@@ -23,34 +23,37 @@ import org.junit.*;
     azzert.assertEquals(new BigInteger("312345").add(new BigInteger("90000")), new BigInteger("402345"));
   }
 
-  @Ignore @Test public void testNegativeAdd() {
-    azzert.assertEquals(new BigInteger("100").add(new BigInteger("-10")), new BigInteger("90"));
+  @Test public void testNegativeAdd() {
+    BigInteger i = new BigInteger("100").add(new BigInteger("-10"));
+    azzert.assertEquals(i, new BigInteger("90"));
   }
 
-  @Ignore @Test public void testNegativeAdd2() {
-    azzert.assertEquals(new BigInteger("-1234").add(new BigInteger("1234")), new BigInteger("0"));
+  @Test public void testNegativeAdd2() {
+    BigInteger i = new BigInteger("-1234").add(new BigInteger("1234"));
+    azzert.assertEquals(i, new BigInteger("0"));
   }
 
-  @Ignore @Test public void testNegativeAdd3() {
-    azzert.assertEquals(new BigInteger("-1234").add(new BigInteger("1")), new BigInteger("-1233"));
+  @Test public void testNegativeAdd3() {
+    BigInteger i = new BigInteger("-1234").add(new BigInteger("1"));
+    azzert.assertEquals(i, new BigInteger("-1233"));
   }
 
-  @Ignore @Test public void testAddBigNumber() {
+  @Test public void testAddBigNumber() {
     azzert.assertEquals(new BigInteger("1234567890123456789012345678901234567890").add(new BigInteger("5")),
         new BigInteger("1234567890123456789012345678901234567895"));
   }
 
-  @Ignore @Test public void testAddBigNumber2() {
+  @Test public void testAddBigNumber2() {
     azzert.assertEquals(new BigInteger("15").add(new BigInteger("1234567890123456789012345678901234567890")),
         new BigInteger("1234567890123456789012345678901234567905"));
   }
 
-  @Ignore @Test public void testAddBigNumber3() {
+  @Test public void testAddBigNumber3() {
     azzert.assertEquals(new BigInteger("9000000000000000000000000000000000000000").add(new BigInteger("1234567890123456789012345678901234567890")),
         new BigInteger("10234567890123456789012345678901234567890"));
   }
   
-  @Ignore @Test public void testNegative() {
+  @Test public void testNegative() {
     azzert.assertEquals(new BigInteger("10").negate(), new BigInteger("-10"));
   }
   
