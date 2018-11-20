@@ -51,4 +51,18 @@ import fluent.ly.*;
   @Test public void countThree() {
     azzert.that(3, is(iterables.count(iterable.over("One", "Two", "Three"))));
   }
+  
+  public static class Alternate{
+   
+   @Test public void alternateTest1() {
+     azzert.isNull(iterables.alternate(null, null));
+   }
+   
+   /*
+   @Test public void alternateTest2() {
+     Iterable<Integer> it1 = iterable.over(ts);
+     azzert.isNull(iterables.alternate(null, null));
+   }
+   */
+  }
 }
