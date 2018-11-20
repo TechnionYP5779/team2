@@ -1,14 +1,12 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package il.org.spartan.etc;
 
-import static fluent.ly.azzert.*;
+
 
 import java.util.function.*;
 
 import org.jetbrains.annotations.*;
-import org.junit.*;
 
-import fluent.ly.*;
 
 /** An empty <code><b>enum</b></code> with a variety of <code>public
  * static</code> utility functions of reasonably wide use.
@@ -170,60 +168,6 @@ public interface idiomatic {
     /** see @see java.util.function.Supplier#get() (auto-generated) */
     @Override public T get() {
       return inner;
-    }
-  }
-
-  @SuppressWarnings("static-method") class TEST {
-    @Test public void use0() {
-      azzert.assertNotEquals(new Storer<>(this), null);
-    }
-
-    @Test public void use8() {
-      azzert.isNull(unless(true).eval(() -> new Object()));
-    }
-
-    @Test public void use9() {
-      assert unless(false).eval(() -> new Object()) != null;
-    }
-
-    @Test public void use1() {
-      assert new Storer<>(this) != null;
-      new Storer<>(this).when(true);
-    }
-
-    @Test public void use10() {
-      assert when(true).eval(() -> new Object()) != null;
-    }
-
-    @Test public void use11() {
-      azzert.isNull(when(false).eval(() -> new Object()));
-    }
-
-    @Test public void use2() {
-      assert take(this) != null;
-      azzert.isNull(take(this).when(false));
-    }
-
-    @Test public void use3() {
-      azzert.that(take(this).when(true), is(this));
-    }
-
-    @Test public void use4() {
-      azzert.isNull(take(this).when(false));
-    }
-
-    @Test public void use5() {
-      azzert.that(take(this).unless(false), is(this));
-    }
-
-    @Test public void use6() {
-      azzert.isNull(take(this).unless(true));
-    }
-
-    @Test public void use7() {
-      azzert.isNull(take(this).unless(true));
-      azzert.isNull(take(null).unless(true));
-      azzert.isNull(take(null).unless(false));
     }
   }
 
