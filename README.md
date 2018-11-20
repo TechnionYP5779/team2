@@ -38,10 +38,10 @@ The refactorings made by this plug-in are based on the concept of Spartan Progra
 
 <h2>Contributers</h2>
 <ul>
-  <li>Jessica Shelly Milgram</li>
-  <li>Dor Kabareti</li>
-  <li>Omer Glick</li>
-  <li>Guy Suday</li>
-  <li>Nerya Cohen</li>
-  <li>Tal Porat</li>
-  <li>Addir Abasker</li>
+  <li><a href="https://github.com/jsmm0202">Jessica Shelly Milgram</a></li>
+  <li><a href="https://github.com/DorKab">Dor Kabareti</a></li>
+  <li><a href="https://github.com/OmerGlick">Omer Glick</a></li>
+  <li><a href="https://github.com/GuySuday">Guy Suday</a></li>
+  <li><a href="https://github.com/nerya50">Nerya Cohen</a></li>
+  <li><a href="https://github.com/talporat">Tal Porat</a></li>
+  <li><a href="https://github.com/addirabasker">Addir Abasker</a></li>
