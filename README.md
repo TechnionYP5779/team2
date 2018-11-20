@@ -1,6 +1,7 @@
 ## Development Status
 [![Build Status](https://travis-ci.org/TechnionYP5779/team2.svg?branch=master)](https://travis-ci.org/TechnionYP5779/team2)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/TechnionYP5779/team2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TechnionYP5779/team2/alerts/)
+[![GitHub issues](https://img.shields.io/github/issues/TechnionYP5779/team2.svg)](https://github.com/TechnionYP5779/team5/issues)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=2592000)]()
 [![codecov.io](http://codecov.io/github/TechnionYP5779/team2/coverage.svg?branch=master)](http://codecov.io/github/TechnionYP5779/team2?branch=master)
 

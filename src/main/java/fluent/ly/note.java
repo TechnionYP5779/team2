@@ -31,7 +31,6 @@ import il.org.spartan.utils.*;
 
   @NotNull String FILE_SEPARATOR = "\n**\n";
   @NotNull String FILE_SUB_SEPARATOR = "\n********\n";
-  /** @formatter:off */
   Stack<Level> levels = new Stack<>();
 
   Logger logger = anonymous.ly(()->{

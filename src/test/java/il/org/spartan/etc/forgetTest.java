@@ -20,11 +20,11 @@ import fluent.ly.*;
   }
 
   @Test public void testForgetItDouble() {
-    forget.it(box(1.19));
+    forget.it(1.19);
   }
 
   @Test public void testForgetItLong() {
-    forget.it(box(Long.MAX_VALUE / 2));
+    forget.it(Long.MAX_VALUE / 2);
   }
 
   @Test public void testForgetItObject() {
@@ -32,4 +32,10 @@ import fluent.ly.*;
     forget.it(true);
     forget.it(box(3));
   }
+  
+  @Test public void testUnused() {
+    forget.______unused(4234234l,new Object());
+    forget.unused(new Object());
+  }
+  
 }
