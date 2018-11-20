@@ -60,7 +60,7 @@ import fluent.ly.*;
   }
 
   @Test public void testSplitString() {
-    azzert.that(CSV.split("").length, is(0));
+    azzert.zero(CSV.split("").length);
   }
 
   @Test public void testSplitEnum() {

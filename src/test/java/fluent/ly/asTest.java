@@ -22,7 +22,7 @@ import org.junit.*;
  * @since 2014-05-31 */
 @SuppressWarnings("static-method") public class asTest {
   @Test public void asBitOfFalse() {
-    azzert.that(as.bit(false), is(0));
+    azzert.zero(as.bit(false));
   }
 
   @Test public void asBitOfTrue() {
@@ -328,7 +328,7 @@ import org.junit.*;
 
   @Test public void stringsTest3() {
     final ArrayList<Integer> al = new ArrayList<>();
-    azzert.that(as.strings(al).length, is(0));
+    azzert.zero(as.strings(al).length);
     for (int ¢ = 0; ¢ < 10; ++¢)
       al.add(box(¢ + 1));
     final String[] intarr = as.strings(al);

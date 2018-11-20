@@ -126,10 +126,10 @@ import il.org.spartan.etc.*;
   }
 
   @Test public void compareTest() {
-    azzert.that(compare(false, false), is(0));
+    azzert.zero(compare(false, false));
     azzert.that(compare(false, true), is(-1));
     azzert.that(compare(true, false), is(1));
-    azzert.that(compare(true, true), is(0));
+    azzert.zero(compare(true, true));
   }
 
   @Test public void compressSpacesTest() {

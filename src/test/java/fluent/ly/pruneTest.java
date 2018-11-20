@@ -150,6 +150,6 @@ import org.junit.*;
   }
 
   @Test public void testShrink() {
-    azzert.that(prune.shrink(new Object[10]).length, is(0));
+    azzert.zero(prune.shrink(new Object[10]).length);
   }
 }

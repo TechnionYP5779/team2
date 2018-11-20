@@ -59,7 +59,7 @@ import il.org.spartan.utils.PropositionPrettyPrinter.*;
     azzert.that(listener.upCalled, is(1));
     azzert.that(listener.nextCalled, is(2));
     azzert.that(listener.inTrueCalled, is(3));
-    azzert.that(listener.inFalseCalled, is(0));
+    azzert.zero(listener.inFalseCalled);
   }
 
   @Test public void testTopDown2() {
@@ -67,18 +67,18 @@ import il.org.spartan.utils.PropositionPrettyPrinter.*;
     propositionTreeTraversal.topDown(Proposition.that(() -> true));
     azzert.that(listener.downCalled, is(1));
     azzert.that(listener.upCalled, is(1));
-    azzert.that(listener.nextCalled, is(0));
+    azzert.zero(listener.nextCalled);
     azzert.that(listener.inTrueCalled, is(1));
-    azzert.that(listener.inFalseCalled, is(0));
+    azzert.zero(listener.inFalseCalled);
   }
 
   @Test public void testTopDown3() {
     new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     azzert.that(listener.downCalled, is(2));
     azzert.that(listener.upCalled, is(2));
-    azzert.that(listener.nextCalled, is(0));
+    azzert.zero(listener.nextCalled);
     azzert.that(listener.inTrueCalled, is(2));
-    azzert.that(listener.inFalseCalled, is(0));
+    azzert.zero(listener.inFalseCalled);
   }
 
   @Test public void testNumberLess() {
