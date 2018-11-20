@@ -42,19 +42,15 @@ public class BigInteger {
     String secondStr = $.getStringNumber();
     if (firstStr.length() != secondStr.length()) {
       if (firstStr.length() > secondStr.length()) {
-        System.out.println("1");
         return box(!unbox(cantBeNull(this.negative)));
       }
-      System.out.println("2");
       return $.isNegative();
     }
     if (firstStr.compareTo(secondStr) > 0) {
-      System.out.println("3");
       return box(!unbox(cantBeNull(this.negative)));
     }
     if (firstStr.compareTo(secondStr) == 0)
       return box(!unbox(cantBeNull(this.negative)) && unbox(cantBeNull($.isNegative())));
-    System.out.println("4");
     return box(!unbox(cantBeNull($.isNegative())));
   }
   
@@ -72,9 +68,10 @@ public class BigInteger {
     return !unbox(cantBeNull(isStringNegative(¢))) ? ¢ : ¢.substring(1);
   }
 
-  public BigInteger(final List<String> stringList,Boolean isNegative) {
+  public BigInteger( final List<String> stringList,Boolean isNegative) {
     negative = isNegative;
     number = stringList;
+    this.stringNumber = stringList.stream().reduce("", (str1, str2)->str1.concat(str2));
   }
 
   @Override public int hashCode() {
@@ -175,5 +172,9 @@ public class BigInteger {
     System.out.println(unbox(cantBeNull(negative))? "-" : "+");
     for(String ¢: number)
       System.out.println(¢);
+  }
+
+  public BigInteger subtract(BigInteger bigInteger) {
+    return this.add(bigInteger.negate());
   }
 }
