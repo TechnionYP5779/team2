@@ -1,6 +1,7 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
+import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;

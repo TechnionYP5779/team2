@@ -1,9 +1,10 @@
 package il.org.spartan.etc;
 
+import static il.org.spartan.Utils.*;
+
 import org.junit.*;
 
 import fluent.ly.*;
-import static il.org.spartan.Utils.*;
 
 @SuppressWarnings("static-method") public class maybeTest {
   @Test public void usecase0() {

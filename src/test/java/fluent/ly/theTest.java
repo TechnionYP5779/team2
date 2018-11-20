@@ -1,6 +1,9 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
+
 import static fluent.ly.azzert.*;
+import static fluent.ly.box.*;
 
 import java.util.*;
 
@@ -8,8 +11,6 @@ import org.eclipse.jdt.annotation.*;
 import org.junit.*;
 
 import an.*;
-import static il.org.spartan.Utils.*;
-import static fluent.ly.box.*;
 
 @SuppressWarnings("static-method") public class theTest {
   @Test public void testIndex1() {

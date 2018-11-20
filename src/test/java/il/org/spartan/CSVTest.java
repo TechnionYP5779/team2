@@ -1,11 +1,13 @@
 package il.org.spartan;
 
+import static il.org.spartan.Utils.*;
+
 import static fluent.ly.azzert.*;
 
 import java.io.*;
 
 import org.junit.*;
-import static il.org.spartan.Utils.*;
+
 import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class CSVTest {
