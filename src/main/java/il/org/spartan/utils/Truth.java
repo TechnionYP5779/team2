@@ -5,7 +5,6 @@ import java.util.function.*;
 import org.jetbrains.annotations.*;
 
 import fluent.ly.*;
-import il.org.spartan.etc.*;
 
 public enum Truth {
   T("true"), //
