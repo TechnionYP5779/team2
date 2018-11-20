@@ -1,7 +1,6 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
-import static org.junit.Assert.*;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
@@ -9,7 +8,6 @@ import static fluent.ly.unbox.*;
 
 import java.util.*;
 
-import org.jetbrains.annotations.*;
 import org.junit.*;
 
 // No values in an 'enum' which serves as a name space for a collection of
@@ -21,40 +19,6 @@ import org.junit.*;
  * @author Yossi Gil
  * @since 2014-05-31 */
 @SuppressWarnings("static-method") public class asTest {
-  @Test public void asBitOfFalse() {
-    azzert.zero(as.bit(false));
-  }
-
-  @Test public void asBitOfTrue() {
-    azzert.that(as.bit(true), is(1));
-  }
-
-  @Test public void asIntArraySimple() {
-    final int @NotNull [] is = as.intArray(100, 200, 200, 12, 13, 0);
-    assertArrayEquals(is, as.intArray(as.ingeterList(is)));
-  }
-
-  @Test public void asListSimple() {
-    // direct call `as.list(12, 13, 14)` kills Travis --or
-    final @NotNull List<Integer> is = cantBeNull(as.list(new int @NotNull [] { 12, 13, 14 }));
-    azzert.that(is.get(0), is(fluent.ly.box.it(12)));
-    azzert.that(is.get(1), is(fluent.ly.box.it(13)));
-    azzert.that(is.get(2), is(fluent.ly.box.it(14)));
-    azzert.that(is.size(), is(3));
-  }
-
-  @Test public void stringOfNull() {
-    azzert.that(as.string(null), is("null"));
-  }
-
-  @Test public void stringWhenToStringReturnsNull() {
-    azzert.that(as.string(new Object() {
-      @Override @Nullable public String toString() {
-        return null;
-      }
-    }), is("null"));
-  }
-
   @Test public void asIterableTest1() {
     final int[] res = new int[] { 1, 2, 3, 2, 4, 6, 3, 6, 9, 4, 8, 12, 5, 10, 15 };
     int i = 0;
@@ -136,7 +100,7 @@ import org.junit.*;
     final Iterator<Integer> int_iter = as.iterator(box(new int[] { 1, 2, 3, 4, 5 }));
     for (int ¢ = 1; ¢ < 6; ++¢) {
       azzert.that(int_iter.next(), is(¢));
-      azzert.that(int_iter.hasNext(), is(¢ != 5));
+      assert ¢ != 5 ? int_iter.hasNext() : !int_iter.hasNext();
     }
   }
 
@@ -146,7 +110,7 @@ import org.junit.*;
     for (int ¢ = 1; ¢ < 5; ++¢) {
       azzert.that(bool_iter.next(), is(b));
       b = !b;
-      azzert.that(bool_iter.hasNext(), is(¢ != 4));
+      assert ¢ != 4 ? bool_iter.hasNext() : !bool_iter.hasNext();
     }
   }
 
@@ -328,7 +292,7 @@ import org.junit.*;
 
   @Test public void stringsTest3() {
     final ArrayList<Integer> al = new ArrayList<>();
-    azzert.zero(as.strings(al).length);
+    azzert.that(as.strings(al).length, is(0));
     for (int ¢ = 0; ¢ < 10; ++¢)
       al.add(box(¢ + 1));
     final String[] intarr = as.strings(al);
@@ -347,9 +311,13 @@ import org.junit.*;
     azzert.that(al1, is(Arrays.asList(new String[] { "abcd", "efg", "hijklmonp", "qrstuv", "wxyz", "+_-*/\n\t" })));
   }
 
-  @Test public void asIterableLambdaTest() {
+  @Test public void asIterableLambdaTest0() {
     final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
     assert iter.iterator().hasNext();
+  }
+
+  @Test public void asIterableLambdaTest1() {
+    final Iterable<Integer> iter = as.asIterableLambda(cantBeNull(box(new int[] { 1, 2, 3, 4, 5 })));
     azzert.that(iter.iterator().next(), is(1));
   }
 
