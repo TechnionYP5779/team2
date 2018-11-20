@@ -1,8 +1,8 @@
 package il.org.spartan.utils;
 
 import static il.org.spartan.Utils.*;
-
 import static fluent.ly.azzert.*;
+
 import static fluent.ly.box.*;
 import static fluent.ly.unbox.*;
 
@@ -261,11 +261,11 @@ import fluent.ly.*;
   }
 
   @Test public void valueOfTest0() {
-    azzert.assertEquals(Int.valueOf(0).get(), 0);
+    azzert.that(Int.valueOf(0).get(), is(0));
   }
 
   @Test public void valueOfTest1() {
-    Assert.assertEquals(Int.valueOf(0).inner(), box(0));
+    azzert.that(Int.valueOf(0).inner(), is(box(0)));
   }
 
   @Test public void valueOfTest2() {
@@ -273,7 +273,7 @@ import fluent.ly.*;
   }
 
   @Test public void valueOfTest3() {
-    Assert.assertEquals(new Int(Integer.MAX_VALUE).inner(), Int.valueOf(Integer.MAX_VALUE).inner());
+    azzert.that(new Int(Integer.MAX_VALUE).inner(), is(Int.valueOf(Integer.MAX_VALUE).inner()));
   }
 
   @Test public void valueOfTest4() {
@@ -281,7 +281,7 @@ import fluent.ly.*;
   }
 
   @Test public void valueOfTest5() {
-    Assert.assertEquals(new Int(Integer.MIN_VALUE).inner(), Int.valueOf(Integer.MIN_VALUE).inner());
+    azzert.that(new Int(Integer.MIN_VALUE).inner(), is(Int.valueOf(Integer.MIN_VALUE).inner()));
   }
 
   @Test public void toStringCheck() {
