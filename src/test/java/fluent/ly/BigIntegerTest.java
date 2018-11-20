@@ -1,70 +1,73 @@
 package fluent.ly;
 
+
 import static il.org.spartan.Utils.*;
 
 import static fluent.ly.unbox.*;
+import static fluent.ly.azzert.*;
 
 import org.junit.*;
 
 @SuppressWarnings("static-method") public class BigIntegerTest {
   @Test public void testCreateFromString() {
-    azzert.assertNotEquals(new BigInteger("123"), null);
+    azzert.notNull(new BigInteger("123"));
   }
 
   @Test public void testsEquals() {
-    Assert.assertEquals(new BigInteger("123"), new BigInteger("123"));
+    azzert.that(new BigInteger("123"), is(new BigInteger("123")));
   }
 
-  @Test public void testNotEquals() {
-    azzert.assertNotEquals(new BigInteger("123"), new BigInteger("100"));
+  @Test @SuppressWarnings("null") public void testNotEquals() {
+    BigInteger i = new BigInteger("100");
+    azzert.that(new BigInteger("123"), is(not(i)));
   }
 
   @Test public void testAdd() {
-    Assert.assertEquals(new BigInteger("123").add(new BigInteger("5")), new BigInteger("128"));
+    azzert.that(new BigInteger("123").add(new BigInteger("5")), is(new BigInteger("128")));
   }
 
   @Test public void testAdd2() {
-    Assert.assertEquals(new BigInteger("312345").add(new BigInteger("90000")), new BigInteger("402345"));
+    azzert.that(new BigInteger("312345").add(new BigInteger("90000")),is(new BigInteger("402345")));
   }
 
   @Test public void testNegativeAdd() {
-    Assert.assertEquals(new BigInteger("100").add(new BigInteger("-10")), new BigInteger("90"));
+    azzert.that(new BigInteger("100").add(new BigInteger("-10")), is(new BigInteger("90")));
   }
 
   @Test public void testNegativeAdd2() {
-    Assert.assertEquals(new BigInteger("-1234").add(new BigInteger("1234")), new BigInteger("0"));
+    azzert.that(new BigInteger("-1234").add(new BigInteger("1234")), is(new BigInteger("0")));
   }
 
   @Test public void testNegativeAdd3() {
-    Assert.assertEquals(new BigInteger("-1234").add(new BigInteger("1")), new BigInteger("-1233"));
+    azzert.that(new BigInteger("-1234").add(new BigInteger("1")), is(new BigInteger("-1233")));
   }
 
   @Test public void testAddBigNumber() {
-    Assert.assertEquals(new BigInteger("1234567890123456789012345678901234567890").add(new BigInteger("5")),
-        new BigInteger("1234567890123456789012345678901234567895"));
+    azzert.that(new BigInteger("1234567890123456789012345678901234567890").add(new BigInteger("5")),
+        is(new BigInteger("1234567890123456789012345678901234567895")));
   }
 
   @Test public void testAddBigNumber2() {
-    Assert.assertEquals(new BigInteger("15").add(new BigInteger("1234567890123456789012345678901234567890")),
-        new BigInteger("1234567890123456789012345678901234567905"));
+    azzert.that(new BigInteger("15").add(new BigInteger("1234567890123456789012345678901234567890")),
+        is(new BigInteger("1234567890123456789012345678901234567905")));
   }
 
   @Test public void testAddBigNumber3() {
-    Assert.assertEquals(new BigInteger("9000000000000000000000000000000000000000").add(new BigInteger("1234567890123456789012345678901234567890")),
-        new BigInteger("10234567890123456789012345678901234567890"));
+    azzert.that(new BigInteger("9000000000000000000000000000000000000000").add(new BigInteger("1234567890123456789012345678901234567890")),
+        is(new BigInteger("10234567890123456789012345678901234567890")));
+
   }
 
   @Test public void testNegative() {
-    Assert.assertEquals(new BigInteger("10").negate(), new BigInteger("-10"));
+    azzert.that(new BigInteger("10").negate(), is(new BigInteger("-10")));
   }
 
   @Test public void testNegative2() {
-    Assert.assertEquals(new BigInteger("1234567890123456789012345678901234567890").negate(),
-        new BigInteger("-1234567890123456789012345678901234567890"));
+    azzert.that(new BigInteger("1234567890123456789012345678901234567890").negate(), is(new BigInteger("-1234567890123456789012345678901234567890")));
   }
 
   @Test public void testNegative3() {
-    Assert.assertEquals(new BigInteger("175688854").negate(), new BigInteger("-175688854"));
+    azzert.that(new BigInteger("175688854").negate(), is(new BigInteger("-175688854")));
   }
 
   @Test public void testIsBiggerThan() {
@@ -102,5 +105,14 @@ import org.junit.*;
 
   @Test public void testIsBiggerThan9() {
     assert unbox(cantBeNull(new BigInteger("12345").isBiggerThan(new BigInteger("-12345"))));
+  }
+  
+  @Test public void testIsBiggerThan10() {
+    assert !unbox(cantBeNull(new BigInteger("-12343").isBiggerThan(new BigInteger("12345"))));
+  }
+  
+  @Test public void testSubstract1() {
+    BigInteger i = new BigInteger("100").subtract(new BigInteger("10"));
+    azzert.that(i, is(new BigInteger("90")));
   }
 }

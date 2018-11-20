@@ -40,22 +40,11 @@ public class BigInteger {
     cantBeNull($);
     String firstStr = stringNumber;
     String secondStr = $.getStringNumber();
-    if (firstStr.length() != secondStr.length()) {
-      if (firstStr.length() > secondStr.length()) {
-        System.out.println("1");
-        return box(!unbox(cantBeNull(this.negative)));
-      }
-      System.out.println("2");
-      return $.isNegative();
-    }
-    if (firstStr.compareTo(secondStr) > 0) {
-      System.out.println("3");
-      return box(!unbox(cantBeNull(this.negative)));
-    }
-    if (firstStr.compareTo(secondStr) == 0)
-      return box(!unbox(cantBeNull(this.negative)) && unbox(cantBeNull($.isNegative())));
-    System.out.println("4");
-    return box(!unbox(cantBeNull($.isNegative())));
+    return firstStr.length() == secondStr.length()
+        ? box(firstStr.compareTo(secondStr) > 0 ? !unbox(cantBeNull(this.negative))
+            : firstStr.compareTo(secondStr) != 0 ? unbox(cantBeNull($.isNegative()))
+                : !unbox(cantBeNull(this.negative)) && unbox(cantBeNull($.isNegative())))
+        : firstStr.length() > secondStr.length() ? box(!unbox(cantBeNull(this.negative))) : $.isNegative();
   }
   
   private String getStringNumber() {
@@ -72,9 +61,10 @@ public class BigInteger {
     return !unbox(cantBeNull(isStringNegative(¢))) ? ¢ : ¢.substring(1);
   }
 
-  public BigInteger(final List<String> stringList,Boolean isNegative) {
+  public BigInteger( final List<String> stringList,Boolean isNegative) {
     negative = isNegative;
     number = stringList;
+    this.stringNumber = stringList.stream().reduce("", (str1, str2)->str1.concat(str2));
   }
 
   @Override public int hashCode() {
@@ -138,10 +128,8 @@ public class BigInteger {
 
   private static StringWithCarry removeStringWithCarry(final String s1, final String s2, final int carry) {
     String $ = removeStringsSimple(s1, s2, carry);
-    if (!unbox(cantBeNull(isStringNegative($))))
-      return new StringWithCarry($, 0);
-    $ = $.substring(1);
-    return new StringWithCarry($, 1);
+    return new StringWithCarry($, 0);
+   
   }
 
   private List<String> getValueAsStringList() {
@@ -170,10 +158,8 @@ public class BigInteger {
     
     return new BigInteger(this.number, box(!unbox(cantBeNull(this.isZero())) && !unbox(cantBeNull(this.isNegative()))));
   }
-  
-  public void print() {
-    System.out.println(unbox(cantBeNull(negative))? "-" : "+");
-    for(String ¢: number)
-      System.out.println(¢);
+
+  public BigInteger subtract(BigInteger ¢) {
+    return this.add(¢.negate());
   }
 }
