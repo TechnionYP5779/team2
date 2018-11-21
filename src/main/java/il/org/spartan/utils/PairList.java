@@ -4,6 +4,7 @@ import java.util.*;
 
 import static il.org.spartan.Utils.*;
 import static fluent.ly.unbox.*;
+
 public class PairList {
   List<SortableDoublePair> list;
 
