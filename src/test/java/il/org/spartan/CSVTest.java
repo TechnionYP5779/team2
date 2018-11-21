@@ -11,9 +11,26 @@ import org.junit.*;
 import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class CSVTest {
+  private static File f;
+  @BeforeClass public static void setUp(){
+    f = new File("src/test/resources/CSV_input.csv");
+    try (PrintWriter pw = new PrintWriter(new FileWriter(f))) {
+      pw.print("A,1,a\nB,2,b");
+    }
+    catch (IOException ¢) {
+      ¢.printStackTrace();
+      assert false;
+    }
+  }
+  
+  @AfterClass public static void cleanUp(){
+    f.delete();
+  }
   enum Direction {
     UP, RIGHT, DOWN, LEFT;
   }
+
+
 
   @Test public void testCombineClassOfQArray() {
     azzert.that(CSV.combine(new Class<?>[] { Integer.class, String.class, Double.class, null }),
@@ -34,7 +51,6 @@ import fluent.ly.*;
   }
 
   @Test public void testLoadFile() {
-    final File f = new File("src/test/resources/CSV_input.csv");
     try {
       final String[][] data = CSV.load(f);
       azzert.that(data[0][0], is("A"));
@@ -50,7 +66,6 @@ import fluent.ly.*;
   }
 
   @Test @SuppressWarnings("null") public void testSave() {
-    final File f = new File("src/test/resources/CSV_input.csv");
     try {
       CSV.save(f, cantBeNull(CSV.load(f)));
     } catch (final IOException ¢) {
@@ -60,7 +75,7 @@ import fluent.ly.*;
   }
 
   @Test public void testSplitString() {
-    azzert.that(CSV.split("").length, is(0));
+    azzert.zero(CSV.split("").length);
   }
 
   @Test public void testSplitEnum() {
