@@ -59,7 +59,7 @@ import fluent.ly.*;
 
   @Test public void testWriteToFile() {
     try {
-      String path = "src/test/resources/my_file.txt";
+      String path = "./my_file.txt";
       File f = new File(path);
       f.createNewFile();
       FileUtils.writeToFile(path, "Text");

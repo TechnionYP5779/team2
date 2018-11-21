@@ -13,7 +13,7 @@ import fluent.ly.*;
 @SuppressWarnings("static-method") public class CSVTest {
   private static File f;
   @BeforeClass public static void setUp(){
-    f = new File("src/test/resources/CSV_input.csv");
+    f = new File("./CSV_input.csv");
     try (PrintWriter pw = new PrintWriter(new FileWriter(f))) {
       pw.print("A,1,a\nB,2,b");
     }
