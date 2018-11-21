@@ -46,7 +46,7 @@ The refactorings made by this plug-in are based on the concept of Spartan Progra
   <li><a href="https://github.com/nerya50">Nerya Cohen</a></li>
   <li><a href="https://github.com/talporat">Tal Porat</a></li>
   <li><a href="https://github.com/addirabasker">Addir Abasker</a></li>
-
-## Acknowledgments
+</ul>
+<h2>Acknowledgments</h2>
 
 * **Prof. Yossi Gil**
