@@ -4,6 +4,9 @@ import org.junit.*;
 
 import static fluent.ly.note.*;
 
+import java.io.*;
+import java.util.logging.*;
+
 
 @SuppressWarnings("static-method")
 public class noteTest {
