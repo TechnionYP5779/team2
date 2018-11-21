@@ -7,7 +7,6 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-
 /** A bunch of string functions.
  * @author Yossi Gil */
 public enum string {
