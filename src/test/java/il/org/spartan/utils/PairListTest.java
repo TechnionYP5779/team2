@@ -24,6 +24,18 @@ import fluent.ly.*;
     azzert.that(pl.at(2).second, is(2.0));
     azzert.that(pl.at(3).second, is(4.0));
   }
+  
+  @Test public void testAt2() {
+    final PairList pl = new PairList();
+    pl.record(0.0, 5.0);
+    pl.record(0.0, 1.0);
+    pl.record(0.0, 3.0);
+    pl.record(0.0, 4.0);
+    azzert.that(pl.at(0).second, is(5.0));
+    azzert.that(pl.at(1).second, is(1.0));
+    azzert.that(pl.at(2).second, is(3.0));
+    azzert.that(pl.at(3).second, is(4.0));
+  }
 
   @Test public void testSort() {
     final PairList pl = new PairList();
@@ -36,6 +48,19 @@ import fluent.ly.*;
     azzert.that(pl.at(1).second, is(2.0));
     azzert.that(pl.at(2).second, is(3.0));
     azzert.that(pl.at(3).second, is(4.0));
+  }
+  
+  @Test public void testSort2() {
+    final PairList pl = new PairList();
+    pl.record(0.0, 5.0);
+    pl.record(0.0, 1.0);
+    pl.record(0.0, 3.0);
+    pl.record(0.0, 4.0);
+    pl.sort();
+    azzert.that(pl.at(0).second, is(1.0));
+    azzert.that(pl.at(1).second, is(3.0));
+    azzert.that(pl.at(2).second, is(4.0));
+    azzert.that(pl.at(3).second, is(5.0));
   }
 
   @Test public void testIteratorSort() {
