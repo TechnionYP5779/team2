@@ -92,5 +92,4 @@ public class outTest1 {
     out.out("objArr", objects);
     azzert.that(outContent + "", is("Total of 3 objArr:\n\tword\n\t5\n\t3.14\n"));
   }
-  
 }

@@ -28,7 +28,7 @@ import fluent.ly.*;
   }
 
   @Test public void all0() {
-    azzert.that(new RealStatistics().all().length, is(0));
+    azzert.zero(new RealStatistics().all().length);
   }
 
   @Test public void all1() {

@@ -11,15 +11,15 @@ import il.org.spartan.utils.Accumulator.*;
 @SuppressWarnings("static-method") public class AccumulatorLastTest {
   @Test public void booleanAdds() {
     final @NotNull Accumulator.Last c = new Last();
-    azzert.that(as.bit(false), is(0));
-    azzert.that(c.value(), is(0));
+    azzert.zero(as.bit(false));
+    azzert.zero(c.value());
     c.add(true);
     azzert.that(c.value(), is(1));
-    azzert.that(as.bit(false), is(0));
+    azzert.zero(as.bit(false));
     c.add(false);
-    azzert.that(c.value(), is(0));
+    azzert.zero(c.value());
     c.add(false);
-    azzert.that(c.value(), is(0));
+    azzert.zero(c.value());
     c.add(true);
     azzert.that(c.value(), is(1));
     c.add(true);

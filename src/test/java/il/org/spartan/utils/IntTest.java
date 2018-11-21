@@ -261,7 +261,7 @@ import fluent.ly.*;
   }
 
   @Test public void valueOfTest0() {
-    azzert.that(Int.valueOf(0).get(), is(0));
+    azzert.zero(Int.valueOf(0).get());
   }
 
   @Test public void valueOfTest1() {

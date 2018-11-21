@@ -222,7 +222,7 @@ import fluent.ly.separate.*;
   }
 
   @Test public final void theseArraySize0() {
-    azzert.that(count.of(separate.these(cantBeNull(as.array())).os), is(0));
+    azzert.zero(count.of(separate.these(cantBeNull(as.array())).os));
   }
 
   @Test public final void theseArraySize1() {
@@ -250,7 +250,7 @@ import fluent.ly.separate.*;
   }
 
   @Test public final void theseFromZeroItems() {
-    azzert.that(count.of(separate.these(as.list((Double) null)).os), is(0));
+    azzert.zero(count.of(separate.these(as.list((Double) null)).os));
   }
 
   @Test public final void theseOfNoItemsl() {

@@ -5,6 +5,7 @@ import static il.org.spartan.Utils.*;
 import static fluent.ly.azzert.*;
 
 import java.io.*;
+import java.nio.file.*;
 
 import org.junit.*;
 
@@ -13,17 +14,17 @@ import fluent.ly.*;
 @SuppressWarnings("static-method") public class FileUtilsTest {
   @Test public void testfindAllJavaFilesPathNull() {
     final String path = null;
-    azzert.that(FileUtils.findAllJavaFiles(path).size(), is(0));
+    azzert.zero(FileUtils.findAllJavaFiles(path).size());
   }
 
   @Test public void testfindAllJavaFilesPathNullBoth() {
     final String path1 = null;
     final String path2 = null;
-    azzert.that(FileUtils.findAllJavaFiles(path1, path2).size(), is(0));
+    azzert.zero(FileUtils.findAllJavaFiles(path1, path2).size());
   }
 
   @Test public void testfindAllJavaFilesPathEmpty() {
-    azzert.that(FileUtils.findAllJavaFiles().size(), is(0));
+    azzert.zero(FileUtils.findAllJavaFiles().size());
   }
 
   @Test public void testfindAllJavaFilesPathsNullAndNotNull() {
@@ -37,11 +38,11 @@ import fluent.ly.*;
   }
 
   @Test public void testFindAllJavaFilesNotExists() {
-    azzert.that(FileUtils.findAllJavaFiles("src/main/java/aaa").size(), is(0));
+    azzert.zero(FileUtils.findAllJavaFiles("src/main/java/aaa").size());
   }
 
   @Test public void testFindAllJavaFilesNotDirectory() {
-    azzert.that(FileUtils.findAllJavaFiles("src/main/java/a/empty.java").size(), is(0));
+    azzert.zero(FileUtils.findAllJavaFiles("src/main/java/a/empty.java").size());
   }
 
   @Test public void testReadFromFile() {
@@ -59,8 +60,12 @@ import fluent.ly.*;
 
   @Test public void testWriteToFile() {
     try {
-      FileUtils.writeToFile("src/test/resources/my_file.txt", "Text");
-    } catch (final FileNotFoundException ¢) {
+      String path = "src/test/resources/my_file.txt";
+      File f = new File(path);
+      f.createNewFile();
+      FileUtils.writeToFile(path, "Text");
+      f.delete();
+    } catch (final IOException ¢) {
       forget.it(¢);
       fail();
     }
