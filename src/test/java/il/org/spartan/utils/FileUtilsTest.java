@@ -5,6 +5,7 @@ import static il.org.spartan.Utils.*;
 import static fluent.ly.azzert.*;
 
 import java.io.*;
+import java.nio.file.*;
 
 import org.junit.*;
 
@@ -59,8 +60,12 @@ import fluent.ly.*;
 
   @Test public void testWriteToFile() {
     try {
-      FileUtils.writeToFile("src/test/resources/my_file.txt", "Text");
-    } catch (final FileNotFoundException ¢) {
+      String path = "src/test/resources/my_file.txt";
+      File f = new File(path);
+      f.createNewFile();
+      FileUtils.writeToFile(path, "Text");
+      f.delete();
+    } catch (final IOException ¢) {
       forget.it(¢);
       fail();
     }
