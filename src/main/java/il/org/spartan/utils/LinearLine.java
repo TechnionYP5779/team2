@@ -14,11 +14,11 @@ public class LinearLine {
     return b + a * x;
   }
 
-  public double geta() {
+  public double getA() {
     return a;
   }
 
-  public double getb() {
+  public double getB() {
     return b;
   }
 }

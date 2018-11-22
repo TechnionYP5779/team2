@@ -148,8 +148,8 @@ import fluent.ly.*;
     }
     final LinearRegression lr = new LinearRegression(xs, ys);
     final LinearLine line = lr.calcLinearRegression();
-    azzert.that(line.geta(), is(-0.16666666666666666));
-    azzert.that(line.getb(), is(2.6666666666666667));
+    azzert.that(line.getA(), is(-0.16666666666666666));
+    azzert.that(line.getB(), is(2.6666666666666667));
   }
 
   @Test public void LinearRegressionTest2() {
@@ -166,7 +166,7 @@ import fluent.ly.*;
     }
     final LinearRegression lr = new LinearRegression(xs, ys);
     final LinearLine line = lr.calcLinearRegression();
-    azzert.that(line.geta(), is(-0.44549763033175355));
-    azzert.that(line.getb(), is(4.725118483412322));
+    azzert.that(line.getA(), is(-0.44549763033175355));
+    azzert.that(line.getB(), is(4.725118483412322));
   }
 }
