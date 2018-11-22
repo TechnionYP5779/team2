@@ -29,6 +29,8 @@ public interface iterable {
           }
 
           @Override public T next() {
+            if (current >= ts.length)
+              throw new NoSuchElementException();
             return ts[current++];
           }
         };
