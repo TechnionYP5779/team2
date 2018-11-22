@@ -4,7 +4,7 @@
 [![codecov.io](http://codecov.io/github/TechnionYP5779/team2/coverage.svg?branch=master)](http://codecov.io/github/TechnionYP5779/team2?branch=master)
 
 [![GitHub issues](https://img.shields.io/github/issues/TechnionYP5779/team2.svg)](https://github.com/TechnionYP5779/team5/issues)
-[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=100)]()]
+[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=100)]()
 
 [![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=alert_status)]
 [![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=coverage)]
