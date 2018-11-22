@@ -166,8 +166,8 @@ import org.junit.*;
 
   @Test public void testIgnore2_2() {
     ignore("123".getClass(), new Throwable());
-    assert myHandler.get().contains(
-        "exception. This is expected and printed only for the purpose of debuggingx = 'java.lang.Throwable'o = class java.lang.String'");
+    assert myHandler.get()
+        .contains("exception. This is expected and printed only for the purpose of debuggingx = 'java.lang.Throwable'o = class java.lang.String'");
   }
 
   @Test public void testIo_1() {
