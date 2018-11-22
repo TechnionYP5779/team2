@@ -6,7 +6,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/TechnionYP5779/team2.svg)](https://github.com/TechnionYP5779/team2/issues)
 [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=100)](https://github.com/TechnionYP5779/team2/issues?q=is%3Aissue+is%3Aclosed)
 
-[![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=alert_status)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
+[![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
 [![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=coverage)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
 [![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=ncloc)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
 
