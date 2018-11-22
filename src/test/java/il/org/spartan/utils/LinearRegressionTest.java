@@ -10,31 +10,31 @@ import org.junit.*;
 import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class LinearRegressionTest {
-  @Test public void SxTest1() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(1.0));
-    xs.add(box(2.0));
-    xs.add(box(3.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sx(), is(6.0));
-  }
+  @Test public void sumXsTest1() {
+        final List<Double> xs = new ArrayList<>();
+        xs.add(box(1.0));
+        xs.add(box(2.0));
+        xs.add(box(3.0));
+        final List<Double> ys = new ArrayList<>();
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        final LinearRegression lr = new LinearRegression(xs, ys);
+        azzert.that(lr.sumXs(), is(6.0));
+      }
 
-  @Test public void SxTest2() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(5.0));
-    xs.add(box(2.0));
-    xs.add(box(7.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sx(), is(14.0));
-  }
+  @Test public void sumXsTest2() {
+        final List<Double> xs = new ArrayList<>();
+        xs.add(box(5.0));
+        xs.add(box(2.0));
+        xs.add(box(7.0));
+        final List<Double> ys = new ArrayList<>();
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        final LinearRegression lr = new LinearRegression(xs, ys);
+        azzert.that(lr.sumXs(), is(14.0));
+      }
 
   @Test public void YxTest1() {
     final List<Double> xs = new ArrayList<>();
@@ -46,99 +46,99 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sy(), is(0.0));
+    azzert.that(lr.sumYs(), is(0.0));
   }
 
-  @Test public void SyTest2() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(5.0));
-    xs.add(box(2.0));
-    xs.add(box(7.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(12.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sy(), is(12.0));
-  }
+  @Test public void sumYsTest2() {
+      final List<Double> xs = new ArrayList<>();
+      xs.add(box(5.0));
+      xs.add(box(2.0));
+      xs.add(box(7.0));
+      final List<Double> ys = new ArrayList<>();
+      ys.add(box(0.0));
+      ys.add(box(12.0));
+      ys.add(box(0.0));
+      final LinearRegression lr = new LinearRegression(xs, ys);
+      azzert.that(lr.sumYs(), is(12.0));
+    }
 
-  @Test public void SxxTest1() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(1.0));
-    xs.add(box(2.0));
-    xs.add(box(3.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sxx(), is(14.0));
-  }
+  @Test public void sumXsxTest1() {
+        final List<Double> xs = new ArrayList<>();
+        xs.add(box(1.0));
+        xs.add(box(2.0));
+        xs.add(box(3.0));
+        final List<Double> ys = new ArrayList<>();
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        final LinearRegression lr = new LinearRegression(xs, ys);
+        azzert.that(lr.sumXXs(), is(14.0));
+      }
 
-  @Test public void SxxTest2() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(5.0));
-    xs.add(box(2.0));
-    xs.add(box(7.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sxx(), is(78.0));
-  }
+  @Test public void sumXsxTest2() {
+        final List<Double> xs = new ArrayList<>();
+        xs.add(box(5.0));
+        xs.add(box(2.0));
+        xs.add(box(7.0));
+        final List<Double> ys = new ArrayList<>();
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        final LinearRegression lr = new LinearRegression(xs, ys);
+        azzert.that(lr.sumXXs(), is(78.0));
+      }
 
-  @Test public void SyyTest1() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(1.0));
-    xs.add(box(2.0));
-    xs.add(box(3.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Syy(), is(0.0));
-  }
+  @Test public void sumYsyTest1() {
+      final List<Double> xs = new ArrayList<>();
+      xs.add(box(1.0));
+      xs.add(box(2.0));
+      xs.add(box(3.0));
+      final List<Double> ys = new ArrayList<>();
+      ys.add(box(0.0));
+      ys.add(box(0.0));
+      ys.add(box(0.0));
+      final LinearRegression lr = new LinearRegression(xs, ys);
+      azzert.that(lr.sumYYs(), is(0.0));
+    }
 
-  @Test public void SyyTest2() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(5.0));
-    xs.add(box(2.0));
-    xs.add(box(7.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(2.0));
-    ys.add(box(1.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Syy(), is(5.0));
-  }
+  @Test public void sumYsyTest2() {
+      final List<Double> xs = new ArrayList<>();
+      xs.add(box(5.0));
+      xs.add(box(2.0));
+      xs.add(box(7.0));
+      final List<Double> ys = new ArrayList<>();
+      ys.add(box(0.0));
+      ys.add(box(2.0));
+      ys.add(box(1.0));
+      final LinearRegression lr = new LinearRegression(xs, ys);
+      azzert.that(lr.sumYYs(), is(5.0));
+    }
 
-  @Test public void SxyTest1() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(1.0));
-    xs.add(box(2.0));
-    xs.add(box(3.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    ys.add(box(0.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sxy(), is(0.0));
-  }
+  @Test public void sumXsyTest1() {
+        final List<Double> xs = new ArrayList<>();
+        xs.add(box(1.0));
+        xs.add(box(2.0));
+        xs.add(box(3.0));
+        final List<Double> ys = new ArrayList<>();
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        ys.add(box(0.0));
+        final LinearRegression lr = new LinearRegression(xs, ys);
+        azzert.that(lr.sumXYs(), is(0.0));
+      }
 
-  @Test public void SxyTest2() {
-    final List<Double> xs = new ArrayList<>();
-    xs.add(box(5.0));
-    xs.add(box(2.0));
-    xs.add(box(7.0));
-    final List<Double> ys = new ArrayList<>();
-    ys.add(box(0.0));
-    ys.add(box(2.0));
-    ys.add(box(1.0));
-    final LinearRegression lr = new LinearRegression(xs, ys);
-    azzert.that(lr.Sxy(), is(11.0));
-  }
+  @Test public void sumXsyTest2() {
+        final List<Double> xs = new ArrayList<>();
+        xs.add(box(5.0));
+        xs.add(box(2.0));
+        xs.add(box(7.0));
+        final List<Double> ys = new ArrayList<>();
+        ys.add(box(0.0));
+        ys.add(box(2.0));
+        ys.add(box(1.0));
+        final LinearRegression lr = new LinearRegression(xs, ys);
+        azzert.that(lr.sumXYs(), is(11.0));
+      }
 
   @Test public void LRTest1() {
     final List<Double> xs = new ArrayList<>();

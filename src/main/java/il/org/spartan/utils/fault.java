@@ -47,7 +47,7 @@ public interface fault {
 
   @NotNull @SuppressWarnings("null") static String specifically(final @NotNull String explanation, final Object... os) {
     return dump("\n " + explanation)
-        + Stream.of(os).map(λ -> dump(λ.getClass().getSimpleName(), λ)).reduce((x, y) -> x + y).orElseThrow(() -> new NoSuchElementException())
+        + Stream.of(os).map(λ -> dump(λ.getClass().getSimpleName(), λ)).reduce((x, y) -> x + y).orElseThrow(NoSuchElementException::new)
         + done();
   }
 

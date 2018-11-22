@@ -15,40 +15,40 @@ public class LinearRegression {
     yVals = new ArrayList<>(ys);
   }
 
-  // calcs the sum of all the x values
-  public double Sx() {
+  // calculate the sum of all the x values
+  public double sumXs() {
     double $ = 0;
     for (int ¢ = 0; ¢ < xVals.size(); ++¢)
       $ += unbox(cantBeNull(xVals.get(¢)));
     return $;
   }
 
-  // calcs the sum of all the y values
-  public double Sy() {
+  // calculate the sum of all the y values
+  public double sumYs() {
     double $ = 0;
     for (int ¢ = 0; ¢ < yVals.size(); ++¢)
       $ += unbox(cantBeNull(yVals.get(¢)));
     return $;
   }
 
-  // calcs the sum of all the squares of the x values
-  public double Sxx() {
+  // calculate the sum of all the squares of the x values
+  public double sumXXs() {
     double $ = 0;
     for (int ¢ = 0; ¢ < xVals.size(); ++¢)
       $ += unbox(cantBeNull(xVals.get(¢))) * unbox(cantBeNull(xVals.get(¢)));
     return $;
   }
 
-  // calcs the sum of all the squares of the y values
-  public double Syy() {
+  // calculate the sum of all the squares of the y values
+  public double sumYYs() {
     double $ = 0;
     for (int ¢ = 0; ¢ < yVals.size(); ++¢)
       $ += unbox(cantBeNull(yVals.get(¢))) * unbox(cantBeNull(yVals.get(¢)));
     return $;
   }
 
-  // calcs the sum of all the x*y values
-  public double Sxy() {
+  // calculate the sum of all the x*y values
+  public double sumXYs() {
     double $ = 0;
     for (int ¢ = 0; ¢ < yVals.size(); ++¢)
       $ += unbox(cantBeNull(xVals.get(¢))) * unbox(cantBeNull(yVals.get(¢)));
@@ -59,8 +59,8 @@ public class LinearRegression {
   public LinearLine calcLinearRegression() {
     double $;
     final double n = xVals.size();
-    final double a = (n * Sxy() - Sx() * Sy()) / (n * Sxx() - Sx() * Sx());
-    $ = 1 / n * Sy() - a / n * Sx();
+    final double a = (n * sumXYs() - sumXs() * sumYs()) / (n * sumXXs() - sumXs() * sumXs());
+    $ = 1 / n * sumYs() - a / n * sumXs();
     return new LinearLine(a, $);
   }
 }

@@ -71,7 +71,7 @@ public class BigInteger {
 
   @Override public boolean equals(final Object ¢) {
     return ¢ == this
-        || ¢ != null && ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number) && negative == ((BigInteger) ¢).negative;
+        || ¢ instanceof BigInteger && Objects.equals(number, ((BigInteger) ¢).number) && negative == ((BigInteger) ¢).negative;
   }
 
   public static Boolean isFinalAnswerNegativeAdd(final Boolean firstSignIsNagative, final Boolean isZero) {
