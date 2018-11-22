@@ -2,6 +2,8 @@ package a;
 
 import static fluent.ly.azzert.*;
 
+import static fluent.ly.box.*;
+
 import java.util.*;
 
 import org.junit.*;
@@ -10,7 +12,7 @@ import fluent.ly.*;
 
 @SuppressWarnings("static-method") public class singletonTest {
   @Test public void testList() {
-    final Integer a = Integer.valueOf(3);
+    final Integer a = box(3);
     final List<Integer> l = singleton.list(a);
     azzert.that(l.size(), is(1));
     azzert.that(l.get(0), is(a));

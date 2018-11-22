@@ -2,7 +2,8 @@
 package fluent.ly;
 
 import static il.org.spartan.Utils.*;
-
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -76,7 +77,7 @@ import org.jetbrains.annotations.*;
   @NotNull public static List<Integer> ingeterList(final int... is) {
     final @NotNull List<Integer> $ = new ArrayList<>();
     for (final int ¢ : is)
-      $.add(fluent.ly.box.it(¢));
+      $.add(box(¢));
     return $;
   }
 
@@ -96,7 +97,7 @@ import org.jetbrains.annotations.*;
   public static int @NotNull [] intArray(final @NotNull List<Integer> is) {
     final int @NotNull [] $ = new int @NotNull [is.size()];
     for (int ¢ = 0; ¢ < $.length; ++¢)
-      $[¢] = is.get(¢).intValue();
+      $[¢] = unbox(is.get(¢));
     return $;
   }
 
