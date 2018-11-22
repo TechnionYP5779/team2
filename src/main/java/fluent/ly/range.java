@@ -1,7 +1,9 @@
 package fluent.ly;
 
-import java.util.*;
 import static fluent.ly.box.*;
+
+import java.util.*;
+
 public class range {
   public int from = Integer.MIN_VALUE;
   public int to = Integer.MAX_VALUE;

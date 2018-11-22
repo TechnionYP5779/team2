@@ -1,15 +1,15 @@
 package fluent.ly;
 
+import static il.org.spartan.Utils.*;
 import static il.org.spartan.etc.idiomatic.*;
 
 import static fluent.ly.___.*;
+import static fluent.ly.unbox.*;
 
 import java.util.*;
 
 import org.jetbrains.annotations.*;
 
-import static il.org.spartan.Utils.*;
-import static fluent.ly.unbox.*;
 /** TODO Yossi Gil: document class
  * @author Yossi Gil
  * @since 2017-04-12 */

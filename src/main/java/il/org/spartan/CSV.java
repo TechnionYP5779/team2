@@ -1,5 +1,7 @@
 package il.org.spartan;
 
+import static il.org.spartan.Utils.*;
+
 import static fluent.ly.___.*;
 
 import java.io.*;
@@ -7,7 +9,7 @@ import java.lang.reflect.*;
 import java.util.*;
 
 import org.jetbrains.annotations.*;
-import static il.org.spartan.Utils.*;
+
 import fluent.ly.*;
 
 /** This class realize the CSV specification, by comprising methods for

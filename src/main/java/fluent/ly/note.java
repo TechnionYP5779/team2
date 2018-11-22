@@ -32,8 +32,7 @@ import il.org.spartan.utils.*;
   @NotNull String FILE_SEPARATOR = "\n**\n";
   @NotNull String FILE_SUB_SEPARATOR = "\n********\n";
   Stack<Level> levels = new Stack<>();
-
-  Logger logger = anonymous.ly(()->{
+  Logger logger = anonymous.ly(() -> {
     final Logger $ = Logger.getGlobal();
     final ConsoleHandler handler = new ConsoleHandler();
     handler.setLevel(Level.ALL);
@@ -63,13 +62,14 @@ import il.org.spartan.utils.*;
         format(" trace(%s) = '%s'\n", English.name(t), __.trace(t)) //
     ));
   }
+
   static <T> T bug(final @NotNull String format, final String... os) {
     return bug(format, (Object[]) os);
   }
+
   static <T> T bug(final @NotNull String format, final Object... os) {
     return nulling.ly(() -> logger.info(format(//
-        "A bug was detected in the vicinty of %s; trace =%s\n",
-        __.trace(),//
+        "A bug was detected in the vicinty of %s; trace =%s\n", __.trace(), //
         system.myCallerFullClassName()) + //
         format(format, os)));
   }
@@ -82,6 +82,7 @@ import il.org.spartan.utils.*;
             format("trace(%s) = '%s'\n", English.name(¢), __.trace(¢)) //
     ));
   }
+
   /** To be invoked whenever you do not know what to do with an exception
    * @param o JD
    * @param ¢ JD */
@@ -123,7 +124,7 @@ import il.org.spartan.utils.*;
             "\n o = " + o + "'");
   }
 
- static <T> T info(final @NotNull String message) {
+  static <T> T info(final @NotNull String message) {
     return nulling.ly(() -> logger.info(message));
   }
 
@@ -165,6 +166,7 @@ import il.org.spartan.utils.*;
     info(FILE_SEPARATOR);
     return the.nil();
   }
+
   static void set(final Level ¢) {
     levels.push(¢);
   }

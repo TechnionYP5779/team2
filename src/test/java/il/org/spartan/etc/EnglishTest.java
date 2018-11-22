@@ -59,14 +59,15 @@ import il.org.spartan.utils.*;
   @Test public void testName2() {
     azzert.that(name(Inflection.class), is("Inflection.English"));
   }
+
   @Test public void testName3() {
-    azzert.that(English.name((Object)null), is("null"));
+    azzert.that(English.name((Object) null), is("null"));
   }
-  
+
   @Test public void testName4() {
     azzert.that(English.name(new String()), is("String"));
   }
-  
+
   @Test public void testiIndefinite() {
     azzert.that(English.indefinite(new Object()), is("a Object"));
   }
@@ -254,14 +255,11 @@ import il.org.spartan.utils.*;
       }
     }.getClass()), is("{}"));
   }
-  
-  
 
   @Test public void testSelfName3() {
     azzert.that(English.selfName(Deprecated.class), is("@Deprecated"));
   }
 
-  
   @Test public void testTime() {
     azzert.that(time(10000000000000l), is("10000.00"));
   }
