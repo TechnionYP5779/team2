@@ -12,7 +12,7 @@ addons:
       secure: LFukoLdTAAU1r80HAfdDRyjqOpsEDtP/XbCAT9WjYohMGhIYZg5VydR7KmqHqIdWNcy47Kn2UMqDWasgWPRr6xwtfIwMhReEiuM8wOZ7396CjC9V1+02qflkVGXHTQVydkyQYhvkIP4/L47r968+yNSbeCWAOgW2l7wlwo+Z+nnidXZgRqUyIMkmJlDnRu2O3Mg8tubaliD6j91FQNP6hT1+EBHz/UETwZV1eOMbHl19uvfxi3sc98ramr3O77l+WaE1M/VkrTiaOz3sw3tdSykjz1+mvo64AsVroltTIO8ZEaQcQPWSXfILp8PtyF1iSrgB06vCxg8XLY60Tq9lOOrnrVqkpt1NzuJtYTsl93zWfkuRdr7znlr+mq+RkfshBdvejq1KTJjPBDWulqlfkpYd/R0F2EruAD8oZLEhgMWDWeokqYxdRhNVL1e7jXQxmprfREYNqhEipLaKzhcIcWYC0p6d6kf4UPzJP4TIgr5oPj163A8VSrbk32aCvkwkAbF87dKat4Uh7wlD6palAEfUnRt57vrsTOYQW7lk8L6RghCMJ1bnWHOGe99OO+xuWiOnA+26bdf3cg2NKxzH4UjPjAA2qrIWXDqxkLkBu1QSY2TK8GdxXxT6j/BEtABU4bibk/NHsS8UhekxXxP0PJEFDk/UvhkiJHYBRsip10o= # encrypted value of your token
 
 script: 
-  - "mvn cobertura:cobertura"
+  - mvn cobertura:cobertura
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 after_success:
