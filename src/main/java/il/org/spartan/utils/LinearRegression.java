@@ -53,4 +53,12 @@ public class LinearRegression {
       $ += unbox(cantBeNull(xVals.get(¢)))*unbox(cantBeNull(yVals.get(¢)));
     return $;
   }
+
+  //calculate the linear regression
+  public LinearLine calcLinearRegression() {
+    double $, n = xVals.size();
+    double a = (n * Sxy() - Sx() * Sy()) / (n * Sxx() - Sx() * Sx());
+    $ = 1 / n * Sy() - a * 1 / n * Sx();
+    return new LinearLine(a,$);
+  }
 }

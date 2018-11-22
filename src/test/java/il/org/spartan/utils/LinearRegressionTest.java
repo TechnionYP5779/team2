@@ -18,7 +18,6 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sx(), is(6.0));
   }
   
@@ -32,7 +31,6 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sx(), is(14.0));
   }
   
@@ -46,7 +44,6 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sy(), is(0.0));
   }
   
@@ -60,7 +57,6 @@ import fluent.ly.*;
     ys.add(box(12.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sy(), is(12.0));
   }
   
@@ -74,7 +70,6 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sxx(), is(14.0));
   }
   
@@ -88,7 +83,6 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sxx(), is(78.0));
   }
   
@@ -116,7 +110,6 @@ import fluent.ly.*;
     ys.add(box(2.0));
     ys.add(box(1.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Syy(), is(5.0));
   }
   
@@ -130,7 +123,6 @@ import fluent.ly.*;
     ys.add(box(0.0));
     ys.add(box(0.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sxy(), is(0.0));
   }
   
@@ -144,9 +136,38 @@ import fluent.ly.*;
     ys.add(box(2.0));
     ys.add(box(1.0));
     LinearRegression lr = new LinearRegression(xs, ys);
-    
     azzert.that(lr.Sxy(), is(11.0));
   }
   
+  @Test public void LRTest1() {
+    List<Double> xs = new ArrayList<>();
+    xs.add(box(5.0));
+    xs.add(box(2.0));
+    xs.add(box(7.0));
+    List<Double> ys = new ArrayList<>();
+    ys.add(box(0.0));
+    ys.add(box(2.0));
+    ys.add(box(1.0));
+    LinearRegression lr = new LinearRegression(xs, ys);
+    LinearLine line = lr.calcLinearRegression();
+    
+    azzert.that(line.geta(), is(-0.23684210526315788));
+    azzert.that(line.getb(), is(2.1052631578947367));
+  }
   
+  @Test public void LRTest2() {
+    List<Double> xs = new ArrayList<>();
+    xs.add(box(1.0));
+    xs.add(box(2.0));
+    xs.add(box(3.0));
+    List<Double> ys = new ArrayList<>();
+    ys.add(box(4.0));
+    ys.add(box(2.0));
+    ys.add(box(5.0));
+    LinearRegression lr = new LinearRegression(xs, ys);
+    LinearLine line = lr.calcLinearRegression();
+    
+    azzert.that(line.geta(), is(0.5));
+    azzert.that(line.getb(), is(2.6666666666666667));
+  }
 }
