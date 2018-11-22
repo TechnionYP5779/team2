@@ -4,6 +4,7 @@ import static il.org.spartan.Utils.*;
 
 import static fluent.ly.azzert.*;
 
+import static fluent.ly.box.*;
 import java.util.*;
 import java.util.function.*;
 
@@ -124,10 +125,10 @@ import fluent.ly.separate.*;
 
   @Test public final void byMapOfKeyValueStringString() {
     final @NotNull Map<String, Integer> map = new TreeMap<>();
-    map.put("One", box.it(1));
-    map.put("Two", box.it(2));
-    map.put("Three", box.it(3));
-    map.put("Four", box.it(4));
+    map.put("One", box(1));
+    map.put("Two", box(2));
+    map.put("Three", box(3));
+    map.put("Four", box(4));
     azzert.that(separate.these(map).by(", "), is("Four->4, One->1, Three->3, Two->2"));
   }
 

@@ -2,10 +2,9 @@ package il.org.spartan;
 
 import static il.org.spartan.Utils.*;
 import static org.junit.Assert.*;
-
+import static fluent.ly.box.*;
 import static fluent.ly.azzert.*;
 import static fluent.ly.azzert.assertNotEquals;
-import static fluent.ly.box.*;
 
 import java.io.*;
 import java.util.*;
@@ -302,7 +301,7 @@ import il.org.spartan.etc.*;
   @NotNull @SuppressWarnings("null") public static Integer[] intToIntegers(final int... is) {
     final Integer @NotNull [] $ = new Integer @NotNull [is.length];
     for (int ¢ = 0; ¢ < is.length; ++¢)
-      $[¢] = fluent.ly.box.it(is[¢]);
+      $[¢] = box(is[¢]);
     return $;
   }
 
