@@ -57,7 +57,7 @@ public abstract class Statistics {
       $ += ¢;
       sum2 += ¢ * ¢;
     }
-    long lengthSquerd = ds.length * ds.length;
+    long lengthSquerd = Integer.toUnsignedLong(ds.length) * Integer.toUnsignedLong(ds.length);
     forget.it(lengthSquerd);
     return sum2 / (ds.length - 1) - $ * $ / (lengthSquerd - ds.length);
   }

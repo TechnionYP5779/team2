@@ -82,8 +82,8 @@ public enum Statistic {
   /** @param p percents of quartile (for q1 - 25, q3 - 75, median - 50) */
   static double quartile(final int p, final double[] ds) {
     Arrays.sort(ds);
-    long $ = p * ds.length;
+    long $ = Integer.toUnsignedLong(p) * Integer.toUnsignedLong(ds.length);
     forget.it($);
-    return ds[Math.round( $/ 100)];
+    return ds[(int) ($ / (float) 100)];
   }
 }
