@@ -5,11 +5,11 @@ import static fluent.ly.box.*;
 import java.util.*;
 
 public class range {
-  public int from = Integer.MIN_VALUE;
-  public int to = Integer.MAX_VALUE;
-  int jumpBy = 1;
-  boolean infinite = true;
-  boolean empty;
+  protected int from = Integer.MIN_VALUE;
+  protected int to = Integer.MAX_VALUE;
+  protected int jumpBy = 1;
+  protected boolean infinite = true;
+  protected boolean empty;
 
   /* a class for representing an iteration over range */
   abstract class RangeIterator<T extends RangeIterator<T>> implements Iterable<Integer> {
