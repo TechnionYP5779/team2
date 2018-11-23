@@ -8,6 +8,7 @@ import java.util.*;
 
 import org.jetbrains.annotations.*;
 
+import fluent.ly.*;
 import il.org.spatan.iteration.*;
 
 /** @author Yossi Gil
@@ -56,7 +57,9 @@ public abstract class Statistics {
       $ += ¢;
       sum2 += ¢ * ¢;
     }
-    return sum2 / (ds.length - 1) - $ * $ / (ds.length * ds.length - ds.length);
+    long lengthSquerd = ds.length * ds.length;
+    forget.it(lengthSquerd);
+    return sum2 / (ds.length - 1) - $ * $ / (lengthSquerd - ds.length);
   }
 
   protected int n;
