@@ -67,14 +67,11 @@ import fluent.ly.*;
     assert Binary.or(Binary.F, Binary.F) == Binary.F;
   }
 
+  @Test(expected = IllegalArgumentException.class) public void testEqualsBinary() {
+    Binary.T.equals(Binary.T);
+  }
+  
   @Test public void testEqualsObject() {
-    boolean flag = true;
-    try {
-      Binary.T.equals(Binary.T);
-      flag = false;
-    } catch (final IllegalArgumentException ¢) {
-      ¢.getMessage();
-    }
-    assert flag;
+    assert !Binary.T.equals(new Object());
   }
 }
