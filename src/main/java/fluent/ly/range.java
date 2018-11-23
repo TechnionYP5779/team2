@@ -13,7 +13,11 @@ public class range {
   protected int jumpBy = 1;
   protected boolean infinite = true;
   protected boolean empty;
-
+  
+  protected range(){
+    empty = true;
+  }
+  
   /* a class for representing an iteration over range */
   abstract class RangeIterator<T extends RangeIterator<T>> implements Iterable<Integer> {
     @Override public Iterator<Integer> iterator() {
@@ -53,20 +57,12 @@ public class range {
 
     public PerformedTo intersect(final PerformedTo t) {
       final int $ = unbox(cantBeNull(t.from())), to2 = t.to();
-      return to > $ && to2 > from ? range.from(Math.max(from, $)).to(Math.min(to, to2)) : new range() {
-        {
-          empty = true;
-        }
-      }.new PerformedTo();
+      return to <= $ || to2 <= from ? new range().new PerformedTo() : range.from(Math.max(from, $)).to(Math.min(to, to2));
     }
 
     public PerformedTo intersect(final PerformedFrom ¢) {
       final int $ = ¢.from();
-      return to > $ ? range.from($).to(to) : new range() {
-        {
-          empty = true;
-        }
-      }.new PerformedTo();
+      return to > $ ? range.from($).to(to) : new range().new PerformedTo();
     }
   }
 
