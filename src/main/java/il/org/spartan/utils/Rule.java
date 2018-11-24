@@ -1,7 +1,9 @@
 package il.org.spartan.utils;
 
+import static il.org.spartan.Utils.*;
 import static java.lang.String.*;
-
+import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
 import java.lang.annotation.*;
 import java.util.*;
 import java.util.function.*;
@@ -151,7 +153,7 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
   @Check boolean check(T n);
 
   default String description() {
-    return format("%s/[%s]%s=", //
+    return format("%s/[%s]%s=%s%s", //
         English.name(Rule.class), //
         English.name(this), //
         technicalName() == English.name(this) ? "" : technicalName(), //
@@ -205,8 +207,8 @@ public interface Rule<T, R> extends Function<T, R>, Recursive<Rule<T, R>> {
     }
 
     @Override public Void before(final @NotNull String key, final Object... arguments) {
-      count.putIfAbsent(key, Integer.valueOf(0));
-      count.put(key, box.it(count.get(key).intValue() + 1));
+      count.putIfAbsent(key, box(0));
+      count.put(key, box(unbox(cantBeNull(count.get(key))) + 1));
       return super.before(key, arguments);
     }
   }

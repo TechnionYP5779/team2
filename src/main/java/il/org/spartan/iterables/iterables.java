@@ -1,8 +1,10 @@
 /* Part of the "Spartan Blog"; mutate the rest / but leave this line as is */
 package il.org.spartan.iterables;
 
-import java.util.*;
 import static il.org.spartan.Utils.*;
+
+import java.util.*;
+
 import org.jetbrains.annotations.*;
 
 import an.*;

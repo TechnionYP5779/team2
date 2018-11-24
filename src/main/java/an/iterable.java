@@ -15,7 +15,6 @@ public interface iterable {
   }
 
   /** Creates an iterable for an array of objects
-   * @param    < T > an arbitrary type
    * @param ts what to iterate on
    * @return an {@link Iterable} over the parameter */
   @SafeVarargs @NotNull static <T> Iterable<T> over(final T... ts) {
@@ -29,6 +28,8 @@ public interface iterable {
           }
 
           @Override public T next() {
+            if (current >= ts.length)
+              throw new NoSuchElementException();
             return ts[current++];
           }
         };

@@ -1,5 +1,6 @@
 package il.org.spartan.etc;
 
+import static fluent.ly.unbox.*;
 import java.text.*;
 import java.util.*;
 import java.util.function.*;
@@ -77,7 +78,7 @@ import il.org.spartan.utils.*;
   }
 
   @NotNull static String name(final @Nullable Object ¢) {
-    return English.name(¢ == null ? "null" : ¢.getClass());
+    return ¢ == null ? "null" : English.name(¢.getClass());
   }
 
   /** Get the plural form of the word if needed, by adding an 'es' to its end.
@@ -101,7 +102,7 @@ import il.org.spartan.utils.*;
    * @param i count
    * @return fixed string */
   static String plurales(final @NotNull String s, final Integer i) {
-    return i == null ? UNKNOWN + " " + s + "es" : i.intValue() != 1 ? i + " " + s + "es" : "one " + s;
+    return i == null ? UNKNOWN + " " + s + "es" : unbox(i) != 1 ? i + " " + s + "es" : "one " + s;
   }
 
   /** Get the plural form of the word if needed, by adding an 's' to its end.
@@ -125,7 +126,7 @@ import il.org.spartan.utils.*;
    * @param i count
    * @return fixed string */
   static String plurals(final @NotNull String s, final Integer i) {
-    return i == null ? UNKNOWN + " " + s + "s" : i.intValue() != 1 ? i + " " + s + "s" : "one " + s;
+    return i == null ? UNKNOWN + " " + s + "s" : unbox(i) != 1 ? i + " " + s + "s" : "one " + s;
   }
 
   static String pronounce(final char ¢) {

@@ -101,4 +101,11 @@ import fluent.ly.*;
     iter.next();
     assert !iter.hasNext();
   }
+
+  @Test(expected = NoSuchElementException.class) public void overTest12() {
+    final Iterator<Integer> iter = iterable.over(box(4), box(5)).iterator();
+    iter.next();
+    iter.next();
+    iter.next();
+  }
 }

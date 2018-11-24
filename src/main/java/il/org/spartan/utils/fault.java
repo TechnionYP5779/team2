@@ -2,6 +2,7 @@ package il.org.spartan.utils;
 
 import java.io.*;
 import java.nio.charset.*;
+import java.util.*;
 import java.util.stream.*;
 
 import org.jetbrains.annotations.*;
@@ -45,7 +46,9 @@ public interface fault {
   }
 
   @NotNull @SuppressWarnings("null") static String specifically(final @NotNull String explanation, final Object... os) {
-    return dump("\n " + explanation) + Stream.of(os).map(λ -> dump(λ.getClass().getSimpleName(), λ)).reduce((x, y) -> x + y).get() + done();
+    return dump("\n " + explanation)
+        + Stream.of(os).map(λ -> dump(λ.getClass().getSimpleName(), λ)).reduce((x, y) -> x + y).orElseThrow(NoSuchElementException::new)
+        + done();
   }
 
   @NotNull static String dump(final @NotNull String name, final Object value) {

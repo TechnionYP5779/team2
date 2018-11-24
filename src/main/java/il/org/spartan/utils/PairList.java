@@ -1,9 +1,10 @@
 package il.org.spartan.utils;
 
-import java.util.*;
-
 import static il.org.spartan.Utils.*;
+
 import static fluent.ly.unbox.*;
+
+import java.util.*;
 
 public class PairList {
   List<SortableDoublePair> list;
@@ -21,7 +22,7 @@ public class PairList {
   }
 
   public ListIterator<SortableDoublePair> sortedIterator() {
-    this.sort();
+    sort();
     return list.listIterator();
   }
 
@@ -36,14 +37,14 @@ public class PairList {
   public double distSum() {
     double $ = 0;
     for (int ¢ = 0; ¢ < list.size(); ++¢)
-      $ += Math.sqrt(Math.pow(unbox(cantBeNull(this.at(¢).first)), 2) + Math.pow(unbox(cantBeNull(this.at(¢).second)), 2));
+      $ += Math.sqrt(Math.pow(unbox(cantBeNull(at(¢).first)), 2) + Math.pow(unbox(cantBeNull(at(¢).second)), 2));
     return $;
   }
 
   public double sum() {
     double $ = 0;
     for (int ¢ = 0; ¢ < list.size(); ++¢)
-      $ += unbox(cantBeNull(this.at(¢).first)) + unbox(cantBeNull(this.at(¢).second));
+      $ += unbox(cantBeNull(at(¢).first)) + unbox(cantBeNull(at(¢).second));
     return $;
   }
 }

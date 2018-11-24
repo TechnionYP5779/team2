@@ -1,6 +1,8 @@
 // <a href=http://ssdl-linux.cs.technion.ac.il/wiki/index.php>SSDLPedia</a>
 package il.org.spartan.tables;
 
+import static fluent.ly.unbox.*;
+
 import java.util.*;
 
 import org.jetbrains.annotations.*;
@@ -70,7 +72,7 @@ import il.org.spartan.utils.*;
    *        {@code null @param value The value associated with the key @return
    *            {@code this} */
   public final Self col(final @NotNull String key, final Integer value) {
-    return value == null ? col(key) : col(key, value.intValue());
+    return value == null ? col(key) : col(key, unbox(value));
   }
 
   /** Add a key and a {@code long} value to this instance
@@ -108,7 +110,7 @@ import il.org.spartan.utils.*;
   }
 
   /** Adds all {@link External} properties in a given object.
-   * @param t an arbitrary object, usually with some of its fields and methods
+   * @param $ an arbitrary object, usually with some of its fields and methods
    *          marked {@link External}
    * @return the parameter */
   public <T> T extract(final T $) {

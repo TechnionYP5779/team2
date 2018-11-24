@@ -2,8 +2,10 @@ package fluent.ly;
 
 import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
+
 import java.io.*;
 import java.util.*;
+
 import org.junit.*;
 
 public class outTest1 {
@@ -48,7 +50,7 @@ public class outTest1 {
   }
 
   @Test public void outCollection1() {
-    ArrayList<Integer> al = null;
+    final ArrayList<Integer> al = null;
     out.out("Shokolad", al);
     azzert.that(outContent + "", is("No Shokolad\n"));
   }
@@ -59,7 +61,7 @@ public class outTest1 {
   }
 
   @Test public void outCollection3() {
-    Collection<Object> objC = new ArrayList<>();
+    final Collection<Object> objC = new ArrayList<>();
     for (int ¢ = 1; ¢ < 5; ++¢)
       objC.add(box(¢));
     out.out("Array", objC);
@@ -67,25 +69,25 @@ public class outTest1 {
   }
 
   @Test public void outObjArr0() {
-    Object[] objects = null;
+    final Object[] objects = null;
     out.out("objArr", objects);
     azzert.that(outContent + "", is("No objArr\n"));
   }
 
   @Test public void outObjArr1() {
-    Object[] objects = new Object[] {};
+    final Object[] objects = new Object[] {};
     out.out("objArr", objects);
     azzert.that(outContent + "", is("No objArr\n"));
   }
 
   @Test public void outObjArr2() {
-    Object[] objects = new Object[] { "word" };
+    final Object[] objects = new Object[] { "word" };
     out.out("objArr", objects);
     azzert.that(outContent + "", is("Only one objArr: word\n"));
   }
 
   @Test public void outObjArr3() {
-    Object[] objects = new Object[] { "word", box(5), box(3.14f) };
+    final Object[] objects = new Object[] { "word", box(5), box(3.14f) };
     out.out("objArr", objects);
     azzert.that(outContent + "", is("Total of 3 objArr:\n\tword\n\t5\n\t3.14\n"));
   }

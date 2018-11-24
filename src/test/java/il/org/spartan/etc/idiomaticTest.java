@@ -2,9 +2,8 @@ package il.org.spartan.etc;
 
 import static il.org.spartan.Utils.*;
 import static il.org.spartan.etc.idiomatic.*;
-
-import static fluent.ly.azzert.*;
 import static fluent.ly.box.*;
+import static fluent.ly.azzert.*;
 import static fluent.ly.unbox.*;
 
 import java.io.*;
@@ -22,15 +21,15 @@ import fluent.ly.*;
   }
 
   @Test public void testEval() {
-    assert idiomatic.eval(() -> fluent.ly.box.it(5)).get().equals(fluent.ly.box.it(5));
+    assert idiomatic.eval(() -> box(5)).get().equals(box(5));
   }
 
   @Test public void testIncaseFalseReturnsNull() {
-    assert idiomatic.incase(false, fluent.ly.box.it(5)) == null;
+    assert idiomatic.incase(false, box(5)) == null;
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithNoException() {
-    assert cantBeNull(idiomatic.catching((Producer<Integer>) () -> box(5))).equals(fluent.ly.box.it(5));
+    assert cantBeNull(idiomatic.catching((Producer<Integer>) () -> box(5))).equals(box(5));
   }
 
   @Test @SuppressWarnings("null") public void testKatchingWithException() {
@@ -62,15 +61,15 @@ import fluent.ly.*;
   }
 
   @Test public void testWhenFalseReturnsNull() {
-    assert idiomatic.when(1 == 3).eval(() -> fluent.ly.box.it(5)) == null;
+    assert idiomatic.when(1 == 3).eval(() -> box(5)) == null;
   }
 
   @Test public void testUnlessFalseReturnsSame() {
-    assert cantBeNull(idiomatic.unless(1 == 3).eval(() -> fluent.ly.box.it(5))).equals(fluent.ly.box.it(5));
+    assert cantBeNull(idiomatic.unless(1 == 3).eval(() -> box(5))).equals(box(5));
   }
 
   @Test public void testUnlessTrueReturnsNull() {
-    assert idiomatic.unless(true).eval(() -> fluent.ly.box.it(5)) == null;
+    assert idiomatic.unless(true).eval(() -> box(5)) == null;
   }
 
   @Test public void testUnlessFalseWithoutEval() {
@@ -79,7 +78,7 @@ import fluent.ly.*;
   }
 
   @Test public void testUnlessTrueWithoutEval() {
-    assert idiomatic.unless(true, fluent.ly.box.it(5)) == null;
+    assert idiomatic.unless(true, box(5)) == null;
   }
 
   class MyRunnable implements Runnable {
@@ -128,7 +127,7 @@ import fluent.ly.*;
   }
 
   @Test public void testTriggerDefaultEval() {
-    assert cantBeNull(new MyTrigger().eval(fluent.ly.box.it(4))).equals(fluent.ly.box.it(4));
+    assert cantBeNull(new MyTrigger().eval(box(4))).equals(box(4));
   }
 
   @Test public void use0() {

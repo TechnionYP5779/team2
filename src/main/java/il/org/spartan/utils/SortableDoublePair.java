@@ -1,8 +1,10 @@
 package il.org.spartan.utils;
 
-import fluent.ly.*;
 import static il.org.spartan.Utils.*;
+
 import static fluent.ly.unbox.*;
+
+import fluent.ly.*;
 
 public class SortableDoublePair implements Comparable<SortableDoublePair> {
   Pair<Double, Double> pair;

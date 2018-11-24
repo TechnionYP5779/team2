@@ -1,22 +1,30 @@
 package fluent.ly;
 
-import java.util.*;
+import static il.org.spartan.Utils.*;
+
 import static fluent.ly.box.*;
+import static fluent.ly.unbox.*;
+
+import java.util.*;
 
 public class range {
-  public int from = Integer.MIN_VALUE;
-  public int to = Integer.MAX_VALUE;
-  int jumpBy = 1;
-  boolean infinite = true;
-  boolean empty;
-
+  protected int from = Integer.MIN_VALUE;
+  protected int to = Integer.MAX_VALUE;
+  protected int jumpBy = 1;
+  protected boolean infinite = true;
+  protected boolean empty;
+  
+  protected range(){
+    empty = true;
+  }
+  
   /* a class for representing an iteration over range */
   abstract class RangeIterator<T extends RangeIterator<T>> implements Iterable<Integer> {
     @Override public Iterator<Integer> iterator() {
       return new Iterator<Integer>() {
         int currentNumber = from;
 
-        // the range has next iff it is infinte or the current number is not yet "to"
+        // the range has next iff it is infinite or the current number is not yet "to"
         @Override public boolean hasNext() {
           return infinite || currentNumber < to;
         }
@@ -47,22 +55,14 @@ public class range {
       return empty;
     }
 
-    @SuppressWarnings("boxing") public PerformedTo intersect(final PerformedTo t) {
-      final Integer $ = t.from(), to2 = t.to();
-      return to > $ && to2 > from ? range.from(Math.max(from, $)).to(Math.min(to, to2)) : new range() {
-        {
-          empty = true;
-        }
-      }.new PerformedTo();
+    public PerformedTo intersect(final PerformedTo t) {
+      final int $ = unbox(cantBeNull(t.from())), to2 = t.to();
+      return to <= $ || to2 <= from ? new range().new PerformedTo() : range.from(Math.max(from, $)).to(Math.min(to, to2));
     }
 
-    @SuppressWarnings("boxing") public PerformedTo intersect(final PerformedFrom ¢) {
-      final Integer $ = ¢.from();
-      return to > $ ? range.from($).to(to) : new range() {
-        {
-          empty = true;
-        }
-      }.new PerformedTo();
+    public PerformedTo intersect(final PerformedFrom ¢) {
+      final int $ = ¢.from();
+      return to > $ ? range.from($).to(to) : new range().new PerformedTo();
     }
   }
 

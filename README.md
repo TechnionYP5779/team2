@@ -1,9 +1,19 @@
 ## Development Status
 [![Build Status](https://travis-ci.org/TechnionYP5779/team2.svg?branch=master)](https://travis-ci.org/TechnionYP5779/team2)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/TechnionYP5779/team2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TechnionYP5779/team2/alerts/)
-[![GitHub issues](https://img.shields.io/github/issues/TechnionYP5779/team2.svg)](https://github.com/TechnionYP5779/team5/issues)
-[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=2592000)]()
 [![codecov.io](http://codecov.io/github/TechnionYP5779/team2/coverage.svg?branch=master)](http://codecov.io/github/TechnionYP5779/team2?branch=master)
+
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/TechnionYP5779/team2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TechnionYP5779/team2/alerts/)
+[![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/TechnionYP5779/team2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TechnionYP5779/team2/context:java)
+
+[![GitHub issues](https://img.shields.io/github/issues/TechnionYP5779/team2.svg)](https://github.com/TechnionYP5779/team2/issues)
+[![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/TechnionYP5779/team2.svg?maxAge=100)](https://github.com/TechnionYP5779/team2/issues?q=is%3Aissue+is%3Aclosed)
+
+[![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
+[![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=coverage)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
+[![SonarCubeQuality](https://sonarcloud.io/api/project_badges/measure?project=il.org.spartan%3Afluent.ly.2&metric=ncloc)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
+
+[![SonarCube](https://sonarcloud.io/api/project_badges/quality_gate?project=il.org.spartan%3Afluent.ly.2)](https://sonarcloud.io/dashboard?id=il.org.spartan%3Afluent.ly.2)
+
 
 
 
@@ -46,3 +56,7 @@ The refactorings made by this plug-in are based on the concept of Spartan Progra
   <li><a href="https://github.com/nerya50">Nerya Cohen</a></li>
   <li><a href="https://github.com/talporat">Tal Porat</a></li>
   <li><a href="https://github.com/addirabasker">Addir Abasker</a></li>
+</ul>
+<h2>Acknowledgments</h2>
+
+* **Prof. Yossi Gil**

@@ -1,7 +1,8 @@
 package fluent.ly;
 
 import static fluent.ly.___.*;
-
+import static il.org.spartan.Utils.*;
+import static fluent.ly.unbox.*;
 import java.io.*;
 import java.util.*;
 
@@ -16,19 +17,19 @@ public enum string {
   static final int MAX_LAST = 10;
 
   public static double atod(final @NotNull String ¢) {
-    return Double.valueOf(¢).doubleValue();
+    return unbox(cantBeNull(Double.valueOf(¢)));
   }
 
   public static float atof(final @NotNull String ¢) {
-    return Float.valueOf(¢).floatValue();
+    return unbox(cantBeNull(Float.valueOf(¢)));
   }
 
   public static int atoi(final @NotNull String ¢) {
-    return Integer.valueOf(¢).intValue();
+    return unbox(cantBeNull(Integer.valueOf(¢)));
   }
 
   public static long atol(final @NotNull String ¢) {
-    return Long.valueOf(¢).longValue();
+    return unbox(cantBeNull(Long.valueOf(¢)));
   }
 
   @NotNull public static String capitalize(final @NotNull String ¢) {
@@ -290,7 +291,11 @@ public enum string {
         final Object @NotNull [] $ = new Object[args.length - 1];
         for (int ¢ = 1; ¢ < args.length; ++¢)
           $[¢ - 1] = args[¢];
-        return new Formatter().format(args[0], $) + "";
+        try (Formatter f = new Formatter()) {
+          return f.format(args[0], $) + "";
+        } catch (final Exception ¢) {
+          throw ¢;
+        }
     }
   }
 

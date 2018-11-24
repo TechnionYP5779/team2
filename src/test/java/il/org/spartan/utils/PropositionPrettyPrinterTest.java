@@ -52,32 +52,88 @@ import il.org.spartan.utils.PropositionPrettyPrinter.*;
     listener = new MockListener();
   }
 
-  @Test public void testTopDown1() {
+  @Test public void testTopDown1_1() {
     final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
     propositionTreeTraversal.topDown(Proposition.AND(() -> true, () -> true));
     azzert.that(listener.downCalled, is(1));
+  }
+
+  @Test public void testTopDown1_2() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.AND(() -> true, () -> true));
     azzert.that(listener.upCalled, is(1));
+  }
+
+  @Test public void testTopDown1_3() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.AND(() -> true, () -> true));
     azzert.that(listener.nextCalled, is(2));
+  }
+
+  @Test public void testTopDown1_4() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.AND(() -> true, () -> true));
     azzert.that(listener.inTrueCalled, is(3));
+  }
+
+  @Test public void testTopDown1_5() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.AND(() -> true, () -> true));
     azzert.zero(listener.inFalseCalled);
   }
 
-  @Test public void testTopDown2() {
+  @Test public void testTopDown2_1() {
     final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
     propositionTreeTraversal.topDown(Proposition.that(() -> true));
     azzert.that(listener.downCalled, is(1));
+  }
+
+  @Test public void testTopDown2_2() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.that(() -> true));
     azzert.that(listener.upCalled, is(1));
+  }
+
+  @Test public void testTopDown2_3() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.that(() -> true));
     azzert.zero(listener.nextCalled);
+  }
+
+  @Test public void testTopDown2_4() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.that(() -> true));
     azzert.that(listener.inTrueCalled, is(1));
+  }
+
+  @Test public void testTopDown2_5() {
+    final PropositionTreeTraversal propositionTreeTraversal = new PropositionTreeTraversal(listener);
+    propositionTreeTraversal.topDown(Proposition.that(() -> true));
     azzert.zero(listener.inFalseCalled);
   }
 
-  @Test public void testTopDown3() {
+  @Test public void testTopDown3_1() {
     new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     azzert.that(listener.downCalled, is(2));
+  }
+
+  @Test public void testTopDown3_2() {
+    new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     azzert.that(listener.upCalled, is(2));
+  }
+
+  @Test public void testTopDown3_3() {
+    new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     azzert.zero(listener.nextCalled);
+  }
+
+  @Test public void testTopDown3_4() {
+    new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     azzert.that(listener.inTrueCalled, is(2));
+  }
+
+  @Test public void testTopDown3_5() {
+    new PropositionTreeTraversal(listener).topDown(Proposition.that(Proposition.T));
     azzert.zero(listener.inFalseCalled);
   }
 

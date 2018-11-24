@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>il.org.spartan</groupId>
 	<artifactId>fluent.ly.2</artifactId>
@@ -46,7 +47,14 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/cli-1.01.jar</systemPath>
 		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>${project.basedir}/lib/mockito</scope>
+		</dependency>
 	</dependencies>
+	
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
@@ -58,6 +66,7 @@
 						<format>html</format>
 						<format>xml</format>
 					</formats>
+					<check />
 				</configuration>
 			</plugin>
 		</plugins>

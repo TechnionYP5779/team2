@@ -59,8 +59,12 @@ import fluent.ly.*;
 
   @Test public void testWriteToFile() {
     try {
-      FileUtils.writeToFile("src/test/resources/my_file.txt", "Text");
-    } catch (final FileNotFoundException ¢) {
+      final String path = "./my_file.txt";
+      final File f = new File(path);
+      f.createNewFile();
+      FileUtils.writeToFile(path, "Text");
+      f.delete();
+    } catch (final IOException ¢) {
       forget.it(¢);
       fail();
     }
