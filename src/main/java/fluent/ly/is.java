@@ -10,7 +10,6 @@ import org.jetbrains.annotations.*;
  * @since 2017-04-23 */
 public interface is {
   /** Determine if an item can be found in a list of values
-   * @param           < T > JD
    * @param candidate what to search for
    * @param ts        where to search
    * @return true if the the item is found in the list */

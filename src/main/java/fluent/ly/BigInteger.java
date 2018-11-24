@@ -80,13 +80,14 @@ public class BigInteger {
 
   public BigInteger add(final BigInteger bigInteger) {
     final List<String> $ = new ArrayList<>();
-    int carry = 0;
+
     final boolean isAdd = negative == bigInteger.isNegative();
     final boolean isThisBiggerThanOther = unbox(cantBeNull(isFirstBiggerThanSecond(stringNumber, bigInteger.getStringNumber())));
     final List<String> biggerTmp = new ArrayList<>(isThisBiggerThanOther ? number : bigInteger.getValueAsStringList());
     final List<String> smallerTmp = new ArrayList<>(!isThisBiggerThanOther ? number : bigInteger.getValueAsStringList());
     Collections.reverse(biggerTmp);
     Collections.reverse(smallerTmp);
+    int carry = 0;
     for (int i = 0; i < smallerTmp.size(); ++i) {
       final StringWithCarry sc = addOrRemoveStringWithCarry(biggerTmp.get(i), smallerTmp.get(i), carry, box(isAdd));
       carry = sc.carry;
