@@ -5,7 +5,7 @@ install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true 
 sudo: false
 
 jdk:
-  - oraclejdk11
+  - oraclejdk8
 
 addons:
   sonarcloud:
