@@ -50,9 +50,9 @@ public enum iterables {
   }
 
   public static <T> Iterable<T> alternate(@Nullable final Iterable<T> it1, @Nullable final Iterable<T> it2) {
-    return it1 == null && it2 == null ? null : it1 != null && it2 == null ? it1 : it1 == null && it2 != null ? it2 : new Iterable<T>() {
+    return it1 == null && it2 == null ? null : it1 != null && it2 == null ? it1 : it1 == null && it2 != null ? it2 : new Iterable<>() {
       @Override @NotNull public Iterator<T> iterator() {
-        return new Iterator<T>() {
+        return new Iterator<>() {
           Iterator<T> iter1 = cantBeNull(it1).iterator(), iter2 = cantBeNull(it2).iterator();
           boolean flag = true;
 
