@@ -7,5 +7,5 @@ public interface User {
   
   String getContactInfo();
   
-  void update(User newUser);
+  void update(User updatedUser);
 }
