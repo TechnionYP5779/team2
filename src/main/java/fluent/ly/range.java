@@ -21,7 +21,7 @@ public class range {
   /* a class for representing an iteration over range */
   abstract class RangeIterator<T extends RangeIterator<T>> implements Iterable<Integer> {
     @Override public Iterator<Integer> iterator() {
-      return new Iterator<Integer>() {
+      return new Iterator<>() {
         int currentNumber = from;
 
         // the range has next iff it is infinite or the current number is not yet "to"
