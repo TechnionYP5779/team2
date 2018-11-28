@@ -1,7 +1,7 @@
 package parkingLot;
 
 /**
- * This interface describe a list of DateTime intervals
+ * This interface describes a list of DateTime intervals
  * @version 1.0
  * @author Tal Porat
  */
