@@ -1,6 +1,12 @@
 package parkingLot;
 
-public class ParkingSpot {
-  // to be expanded
-  int id;
+public interface ParkingSpot {
+  /*TODO: Add Documentation*/
+  Location getLocation();
+  
+  /*TODO: Add Documentation*/
+  Price getPrice();
+  
+  /*TODO: Add Documentation*/
+  Availability getAvailability();
 }
