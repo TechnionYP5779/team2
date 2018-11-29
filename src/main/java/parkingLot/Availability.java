@@ -14,7 +14,7 @@ public interface Availability {
    * @return Boolean This returns true if time is included in
    *         one of the intervals and false otherwise.
    */
-  Boolean isAvailable(DateTime time);
+  Boolean isAvailable(DateTime t);
   
   /**
    * This method creates a new Availability object that its intervals 

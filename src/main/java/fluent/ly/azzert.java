@@ -627,8 +627,8 @@ public class azzert extends org.junit.Assert {
   public static void notNullz(final @NotNull @Nullable Object @Nullable... os) {
     assert os != null;
     assert os != null;
-    for (final @Nullable Object ¢ : os)
-      assert ¢ != null : os + "";
+    for (final @Nullable Object ¢ : os) 
+      assert ¢ != null : os + ""; // lgtm [java/print-array]
   }
 
   @Contract(pure = true) @NotNull public static Matcher<@Nullable Object> nullValue() {
