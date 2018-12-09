@@ -257,7 +257,7 @@ public enum string {
   }
 
   /** Quote a given {@link String}
-   * @param $ some {@link String} to be quoted
+   * @param ¢ some {@link String} to be quoted
    * @return parameter, quoted */
   @NotNull public static String quote(final @Nullable Object ¢) {
     return ¢ != null ? wrap('\'', ¢ + "") : "<null reference>";
