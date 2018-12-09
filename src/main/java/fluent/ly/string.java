@@ -256,8 +256,11 @@ public enum string {
     return $;
   }
 
-  @NotNull public static String quote(final Object ¢) {
-    return wrap('\'', ¢ + "");
+  /** Quote a given {@link String}
+   * @param $ some {@link String} to be quoted
+   * @return parameter, quoted */
+  @NotNull public static String quote(final @Nullable Object ¢) {
+    return ¢ != null ? wrap('\'', ¢ + "") : "<null reference>";
   }
 
   @NotNull public static String repeat(final int i, final char c) {
