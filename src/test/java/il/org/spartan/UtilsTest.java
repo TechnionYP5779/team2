@@ -14,7 +14,6 @@ import org.junit.*;
 
 import fluent.ly.*;
 import il.org.spartan.Utils.FoundHandleForT.*;
-import il.org.spartan.etc.*;
 
 @SuppressWarnings("static-method") public class UtilsTest {
   @Test public void addIterableWithoutNulls() {
@@ -229,12 +228,6 @@ import il.org.spartan.etc.*;
     assert "some string".equals(prepend(new StringBuilder("ome string"), "s") + "");
   }
 
-  @Test public void quoteTest() {
-    assert "<null reference>".equals(quote(null));
-    assert "''".equals(quote(""));
-    assert "'some some'".equals(quote("some some"));
-  }
-
   @Test public void removeDuplicatesTest() {
     final List<Integer> l = new LinkedList<>(Arrays.asList(box(new int[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 })));
     removeDuplicates(l);
@@ -358,18 +351,6 @@ import il.org.spartan.etc.*;
       forget.it(¢);
       azzert.aye("", true);
     }
-  }
-
-  @Test public void quoteEmptyString() {
-    azzert.that(idiomatic.quote(""), is("''"));
-  }
-
-  @Test public void quoteNull() {
-    azzert.that(idiomatic.quote(null), is("<null reference>"));
-  }
-
-  @Test public void quoteSimpleString() {
-    azzert.that(idiomatic.quote("A"), is("'A'"));
   }
 
   @Test public void swapDegenerate() {
