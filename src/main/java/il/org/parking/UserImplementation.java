@@ -31,4 +31,9 @@ public class UserImplementation implements User {
     this.name = updatedUser.getName();
     this.contact_info = updatedUser.getContactInfo();
   }
+
+  @Override public void sellParkingSpot(ParkingSpot parkingSpot) {
+    // TODO Auto-generated method stub
+    
+  }
 }
