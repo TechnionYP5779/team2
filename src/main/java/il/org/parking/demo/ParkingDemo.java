@@ -22,8 +22,6 @@ public class ParkingDemo {
   }
   
   public List<ParkingSpot> viewAllParkingSpots(){
-    
-    return null;
-    
+    return db.getAllParkingSpot();
   }
 }

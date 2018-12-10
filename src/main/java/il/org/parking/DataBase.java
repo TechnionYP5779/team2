@@ -1,10 +1,14 @@
 package il.org.parking;
 
+import java.util.*;
+
 public interface DataBase {
   
   User getUser(Integer id);
 
   ParkingSpot getParkingSpot(Integer id);
+  
+  List<ParkingSpot> getAllParkingSpot();
 
   void add(User b);
 

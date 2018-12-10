@@ -53,4 +53,8 @@ public class DataBaseDummie implements DataBase {
     }
     
   }
+
+  @Override public List<ParkingSpot> getAllParkingSpot() {
+    return new ArrayList<>(parkingSpots.values());
+  }
 }
