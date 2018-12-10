@@ -8,6 +8,7 @@ public class DataBaseDummie implements DataBase {
   Map<Integer, User> users = new HashMap<>();
   Map<Integer, ParkingSpot> parkingSpots = new HashMap<>();
   Map<Integer, List<Integer>> parkingSpotsOfUsers = new HashMap<>();
+  List<Reservation> reservations = new ArrayList<>();
 
   @Override public User getUser(Integer id) {
     return users.get(id);
@@ -56,5 +57,14 @@ public class DataBaseDummie implements DataBase {
 
   @Override public List<ParkingSpot> getAllParkingSpot() {
     return new ArrayList<>(parkingSpots.values());
+  }
+
+  @Override public List<Reservation> getAllReservations() {
+   return reservations;
+  }
+
+  @Override public void add(Reservation s) {
+    reservations.add(s);
+    
   }
 }

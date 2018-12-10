@@ -27,35 +27,29 @@ public class ParkingDemo {
     return db.getAllParkingSpot();
   }
 
-  @SuppressWarnings("boxing") public void buy(Integer buyerId,Integer parkingSpotId, Availability userAvailability) {
+  @SuppressWarnings("boxing") public void buy(Integer buyerId, Integer parkingSpotId, Availability userAvailability) {
     ParkingSpot parkingSpot = db.getParkingSpot(parkingSpotId);
-    
-    if(userAvailability.getNumberOfIntervals() != 1) {
+    if (userAvailability.getNumberOfIntervals() != 1) {
       throw new IllegalArgumentException("Availability should only have one time slot");
     }
-    
     if (parkingSpot == null) {
       throw new NoSuchElementException("no such parking spot id");
     }
-    
     User buyer = db.getUser(buyerId);
     if (buyer == null) {
       throw new NoSuchElementException("no such user id");
     }
-    
-    
     Availability parkingSpotAvailability = parkingSpot.getAvailability();
     if (parkingSpotAvailability.doesContaines(userAvailability).booleanValue()) {
       parkingSpot.subtractAvailability(userAvailability);
-      Reservation reservation = reservationFactory.create(buyer, parkingSpot.getSeller(), parkingSpot.getPrice(),
-          userAvailability.getDuration(), userAvailability.getStartTime());
+      Reservation reservation = reservationFactory.create(buyer, parkingSpot.getSeller(), parkingSpot.getPrice(), userAvailability.getDuration(),
+          userAvailability.getStartTime());
       db.add(reservation);
     }
     db.update(parkingSpotId, parkingSpot);
   }
-  
-  public List<Reservation> getAllReservations(){
+
+  public List<Reservation> getAllReservations() {
     return db.getAllReservations();
   }
- 
 }
