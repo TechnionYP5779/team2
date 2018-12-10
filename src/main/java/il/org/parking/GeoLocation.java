@@ -27,20 +27,22 @@ public class GeoLocation implements Location{
     this.longitude = Double.valueOf(JsonPath.read(json,"$[0].lon"));
   }
   
+  // Calculate the air distance between two geographic coordinates with the Haversine formula
   @Override public Double calcDist(Location other) {
     if( !(other instanceof GeoLocation) )
       return null ;
-    double startLat = this.latitude.doubleValue();
-    double startLong = this.latitude.doubleValue();
-    double endLat = ((GeoLocation)other).latitude.doubleValue();
-    double endLong = ((GeoLocation)other).latitude.doubleValue();
-    double dLat = Math.toRadians(endLat - startLat);
-    double dLong = Math.toRadians(endLong - startLong);
-    startLat = Math.toRadians(startLat);
-    endLat = Math.toRadians(endLat);
-    double a = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(startLat) * Math.cos(endLat) * Math.pow(Math.sin(dLong / 2), 2);
-    double $ = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return box.it(6371 * $);
+    final int $ = 6371; // Radius of the earth
+    double lat1 = this.latitude.doubleValue();
+    double lon1 = this.longitude.doubleValue();
+    double lat2 = ((GeoLocation)other).latitude.doubleValue();
+    double lon2 = ((GeoLocation)other).longitude.doubleValue();
+    double latDistance = Math.toRadians(lat2-lat1);
+    double lonDistance = Math.toRadians(lon2-lon1);
+    double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + 
+    Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * 
+    Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return box.it($ * c);
   }
   
   public static String getRequest(String url) throws Exception {
