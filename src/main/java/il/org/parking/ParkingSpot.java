@@ -1,6 +1,7 @@
 package il.org.parking;
 
-public class ParkingSpot {
+public interface ParkingSpot {
   // to be expanded
-  int id;
+  public Integer getId();
+  
 }
