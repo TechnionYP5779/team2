@@ -1,4 +1,4 @@
-package parkingLot;
+package il.org.parking;
 
 import java.time.*;
 
