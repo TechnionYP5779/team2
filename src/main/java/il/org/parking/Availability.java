@@ -1,4 +1,4 @@
-package parkingLot;
+package il.org.parking;
 
 /**
  * This interface describes a list of DateTime intervals

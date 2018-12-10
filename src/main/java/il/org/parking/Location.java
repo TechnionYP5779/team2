@@ -1,4 +1,4 @@
-package parkingLot;
+package il.org.parking;
 
 /**
  * This interface represent a geographic location
