@@ -7,4 +7,8 @@ public interface ParkingSpot {
   public Availability getAvailability();
   
   public void subtractAvailability(Availability availability);
+  
+  public User getSeller();
+  
+  public double getPrice();
 }

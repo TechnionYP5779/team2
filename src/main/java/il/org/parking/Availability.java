@@ -41,4 +41,8 @@ public interface Availability {
   Integer getDuration();
   
   Boolean doesContaines(Availability other);
+  
+  Integer getNumberOfIntervals();
+  
+  DateTime getStartTime();
 }
