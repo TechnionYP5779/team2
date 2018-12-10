@@ -16,9 +16,4 @@ public interface User {
   /** @param updatedUser - new user information to this update user */
   void update(User updatedUser);
   
-  /**
-   * 
-   * @param parkingSpot - the parking spot that the user want to sell
-   */
-  void sellParkingSpot(ParkingSpot parkingSpot);
 }
