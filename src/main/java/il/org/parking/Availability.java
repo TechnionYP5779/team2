@@ -39,4 +39,6 @@ public interface Availability {
    * @return Integer This is the value of the total duration
    */
   Integer getDuration();
+  
+  Boolean doesContaines(Availability other);
 }
