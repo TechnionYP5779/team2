@@ -54,4 +54,8 @@ public class ParkingDemo {
     db.update(parkingSpotId, parkingSpot);
   }
   
+  public List<Reservation> getAllReservations(){
+    return db.getAllReservations();
+  }
+ 
 }
