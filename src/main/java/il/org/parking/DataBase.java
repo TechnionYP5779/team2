@@ -2,7 +2,7 @@ package il.org.parking;
 
 public interface DataBase {
   
-  User getBuyer(Integer id);
+  User getUser(Integer id);
 
   ParkingSpot getParkingSpot(Integer id);
 
@@ -10,9 +10,7 @@ public interface DataBase {
 
   void add(ParkingSpot s);
 
-  void removeBuyer(Integer id);
-
-  void removeSeller(Integer id);
+  void removeUser(Integer id);
 
   void removeParkingSpot(Integer id);
 
