@@ -13,11 +13,14 @@ public class GeoLocation implements Location{
   private double longitude;
   private String address;
   
-  public GeoLocation(double latitude ,double longitude){
+  public GeoLocation(double latitude ,double longitude) throws Exception{
     if(latitude > 90 || latitude < -90 || longitude > 180 || longitude < -180)
       throw new IllegalArgumentException();
     this.latitude = latitude;
     this.longitude = longitude;
+    String URL = "https://nominatim.openstreetmap.org/reverse?lat="+URLEncoder.encode(latitude+"","UTF-8")+"&lon="+URLEncoder.encode(longitude+"","UTF-8")+"&format=json&addressdetails=1";
+    String json = GeoLocation.getRequest(URL);
+    this.address = JsonPath.read(json,"$.display_name");
   }
   
   public GeoLocation(String address) throws Exception {
@@ -65,11 +68,14 @@ public class GeoLocation implements Location{
 
     final URL obj = new URL(url);
     final HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    con.setRequestProperty ("Referer", "https://www.goggle.com");
 
     con.setRequestMethod("GET");
 
-    if (con.getResponseCode() != 200)
+    if (con.getResponseCode() != 200) {
+      System.out.println(con.getResponseCode());
       return null;
+    }
 
     try(BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))){
       String inputLine;
