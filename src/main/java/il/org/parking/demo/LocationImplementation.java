@@ -22,4 +22,12 @@ public class LocationImplementation implements Location{
    LocationImplementation other_loc = (LocationImplementation)other;
    return Math.sqrt(Math.pow(this.x - other_loc.x, 2.0) + Math.pow(this.y - other_loc.y, 2.0));
   }
+
+
+
+  @Override public String toString() {
+    return "[x=" + x + ", y=" + y + "]";
+  }
+  
+  
 }

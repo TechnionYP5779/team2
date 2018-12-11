@@ -32,7 +32,7 @@ public class DateTimeImplementation implements DateTime{
   }
 
   @Override public String toString() {
-    return "DateTimeImplementation [time=" + time + "]";
+    return  ""+time;
   }
 
   @Override public int hashCode() {
