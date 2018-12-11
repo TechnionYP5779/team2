@@ -13,18 +13,20 @@ public class ParkingDemo {
     this.reservationFactory = reservationFactory;
   }
 
-  public void addUser(Integer id, String name, String contact_info) {
+  public User addUser(Integer id, String name, String contact_info) {
     User user = new UserImplementation(id, name, contact_info, db);
     db.add(user);
+    return user;
   }
   
   public User getUser(Integer id) {
     return db.getUser(id);
   }
 
-  public void sell(Integer userId, ParkingSpot parkingSpot) {
+  public void sell(ParkingSpot parkingSpot) {
     db.add(parkingSpot);
-    db.add(userId, parkingSpot.getId());
+    Integer sellerId = parkingSpot.getSeller().getId();
+    db.add(sellerId, parkingSpot.getId());
   }
 
   public List<ParkingSpot> viewAllParkingSpots() {
@@ -50,7 +52,7 @@ public class ParkingDemo {
           userAvailability.getStartTime());
       db.add(reservation);
     }else {
-      System.out.println("aaaa");
+      throw new IllegalArgumentException("isnt available");
     }
     db.update(parkingSpotId, parkingSpot);
   }
