@@ -7,14 +7,16 @@ public class ParkingSpotImplementation implements ParkingSpot {
   private Availability availability;
   private User seller;
   private double price;
+  private Location location;
   
   
 
-  public ParkingSpotImplementation(Integer id, Availability availability, User seller, double price) {
+  public ParkingSpotImplementation(Integer id, Availability availability, User seller, double price,Location location) {
     this.id = id;
     this.availability = availability;
     this.seller = seller;
     this.price = price;
+    this.location = location;
   }
 
   @Override public Integer getId() {
@@ -39,6 +41,10 @@ public class ParkingSpotImplementation implements ParkingSpot {
 
   @Override public String toString() {
     return "ParkingSpotImplementation [id=" + id + ", availability=" + availability + ", seller=" + seller + ", price=" + price + "]";
+  }
+
+  @Override public Location getLocation() {
+   return this.location;
   }
 
   

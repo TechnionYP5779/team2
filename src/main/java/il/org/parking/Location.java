@@ -12,5 +12,5 @@ public interface Location {
    * @param other This is the second Location object
    * @return Integer This returns the distance between the two Location objects
    */
-    Integer calcDist (Location other);
+    double calcDist (Location other);
 }

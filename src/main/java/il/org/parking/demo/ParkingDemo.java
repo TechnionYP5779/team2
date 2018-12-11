@@ -1,6 +1,7 @@
 package il.org.parking.demo;
 
 import java.util.*;
+import java.util.stream.*;
 
 import il.org.parking.*;
 
@@ -31,6 +32,10 @@ public class ParkingDemo {
 
   public List<ParkingSpot> viewAllParkingSpots() {
     return db.getAllParkingSpot();
+  }
+  
+  public List<ParkingSpot> viewParkingSpotsFromLocation(Location l, double radius){
+    return db.getAllParkingSpot().stream().filter(ps-> (ps.getLocation().calcDist(l) <= radius)).collect(Collectors.toList());
   }
 
   @SuppressWarnings("boxing") public void buy(Integer buyerId, Integer parkingSpotId, Availability userAvailability) {

@@ -12,4 +12,6 @@ public interface ParkingSpot {
   
   public double getPrice();
   
+  public Location getLocation();
+  
 }
