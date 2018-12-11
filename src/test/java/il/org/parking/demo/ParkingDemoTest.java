@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.stream.*;
 
 import org.junit.*;
+import org.junit.rules.*;
 import org.mockito.*;
 
 import il.org.parking.*;
@@ -93,20 +94,66 @@ public class ParkingDemoTest {
         "\n";
     
     assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
-    //demo.viewAllParkingSpots().stream().forEach(ps -> System.out.println(ps.toString()));
-    
-    /*List<SlotImplementation> slots = new ArrayList<>();
+  }
+  
+  @Test public void testBuySpot() {
+    List<SlotImplementation> slots = new ArrayList<>();
     slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
     Availability buy_availability = new AvailabilityImplementation(slots);
     
     demo.buy(456, 777, buy_availability);
     
-    demo.viewAllParkingSpots().stream().forEach(ps -> System.out.println(ps.toString()));
+    String expected = 
+        "666(999):\n" + 
+        "[1000 1500]\n" + 
+        "[1700 1750]\n" + 
+        "\n" + 
+        ",666(888):\n" + 
+        "[300 500]\n" + 
+        "[700 750]\n" + 
+        "\n" + 
+        ",123(777):\n" + 
+        "[130 140]\n" + 
+        "[160 200]\n" + 
+        "\n";
     
-    demo.getAllReservations().stream().forEach(r->System.out.println(r));*/
+    assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
   }
   
-  @Test public void testBuySpot() {
-    //TODO
+  @Rule
+  public ExpectedException expectedEx = ExpectedException.none();
+  
+  @Test public void testBuySpot2() {
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx.expectMessage("Availability should only have one time slot");
+    
+    List<SlotImplementation> slots = new ArrayList<>();
+    slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
+    slots.add(new SlotImplementation(new DateTimeImplementation(165), new DateTimeImplementation(170)));
+    Availability buy_availability = new AvailabilityImplementation(slots);
+    
+    demo.buy(456, 777, buy_availability);
+  }
+  
+  @Test public void testBuySpot3() {
+    expectedEx.expect(NoSuchElementException.class);
+    expectedEx.expectMessage("No such user id");
+    
+    List<SlotImplementation> slots = new ArrayList<>();
+    slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
+    Availability buy_availability = new AvailabilityImplementation(slots);
+    
+    demo.buy(100, 777, buy_availability);
+  }
+  
+  @Test public void testBuySpot4() {
+    expectedEx.expect(NoSuchElementException.class);
+    expectedEx.expectMessage("No such parking spot id");
+    
+    List<SlotImplementation> slots = new ArrayList<>();
+    slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
+    Availability buy_availability = new AvailabilityImplementation(slots);
+    
+    demo.buy(456, 0, buy_availability);
   }
 }

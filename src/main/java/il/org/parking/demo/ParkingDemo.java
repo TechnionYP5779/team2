@@ -39,11 +39,11 @@ public class ParkingDemo {
       throw new IllegalArgumentException("Availability should only have one time slot");
     }
     if (parkingSpot == null) {
-      throw new NoSuchElementException("no such parking spot id");
+      throw new NoSuchElementException("No such parking spot id");
     }
     User buyer = db.getUser(buyerId);
     if (buyer == null) {
-      throw new NoSuchElementException("no such user id");
+      throw new NoSuchElementException("No such user id");
     }
     Availability parkingSpotAvailability = parkingSpot.getAvailability();
     if (parkingSpotAvailability.doesContaines(userAvailability).booleanValue()) {
