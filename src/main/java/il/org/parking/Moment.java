@@ -36,4 +36,24 @@ public class Moment implements DateTime {
   @Override public LocalDateTime getDate() {
     return savedMoment;
   }
+
+  @Override public int getDayOfMonth() {
+    return savedMoment.getDayOfMonth();
+  }
+
+  @Override public Month getMonth() {
+    return savedMoment.getMonth();
+  }
+
+  @Override public int getYear() {
+    return savedMoment.getYear();
+  }
+
+  @Override public int getMinute() {
+    return savedMoment.getMinute();
+  }
+
+  @Override public int getHour() {
+    return savedMoment.getHour();
+  }
 }
