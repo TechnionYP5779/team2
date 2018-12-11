@@ -1,5 +1,7 @@
 package il.org.parking;
 
+import java.util.*;
+
 /**
  * This interface describes a list of DateTime intervals
  * @version 1.0
@@ -38,6 +40,8 @@ public interface Availability {
    * This method is used to get the total duration of all the intervals
    * @return Integer This is the value of the total duration
    */
+  Boolean isAvailable(DateTime start, DateTime end);
+  
   Integer getDuration();
   
   Boolean doesContaines(Availability other);
@@ -45,4 +49,8 @@ public interface Availability {
   Integer getNumberOfIntervals();
   
   DateTime getStartTime();
+
+  Availability subtraction(DateTime start, DateTime end);
+  
+  Slot getSlots(int index);
 }

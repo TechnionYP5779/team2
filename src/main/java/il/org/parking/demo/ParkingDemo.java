@@ -17,6 +17,10 @@ public class ParkingDemo {
     User user = new UserImplementation(id, name, contact_info, db);
     db.add(user);
   }
+  
+  public User getUser(Integer id) {
+    return db.getUser(id);
+  }
 
   public void sell(Integer userId, ParkingSpot parkingSpot) {
     db.add(parkingSpot);
@@ -45,6 +49,8 @@ public class ParkingDemo {
       Reservation reservation = reservationFactory.create(buyer, parkingSpot.getSeller(), parkingSpot.getPrice(), userAvailability.getDuration(),
           userAvailability.getStartTime());
       db.add(reservation);
+    }else {
+      System.out.println("aaaa");
     }
     db.update(parkingSpotId, parkingSpot);
   }

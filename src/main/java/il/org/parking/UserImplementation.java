@@ -32,4 +32,10 @@ public class UserImplementation implements User {
     this.contact_info = updatedUser.getContactInfo();
   }
 
+  @Override public String toString() {
+    return "UserImplementation [id=" + id + ", name=" + name + ", contact_info=" + contact_info + ", db=" + db + "]";
+  }
+  
+  
+
 }

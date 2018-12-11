@@ -11,4 +11,5 @@ public interface ParkingSpot {
   public User getSeller();
   
   public double getPrice();
+  
 }

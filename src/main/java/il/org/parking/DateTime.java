@@ -10,4 +10,12 @@ public interface DateTime {
    * @return LocalDateTime, which is the java LocalDateTime object that is stored
    *         in the current object */
   LocalDateTime getDate();
+  
+  Boolean isBetween(DateTime start, DateTime finish);
+  
+  Integer getTimeFrom(DateTime later);
+  
+  Integer getTime();
+  
+  
 }
