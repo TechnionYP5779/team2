@@ -8,20 +8,29 @@ import fluent.ly.*;
 
 public class GeoLocationTest {
   
-  @Test(expected=IllegalArgumentException.class) public void ctor1() {
+  @Test(expected=IllegalArgumentException.class) public void ctorTest1() {
     forget.unused(new GeoLocation(91.0,0.0));
   }
-  @Test(expected=IllegalArgumentException.class) public void ctor2() {
+  @Test(expected=IllegalArgumentException.class) public void ctorTest2() {
     forget.unused(new GeoLocation(-91.0,0.0));
   }
-  @Test(expected=IllegalArgumentException.class) public void ctor3() {
+  @Test(expected=IllegalArgumentException.class) public void ctorTest3() {
     forget.unused(new GeoLocation(0.0,181.0));
   }
-  @Test(expected=IllegalArgumentException.class) public void ctor4() {
+  @Test(expected=IllegalArgumentException.class) public void ctorTest4() {
     forget.unused(new GeoLocation(0.0,-181.0));
   }
-  @Test public void ctor5() {
+  @Test public void ctorTest5() {
     forget.unused(new GeoLocation(0.0,0.0));
+  }
+  @Test public void getLatTest() throws Exception {
+    azzert.assertEquals(new GeoLocation("Tel Aviv").getLatitude(),32.08,0.01);
+  }
+  @Test public void getLonTest() throws Exception {
+    azzert.assertEquals(new GeoLocation("Tel Aviv").getLongitude(),34.78,0.01);
+  }
+  @Test public void getAddressTest() throws Exception {
+    azzert.assertEquals(new GeoLocation("New York city").getAddress(),"NYC, New York, USA");
   }
   @Test public void calcDistTest1() throws Exception {
     azzert.assertEquals(new GeoLocation("תל אביב").calcDist(new GeoLocation("חיפה")).doubleValue(),84.63,0.01);
@@ -40,5 +49,8 @@ public class GeoLocationTest {
   }
   @Test public void calcDistTest6() throws Exception {
     azzert.assertNull(new GeoLocation("תל אביב").calcDist(null));
+  }
+  @Test public void toStringTest() throws Exception {
+    azzert.assertEquals(new GeoLocation("Tel Aviv")+"","32.0804808\t34.7805274");
   }
 }

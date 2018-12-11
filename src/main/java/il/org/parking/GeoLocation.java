@@ -27,6 +27,19 @@ public class GeoLocation implements Location{
     String json = GeoLocation.getRequest(URL);
     this.latitude = Double.valueOf(JsonPath.read(json,"$[0].lat")).doubleValue();
     this.longitude =  Double.valueOf(JsonPath.read(json,"$[0].lon")).doubleValue();
+    this.address = JsonPath.read(json,"$[0].display_name");
+  }
+  
+  public double getLatitude() {
+    return this.latitude;
+  }
+  
+  public double getLongitude() {
+    return this.longitude;
+  }
+  
+  public String getAddress() {
+    return this.address;
   }
   
   // Calculate the air distance between two geographic coordinates with the Haversine formula
@@ -47,7 +60,8 @@ public class GeoLocation implements Location{
     return box.it($ * c);
   }
   
-  public static String getRequest(String url) throws Exception {
+  
+  private static String getRequest(String url) throws Exception {
 
     final URL obj = new URL(url);
     final HttpURLConnection con = (HttpURLConnection) obj.openConnection();
