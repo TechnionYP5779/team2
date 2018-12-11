@@ -38,14 +38,14 @@ public class AvailabilityImplementation implements Availability {
   @Override public Availability subtraction(DateTime start, DateTime end) {
     List<SlotImplementation> newSlots = new ArrayList<>();
     for (SlotImplementation s : slots) {
-      if (start.isBetween(s.start, s.end)) {
-        newSlots.add(new SlotImplementation(s.start, start));
-        if (end.isBetween(start, s.end)) {
-          newSlots.add(new SlotImplementation(end, s.end));
+      if (start.isBetween(s.start, s.getEnd())) {
+          if(!s.start.equals(start)) newSlots.add(new SlotImplementation(s.start, start));
+        if (end.isBetween(start, s.getEnd())) {
+          if(!end.equals(s.getEnd())) newSlots.add(new SlotImplementation(end, s.getEnd()));
         }
       } else if (s.getStart().isBetween(start, end)) {
         if (end.isBetween(s.getStart(), s.getEnd())) {
-          newSlots.add(new SlotImplementation(end, s.getEnd()));
+          if(!end.equals(s.getEnd())) newSlots.add(new SlotImplementation(end, s.getEnd()));
         }
       } else {
         newSlots.add(s);

@@ -7,12 +7,10 @@ import java.util.stream.*;
 
 import org.junit.*;
 import org.junit.rules.*;
-import org.mockito.*;
-
 import il.org.parking.*;
-import il.org.parking.demo.AvailabilityImplementation.*;
 
 
+@SuppressWarnings("boxing")
 public class ParkingDemoTest {
   
   private ParkingDemo demo;
@@ -63,19 +61,18 @@ public class ParkingDemoTest {
     
   }
   
-  private String getParkingSpotString(ParkingSpot ps) {
-    String ret = "";
-    ret = ps.getSeller().getId().toString()+"("+ps.getId().toString()+")"+":\n";
+  private static String getParkingSpotString(ParkingSpot ps) {
+    String $ = ps.getSeller().getId() + "(" + ps.getId() + "):\n";
     Availability av = ps.getAvailability();
-    for(int i=0; i<av.getNumberOfIntervals(); i++) {
-      ret = ret+"["+av.getSlots(i).getStart().getTime().toString()+" "+av.getSlots(i).getEnd().getTime().toString()+"]\n";
+    for(int ¢=0; ¢<av.getNumberOfIntervals(); ++¢) {
+      $ += "[" + av.getSlots(¢).getStart().getTime() + " " + av.getSlots(¢).getEnd().getTime() + "]\n";
     }
     
-    return ret+"\n";
+    return $+"\n";
   }
   
-  private String getTimeSlotsString(List<ParkingSpot> list) {
-    return list.stream().map(ps->getParkingSpotString(ps)).collect( Collectors.joining( "," ) );
+  private static String getTimeSlotsString(List<ParkingSpot> list) {
+    return list.stream().map(ps->getParkingSpotString(ps)).collect( Collectors.joining( "" ) );
   }
   
   @Test public void testSellSpot(){
@@ -85,21 +82,25 @@ public class ParkingDemoTest {
         "[1000 1500]\n" + 
         "[1700 1750]\n" + 
         "\n" + 
-        ",666(888):\n" + 
+        "666(888):\n" + 
         "[300 500]\n" + 
         "[700 750]\n" + 
         "\n" + 
-        ",123(777):\n" + 
+        "123(777):\n" + 
         "[130 200]\n"+
         "\n";
     
     assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
   }
   
+  private static Availability buildBuyAvailability(Integer start, Integer end) {
+    List<SlotImplementation> $ = new ArrayList<>();
+    $.add(new SlotImplementation(new DateTimeImplementation(start), new DateTimeImplementation(end)));
+    return new AvailabilityImplementation($);
+  }
+  
   @Test public void testBuySpot() {
-    List<SlotImplementation> slots = new ArrayList<>();
-    slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
-    Availability buy_availability = new AvailabilityImplementation(slots);
+    Availability buy_availability = buildBuyAvailability(140,160);
     
     demo.buy(456, 777, buy_availability);
     
@@ -108,17 +109,19 @@ public class ParkingDemoTest {
         "[1000 1500]\n" + 
         "[1700 1750]\n" + 
         "\n" + 
-        ",666(888):\n" + 
+        "666(888):\n" + 
         "[300 500]\n" + 
         "[700 750]\n" + 
         "\n" + 
-        ",123(777):\n" + 
+        "123(777):\n" + 
         "[130 140]\n" + 
         "[160 200]\n" + 
         "\n";
     
     assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
   }
+
+  
   
   @Rule
   public ExpectedException expectedEx = ExpectedException.none();
@@ -139,9 +142,7 @@ public class ParkingDemoTest {
     expectedEx.expect(NoSuchElementException.class);
     expectedEx.expectMessage("No such user id");
     
-    List<SlotImplementation> slots = new ArrayList<>();
-    slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
-    Availability buy_availability = new AvailabilityImplementation(slots);
+    Availability buy_availability = buildBuyAvailability(140,160);
     
     demo.buy(100, 777, buy_availability);
   }
@@ -150,10 +151,104 @@ public class ParkingDemoTest {
     expectedEx.expect(NoSuchElementException.class);
     expectedEx.expectMessage("No such parking spot id");
     
-    List<SlotImplementation> slots = new ArrayList<>();
-    slots.add(new SlotImplementation(new DateTimeImplementation(140), new DateTimeImplementation(160)));
-    Availability buy_availability = new AvailabilityImplementation(slots);
+    Availability buy_availability = buildBuyAvailability(140,160);
     
     demo.buy(456, 0, buy_availability);
+  }
+  
+  @Test public void testBuySpot5() {
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx.expectMessage("isnt available");
+    
+    Availability buy_availability = buildBuyAvailability(2000,2160);
+    
+    demo.buy(456, 777, buy_availability);
+  }
+  
+  @Test public void testBuySpot6() {
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx.expectMessage("isnt available");
+    
+    Availability buy_availability = buildBuyAvailability(140,201);
+    
+    demo.buy(456, 777, buy_availability);
+  }
+  
+  @Test public void testBuySpot7() {
+    expectedEx.expect(IllegalArgumentException.class);
+    expectedEx.expectMessage("isnt available");
+    
+    Availability buy_availability = buildBuyAvailability(135,201);
+    
+    demo.buy(456, 777, buy_availability);
+    
+  }
+  
+  @Test public void testBuySpot8() {
+    
+    Availability buy_availability = buildBuyAvailability(135,200);
+    
+    demo.buy(456, 777, buy_availability);
+    
+    String expected = 
+        "666(999):\n" + 
+        "[1000 1500]\n" + 
+        "[1700 1750]\n" + 
+        "\n" + 
+        "666(888):\n" + 
+        "[300 500]\n" + 
+        "[700 750]\n" + 
+        "\n" + 
+        "123(777):\n" + 
+        "[130 135]\n" + 
+        "\n";
+    
+    assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
+    
+  }
+  
+  @Test public void testBuySpot9() {
+    
+    Availability buy_availability = buildBuyAvailability(130,190);
+    
+    demo.buy(456, 777, buy_availability);
+    
+    String expected = 
+        "666(999):\n" + 
+        "[1000 1500]\n" + 
+        "[1700 1750]\n" + 
+        "\n" + 
+        "666(888):\n" + 
+        "[300 500]\n" + 
+        "[700 750]\n" + 
+        "\n" + 
+        "123(777):\n" + 
+        "[190 200]\n" + 
+        "\n";
+    
+    assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
+    
+  }
+  
+ @Test public void testBuySpot10() {
+    
+    Availability buy_availability = buildBuyAvailability(130,200);
+    
+    demo.buy(456, 777, buy_availability);
+    
+    String expected = 
+        "666(999):\n" + 
+        "[1000 1500]\n" + 
+        "[1700 1750]\n" + 
+        "\n" + 
+        "666(888):\n" + 
+        "[300 500]\n" + 
+        "[700 750]\n" + 
+        "\n" + 
+        "123(777):\n" + 
+        "\n";
+    
+    assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
+    
   }
 }
