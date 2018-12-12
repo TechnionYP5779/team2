@@ -2,8 +2,8 @@ package il.org.parking;
 
 /**
  * This interface describes a list of DateTime intervals
- * @version 1.0
- * @author Tal Porat
+ * @version 1.1
+ * @author Tal Porat (unfication by Addir Abasker)
  */
 public interface Availability {
   
@@ -33,6 +33,16 @@ public interface Availability {
    * @return Availability This is the new Availability that was created
    */
   Availability subtraction(Availability other);
+  
+
+  /**
+   * This method creates a new Availability object that its intervals 
+   * are the unification of the Availability object intervals and the other
+   * Availability object intervals
+   * @param other This is the other Availability
+   * @return Availability This is the new Availability that was created
+   */
+  Availability unification(Availability other);
   
   /**
    * This method is used to get the total duration of all the intervals
