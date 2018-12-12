@@ -2,6 +2,8 @@ package il.org.parking;
 
 import java.util.*;
 
+import il.org.parking.exceptions.*;
+
 public interface DataBase {
   
   User getUser(Integer id);
@@ -26,7 +28,7 @@ public interface DataBase {
 
   void update(User s);
 
-  void update(ParkingSpot s);
+  void update(ParkingSpot s) throws ParkingSpotNotInSystem;
   
   
 }

@@ -58,6 +58,6 @@ public class UserImplementationTest {
   @Test public void testUpdate4() {
     User newUser = new UserImplementation(Integer.valueOf(111), "cohen", "coco@hotmail.com", db);
     user.update(newUser);
-    Mockito.verify(db, Mockito.times(1)).update(Integer.valueOf(12345), newUser);
+    Mockito.verify(db, Mockito.times(1)).update(newUser);
   }
 }

@@ -3,6 +3,7 @@ package il.org.parking.demo;
 import java.util.*;
 
 import il.org.parking.*;
+import il.org.parking.exceptions.*;
 
 public class DataBaseDummie implements DataBase {
   Map<Integer, User> users = new HashMap<>();
@@ -38,7 +39,8 @@ public class DataBaseDummie implements DataBase {
     users.put(s.getId(), s);
   }
 
-  @Override public void update(ParkingSpot s) {
+  @Override public void update(ParkingSpot s) throws ParkingSpotNotInSystem{
+    if(!parkingSpots.containsKey(s.getId())) throw new ParkingSpotNotInSystem();
     parkingSpots.put(s.getId(), s);
   }
 

@@ -8,6 +8,7 @@ import java.util.stream.*;
 import org.junit.*;
 import org.junit.rules.*;
 import il.org.parking.*;
+import il.org.parking.exceptions.*;
 
 public class ParkingDemoTest {
   private ParkingDemo demo;
@@ -66,7 +67,7 @@ public class ParkingDemoTest {
     return new AvailabilityImplementation($);
   }
 
-  @Test public void testBuySpot() {
+  @Test public void testBuySpot() throws ParkingSpotNotInSystem {
     Availability buy_availability = buildBuyAvailability(140, 160);
     demo.buy(456, 777, buy_availability);
     String expected = "666(999):\n[1000 1500]\n[1700 1750]\n\n666(888):\n[300 500]\n[700 750]\n\n123(777):\n[130 140]\n[160 200]\n\n";
@@ -75,7 +76,7 @@ public class ParkingDemoTest {
 
   @Rule public ExpectedException expectedEx = ExpectedException.none();
 
-  @Test public void testBuySpot2() {
+  @Test public void testBuySpot2() throws ParkingSpotNotInSystem {
     expectedEx.expect(IllegalArgumentException.class);
     expectedEx.expectMessage("Availability should only have one time slot");
     List<SlotImplementation> slots = new ArrayList<>();
@@ -85,56 +86,56 @@ public class ParkingDemoTest {
     demo.buy(456, 777, buy_availability);
   }
 
-  @Test public void testBuySpot3() {
+  @Test public void testBuySpot3() throws ParkingSpotNotInSystem {
     expectedEx.expect(NoSuchElementException.class);
     expectedEx.expectMessage("No such user id");
     Availability buy_availability = buildBuyAvailability(140, 160);
     demo.buy(100, 777, buy_availability);
   }
 
-  @Test public void testBuySpot4() {
+  @Test public void testBuySpot4() throws ParkingSpotNotInSystem {
     expectedEx.expect(NoSuchElementException.class);
     expectedEx.expectMessage("No such parking spot id");
     Availability buy_availability = buildBuyAvailability(140, 160);
     demo.buy(456, 0, buy_availability);
   }
 
-  @Test public void testBuySpot5() {
+  @Test public void testBuySpot5() throws ParkingSpotNotInSystem {
     expectedEx.expect(IllegalArgumentException.class);
     expectedEx.expectMessage("isnt available");
     Availability buy_availability = buildBuyAvailability(2000, 2160);
     demo.buy(456, 777, buy_availability);
   }
 
-  @Test public void testBuySpot6() {
+  @Test public void testBuySpot6() throws ParkingSpotNotInSystem {
     expectedEx.expect(IllegalArgumentException.class);
     expectedEx.expectMessage("isnt available");
     Availability buy_availability = buildBuyAvailability(140, 201);
     demo.buy(456, 777, buy_availability);
   }
 
-  @Test public void testBuySpot7() {
+  @Test public void testBuySpot7() throws ParkingSpotNotInSystem {
     expectedEx.expect(IllegalArgumentException.class);
     expectedEx.expectMessage("isnt available");
     Availability buy_availability = buildBuyAvailability(135, 201);
     demo.buy(456, 777, buy_availability);
   }
 
-  @Test public void testBuySpot8() {
+  @Test public void testBuySpot8() throws ParkingSpotNotInSystem {
     Availability buy_availability = buildBuyAvailability(135, 200);
     demo.buy(456, 777, buy_availability);
     String expected = "666(999):\n[1000 1500]\n[1700 1750]\n\n666(888):\n[300 500]\n[700 750]\n\n123(777):\n[130 135]\n\n";
     assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
   }
 
-  @Test public void testBuySpot9() {
+  @Test public void testBuySpot9() throws ParkingSpotNotInSystem {
     Availability buy_availability = buildBuyAvailability(130, 190);
     demo.buy(456, 777, buy_availability);
     String expected = "666(999):\n[1000 1500]\n[1700 1750]\n\n666(888):\n[300 500]\n[700 750]\n\n123(777):\n[190 200]\n\n";
     assertEquals(expected, getTimeSlotsString(demo.viewAllParkingSpots()));
   }
 
-  @Test public void testBuySpot10() {
+  @Test public void testBuySpot10() throws ParkingSpotNotInSystem {
     Availability buy_availability = buildBuyAvailability(130, 200);
     demo.buy(456, 777, buy_availability);
     String expected = "666(999):\n[1000 1500]\n[1700 1750]\n\n666(888):\n[300 500]\n[700 750]\n\n123(777):\n\n";

@@ -6,6 +6,7 @@ import java.util.stream.*;
 import org.junit.*;
 
 import il.org.parking.*;
+import il.org.parking.exceptions.*;
 
 /**
  * 
@@ -64,7 +65,7 @@ public class ConsoleDemo {
     System.out.println("User added!");
   }
   
-  private void buy(String[] input) {
+  private void buy(String[] input) throws ParkingSpotNotInSystem {
     Integer buyer_id = Integer.parseInt(input[1]);
     Integer ps_id = Integer.parseInt(input[2]);
     String availabilityStr = input[3];
@@ -78,7 +79,7 @@ public class ConsoleDemo {
     
     System.out.println(buyer_id+" bought the slot!");
   }
-  private void updateParkingSpot(String[] input) {
+  private void updateParkingSpot(String[] input) throws ParkingSpotNotInSystem {
     Integer ps_id = Integer.parseInt(input[1]);
     Double new_price = Double.parseDouble(input[2]);
     Double new_x = Double.parseDouble(input[3]);
@@ -99,9 +100,9 @@ public class ConsoleDemo {
     Location new_location = new LocationImplementation(new_x, new_y);
     User seller = demo.getParkingSpot(ps_id).getSeller();
     ParkingSpot parkingSpot = new ParkingSpotImplementation(ps_id, availability, seller, new_price, new_location);
-    demo.sell(parkingSpot);
+    demo.updateParkingSpot(parkingSpot);
     
-    System.out.println(seller_id+" put the parking spot to sale!");
+    System.out.println(seller.getName()+" put the parking spot to sale!");
   }
   
   private void sell(String[] input) {
@@ -146,7 +147,7 @@ public class ConsoleDemo {
     System.out.println(getTimeSlotsString(demo.viewParkingSpotsFromLocation(location, radius)));
   }
   
-  public void run() {
+  public void run() throws ParkingSpotNotInSystem {
     Scanner reader = new Scanner(System.in);
     
     while(true) {
@@ -176,7 +177,7 @@ public class ConsoleDemo {
   }
   
   @Test
-  public void wrapper() {
+  public void wrapper() throws ParkingSpotNotInSystem {
     run();
   }
 }

@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.*;
 
 import il.org.parking.*;
+import il.org.parking.exceptions.*;
 
 public class ParkingDemo {
   private DataBase db;
@@ -32,10 +33,8 @@ public class ParkingDemo {
     Integer sellerId = parkingSpot.getSeller().getId();
     db.add(sellerId, parkingSpot.getId());
   }
-  public void updateParkingSpot(ParkingSpot parkingSpot) {
-    db.update(parkingSpot.getId(), parkingSpot);
-    Integer sellerId = parkingSpot.getSeller().getId();
-    db.add(sellerId, parkingSpot.getId());
+  public void updateParkingSpot(ParkingSpot parkingSpot) throws ParkingSpotNotInSystem {
+    db.update(parkingSpot);
   }
 
   public List<ParkingSpot> viewAllParkingSpots() {
@@ -46,7 +45,7 @@ public class ParkingDemo {
     return db.getAllParkingSpot().stream().filter(ps-> (ps.getLocation().calcDist(l) <= radius)).collect(Collectors.toList());
   }
 
-  @SuppressWarnings("boxing") public void buy(Integer buyerId, Integer parkingSpotId, Availability userAvailability) {
+  @SuppressWarnings("boxing") public void buy(Integer buyerId, Integer parkingSpotId, Availability userAvailability) throws ParkingSpotNotInSystem {
     ParkingSpot parkingSpot = db.getParkingSpot(parkingSpotId);
     if (userAvailability.getNumberOfIntervals() != 1) {
       throw new IllegalArgumentException("Availability should only have one time slot");
@@ -67,7 +66,7 @@ public class ParkingDemo {
     }else {
       throw new IllegalArgumentException("isnt available");
     }
-    db.update(parkingSpotId, parkingSpot);
+    db.update(parkingSpot);
   }
 
   public List<Reservation> getAllReservations() {

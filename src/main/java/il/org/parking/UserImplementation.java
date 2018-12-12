@@ -26,7 +26,7 @@ public class UserImplementation implements User {
   }
 
   @Override public void update(User updatedUser) {
-    db.update(this.id, updatedUser);
+    db.update(updatedUser);
     this.id = updatedUser.getId();
     this.name = updatedUser.getName();
     this.contact_info = updatedUser.getContactInfo();
