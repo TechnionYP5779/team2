@@ -24,9 +24,9 @@ public interface DataBase {
 
   void removeParkingSpot(Integer id);
 
-  void update(Integer id, User s);
+  void update(User s);
 
-  void update(Integer id, ParkingSpot s);
+  void update(ParkingSpot s);
   
   
 }

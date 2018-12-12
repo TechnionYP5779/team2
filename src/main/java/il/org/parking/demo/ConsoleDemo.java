@@ -16,6 +16,8 @@ import il.org.parking.*;
  *
  *sell [parkingspot_id] [seller_id] [price] [x coordinate] [y coordinate] ([start_time],[end_time])+
  *
+ *updatePS [parkingspot_id] [newPrice] [new x coordinate] [new y coordinate] ([new start_time],[new end_time])+
+ *
  *buy [buyer_id] [parkingspot_id] [start_time],[end_time]
  *
  *viewAll
@@ -75,6 +77,31 @@ public class ConsoleDemo {
     demo.buy(buyer_id, ps_id, availability);
     
     System.out.println(buyer_id+" bought the slot!");
+  }
+  private void updateParkingSpot(String[] input) {
+    Integer ps_id = Integer.parseInt(input[1]);
+    Double new_price = Double.parseDouble(input[2]);
+    Double new_x = Double.parseDouble(input[3]);
+    Double new_y = Double.parseDouble(input[4]);
+    
+    
+    List<SlotImplementation> slots = new ArrayList<>();
+    
+    
+    for(int i = 5; i< input.length; i++) {
+      String availabilityStr = input[i];
+      Integer start = Integer.parseInt(availabilityStr.split(",")[0]);
+      Integer end = Integer.parseInt(availabilityStr.split(",")[1]);
+      slots.add(new SlotImplementation(new DateTimeImplementation(start), new DateTimeImplementation(end)));
+    }
+    
+    Availability availability = new AvailabilityImplementation(slots);
+    Location new_location = new LocationImplementation(new_x, new_y);
+    User seller = demo.getParkingSpot(ps_id).getSeller();
+    ParkingSpot parkingSpot = new ParkingSpotImplementation(ps_id, availability, seller, new_price, new_location);
+    demo.sell(parkingSpot);
+    
+    System.out.println(seller_id+" put the parking spot to sale!");
   }
   
   private void sell(String[] input) {
@@ -140,6 +167,7 @@ public class ConsoleDemo {
           break;
         default:
           if(input_arr.length>=7 && input_arr[0].equals("sell")) sell(input_arr);
+          else if(input_arr.length>=6 && input_arr[0].equals("updatePS")) updateParkingSpot(input_arr);
           else System.out.println("invalid command");
           break;
       }

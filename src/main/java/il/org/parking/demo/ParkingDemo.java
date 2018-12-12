@@ -23,9 +23,17 @@ public class ParkingDemo {
   public User getUser(Integer id) {
     return db.getUser(id);
   }
+  public ParkingSpot getParkingSpot(Integer id) {
+    return db.getParkingSpot(id);
+  }
 
   public void sell(ParkingSpot parkingSpot) {
     db.add(parkingSpot);
+    Integer sellerId = parkingSpot.getSeller().getId();
+    db.add(sellerId, parkingSpot.getId());
+  }
+  public void updateParkingSpot(ParkingSpot parkingSpot) {
+    db.update(parkingSpot.getId(), parkingSpot);
     Integer sellerId = parkingSpot.getSeller().getId();
     db.add(sellerId, parkingSpot.getId());
   }

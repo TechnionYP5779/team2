@@ -34,12 +34,12 @@ public class DataBaseDummie implements DataBase {
     parkingSpots.remove(id);
   }
 
-  @Override public void update(Integer id, User s) {
-    users.put(id, s);
+  @Override public void update(User s) {
+    users.put(s.getId(), s);
   }
 
-  @Override public void update(Integer id, ParkingSpot s) {
-    parkingSpots.put(id, s);
+  @Override public void update(ParkingSpot s) {
+    parkingSpots.put(s.getId(), s);
   }
 
   @Override public void add(Integer userId, Integer hisParkingSpot) {
