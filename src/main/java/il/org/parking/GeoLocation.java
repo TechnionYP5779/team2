@@ -11,9 +11,9 @@ public class GeoLocation implements Location {
   private double latitude;
   private double longitude;
   private String address;
-  private final String UTF8 = "UTF-8";
+  private final static String UTF8 = "UTF-8";
 
-  public GeoLocation(double latitude, double longitude) throws Exception {
+  public GeoLocation(double latitude, double longitude) throws IOException {
     if (latitude > 90 || latitude < -90 || longitude > 180 || longitude < -180)
       throw new IllegalArgumentException();
     this.latitude = latitude;
@@ -24,7 +24,7 @@ public class GeoLocation implements Location {
     this.address = JsonPath.read(json, "$.display_name");
   }
 
-  public GeoLocation(String address) throws Exception {
+  public GeoLocation(String address) throws IOException {
     this.address = address;
     String formattedAddress = URLEncoder.encode(address, UTF8);
     String URL = "https://nominatim.openstreetmap.org/search?q=" + formattedAddress + "&format=json&addressdetails=1";
