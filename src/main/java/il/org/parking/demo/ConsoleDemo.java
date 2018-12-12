@@ -16,6 +16,8 @@ import static fluent.ly.box.*;
  *
  *addUser [id] [name] [mail]
  *
+ *updateUser [id] [name] [mail]
+ *
  *sell [parkingspot_id] [seller_id] [price] [x coordinate] [y coordinate] ([start_time],[end_time])+
  *
  *updatePS [parkingspot_id] [newPrice] [new x coordinate] [new y coordinate] ([new start_time],[new end_time])+
@@ -64,6 +66,17 @@ public class ConsoleDemo {
     demo.addUser(id, name, contact_info);
     
     System.out.println("User added!");
+  }
+  
+  private void updateUser(String[] input) {
+    Integer id = Integer.parseInt(input[1]);
+    String new_name = input[2];
+    String new_contact_info = input[3];
+
+    demo.getUser(id).update(new UserImplementation(id, new_name, new_contact_info, demo.getDB()));
+    
+    System.out.println("User updated!");
+    
   }
   
   private void buy(String[] input) throws ParkingSpotNotInSystem {
@@ -166,6 +179,7 @@ public class ConsoleDemo {
           if(input_arr[0].equals("addUser")) addUser(input_arr);
           else if(input_arr[0].equals("buy")) buy(input_arr);
           else if(input_arr[0].equals("viewByRadius")) viewByRadius(input_arr);
+          else if(input_arr[0].equals("updateUser")) updateUser(input_arr);
           else System.out.println("invalid command");
           break;
         default:
@@ -173,6 +187,7 @@ public class ConsoleDemo {
           else if(input_arr.length>=6 && input_arr[0].equals("updatePS")) updateParkingSpot(input_arr);
           else System.out.println("invalid command");
           break;
+          
       }
       }
       catch (Exception e) {
@@ -183,6 +198,8 @@ public class ConsoleDemo {
     }
   }
   
+  
+
   @Test
   public void wrapper(){
     run();
