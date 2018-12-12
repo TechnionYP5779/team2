@@ -17,8 +17,12 @@ public class ReservationImplementation implements Reservation{
     this.startTime = startTime;
   }
   @Override public String toString() {
-    return "ReservationImplementation [buyer=" + buyer + ", seller=" + seller + ", price=" + price + ", duration=" + duration + ", startTime="
-        + startTime + "]";
+    return "seller: "+seller.getName() +" ("+seller.getId()+")\n"+
+            "buyer: "+buyer.getName() +" ("+buyer.getId()+")\n"+
+            "price: "+price+"\n"+
+            "start time: "+startTime+"\n"+
+            "duration: "+duration+"\n\n";
+    
   }
   
   

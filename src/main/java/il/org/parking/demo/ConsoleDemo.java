@@ -7,7 +7,24 @@ import org.junit.*;
 
 import il.org.parking.*;
 
-
+/**
+ * 
+ * @author OGluc
+ *Commands:
+ *
+ *addUser [id] [name] [mail]
+ *
+ *sell [parkingspot_id] [seller_id] [price] [x coordinate] [y coordinate] ([start_time],[end_time])+
+ *
+ *buy [buyer_id] [parkingspot_id] [start_time],[end_time]
+ *
+ *viewAll
+ *
+ *viewByRadius [x coordinate] [y coordinate] [radius]
+ *
+ *reservations
+ *
+ */
 public class ConsoleDemo {
   
   private ReservationFactory reservationFactory = new ReservationFactoryImplementation();
@@ -27,11 +44,22 @@ public class ConsoleDemo {
     return list.stream().map(ps -> getParkingSpotString(ps)).collect(Collectors.joining(""));
   }
   
+  
+  private static void printHistory(List<Reservation> list) {
+    list.stream().forEach(r -> System.out.println(r));
+  }
+  
+  private void history() {
+    printHistory(demo.getAllReservations());
+  }
+  
   private void addUser(String[] input) {
     Integer id = Integer.parseInt(input[1]);
     String name = input[2];
     String contact_info = input[3];
     demo.addUser(id, name, contact_info);
+    
+    System.out.println("User added!");
   }
   
   private void buy(String[] input) {
@@ -45,6 +73,8 @@ public class ConsoleDemo {
     $.add(new SlotImplementation(new DateTimeImplementation(start), new DateTimeImplementation(end)));
     Availability availability = new AvailabilityImplementation($);
     demo.buy(buyer_id, ps_id, availability);
+    
+    System.out.println(buyer_id+" bought the slot!");
   }
   
   private void sell(String[] input) {
@@ -71,10 +101,10 @@ public class ConsoleDemo {
     ParkingSpot parkingSpot = new ParkingSpotImplementation(ps_id, availability, seller, price, location);
     demo.sell(parkingSpot);
     
-    
+    System.out.println(seller_id+" put the parking spot to sale!");
   }
   
-  private void viewAll(String[] input) {
+  private void viewAll() {
     System.out.println(getTimeSlotsString(demo.viewAllParkingSpots()));
   }
   
@@ -98,7 +128,8 @@ public class ConsoleDemo {
       
       switch (input_arr.length) {
         case 1:
-          if(input_arr[0].equals("viewAll")) viewAll(input_arr);
+          if(input_arr[0].equals("viewAll")) viewAll();
+          else if(input_arr[0].equals("reservations")) history();
           else System.out.println("invalid command");
           break;
         case 4:
@@ -108,7 +139,7 @@ public class ConsoleDemo {
           else System.out.println("invalid command");
           break;
         default:
-          if(input_arr[0].equals("sell")) sell(input_arr);
+          if(input_arr.length>=7 && input_arr[0].equals("sell")) sell(input_arr);
           else System.out.println("invalid command");
           break;
       }
