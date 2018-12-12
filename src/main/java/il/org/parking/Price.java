@@ -6,7 +6,6 @@ package il.org.parking;
  * @author Addir Abasker
  */
 public interface Price {
-  
   /**
    * This method is used to inform the user of the price of 
    * some object.
