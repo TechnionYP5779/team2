@@ -6,12 +6,12 @@ public class ParkingSpotReservation implements Reservation {
   
   private User buyer;
   private User seller;
-  private double price;
+  private Price price;
   private int duration;
   private DateTime startTime;
   private int id;
 
-  public ParkingSpotReservation(User buyerIn, User sellerIn, double priceIn, int durationIn, DateTime startTimeIn, int idIn) {
+  public ParkingSpotReservation(User buyerIn, User sellerIn, Price priceIn, int durationIn, DateTime startTimeIn, int idIn) {
     buyer = buyerIn;
     seller = sellerIn;
     price = priceIn;
@@ -28,7 +28,7 @@ public class ParkingSpotReservation implements Reservation {
     return seller;
   }
 
-  @Override public double getPrice() {
+  @Override public Price getPrice() {
     return price;
   }
 

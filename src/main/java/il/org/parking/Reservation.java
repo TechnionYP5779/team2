@@ -11,8 +11,8 @@ public interface Reservation {
   User getSeller();
   
   /** Gets the price of this reservation.
-   * @return double that represents the price */
-  double getPrice(); //change to interface Price
+   * @return Price that represents the price */
+  Price getPrice(); 
   
   /** Gets the duration of this reservation.
    * @return integer that represents the duration in minutes */
