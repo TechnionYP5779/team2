@@ -49,8 +49,7 @@ public class ParkingSpotImpl implements ParkingSpot {
   }
   
   @Override public void addAvailability(Availability other) {
-    // avail.unification(other);
-    return; // need to add a function for adding to this interval
+    this.avail = this.avail.unification(other);
   }
   
   @Override public String toString() {
