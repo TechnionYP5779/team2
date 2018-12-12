@@ -44,18 +44,6 @@ import fluent.ly.*;
     System.setErr(originalErr);
   }
 
-  @Test public void testQuoteNotNullString() {
-    assert "'hello'".equals(idiomatic.quote("hello"));
-  }
-
-  @Test public void testQuoteNullString() {
-    assert "<null reference>".equals(idiomatic.quote(null));
-  }
-
-  @Test public void testDoubleQuote() {
-    assert "''a''".equals(idiomatic.quote(idiomatic.quote("a")));
-  }
-
   @Test public void testWhenTrueReturnsSame() {
     assert cantBeNull(idiomatic.when(true).eval(() -> box(5))).equals(box(5));
   }
