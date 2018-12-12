@@ -21,9 +21,9 @@ public interface User {
 
   /** @return a collection of all the parking spots the user rents FROM other
    *         users right now */
-  Collection<ParkingSpot> getParkingsRentsFromOthers();
+  //Collection<ParkingSpot> getParkingsRentsFromOthers();
 
   /** @return a collection of all the parking spots the user rents TO other users
    *         right now */
-  Collection<ParkingSpot> getParkingsRentsToOthers();
+  //Collection<ParkingSpot> getParkingsRentsToOthers();
 }
