@@ -24,6 +24,8 @@ import static fluent.ly.box.*;
  *
  *buy [buyer_id] [parkingspot_id] [start_time],[end_time]
  *
+ *viewUsers
+ *
  *viewAll
  *
  *viewByRadius [x coordinate] [y coordinate] [radius]
@@ -45,9 +47,21 @@ public class ConsoleDemo {
       $ += "[" + av.getSlots(¢).getStart().getTime() + " " + av.getSlots(¢).getEnd().getTime() + "]\n";
     return $ + "\n";
   }
+  
+  private static String getUserString(User u) {
+    String $ = "user id = "+u.getId() + "\n";
+    $ += "user name = "+u.getName()+"\n";
+    $ += "user mail = "+u.getContactInfo()+"\n";
+    return $ + "\n";
+  }
 
   private static String getTimeSlotsString(List<ParkingSpot> list) {
+    if(list.isEmpty()) return "No parking spots available :(";
     return list.stream().map(ps -> getParkingSpotString(ps)).collect(Collectors.joining(""));
+  }
+  private static String getAllUsersString(List<User> list) {
+    if(list.isEmpty()) return "No users in the system :(";
+    return list.stream().map(ps -> getUserString(ps)).collect(Collectors.joining(""));
   }
   
   
@@ -150,6 +164,10 @@ public class ConsoleDemo {
     System.out.println(getTimeSlotsString(demo.viewAllParkingSpots()));
   }
   
+  private void viewAllUsers() {
+    System.out.println(getAllUsersString(demo.viewAllUsers()));
+  }
+  
   
   private void viewByRadius(String[] input) {
     
@@ -172,6 +190,7 @@ public class ConsoleDemo {
       switch (input_arr.length) {
         case 1:
           if(input_arr[0].equals("viewAll")) viewAll();
+          else if(input_arr[0].equals("viewUsers")) viewAllUsers();
           else if(input_arr[0].equals("reservations")) history();
           else System.out.println("invalid command");
           break;

@@ -77,4 +77,8 @@ public class ParkingDemo {
   public List<Reservation> getAllReservations() {
     return db.getAllReservations();
   }
+
+  public List<User> viewAllUsers() {
+    return db.getAllUsers();
+  }
 }

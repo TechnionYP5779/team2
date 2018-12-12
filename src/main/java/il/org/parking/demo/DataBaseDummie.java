@@ -70,4 +70,8 @@ public class DataBaseDummie implements DataBase {
     reservations.add(s);
     
   }
+
+  @Override public List<User> getAllUsers() {
+    return new ArrayList<>(users.values());
+  }
 }

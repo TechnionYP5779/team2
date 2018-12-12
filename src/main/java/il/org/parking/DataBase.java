@@ -29,6 +29,8 @@ public interface DataBase {
   void update(User s);
 
   void update(ParkingSpot s) throws ParkingSpotNotInSystem;
+
+  List<User> getAllUsers();
   
   
 }
