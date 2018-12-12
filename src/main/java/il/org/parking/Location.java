@@ -10,7 +10,7 @@ public interface Location {
   /**
    * This method is used to calculate the distance between two Location objects
    * @param other This is the second Location object
-   * @return Integer This returns the distance between the two Location objects
+   * @return Double This returns the distance between the two Location objects
    */
-    Integer calcDist (Location other);
+    Double calcDist (Location other);
 }
