@@ -14,7 +14,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
  * @author Yossi Gil <code><yossi.gil [at] gmail.com></code>
  * @since 2013/07/01 */
 @SuppressWarnings("null") public interface Utils {
-  String QUOTE = "'";
   String WHITES = "(?m)\\s+";
 
   @NotNull static <T, C extends Collection<T>> C add(final @NotNull C $, final Iterable<? extends T> ts) {
@@ -256,13 +255,6 @@ import il.org.spartan.Utils.FoundHandleForT.*;
   static StringBuilder prepend(final @NotNull StringBuilder $, final @NotNull String s) {
     @NotNull final StringBuilder b1 = cantBeNull($.insert(0, s));
     return b1;
-  }
-
-  /** Quote a given {@link String}
-   * @param $ some {@link String} to be quoted
-   * @return parameter, quoted */
-  static String quote(final @Nullable String $) {
-    return $ != null ? QUOTE + $ + QUOTE : "<null reference>";
   }
 
   /** Remove any duplicates that may be present in a given {@link List}
