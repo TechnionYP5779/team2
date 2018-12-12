@@ -15,7 +15,8 @@ public class DataBaseDummie implements DataBase {
     return users.get(id);
   }
 
-  @Override public ParkingSpot getParkingSpot(Integer id) {
+  @Override public ParkingSpot getParkingSpot(Integer id) throws ParkingSpotNotInSystem {
+    if(!parkingSpots.containsKey(id)) throw new ParkingSpotNotInSystem();
     return parkingSpots.get(id);
   }
 

@@ -24,7 +24,7 @@ public class ParkingDemo {
   public User getUser(Integer id) {
     return db.getUser(id);
   }
-  public ParkingSpot getParkingSpot(Integer id) {
+  public ParkingSpot getParkingSpot(Integer id) throws ParkingSpotNotInSystem {
     return db.getParkingSpot(id);
   }
 

@@ -8,7 +8,7 @@ public interface DataBase {
   
   User getUser(Integer id);
 
-  ParkingSpot getParkingSpot(Integer id);
+  ParkingSpot getParkingSpot(Integer id) throws ParkingSpotNotInSystem;
   
   List<ParkingSpot> getAllParkingSpot();
   

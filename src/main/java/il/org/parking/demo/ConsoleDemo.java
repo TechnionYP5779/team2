@@ -8,6 +8,7 @@ import org.junit.*;
 import il.org.parking.*;
 import il.org.parking.exceptions.*;
 
+import static fluent.ly.box.*;
 /**
  * 
  * @author OGluc
@@ -102,7 +103,7 @@ public class ConsoleDemo {
     ParkingSpot parkingSpot = new ParkingSpotImplementation(ps_id, availability, seller, new_price, new_location);
     demo.updateParkingSpot(parkingSpot);
     
-    System.out.println(seller.getName()+" put the parking spot to sale!");
+    System.out.println(seller.getName()+" updated the parking spot!");
   }
   
   private void sell(String[] input) {
@@ -129,7 +130,7 @@ public class ConsoleDemo {
     ParkingSpot parkingSpot = new ParkingSpotImplementation(ps_id, availability, seller, price, location);
     demo.sell(parkingSpot);
     
-    System.out.println(seller_id+" put the parking spot to sale!");
+    System.out.println(seller.getName()+" put the parking spot to sale!");
   }
   
   private void viewAll() {
@@ -147,10 +148,11 @@ public class ConsoleDemo {
     System.out.println(getTimeSlotsString(demo.viewParkingSpotsFromLocation(location, radius)));
   }
   
-  public void run() throws ParkingSpotNotInSystem {
+  public void run(){
     Scanner reader = new Scanner(System.in);
     
     while(true) {
+      try {
       String input = reader.nextLine();
       String[] input_arr = input.split(" ");
       
@@ -172,12 +174,18 @@ public class ConsoleDemo {
           else System.out.println("invalid command");
           break;
       }
+      }
+      catch (Exception e) {
+        System.out.println("Oh oh! " + e.getClass().getSimpleName() + " was thrown... try again!"); 
+        e.printStackTrace();
+      }
       
     }
   }
   
   @Test
-  public void wrapper() throws ParkingSpotNotInSystem {
+  public void wrapper(){
     run();
+    
   }
 }
