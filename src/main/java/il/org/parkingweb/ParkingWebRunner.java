@@ -4,7 +4,7 @@ import java.sql.*;
 
 /** The Class ParkingWebRunner. */
 public class ParkingWebRunner {
-  @SuppressWarnings("resource") public static void main(String[] args) {
+  public static void main(String[] args) {
  // Connect to database
     String hostName = "parkingteam2sql.database.windows.net"; // update me
     String dbName = "parkingSQL"; // update me
@@ -39,9 +39,8 @@ public class ParkingWebRunner {
             }
             connection.close();
         }
-    }
-    catch (Exception e) {
-        e.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 }
