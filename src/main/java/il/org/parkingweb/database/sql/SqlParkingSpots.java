@@ -17,7 +17,7 @@ public class SqlParkingSpots implements ParkingSpots {
     this.tableName = tableName;
   }
 
-  @Override public void add(int id, ParkingSpot ps) {
+  @Override public void add(ParkingSpot ps) {
     openConnection();
 
     String sqlInsertBaseFormat = ""
@@ -29,19 +29,13 @@ public class SqlParkingSpots implements ParkingSpots {
     closeConnection();
   }
 
-  @Override public void remove(int id) {
+  @Override public void remove(Long id) {
     openConnection();
     // TODO: add SQL statement and query.
     closeConnection();
   }
 
-  @Override public void update(int id, ParkingSpot ps) {
-    openConnection();
-    // TODO: add SQL statement and query.
-    closeConnection();
-  }
-
-  @Override public ParkingSpot get(int id) {
+  @Override public Optional<ParkingSpot> get(Long id) {
     openConnection();
     // TODO: add SQL statement and query.
     closeConnection();
