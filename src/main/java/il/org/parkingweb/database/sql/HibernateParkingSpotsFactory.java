@@ -7,7 +7,7 @@ import il.org.parkingweb.database.*;
 import il.org.parkingweb.parkingspot.*;
 
 public class HibernateParkingSpotsFactory implements ParkingSpotsFactory {
-  @Override public ParkingSpots open() {
+  @SuppressWarnings("resource") @Override public ParkingSpots open() {
     Configuration cfg = createHibernateConfiguration();
     cfg.addAnnotatedClass(ParkingSpot.class);
     try{
