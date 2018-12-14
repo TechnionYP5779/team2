@@ -53,8 +53,13 @@
 			<version>1.9.5</version>
 			<scope>${project.basedir}/lib/mockito</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>7.0.0.jre8</version>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
