@@ -54,7 +54,7 @@
 			<scope>${project.basedir}/lib/mockito</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
