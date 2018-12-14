@@ -10,8 +10,14 @@ public class HibernateParkingSpotsFactory implements ParkingSpotsFactory {
   @Override public ParkingSpots open() {
     Configuration cfg = createHibernateConfiguration();
     cfg.addAnnotatedClass(ParkingSpot.class);
-    SessionFactory sessionFactory = cfg.buildSessionFactory();
-    return new HibernateParkingSpots(sessionFactory);
+    try{
+      SessionFactory sessionFactory = cfg.buildSessionFactory();
+      return new HibernateParkingSpots(sessionFactory);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+      throw e;
+    }
   }
 
   // Create Hibernate configuration via code instead of using a
@@ -22,8 +28,10 @@ public class HibernateParkingSpotsFactory implements ParkingSpotsFactory {
         .setProperty("hibernate.connection.url", SqlConsts.HostAndDbString) // set the base URL
         .setProperty("hibernate.connection.username", SqlConsts.UserName) // set the user name
         .setProperty("hibernate.connection.password", SqlConsts.Password) // set the password
-        .setProperty("hibernate.connection.autocommit", "true").setProperty("hibernate.show_sql", "false")
-        .setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect").setProperty("hibernate.show_sql", "false")
+        .setProperty("hibernate.connection.autocommit", "true")
+        .setProperty("hibernate.show_sql", "false")
+        .setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect")
+        .setProperty("hibernate.show_sql", "false")
         .setProperty("hibernate.hbm2ddl.auto", "update");
   }
 }

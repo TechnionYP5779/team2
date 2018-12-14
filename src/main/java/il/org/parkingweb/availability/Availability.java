@@ -1,5 +1,11 @@
 package il.org.parkingweb.availability;
 
 public class Availability {
-  // TODO:
+  public int from;
+  public int to;
+
+  public Availability(int from, int to) {
+    this.from = from;
+    this.to = to;
+  }
 }
