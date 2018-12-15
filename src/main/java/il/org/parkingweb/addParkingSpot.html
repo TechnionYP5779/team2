@@ -14,6 +14,10 @@
 </head>
 
 <body>
+
+
+
+
   <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
           <!-- Logo and responsive toggle -->
@@ -51,14 +55,15 @@
   </nav>
 
 
+
 	<!-- Header -->
     <header>
         <div class="header-form">
             <h1 style="color:white;">Add Your Parking Spot</h1><br><br>
-            <form method="post" action="AddParkingSpot">
-              <input type="text" name="Longitude" placeholder="Longitude"><br><br>
+            <form name="addParkingSpot" method="post" onsubmit="return checkForm()" action="">
+              <input type="text" name="Longitude" id="Longitude" placeholder="Longitude"><br><br>
               <input type="text" name="Latitude" placeholder="Latitude"><br><br>
-              <input type="text" name="Priceph" placeholder="Price-per-hour"><br><br>
+              <input type="text" name="PricePH" placeholder="Price per hour"><br><br>
               <input type="date" name="fromDate" placeholder="fromDate"><br><br>
               <input type="date" name="toDate" placeholder="toDate"><br><br>
               <input type="time" name="fromHour" placeholder="fromHour"><br><br>
@@ -68,7 +73,6 @@
             </form>
             </div>
     </header>
-
 
 
 
@@ -84,6 +88,80 @@
 
     <!-- Custom Javascript -->
     <script src="js/custom.js"></script>
+
+    <script type="text/javascript">
+      function checkForm(){
+        var longitude = document.forms["addParkingSpot"]["Longitude"].value;
+        var latitude = document.forms["addParkingSpot"]["Latitude"].value;
+        var pricePH = new Date(document.forms["addParkingSpot"]["PricePH"].value);
+        var fromDate = new Date(document.forms["addParkingSpot"]["fromDate"].value);
+        var toDate = new Date(document.forms["addParkingSpot"]["toDate"].value);
+        var fromHour = document.forms["addParkingSpot"]["fromHour"].value;
+        var toHour = document.forms["addParkingSpot"]["toHour"].value;
+
+        return checkLongitude(lon) && checkLatitude(lat) &&
+                checkDatesAndTimes(fromDate, toDate, fromHour, toHour) &&
+                checkPricePH(pricePH);
+      }
+
+      function checkDatesAndTimes(fromDate, toDate, fromHour, toHour){
+        if(fromDate == "" || toDate == "" || fromHour == "" || toHour == ""){
+          return false;
+        }
+
+        if (fromDate > toDate){
+          return false;
+        }
+        else if (fromDate < toDate){
+          return true;
+        }
+        return checkFromAndThenTo(fromHour, toHour);
+      }
+
+      function checkFromAndThenTo(fromHour, toHour){
+        fromHourH = fromHour.split(':')[0];
+        fromHourM = fromHour.split(':')[1];
+        toHourH = toHour.split(':')[0];
+        toHourM = toHour.split(':')[1];
+
+        if (fromHourH > toHourH){
+          return false;
+        }
+        else if (fromHourH == toHourH){
+          return fromHourM < toHourM;
+        }
+        return true;
+      }
+
+      // replace with regex
+      function checkLongitude(lon) {
+        if (lon == ""){
+          return false;
+        }
+        var lonF = parseFloat(lon);
+        return !isNaN(lonF) && lonF >= -180 && lonF <= 180;
+      }
+
+      function checkLatitude(lat) {
+        if (lat == ""){
+          return false;
+        }
+        var latF = parseFloat(lat);
+        return !isNaN(latF)) && latF >= -90 && latF <= 90;
+      }
+
+      function checkPricePH(pricePH){
+        if (pricePH == ""){
+          return false;
+        }
+        // think about the limit
+        var limit = 9999;
+        return parseInt(pricePH) > 0 && parseInt(pricePH) <= limit;
+      }
+
+
+    </script>
+
 
 </body>
 
