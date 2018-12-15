@@ -148,7 +148,7 @@
           return false;
         }
         var latF = parseFloat(lat);
-        return !isNaN(latF)) && latF >= -90 && latF <= 90;
+        return !isNaN(latF) && latF >= -90 && latF <= 90;
       }
 
       function checkPricePH(pricePH){
@@ -159,6 +159,7 @@
         var limit = 9999;
         return parseInt(pricePH) > 0 && parseInt(pricePH) <= limit;
       }
+
     </script>
 
 
