@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Add your Parking Spot</title>
+    <title>Sign up</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -43,7 +43,7 @@
                       <a href="#">Add Parking Spot</a>
                   </li>
                   <li class="active">
-                    <a href="loginPage.html">Login</a>
+                    <a href="signupPage.html">Sign Up</a>
                 </li>
                   <li>
                       <a href="#">Contact</a>
@@ -59,11 +59,12 @@
 	<!-- Header -->
     <header>
         <div class="header-form">
-            <h1 style="color:white;">Please Login</h1><br><br>
+            <h1 style="color:white;">Please sign up</h1><br><br>
             <form name="login" method="post" onsubmit="return validateLogin()" action="">
               <input type="text" name="UserName" id="UserName" placeholder="username"><br><br>
-              <input type="text" name="Password" placeholder="minimum 6 chars"><br><br>
-              <input type="submit" class="btn btn-primary" value="Log In!">
+              <input type="password" name="Password" placeholder="minimum 6 chars"><br><br>
+              <input type="password" name="ConfirmPassword" placeholder="Confirm password"><br><br>
+              <input type="submit" class="btn btn-primary" value="Sign up!">
             </form>
             </div>
     </header>
@@ -85,10 +86,14 @@
 
     <script type="text/javascript">
     function validateLogin(){
-        const username = document.forms["login"]["username"].value;
-        const password = document.forms["login"]["password"].value;
+        const username = document.forms["login"]["UserName"].value;
+        const password = document.forms["login"]["Password"].value;
+        const confirmPassword = document.forms["login"]["ConfirmPassword"].value;
 
         if(password.length < 6){
+            return false;
+        }
+        if(password != confirmPassword){
             return false;
         }
         return true;
