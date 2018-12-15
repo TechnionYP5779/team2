@@ -46,10 +46,10 @@ public class HibernateParkingSpots implements ParkingSpots {
     
     String hqlQuery = ""
         + "From " + SqlConsts.ParkingSpots.TableName + " "
-        + "Where location.latitude >= :minLatitude "
-        + "And location.latitude <= :maxLatitude "
-        + "And location.longitude >= :minLongitude "
-        + "And location.longitude <= :maxLongitude ";
+        + "Where latitude >= :minLatitude "
+        + "And latitude <= :maxLatitude "
+        + "And longitude >= :minLongitude "
+        + "And longitude <= :maxLongitude ";
     
     List<ParkingSpot> spots = session.createQuery(hqlQuery, ParkingSpot.class)
         .setParameter("minLatitude", minLatitude)
