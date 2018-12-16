@@ -5,7 +5,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 
-@WebServlet("AddParkingSpot") 
+@WebServlet("/AddParkingSpot") 
 public class AddParkingSpot extends HttpServlet {
   
   // automatically created
