@@ -60,10 +60,13 @@ public class ShowParkingSpots extends HttpServlet{
       ps2.setLocation(new Location(32.777044, 35.019463));
       ParkingSpot ps3 = new ParkingSpot();
       ps3.setLocation(new Location(32.776124, 35.020654));
+      ParkingSpot ps4 = new ParkingSpot();
+      ps4.setLocation(new Location(32.776124, 35.021654));
       
       list.add(ps1);
       list.add(ps2);
       list.add(ps3);
+      list.add(ps4);
       return list;
     }
     
@@ -79,8 +82,18 @@ public class ShowParkingSpots extends HttpServlet{
   
   ParkingSpots parkingSpots = factory.open();
   
+  String html_list = "[";
   
+  List<ParkingSpot> list = parkingSpots.getParkingSpotIn(new Location(100,100), 100);
+  String comma = ",";
+  for(int i =0; i < list.size(); i++) {
+    if(i == list.size()-1) {
+      comma = "";
+    }
+    html_list += "["+list.get(i).getLocation().latitude+", "+list.get(i).getLocation().longitude +"]"+comma;
+  }
+  html_list += "]";
   
-   response.getWriter().println("<html><body><h1>Longitude="+ "</h1></body></html>");
+   response.getWriter().println(HTML_Prefix+ html_list+HTML_Suffix);
  }
 }

@@ -2,23 +2,12 @@
   <head><title>OpenLayers Marker Popups</title></head>
   <body>
   
-  <div id="linksdiv">
-     Click to jump to a new location:
-        <li><a href="#" onClick="javascript:jump( 32.77890,35.02005); return false;">Technion, Israel</a></li>
-        
-     
-  </div>
+  <form id="jsform" method="post" action="ShowParkingSpot">
+  </form>
   
-  <div id="mapdiv"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/lib/OpenLayers.js"></script> 
-  <script>
-     var markers = [
-    [ 32.778885, 35.018709 ],
-    [ 32.777044, 35.019463 ],
-    [ 32.776124, 35.020654 ],
-    [ 32.776124, 35.021654 ]
-   ];
+  <script type="text/javascript">
+  	document.getElementById('jsform').submit();
   </script>
-  <script src="js/mapSimple.js"></script>
+  
   
 </body></html>
