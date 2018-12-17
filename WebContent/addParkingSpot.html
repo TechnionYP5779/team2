@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add your Parking Spot</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+
+
+
+
+  <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Logo and responsive toggle -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-leaf"></span>
+                ParkingWeb
+              </a>
+          </div>
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="navbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">Hello, </a>
+                </li>
+                  <li>
+                      <a href="index.html">Home</a>
+                  </li>
+                  <li class="active">
+                      <a href="#">Add Parking Spot</a>
+                  </li>
+                  <li>
+                      <a href="#">Contact</a>
+                  </li>
+              </ul>
+
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+  </nav>
+
+
+
+	<!-- Header -->
+    <header>
+        <div class="header-form">
+            <h1 style="color:white;">Add Your Parking Spot</h1><br><br>
+            <form name="addParkingSpot" method="post" action="AddParkingSpot">
+              <input type="text" name="Longitude" id="Longitude" placeholder="Longitude"><br><br>
+              <input type="text" name="Latitude" placeholder="Latitude"><br><br>
+              <input type="text" name="PricePH" placeholder="Price per hour"><br><br>
+              <input type="date" name="fromDate" placeholder="fromDate"><br><br>
+              <input type="date" name="toDate" placeholder="toDate"><br><br>
+              <input type="time" name="fromHour" placeholder="fromHour"><br><br>
+              <input type="time" name="toHour" placeholder="toHour"><br><br><br>
+              <input type="submit" class="btn btn-primary" value="Add it!">
+
+            </form>
+            </div>
+    </header>
+
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Custom Javascript -->
+    <script src="js/custom.js"></script>
+
+    <script type="text/javascript">
+      function checkForm(){
+        var longitude = document.forms["addParkingSpot"]["Longitude"].value;
+        var latitude = document.forms["addParkingSpot"]["Latitude"].value;
+        var pricePH = document.forms["addParkingSpot"]["PricePH"].value;
+        var fromDate = new Date(document.forms["addParkingSpot"]["fromDate"].value);
+        var toDate = new Date(document.forms["addParkingSpot"]["toDate"].value);
+        var fromHour = document.forms["addParkingSpot"]["fromHour"].value;
+        var toHour = document.forms["addParkingSpot"]["toHour"].value;
+
+        return checkLongitude(longitude) && checkLatitude(latitude) &&
+                checkDatesAndTimes(fromDate, toDate, fromHour, toHour) &&
+                checkPricePH(pricePH);
+      }
+
+      function checkDatesAndTimes(fromDate, toDate, fromHour, toHour){
+        if (fromDate == "" || toDate == "" || fromHour == "" || toHour == ""){
+          return false;
+        }
+
+        if (fromDate > toDate){
+          return false;
+        }
+        else if (fromDate < toDate){
+          return true;
+        }
+        return checkFromAndThenTo(fromHour, toHour);
+      }
+
+      function checkFromAndThenTo(fromHour, toHour){
+        fromHourH = fromHour.split(':')[0];
+        fromHourM = fromHour.split(':')[1];
+        toHourH = toHour.split(':')[0];
+        toHourM = toHour.split(':')[1];
+
+        if (fromHourH > toHourH){
+          return false;
+        }
+        else if (fromHourH == toHourH){
+          return fromHourM < toHourM;
+        }
+        return true;
+      }
+
+      // replace with regex
+      function checkLongitude(lon) {
+        if (lon == ""){
+          return false;
+        }
+        var lonF = parseFloat(lon);
+        return !isNaN(lonF) && lonF >= -180 && lonF <= 180;
+      }
+
+      // replace with regex
+      function checkLatitude(lat) {
+        if (lat == ""){
+          return false;
+        }
+        var latF = parseFloat(lat);
+        return !isNaN(latF) && latF >= -90 && latF <= 90;
+      }
+
+      function checkPricePH(pricePH){
+        if (pricePH == ""){
+          return false;
+        }
+        // think about the limit
+        var limit = 9999;
+        return parseInt(pricePH) > 0 && parseInt(pricePH) <= limit;
+      }
+
+    </script>
+
+
+</body>
+
+</html>
