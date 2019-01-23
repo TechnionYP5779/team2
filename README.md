@@ -1,3 +1,9 @@
+# This project is aborted
+Our new parking project (Sprint 1) can be found <a href="https://github.com/TechnionYP5779/team2-Appark">here</a>.
+
+Our current Tryna Grub project's work summary (Spring 2) can be found in <a href="https://github.com/neryac/team2---tryna">this private repository</a>.
+
+
 ## Development Status
 [![Build Status](https://travis-ci.org/TechnionYP5779/team2.svg?branch=master)](https://travis-ci.org/TechnionYP5779/team2)
 [![codecov.io](http://codecov.io/github/TechnionYP5779/team2/coverage.svg?branch=master)](http://codecov.io/github/TechnionYP5779/team2?branch=master)
